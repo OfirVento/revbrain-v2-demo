@@ -558,11 +558,11 @@ export function KnowledgePlaceholder() {
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
-                      <th className="py-3 px-4 font-semibold">Q2C Area</th>
-                      <th className="py-3 px-4 text-right font-semibold">Implementations</th>
-                      <th className="py-3 px-4 text-right font-semibold">System Learnings</th>
-                      <th className="py-3 px-4 text-right font-semibold">Human Learnings</th>
-                      <th className="py-3 px-4 text-right font-semibold">Learned Patterns</th>
+                      <th className="py-3 px-4 font-semibold w-[36%]">Q2C Area</th>
+                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Implementations</th>
+                      <th className="py-3 px-4 text-right font-semibold w-[16%]">System Learnings</th>
+                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Human Learnings</th>
+                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Learned Patterns</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 font-sans">
@@ -575,9 +575,11 @@ export function KnowledgePlaceholder() {
                         }}
                         className="hover:bg-violet-50/40 transition-colors cursor-pointer group"
                       >
-                        <td className="py-3.5 px-4 font-bold text-slate-900 group-hover:text-violet-700 flex items-center gap-2">
-                          <span>{row.name}</span>
-                          <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
+                        <td className="py-3.5 px-4 font-bold text-slate-900 group-hover:text-violet-700">
+                          <div className="flex items-center gap-2">
+                            <span>{row.name}</span>
+                            <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
+                          </div>
                         </td>
                         <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
                           {row.implementations}
@@ -585,8 +587,10 @@ export function KnowledgePlaceholder() {
                         <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
                           {row.systemLearnings}
                         </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-semibold text-amber-700 bg-amber-50/40 px-2 py-1 rounded inline-block my-1">
-                          {row.humanLearnings}
+                        <td className="py-3.5 px-4 text-right">
+                          <span className="font-mono font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/80 inline-block">
+                            {row.humanLearnings}
+                          </span>
                         </td>
                         <td className="py-3.5 px-4 text-right font-mono font-bold text-violet-700">
                           {row.patterns}
