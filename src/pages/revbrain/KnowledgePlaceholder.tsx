@@ -1,9 +1,9 @@
 // ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
-// Navigable Product Workspace (4 Top-Level Areas):
-// 1. Learning Corpus (8 main Q2C learned areas + filter)
-// 2. Learning Intelligence (Systems vs. Humans captured behavior + Search across 47 impls)
-// 3. Implementation Library (Merged workspace: Implementation Packs & Q2C Readiness internal tabs)
-// 4. Compounding (Software economics & client-specific discovery reduction trend)
+// 4-Screen Product Area Architecture with Rich Visual Hierarchy & Semantic Colors:
+// 1. Learning Corpus (3 Visual Summary Blocks, Q2C Landscape Rows with System/Human/Pattern Markers)
+// 2. Learning Intelligence (50/50 Split Systems vs. Humans, Center Relationship Connector)
+// 3. Implementation Library (Visual Factory Flow, Componentized Icon Metrics, 3 Grouped Example Areas, Q2C Readiness Map)
+// 4. Compounding (Horizontal Connected Progression Cards #1 -> #6 -> #12, Trend Strip, Thesis Band)
 
 import { useState, useEffect, useMemo } from 'react';
 import {
@@ -13,16 +13,17 @@ import {
   CheckCircle2,
   ShieldCheck,
   Search,
-  Filter,
-  Check,
-  TrendingUp,
-  TrendingDown,
   Layers,
   UserCheck,
   ChevronDown,
   ChevronUp,
-  BookOpen,
+  ChevronRight,
+  TrendingUp,
+  TrendingDown,
+  Sliders,
+  Activity,
   Zap,
+  BookOpen,
 } from 'lucide-react';
 
 /* ── Persistent Learning Sub-Nav Tabs (4 Areas) ───────────────────────── */
@@ -92,17 +93,17 @@ export interface IntelligenceContextData {
 export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> = {
   discount_approvals: {
     system: {
-      observedPaths: '214 observed approval paths',
+      observedPaths: '214 approval paths',
       configRules: ['12 approval rules', '22 discount schedules', '3 QCP scripts'],
-      runtimeBehavior: ['31 implementation histories', '147 comparable approvals', '18 exception patterns'],
+      runtimeBehavior: ['Finance escalation', 'Strategic exceptions', 'Approval cycle patterns', 'Rework / rejection'],
       outcomes: ['Finance escalation behavior', 'Strategic exception paths', 'Approval cycle patterns', 'Rework / rejection behavior'],
       scenariosCount: 143,
     },
     human: {
       businessPolicy: ['CFO margin floor', 'Strategic-account definition', 'Pricing exception policy'],
       decisionIntent: ['Why Finance gets involved', 'When Deal Desk should override', 'Which exceptions are acceptable'],
-      undocumentedOps: ['Manual stage transitions', 'Slack / email workarounds', 'Off-system approval behavior'],
-      futureIntent: ['What should be automated', 'What should become an agent', 'Where humans must remain'],
+      undocumentedOps: ['Manual stage transitions', 'Slack / email workarounds', 'Off-system approvals', 'Exception handling'],
+      futureIntent: ['What should be automated', 'What should become an agent', 'Where humans must remain', 'Business priorities'],
       changeContext: ['Business priorities', 'Migration constraints', 'Change-management decisions'],
       counts: { total: 38, siArchitect: 11, financeRevOps: 9, salesDealDesk: 8, clientAdmin: 10 },
     },
@@ -112,15 +113,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '182 pricing rules & tier schedules',
       configRules: ['16 price books', '28 tier discount tables', '5 pricing procedures'],
-      runtimeBehavior: ['24 implementation histories', '118 price evaluation events', '14 price override rules'],
+      runtimeBehavior: ['Price floor compliance', 'Tier jump frequency', 'Discount stack order', 'Override frequency'],
       outcomes: ['Price floor compliance', 'Tier jump frequency', 'Discount stack order', 'Override frequency'],
       scenariosCount: 118,
     },
     human: {
       businessPolicy: ['Volume commitment rules', 'Contractual price lock policy', 'Partner discount caps'],
       decisionIntent: ['Why custom rate cards exist', 'When volume tiers are backdated', 'Which SKUs allow custom pricing'],
-      undocumentedOps: ['Off-book executive discounts', 'Manual spreadsheet pricing calculators', 'Quarter-end pricing exceptions'],
-      futureIntent: ['Automated tier calculations', 'AI price sanity checking', 'Self-service partner discounts'],
+      undocumentedOps: ['Off-book executive discounts', 'Manual spreadsheet pricing calculators', 'Quarter-end pricing exceptions', 'Manual floor checks'],
+      futureIntent: ['Automated tier calculations', 'AI price sanity checking', 'Self-service partner discounts', 'Margin alerts'],
       changeContext: ['SaaS transition targets', 'ERP price book migration', 'Margin protection mandates'],
       counts: { total: 29, siArchitect: 8, financeRevOps: 9, salesDealDesk: 6, clientAdmin: 6 },
     },
@@ -130,15 +131,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '156 state transitions & ERP payload schemas',
       configRules: ['9 order trigger rules', '14 ERP field mappings', '4 validation flows'],
-      runtimeBehavior: ['21 implementation histories', '104 closed-won sync events', '12 retry patterns'],
+      runtimeBehavior: ['ERP sync success rate', 'Order hold duration', 'Provisioning delay triggers', 'Missing data holds'],
       outcomes: ['ERP sync success rate', 'Order hold duration', 'Provisioning delay triggers', 'Missing data holds'],
       scenariosCount: 104,
     },
     human: {
       businessPolicy: ['Order booking criteria', 'Credit check requirements', 'PO waiver rules'],
       decisionIntent: ['Why orders get held in Sales Ops', 'When PO requirement is waived', 'Who approves credit terms'],
-      undocumentedOps: ['Email order confirmations', 'Manual ERP entry workarounds', 'Sales ops manual validations'],
-      futureIntent: ['Zero-touch order booking', 'Automated PO parsing', 'Real-time provisioning sync'],
+      undocumentedOps: ['Email order confirmations', 'Manual ERP entry workarounds', 'Sales ops manual validations', 'Credit waiver logs'],
+      futureIntent: ['Zero-touch order booking', 'Automated PO parsing', 'Real-time provisioning sync', 'Automated holds'],
       changeContext: ['NetSuite / SAP consolidation', 'Revenue recognition rules', 'Billing system migration'],
       counts: { total: 21, siArchitect: 7, financeRevOps: 6, salesDealDesk: 4, clientAdmin: 4 },
     },
@@ -148,15 +149,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '198 product bundle options & rules',
       configRules: ['18 product option rules', '11 bundle constraint scripts', '6 guided selling flows'],
-      runtimeBehavior: ['19 implementation histories', '96 bundle selections', '13 rule collision events'],
+      runtimeBehavior: ['Bundle completion rate', 'Add-on attach rate', 'Incompatible option selections', 'Rework rates'],
       outcomes: ['Bundle completion rate', 'Add-on attach rate', 'Incompatible option selections', 'Rework rates'],
       scenariosCount: 96,
     },
     human: {
       businessPolicy: ['Mandatory services attach', 'Minimum seats per bundle', 'Legacy SKU sunset rules'],
       decisionIntent: ['Why certain products cannot be sold standalone', 'When custom bundles require Product approval', 'Which legacy SKUs are protected'],
-      undocumentedOps: ['Off-catalog product bundling', 'Sales rep custom option notes', 'Manual SKU swap approvals'],
-      futureIntent: ['AI guided selling assistant', 'Automated compatibility checks', 'Dynamic bundle pricing'],
+      undocumentedOps: ['Off-catalog product bundling', 'Sales rep custom option notes', 'Manual SKU swap approvals', 'Legacy SKU overrides'],
+      futureIntent: ['AI guided selling assistant', 'Automated compatibility checks', 'Dynamic bundle pricing', 'Self-service bundling'],
       changeContext: ['Product catalog overhaul', 'Packaging simplification', 'Services attach expansion'],
       counts: { total: 26, siArchitect: 8, financeRevOps: 6, salesDealDesk: 5, clientAdmin: 7 },
     },
@@ -166,15 +167,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '144 contract lifecycles & amendment rules',
       configRules: ['11 renewal uplift rules', '14 amendment state flows', '8 co-terming calculations'],
-      runtimeBehavior: ['18 implementation histories', '89 contract amendments', '12 uplift exception events'],
+      runtimeBehavior: ['Uplift retention rate', 'Amendment cycle time', 'Co-terming accuracy', 'Early renewal frequency'],
       outcomes: ['Uplift retention rate', 'Amendment cycle time', 'Co-terming accuracy', 'Early renewal frequency'],
       scenariosCount: 89,
     },
     human: {
       businessPolicy: ['Standard annual uplift floor', 'Co-terming discount policy', 'Early renewal incentive caps'],
       decisionIntent: ['Why certain accounts get 0% uplift', 'When co-terming discounts are granted', 'Who approves early renewals'],
-      undocumentedOps: ['Manual amendment tracking in Excel', 'CSM email renewal agreements', 'Off-system price locks'],
-      futureIntent: ['Automated renewal quote generation', 'AI churn risk routing', 'Self-service co-terming'],
+      undocumentedOps: ['Manual amendment tracking in Excel', 'CSM email renewal agreements', 'Off-system price locks', 'Early renewal waivers'],
+      futureIntent: ['Automated renewal quote generation', 'AI churn risk routing', 'Self-service co-terming', 'Uplift automation'],
       changeContext: ['ARR retention focus', 'Contract terms standardization', 'Customer success integration'],
       counts: { total: 24, siArchitect: 7, financeRevOps: 7, salesDealDesk: 5, clientAdmin: 5 },
     },
@@ -184,15 +185,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '112 agreement rate cards & tier rules',
       configRules: ['14 account rate cards', '9 custom pricing clauses', '5 entitlement lookups'],
-      runtimeBehavior: ['14 implementation histories', '72 rate card lookups', '10 clause override events'],
+      runtimeBehavior: ['Rate card hit rate', 'Contractual price compliance', 'Clause expiration alerts', 'Billing discrepancies'],
       outcomes: ['Rate card hit rate', 'Contractual price compliance', 'Clause expiration alerts', 'Billing discrepancies'],
       scenariosCount: 72,
     },
     human: {
       businessPolicy: ['Enterprise agreement thresholds', 'Most Favored Customer clauses', 'Custom SLA price locks'],
       decisionIntent: ['Why top 5% accounts bypass list pricing', 'When rate cards are inherited by subsidiaries', 'How legal terms affect pricing'],
-      undocumentedOps: ['Legal side-letter tracking in PDFs', 'Manual rate card verification by Deal Desk', 'Email price guarantees'],
-      futureIntent: ['AI rate card extraction from contracts', 'Automated entitlement enforcement', 'Subsidiary inheritance sync'],
+      undocumentedOps: ['Legal side-letter tracking in PDFs', 'Manual rate card verification by Deal Desk', 'Email price guarantees', 'Custom clause tracking'],
+      futureIntent: ['AI rate card extraction from contracts', 'Automated entitlement enforcement', 'Subsidiary inheritance sync', 'Clause alerts'],
       changeContext: ['Legal repository sync', 'Global account pricing alignment', 'Enterprise contract governance'],
       counts: { total: 19, siArchitect: 6, financeRevOps: 5, salesDealDesk: 4, clientAdmin: 4 },
     },
@@ -202,15 +203,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '168 quote forms & field dependencies',
       configRules: ['15 layout rules', '22 default field behaviors', '7 opportunity sync flows'],
-      runtimeBehavior: ['22 implementation histories', '108 quote creations', '11 field validation errors'],
+      runtimeBehavior: ['Quote creation speed', 'First-pass accuracy', 'Opportunity data sync rate', 'Field completion completeness'],
       outcomes: ['Quote creation speed', 'First-pass accuracy', 'Opportunity data sync rate', 'Field completion completeness'],
       scenariosCount: 108,
     },
     human: {
       businessPolicy: ['Required fields by deal stage', 'Multi-currency quoting rules', 'Partner quote creation rules'],
       decisionIntent: ['Why certain reps skip technical requirements', 'When preliminary quotes are allowed', 'Which fields require manager sign-off'],
-      undocumentedOps: ['Draft quotes sent via PDF pre-approval', 'Rep notes captured in external docs', 'Pre-quote sizing workarounds'],
-      futureIntent: ['AI-assisted quote pre-filling', 'Automated deal sizing from CRM notes', 'One-click quote generation'],
+      undocumentedOps: ['Draft quotes sent via PDF pre-approval', 'Rep notes captured in external docs', 'Pre-quote sizing workarounds', 'Manual currency conversions'],
+      futureIntent: ['AI-assisted quote pre-filling', 'Automated deal sizing from CRM notes', 'One-click quote generation', 'Smart layout routing'],
       changeContext: ['CRM field cleanup', 'Quoting UI simplification', 'Sales onboarding acceleration'],
       counts: { total: 17, siArchitect: 5, financeRevOps: 5, salesDealDesk: 4, clientAdmin: 3 },
     },
@@ -220,15 +221,15 @@ export const INTELLIGENCE_DATA_BY_AREA: Record<string, IntelligenceContextData> 
     system: {
       observedPaths: '134 doc templates & e-signature flows',
       configRules: ['12 document templates', '9 clause conditional blocks', '6 DocuSign integration paths'],
-      runtimeBehavior: ['17 implementation histories', '81 document renders', '7 e-signature callback events'],
+      runtimeBehavior: ['Template render success', 'E-signature turnaround time', 'Clause variation count', 'Document amendment rate'],
       outcomes: ['Template render success', 'E-signature turnaround time', 'Clause variation count', 'Document amendment rate'],
       scenariosCount: 81,
     },
     human: {
       businessPolicy: ['Mandatory legal terms by region', 'E-signature authorization matrix', 'Custom proposal approval rules'],
       decisionIntent: ['Why specific legal clauses are non-negotiable', 'When reps can attach custom SOWs', 'Who authorizes redline changes'],
-      undocumentedOps: ['Manual Word document redlines outside CPQ', 'Local PDF overrides by regional teams', 'Offline signature uploads'],
-      futureIntent: ['AI contract redline risk scoring', 'Automated clause assembly', 'Real-time e-signature tracking'],
+      undocumentedOps: ['Manual Word document redlines outside CPQ', 'Local PDF overrides by regional teams', 'Offline signature uploads', 'Custom clause inserts'],
+      futureIntent: ['AI contract redline risk scoring', 'Automated clause assembly', 'Real-time e-signature tracking', 'Dynamic SOW assembly'],
       changeContext: ['Global legal template standardization', 'DocuSign integration upgrade', 'Compliance enforcement'],
       counts: { total: 11, siArchitect: 4, financeRevOps: 3, salesDealDesk: 2, clientAdmin: 2 },
     },
@@ -281,14 +282,10 @@ export interface ImplementationPackData {
     validated: { scenarios: number; scope: string };
     ready: { label: string; sub: string };
   };
-  representativeComponents: {
-    agents: string[];
-    workflows: string[];
-    automations: string[];
-    handoffs: string[];
-    knowledge: string[];
-    validation: string[];
-    moreCount: number;
+  groupedExamples: {
+    aiWorkflow: { title: string; items: string[] };
+    automationHandoff: { title: string; items: string[] };
+    knowledgeValidation: { title: string; items: string[] };
   };
 }
 
@@ -305,14 +302,19 @@ export const IMPLEMENTATION_PACKS_DATA: Record<string, ImplementationPackData> =
       validated: { scenarios: 143, scope: 'Across 31 implementations' },
       ready: { label: 'Reusable implementation pack', sub: 'Client policy remains configurable' },
     },
-    representativeComponents: {
-      agents: ['Discount Exception', 'Margin Analysis', 'Similar Deal', 'Approval Routing', '+8 more'],
-      workflows: ['Margin-Risk Approval', 'Strategic Exception', 'Manager Routing', '+12 more'],
-      automations: ['Approval Follow-Up', 'Escalation', 'Evidence Prep', '+20 more'],
-      handoffs: ['Manager Approval', 'Finance Review', 'Deal Desk', '+6 more'],
-      knowledge: ['Decision Rationale', 'Exception Classification', 'Outcome Capture', '+8 more'],
-      validation: ['Margin Risk', 'Pricing Conflict', 'Regression', '+15 more'],
-      moreCount: 14,
+    groupedExamples: {
+      aiWorkflow: {
+        title: 'AI & Workflow',
+        items: ['Discount Exception Agent', 'Margin Analysis Agent', 'Margin-Risk Approval Workflow', 'Strategic Exception Workflow', '+23 more'],
+      },
+      automationHandoff: {
+        title: 'Automation & Human Handoffs',
+        items: ['Approval Follow-Up Auto', 'Escalation Trigger Auto', 'Manager Approval Handoff', 'Finance Review Handoff', '+28 more'],
+      },
+      knowledgeValidation: {
+        title: 'Knowledge & Validation',
+        items: ['Decision Rationale Store', 'Exception Classifier', 'Margin Risk Test Suite', 'Regression Test Pack', '+25 more'],
+      },
     },
   },
   pricing_discounts: {
@@ -327,14 +329,19 @@ export const IMPLEMENTATION_PACKS_DATA: Record<string, ImplementationPackData> =
       validated: { scenarios: 118, scope: 'Across 24 implementations' },
       ready: { label: 'Reusable implementation pack', sub: 'Price books remain configurable' },
     },
-    representativeComponents: {
-      agents: ['Pricing Context', 'Pricing Validation', 'Deal Desk Pricing'],
-      workflows: ['Pricing Procedure Flow', 'Price Book Evaluation'],
-      automations: ['Margin Threshold Auto', 'Price Override Review'],
-      handoffs: ['Deal Desk Approval', 'Finance Pricing Handoff'],
-      knowledge: ['Historical Price Rationale Store'],
-      validation: ['Discount Regression Pack'],
-      moreCount: 12,
+    groupedExamples: {
+      aiWorkflow: {
+        title: 'AI & Workflow',
+        items: ['Pricing Context Agent', 'Deal Desk Pricing Agent', 'Price Book Evaluation Workflow', 'Procedure Flow', '+16 more'],
+      },
+      automationHandoff: {
+        title: 'Automation & Human Handoffs',
+        items: ['Margin Threshold Auto', 'Price Override Review Auto', 'Deal Desk Approval Handoff', 'Finance Pricing Handoff', '+21 more'],
+      },
+      knowledgeValidation: {
+        title: 'Knowledge & Validation',
+        items: ['Historical Price Rationale Store', 'Tier Jump Rule Catalog', 'Discount Regression Pack', 'Floor Verification Suite', '+18 more'],
+      },
     },
   },
   quote_to_order: {
@@ -349,14 +356,19 @@ export const IMPLEMENTATION_PACKS_DATA: Record<string, ImplementationPackData> =
       validated: { scenarios: 104, scope: 'Across 21 implementations' },
       ready: { label: 'Reusable implementation pack', sub: 'ERP endpoints remain configurable' },
     },
-    representativeComponents: {
-      agents: ['Quote Status', 'Order Readiness'],
-      workflows: ['Quote-to-Order Handoff', 'Closed-Won Order Generation'],
-      automations: ['State Sync Auto', 'Missing Field Check'],
-      handoffs: ['Sales Ops Handoff', 'Fulfillment Handoff'],
-      knowledge: ['Order Exception Knowledge Loop'],
-      validation: ['ERP / State Regression Pack'],
-      moreCount: 10,
+    groupedExamples: {
+      aiWorkflow: {
+        title: 'AI & Workflow',
+        items: ['Quote Status Agent', 'Order Readiness Agent', 'Quote-to-Order Handoff Flow', 'Closed-Won Order Workflow', '+15 more'],
+      },
+      automationHandoff: {
+        title: 'Automation & Human Handoffs',
+        items: ['State Sync Auto', 'Missing Field Check Auto', 'Sales Ops Handoff', 'Fulfillment Handoff', '+22 more'],
+      },
+      knowledgeValidation: {
+        title: 'Knowledge & Validation',
+        items: ['Order Exception Knowledge Loop', 'ERP Payload Schema Store', 'State Machine Regression Pack', 'Sync Validation Suite', '+19 more'],
+      },
     },
   },
   bundle_config: {
@@ -371,14 +383,19 @@ export const IMPLEMENTATION_PACKS_DATA: Record<string, ImplementationPackData> =
       validated: { scenarios: 96, scope: 'Across 19 implementations' },
       ready: { label: 'Reusable implementation pack', sub: 'Product catalog remains configurable' },
     },
-    representativeComponents: {
-      agents: ['Configuration Agent', 'Product Dependency Agent'],
-      workflows: ['Guided Selling Flow', 'Bundle Eligibility Flow'],
-      automations: ['Product Model Validator', 'Rule Dependency Auto'],
-      handoffs: ['Product Manager Review'],
-      knowledge: ['Bundle Compatibility Store'],
-      validation: ['Dependency Validation Pack'],
-      moreCount: 9,
+    groupedExamples: {
+      aiWorkflow: {
+        title: 'AI & Workflow',
+        items: ['Configuration Agent', 'Product Dependency Agent', 'Guided Selling Workflow', 'Bundle Eligibility Flow', '+14 more'],
+      },
+      automationHandoff: {
+        title: 'Automation & Human Handoffs',
+        items: ['Product Model Validator Auto', 'Rule Dependency Auto', 'Product Manager Review Handoff', 'Catalog Override Handoff', '+18 more'],
+      },
+      knowledgeValidation: {
+        title: 'Knowledge & Validation',
+        items: ['Bundle Compatibility Store', 'Option Collision Pattern Store', 'Dependency Validation Pack', 'Bundle Test Suite', '+16 more'],
+      },
     },
   },
 };
@@ -389,18 +406,18 @@ export interface Q2CReadinessRow {
   id: string;
   workflow: string;
   reusePercent: number;
-  importance: 'Critical' | 'High' | 'Medium';
+  importance: 'CRITICAL' | 'HIGH' | 'MEDIUM';
 }
 
 export const Q2C_READINESS_ROWS: Q2CReadinessRow[] = [
-  { id: 'quote_creation', workflow: 'Quote Creation', reusePercent: 68, importance: 'High' },
-  { id: 'bundle_config', workflow: 'Bundle / Product Configuration', reusePercent: 48, importance: 'Medium' },
-  { id: 'pricing_discounts', workflow: 'Pricing & Discounts', reusePercent: 61, importance: 'Critical' },
-  { id: 'discount_approvals', workflow: 'Discount Approvals & Exceptions', reusePercent: 64, importance: 'Critical' },
-  { id: 'contracted_pricing', workflow: 'Contracted / Account Pricing', reusePercent: 52, importance: 'Critical' },
-  { id: 'renewals_amendments', workflow: 'Renewals & Amendments', reusePercent: 46, importance: 'Medium' },
-  { id: 'quote_documents', workflow: 'Quote Documents', reusePercent: 66, importance: 'Medium' },
-  { id: 'quote_to_order', workflow: 'Quote-to-Order', reusePercent: 59, importance: 'High' },
+  { id: 'quote_creation', workflow: 'Quote Creation', reusePercent: 68, importance: 'HIGH' },
+  { id: 'bundle_config', workflow: 'Bundle / Product Configuration', reusePercent: 48, importance: 'MEDIUM' },
+  { id: 'pricing_discounts', workflow: 'Pricing & Discounts', reusePercent: 61, importance: 'CRITICAL' },
+  { id: 'discount_approvals', workflow: 'Discount Approvals & Exceptions', reusePercent: 64, importance: 'CRITICAL' },
+  { id: 'contracted_pricing', workflow: 'Contracted / Account Pricing', reusePercent: 52, importance: 'CRITICAL' },
+  { id: 'renewals_amendments', workflow: 'Renewals & Amendments', reusePercent: 46, importance: 'MEDIUM' },
+  { id: 'quote_documents', workflow: 'Quote Documents', reusePercent: 66, importance: 'MEDIUM' },
+  { id: 'quote_to_order', workflow: 'Quote-to-Order', reusePercent: 59, importance: 'HIGH' },
 ];
 
 /* ── Main Component ────────────────────────────────────────────────── */
@@ -495,10 +512,10 @@ export function KnowledgePlaceholder() {
                 <button
                   key={tab.id}
                   onClick={() => setScreen(tab.id)}
-                  className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-violet-600 text-white shadow-2xs'
-                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/70'
+                      ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200/80'
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -508,7 +525,7 @@ export function KnowledgePlaceholder() {
           </div>
 
           <div className="flex items-center gap-3 text-xs shrink-0 pr-2">
-            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold text-[11px]">
+            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-full border border-slate-200/80 font-bold text-[11px]">
               47 implementations · 247 learned patterns · 32 reusable components
             </span>
           </div>
@@ -518,104 +535,137 @@ export function KnowledgePlaceholder() {
         {/* AREA 1 — Learning Corpus */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 1 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div className="space-y-5">
-              
-              {/* Header & Compact Filter */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
-                <div>
-                  <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <span>Client Learning Corpus</span>
-                    <span className="text-xs font-mono font-medium text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full border border-violet-200/60">
-                      47 Implementations
-                    </span>
-                  </h2>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    Accumulated revenue operations knowledge learned across Q2C customer implementations.
-                  </p>
-                </div>
-
-                {/* Compact Filter Bar */}
-                <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-xl border border-slate-200/80 text-xs shrink-0">
-                  {['All', 'Subscription SaaS', 'Usage-Based', 'Complex Enterprise', 'Product + Services'].map((f) => (
-                    <button
-                      key={f}
-                      onClick={() => setCorpusFilter(f)}
-                      className={`px-2.5 py-1 rounded-lg font-medium transition-all text-[11px] cursor-pointer ${
-                        corpusFilter === f
-                          ? 'bg-white text-violet-700 font-bold shadow-2xs border border-slate-200/80'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      {f}
-                    </button>
-                  ))}
-                </div>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease]">
+            
+            {/* Header & Operating Model Filter */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+              <div>
+                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <span>Client Learning Corpus</span>
+                </h2>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Accumulated revenue operations knowledge learned across Q2C customer implementations.
+                </p>
               </div>
 
-              {/* Clean 8-Row Matrix (+2 Expandable) */}
-              <div className="border border-slate-200/90 rounded-xl overflow-hidden shadow-2xs bg-white">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
-                      <th className="py-3 px-4 font-semibold w-[36%]">Q2C Area</th>
-                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Implementations</th>
-                      <th className="py-3 px-4 text-right font-semibold w-[16%]">System Learnings</th>
-                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Human Learnings</th>
-                      <th className="py-3 px-4 text-right font-semibold w-[16%]">Learned Patterns</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 font-sans">
-                    {visibleCorpusRows.map((row) => (
-                      <tr
-                        key={row.id}
-                        onClick={() => {
-                          setSelectedAreaId(row.id);
-                          setScreen(2);
-                        }}
-                        className="hover:bg-violet-50/40 transition-colors cursor-pointer group"
-                      >
-                        <td className="py-3.5 px-4 font-bold text-slate-900 group-hover:text-violet-700">
-                          <div className="flex items-center gap-2">
-                            <span>{row.name}</span>
-                            <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
-                          </div>
-                        </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
-                          {row.implementations}
-                        </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
-                          {row.systemLearnings}
-                        </td>
-                        <td className="py-3.5 px-4 text-right">
-                          <span className="font-mono font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/80 inline-block">
-                            {row.humanLearnings}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-bold text-violet-700">
-                          {row.patterns}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Operating Model Filter Bar */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 text-xs shrink-0">
+                {['All', 'Subscription SaaS', 'Usage-Based', 'Complex Enterprise', 'Product + Services'].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setCorpusFilter(f)}
+                    className={`px-3 py-1 rounded-full font-semibold transition-all text-[11px] cursor-pointer ${
+                      corpusFilter === f
+                        ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
               </div>
-
-              {/* Expand +2 More Button */}
-              <div className="flex items-center justify-between text-xs pt-1">
-                <button
-                  onClick={() => setShowExtraCorpus(!showExtraCorpus)}
-                  className="text-xs font-semibold text-violet-700 hover:text-violet-900 bg-violet-50 hover:bg-violet-100/70 border border-violet-200/80 px-3.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
-                  {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                </button>
-                <span className="text-slate-400 text-[11px]">
-                  Click any area to inspect detailed System &amp; Human intelligence
-                </span>
-              </div>
-
             </div>
+
+            {/* 3 Compact Visual Summary Blocks */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* Block 1 — Implementations */}
+              <div className="bg-blue-50/60 border border-blue-200/80 rounded-xl p-3.5 flex items-center gap-3 shadow-2xs">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                  <Layers className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <div className="text-base font-bold text-slate-900 leading-tight">47 Implementations</div>
+                  <div className="text-xs text-blue-700 font-medium mt-0.5">across 4 revenue operating models</div>
+                </div>
+              </div>
+
+              {/* Block 2 — Learned Patterns */}
+              <div className="bg-violet-50/60 border border-violet-200/80 rounded-xl p-3.5 flex items-center gap-3 shadow-2xs">
+                <div className="w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center shrink-0">
+                  <Brain className="w-5 h-5 text-violet-600" />
+                </div>
+                <div>
+                  <div className="text-base font-bold text-slate-900 leading-tight">247 Learned Patterns</div>
+                  <div className="text-xs text-violet-700 font-medium mt-0.5">system + human context</div>
+                </div>
+              </div>
+
+              {/* Block 3 — Reusable Components */}
+              <div className="bg-emerald-50/60 border border-emerald-200/80 rounded-xl p-3.5 flex items-center gap-3 shadow-2xs">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                </div>
+                <div>
+                  <div className="text-base font-bold text-slate-900 leading-tight">32 Reusable Components</div>
+                  <div className="text-xs text-emerald-700 font-medium mt-0.5">agents · workflows · automations</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Q2C Area Horizontal Landscape Rows */}
+            <div className="space-y-2 pt-1">
+              {visibleCorpusRows.map((row) => (
+                <div
+                  key={row.id}
+                  onClick={() => {
+                    setSelectedAreaId(row.id);
+                    setScreen(2);
+                  }}
+                  className="border border-slate-200/90 rounded-xl p-3.5 bg-white hover:border-violet-300 hover:shadow-2xs transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
+                >
+                  {/* LEFT: Q2C Area Title */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-slate-900 group-hover:text-violet-700 transition-colors">
+                      {row.name}
+                    </span>
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
+                  </div>
+
+                  {/* MIDDLE: Implementation Coverage */}
+                  <div className="flex items-center gap-3 shrink-0">
+                    <span className="text-xs font-mono font-medium text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                      {row.implementations} implementations
+                    </span>
+
+                    {/* RIGHT: System vs Human vs Patterns Mini Visual Markers */}
+                    <div className="flex items-center gap-2">
+                      {/* System */}
+                      <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
+                        <span className="text-[10px] text-blue-500 font-sans uppercase">System</span>
+                        <span>{row.systemLearnings}</span>
+                      </span>
+
+                      {/* Human */}
+                      <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
+                        <span className="text-[10px] text-amber-600 font-sans uppercase">Human</span>
+                        <span>{row.humanLearnings}</span>
+                      </span>
+
+                      {/* Patterns */}
+                      <span className="bg-violet-50 text-violet-700 border border-violet-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-bold flex items-center gap-1">
+                        <span className="text-[10px] text-violet-500 font-sans uppercase">Patterns</span>
+                        <span>{row.patterns}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Expand +2 More Button */}
+            <div className="flex items-center justify-between text-xs pt-1">
+              <button
+                onClick={() => setShowExtraCorpus(!showExtraCorpus)}
+                className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
+              >
+                <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
+                {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              </button>
+              <span className="text-slate-400 text-[11px]">
+                Click any Q2C area row to inspect system vs human intelligence
+              </span>
+            </div>
+
           </div>
         )}
 
@@ -623,7 +673,7 @@ export function KnowledgePlaceholder() {
         {/* AREA 2 — Learning Intelligence */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 2 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease]">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease]">
             
             {/* Header + Q2C Area Selector */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
@@ -653,65 +703,76 @@ export function KnowledgePlaceholder() {
               </div>
             </div>
 
-            {/* Main Layout — Clean 55% / 45% Split */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            {/* Subtle Center Relationship Connector */}
+            <div className="w-full flex justify-center py-1">
+              <span className="text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 flex items-center gap-1.5 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-violet-600" />
+                <span>System Evidence + Human Context → Complete Business Understanding</span>
+              </span>
+            </div>
+
+            {/* Main Layout — Balanced 50/50 Split */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
               
-              {/* LEFT — Captured from Systems (55% / 7 cols) */}
-              <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
+              {/* LEFT — Captured from Systems (Light Blue/Purple Tinted Container) */}
+              <div className="bg-blue-50/40 border border-blue-200/80 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
                 <div className="space-y-4">
                   {/* Header & Subtitle */}
-                  <div className="border-b border-slate-100 pb-3 space-y-1">
-                    <h3 className="text-[14px] font-semibold text-slate-900">
-                      Captured from Systems
+                  <div className="border-b border-blue-200/60 pb-3 space-y-1">
+                    <h3 className="text-[14px] font-semibold text-slate-900 flex items-center gap-2">
+                      <Layers className="w-4 h-4 text-blue-600 shrink-0" />
+                      <span>Captured from Systems</span>
                     </h3>
                     <p className="text-xs text-slate-500">
                       What RevBrain can observe directly
                     </p>
-                    {/* Compact Top Summary Line */}
-                    <p className="text-[11px] font-mono text-violet-700 font-semibold pt-1">
-                      214 approval paths · 12 rules · 147 comparable approvals · 143 scenarios
+                  </div>
+
+                  {/* Strong Metric Strip */}
+                  <div className="bg-white/90 border border-blue-200/90 rounded-xl p-3 shadow-2xs">
+                    <p className="text-xs font-mono text-blue-800 font-bold">
+                      {currentIntelData.system.observedPaths} · {currentIntelData.system.configRules[0]} · {currentIntelData.system.scenariosCount} scenarios verified
                     </p>
                   </div>
 
-                  {/* 3 Clean Sections with Thin Dividers */}
+                  {/* 3 Clean Sections with Subtle Icons */}
                   <div className="space-y-4 text-xs">
                     
                     {/* Section 1: Configuration */}
-                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Configuration</h4>
+                    <div className="space-y-1.5 border-b border-blue-200/60 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <Sliders className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Configuration</span>
+                      </h4>
                       <p className="text-xs text-slate-700 leading-relaxed font-mono">
-                        12 approval rules · 22 discount schedules · 3 QCP scripts · + more
+                        {currentIntelData.system.configRules.join(' · ')}
                       </p>
                     </div>
 
                     {/* Section 2: Observed Behavior */}
-                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Observed Behavior</h4>
+                    <div className="space-y-1.5 border-b border-blue-200/60 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <Activity className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Observed Behavior</span>
+                      </h4>
                       <ul className="grid grid-cols-2 gap-1.5 text-xs text-slate-700 font-medium">
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                          <span>Finance escalation</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                          <span>Strategic exceptions</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                          <span>Approval cycle patterns</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                          <span>Rework / rejection</span>
-                        </li>
+                        {currentIntelData.system.runtimeBehavior.map((b, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                            <span>{b}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
 
                     {/* Section 3: Validation Evidence */}
                     <div className="space-y-1.5 pt-0.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Validation Evidence</h4>
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Validation Evidence</span>
+                      </h4>
                       <p className="text-xs text-slate-700 leading-relaxed font-mono">
-                        143 observed scenarios · 18 exception patterns · 31 implementation histories
+                        {currentIntelData.system.scenariosCount} observed scenarios · 18 exception patterns · 31 implementation histories
                       </p>
                     </div>
 
@@ -719,14 +780,15 @@ export function KnowledgePlaceholder() {
                 </div>
               </div>
 
-              {/* RIGHT — Captured from Humans (45% / 5 cols) */}
-              <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
+              {/* RIGHT — Captured from Humans — SI + Client (Light Warm/Amber Tinted Container) */}
+              <div className="bg-amber-50/40 border border-amber-200/80 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
                 <div className="space-y-4">
                   {/* Header Row */}
-                  <div className="border-b border-slate-100 pb-3 flex items-start justify-between gap-2">
+                  <div className="border-b border-amber-200/60 pb-3 flex items-start justify-between gap-2">
                     <div>
-                      <h3 className="text-[14px] font-semibold text-slate-900">
-                        Captured from Humans — SI + Client
+                      <h3 className="text-[14px] font-semibold text-slate-900 flex items-center gap-2">
+                        <UserCheck className="w-4 h-4 text-amber-600 shrink-0" />
+                        <span>Captured from Humans — SI + Client</span>
                       </h3>
                       <p className="text-xs text-slate-500 mt-0.5">
                         What people explain that the system cannot
@@ -734,54 +796,65 @@ export function KnowledgePlaceholder() {
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-mono font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/80">
-                        {currentIntelData.human.counts.total} learnings
+                      <span className="text-[11px] font-mono font-bold text-amber-900 bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-300">
+                        {currentIntelData.human.counts.total} Human Learnings
                       </span>
 
                       <button
                         onClick={() => setShowHumanSearch(!showHumanSearch)}
-                        className="px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+                        className="px-2.5 py-1 text-[11px] font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
                       >
-                        <Search className="w-3 h-3 text-slate-500" />
+                        <Search className="w-3 h-3 text-amber-700" />
                         <span>Search</span>
                       </button>
                     </div>
                   </div>
 
-                  {/* 3 Clean Sections with Thin Dividers */}
+                  {/* 3 Clean Sections with Amber Markers */}
                   <div className="space-y-4 text-xs">
                     
                     {/* Section 1: Policies & Decision Rules */}
-                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                    <div className="space-y-1.5 border-b border-amber-200/60 pb-3.5">
                       <h4 className="text-[12px] font-semibold text-slate-900">Policies &amp; Decision Rules</h4>
-                      <ul className="space-y-1 text-xs text-slate-700">
-                        <li className="flex items-center gap-1.5">• CFO margin floor</li>
-                        <li className="flex items-center gap-1.5">• Strategic-account definition</li>
-                        <li className="flex items-center gap-1.5">• Pricing exception policy</li>
-                        <li className="flex items-center gap-1.5">• When Finance gets involved</li>
-                        <li className="flex items-center gap-1.5">• When Deal Desk overrides</li>
+                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                        {currentIntelData.human.businessPolicy.map((p, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                        {currentIntelData.human.decisionIntent.slice(0, 2).map((di, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span>{di}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
 
                     {/* Section 2: Undocumented Operations */}
-                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                    <div className="space-y-1.5 border-b border-amber-200/60 pb-3.5">
                       <h4 className="text-[12px] font-semibold text-slate-900">Undocumented Operations</h4>
-                      <ul className="space-y-1 text-xs text-slate-700">
-                        <li className="flex items-center gap-1.5">• Manual stage transitions</li>
-                        <li className="flex items-center gap-1.5">• Slack / email workarounds</li>
-                        <li className="flex items-center gap-1.5">• Off-system approvals</li>
-                        <li className="flex items-center gap-1.5">• Exception handling</li>
+                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                        {currentIntelData.human.undocumentedOps.map((uo, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span>{uo}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
 
                     {/* Section 3: Future Intent */}
                     <div className="space-y-1.5 pt-0.5">
                       <h4 className="text-[12px] font-semibold text-slate-900">Future Intent</h4>
-                      <ul className="space-y-1 text-xs text-slate-700">
-                        <li className="flex items-center gap-1.5">• What should be automated</li>
-                        <li className="flex items-center gap-1.5">• What should become an agent</li>
-                        <li className="flex items-center gap-1.5">• Where humans must remain</li>
-                        <li className="flex items-center gap-1.5">• Business priorities</li>
+                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                        {currentIntelData.human.futureIntent.map((fi, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span>{fi}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
 
@@ -789,7 +862,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Bottom Source Metadata Line */}
-                <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-slate-500">
+                <div className="pt-3 border-t border-amber-200/60 text-[11px] font-mono text-slate-600 font-medium">
                   <span>{currentIntelData.human.counts.siArchitect} SI Architect</span> · 
                   <span> {currentIntelData.human.counts.financeRevOps} Finance/RevOps</span> · 
                   <span> {currentIntelData.human.counts.salesDealDesk} Sales/Deal Desk</span> · 
@@ -897,7 +970,7 @@ export function KnowledgePlaceholder() {
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <span>Implementation Library</span>
-                  <span className="text-xs font-mono font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
+                  <span className="text-xs font-mono font-medium text-slate-700 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                     Productized Packs &amp; Q2C Readiness
                   </span>
                 </h2>
@@ -907,12 +980,12 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Internal Tabs */}
-              <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200/80 text-xs">
+              <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-full border border-slate-200 text-xs">
                 <button
                   onClick={() => setLibraryTab('packs')}
-                  className={`px-4 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-5 py-1.5 rounded-full font-bold transition-all cursor-pointer ${
                     libraryTab === 'packs'
-                      ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                      ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -921,9 +994,9 @@ export function KnowledgePlaceholder() {
 
                 <button
                   onClick={() => setLibraryTab('readiness')}
-                  className={`px-4 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-5 py-1.5 rounded-full font-bold transition-all cursor-pointer ${
                     libraryTab === 'readiness'
-                      ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                      ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -947,10 +1020,10 @@ export function KnowledgePlaceholder() {
                     <button
                       key={p.key}
                       onClick={() => setSelectedPackKey(p.key)}
-                      className={`px-3.5 py-1.5 text-xs font-bold rounded-xl border transition-all shrink-0 cursor-pointer ${
+                      className={`px-4 py-1.5 text-xs font-bold rounded-full border transition-all shrink-0 cursor-pointer ${
                         selectedPackKey === p.key
-                          ? 'bg-violet-50 text-violet-900 border-violet-300 shadow-2xs'
-                          : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200/80'
+                          ? 'bg-[hsl(var(--accent))] text-white border-violet-600 shadow-2xs'
+                          : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
                       }`}
                     >
                       {p.label}
@@ -959,125 +1032,169 @@ export function KnowledgePlaceholder() {
                   <span className="text-xs font-medium text-slate-400 px-2 shrink-0">+4 more packs</span>
                 </div>
 
-                {/* Calm Pack Factory Pipeline */}
-                <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 space-y-4">
+                {/* Factory Progression Pipeline with Semantic Accents & Flow Arrows */}
+                <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 space-y-4 shadow-2xs">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-bold text-slate-900">{currentPackData.name}</h3>
-                    <span className="text-xs font-mono text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
-                      {currentPackData.reusablePercent}% Reusable Core
+                    <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-full border border-emerald-300">
+                      {currentPackData.reusablePercent}% Reusable Core Foundation
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 text-xs">
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-slate-400 text-[10px] uppercase">1. Observed</span>
-                      <p className="font-mono font-bold text-slate-800">{currentPackData.pipelineData.observed.impls} impls</p>
+                  {/* Flow Stages with Semantic Colors */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                    {/* Stage 1: Observed */}
+                    <div className="flex-1 w-full bg-white p-3 rounded-xl border border-slate-200 space-y-1">
+                      <span className="font-bold text-slate-500 text-[10px] uppercase tracking-wide">1. Observed</span>
+                      <p className="font-mono font-bold text-slate-900">{currentPackData.pipelineData.observed.impls} impls</p>
                       <p className="text-[10px] text-slate-500">{currentPackData.pipelineData.observed.paths}</p>
                     </div>
 
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-slate-400 text-[10px] uppercase">2. Generalized</span>
-                      <p className="font-mono font-bold text-violet-700">{currentPackData.pipelineData.generalized.shared}% shared</p>
-                      <p className="text-[10px] text-slate-500">{currentPackData.pipelineData.generalized.variants}</p>
+                    <ChevronRight className="hidden sm:block w-4 h-4 text-slate-400 shrink-0" />
+
+                    {/* Stage 2: Generalized */}
+                    <div className="flex-1 w-full bg-violet-50/80 p-3 rounded-xl border border-violet-200/80 space-y-1">
+                      <span className="font-bold text-violet-700 text-[10px] uppercase tracking-wide">2. Generalized</span>
+                      <p className="font-mono font-bold text-violet-900">{currentPackData.pipelineData.generalized.shared}% shared</p>
+                      <p className="text-[10px] text-violet-700">{currentPackData.pipelineData.generalized.variants}</p>
                     </div>
 
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-slate-400 text-[10px] uppercase">3. Componentized</span>
-                      <p className="font-mono font-bold text-slate-800">
+                    <ChevronRight className="hidden sm:block w-4 h-4 text-violet-400 shrink-0" />
+
+                    {/* Stage 3: Componentized */}
+                    <div className="flex-1 w-full bg-blue-50/80 p-3 rounded-xl border border-blue-200/80 space-y-1">
+                      <span className="font-bold text-blue-700 text-[10px] uppercase tracking-wide">3. Componentized</span>
+                      <p className="font-mono font-bold text-blue-900">
                         {currentPackData.pipelineData.componentized.agents + currentPackData.pipelineData.componentized.workflows} components
                       </p>
-                      <p className="text-[10px] text-slate-500">Agents, workflows, automations</p>
+                      <p className="text-[10px] text-blue-700">Agents, workflows, automations</p>
                     </div>
 
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-slate-400 text-[10px] uppercase">4. Validated</span>
-                      <p className="font-mono font-bold text-slate-800">{currentPackData.pipelineData.validated.scenarios} scenarios</p>
-                      <p className="text-[10px] text-slate-500">{currentPackData.pipelineData.validated.scope}</p>
+                    <ChevronRight className="hidden sm:block w-4 h-4 text-blue-400 shrink-0" />
+
+                    {/* Stage 4: Validated */}
+                    <div className="flex-1 w-full bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/80 space-y-1">
+                      <span className="font-bold text-emerald-700 text-[10px] uppercase tracking-wide">4. Validated</span>
+                      <p className="font-mono font-bold text-emerald-900">{currentPackData.pipelineData.validated.scenarios} scenarios</p>
+                      <p className="text-[10px] text-emerald-700">{currentPackData.pipelineData.validated.scope}</p>
                     </div>
 
-                    <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200/80 space-y-1">
-                      <span className="font-bold text-emerald-800 text-[10px] uppercase">5. Ready</span>
-                      <p className="font-bold text-emerald-900 text-[11px]">{currentPackData.pipelineData.ready.label}</p>
-                      <p className="text-[10px] text-emerald-700">{currentPackData.pipelineData.ready.sub}</p>
+                    <ChevronRight className="hidden sm:block w-4 h-4 text-emerald-400 shrink-0" />
+
+                    {/* Stage 5: Ready */}
+                    <div className="flex-1 w-full bg-emerald-600 text-white p-3 rounded-xl border border-emerald-700 space-y-1 shadow-2xs">
+                      <span className="font-bold text-emerald-100 text-[10px] uppercase tracking-wide">5. Ready</span>
+                      <p className="font-bold text-white text-[11px]">{currentPackData.pipelineData.ready.label}</p>
+                      <p className="text-[10px] text-emerald-100">{currentPackData.pipelineData.ready.sub}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Neutral Categorized Components List */}
+                {/* Componentized Icons Metric Row */}
+                <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Brain className="w-4 h-4 text-violet-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.agents}</span>
+                    <span className="text-slate-600 font-medium">Agents</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.workflows}</span>
+                    <span className="text-slate-600 font-medium">Workflows</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-amber-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.automations}</span>
+                    <span className="text-slate-600 font-medium">Automations</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <UserCheck className="w-4 h-4 text-indigo-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.handoffs}</span>
+                    <span className="text-slate-600 font-medium">Handoffs</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.knowledge}</span>
+                    <span className="text-slate-600 font-medium">Knowledge</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
+                    <span className="font-bold text-slate-900 font-mono">{currentPackData.pipelineData.componentized.validation}</span>
+                    <span className="text-slate-600 font-medium">Validation</span>
+                  </div>
+                </div>
+
+                {/* 3 Stronger Grouped Component Example Areas */}
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold text-slate-900">Representative Reusable Components</h4>
+                  <h4 className="text-xs font-bold text-slate-900">Representative Component Examples</h4>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                    {/* Agents */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Agents</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.agents.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
-                        ))}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    {/* Group 1: AI & Workflow */}
+                    <div className="bg-blue-50/50 border border-blue-200/80 p-4 rounded-xl space-y-2.5 shadow-2xs">
+                      <div className="flex items-center justify-between border-b border-blue-200/60 pb-2">
+                        <span className="font-bold text-blue-900 text-xs flex items-center gap-1.5">
+                          <Brain className="w-3.5 h-3.5 text-blue-600" />
+                          <span>AI &amp; Workflows</span>
+                        </span>
+                        <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
+                          {currentPackData.pipelineData.componentized.agents + currentPackData.pipelineData.componentized.workflows} Active
+                        </span>
                       </div>
+                      <ul className="space-y-1.5 text-slate-700 font-medium">
+                        {currentPackData.groupedExamples.aiWorkflow.items.map((item, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Workflows */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Workflows</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.workflows.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
-                        ))}
+                    {/* Group 2: Automation & Human Handoffs */}
+                    <div className="bg-violet-50/50 border border-violet-200/80 p-4 rounded-xl space-y-2.5 shadow-2xs">
+                      <div className="flex items-center justify-between border-b border-violet-200/60 pb-2">
+                        <span className="font-bold text-violet-900 text-xs flex items-center gap-1.5">
+                          <Zap className="w-3.5 h-3.5 text-violet-600" />
+                          <span>Automations &amp; Handoffs</span>
+                        </span>
+                        <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded-full">
+                          {currentPackData.pipelineData.componentized.automations + currentPackData.pipelineData.componentized.handoffs} Active
+                        </span>
                       </div>
+                      <ul className="space-y-1.5 text-slate-700 font-medium">
+                        {currentPackData.groupedExamples.automationHandoff.items.map((item, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Automations */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Automations</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.automations.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
-                        ))}
+                    {/* Group 3: Knowledge & Validation */}
+                    <div className="bg-emerald-50/50 border border-emerald-200/80 p-4 rounded-xl space-y-2.5 shadow-2xs">
+                      <div className="flex items-center justify-between border-b border-emerald-200/60 pb-2">
+                        <span className="font-bold text-emerald-900 text-xs flex items-center gap-1.5">
+                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>Knowledge &amp; Validation</span>
+                        </span>
+                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                          {currentPackData.pipelineData.componentized.knowledge + currentPackData.pipelineData.componentized.validation} Active
+                        </span>
                       </div>
-                    </div>
-
-                    {/* Human Handoffs */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Human Handoffs</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.handoffs.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
+                      <ul className="space-y-1.5 text-slate-700 font-medium">
+                        {currentPackData.groupedExamples.knowledgeValidation.items.map((item, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span>{item}</span>
+                          </li>
                         ))}
-                      </div>
-                    </div>
-
-                    {/* Knowledge */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Knowledge Patterns</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.knowledge.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Validation */}
-                    <div className="bg-white border border-slate-200/90 p-3.5 rounded-xl space-y-2">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Validation Patterns</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentPackData.representativeComponents.validation.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
-                            {comp}
-                          </span>
-                        ))}
-                      </div>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1085,21 +1202,21 @@ export function KnowledgePlaceholder() {
               </div>
             )}
 
-            {/* TAB B — Q2C Readiness */}
+            {/* TAB B — Q2C Readiness Map */}
             {libraryTab === 'readiness' && (
               <div className="space-y-6 animate-[fadeIn_200ms_ease]">
                 
-                {/* Revenue Operating Model Selector */}
-                <div className="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                {/* Revenue Operating Model Selector Bar */}
+                <div className="flex items-center justify-between bg-slate-50 p-3 rounded-full border border-slate-200 px-4">
                   <span className="text-xs font-medium text-slate-600">Select Revenue Operating Model:</span>
                   <div className="flex items-center gap-1.5 text-xs">
                     {['Subscription SaaS', 'Usage-Based', 'Complex Enterprise Sales', 'Product + Services'].map((m) => (
                       <button
                         key={m}
                         onClick={() => setSelectedReadinessModel(m)}
-                        className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer text-[11px] ${
+                        className={`px-4 py-1 rounded-full font-bold transition-all cursor-pointer text-[11px] ${
                           selectedReadinessModel === m
-                            ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                            ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
@@ -1109,13 +1226,13 @@ export function KnowledgePlaceholder() {
                   </div>
                 </div>
 
-                {/* 8 Main Q2C Area Horizontal Rows */}
+                {/* 8 Q2C Areas Visual Readiness Map */}
                 <div className="space-y-2.5">
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-slate-400 px-3 uppercase tracking-wider">
-                    <span>Q2C Workflow</span>
-                    <div className="flex items-center gap-12 pr-4">
-                      <span>Reuse Readiness</span>
-                      <span>Business Importance</span>
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 px-3 uppercase tracking-wider">
+                    <span>Q2C Workflow Area</span>
+                    <div className="flex items-center gap-16 pr-4">
+                      <span>Reusable Foundation</span>
+                      <span>Importance</span>
                     </div>
                   </div>
 
@@ -1127,33 +1244,33 @@ export function KnowledgePlaceholder() {
                         onClick={() => setSelectedReadinessId(row.id)}
                         className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                           isSelected
-                            ? 'bg-violet-50/60 border-violet-300 shadow-2xs'
-                            : 'bg-white hover:bg-slate-50 border-slate-200/80'
+                            ? 'bg-violet-50/50 border-violet-400 shadow-2xs'
+                            : 'bg-white hover:bg-slate-50 border-slate-200'
                         }`}
                       >
                         <span className="text-xs font-bold text-slate-900">{row.workflow}</span>
 
                         <div className="flex items-center gap-8">
-                          {/* Neutral / Purple Progress Bar */}
-                          <div className="flex items-center gap-2 shrink-0">
-                            <div className="w-24 bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                          {/* Readiness Bar */}
+                          <div className="flex items-center gap-3 shrink-0">
+                            <div className="w-32 bg-slate-200 rounded-full h-2 overflow-hidden">
                               <div
-                                className="bg-violet-600 h-full rounded-full"
+                                className="bg-[hsl(var(--accent))] h-full rounded-full transition-all duration-500"
                                 style={{ width: `${row.reusePercent}%` }}
                               />
                             </div>
-                            <span className="font-mono font-bold text-slate-700 text-xs w-9 text-right">
+                            <span className="font-mono font-bold text-violet-700 text-xs w-9 text-right">
                               {row.reusePercent}%
                             </span>
                           </div>
 
-                          {/* Importance Color Signal */}
+                          {/* Semantic Importance Badge */}
                           <span
-                            className={`px-2.5 py-0.5 rounded-md text-[11px] font-bold border shrink-0 ${
-                              row.importance === 'Critical'
-                                ? 'bg-rose-50 text-rose-800 border-rose-200'
-                                : row.importance === 'High'
-                                ? 'bg-amber-50 text-amber-800 border-amber-200'
+                            className={`px-3 py-0.5 rounded-full text-[11px] font-bold border shrink-0 ${
+                              row.importance === 'CRITICAL'
+                                ? 'bg-slate-900 text-white border-slate-900'
+                                : row.importance === 'HIGH'
+                                ? 'bg-slate-800 text-white border-slate-800'
                                 : 'bg-slate-100 text-slate-700 border-slate-200'
                             }`}
                           >
@@ -1167,30 +1284,36 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Selected Readiness Detail */}
-                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3">
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 shadow-2xs">
                   <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                     <h4 className="text-xs font-bold text-slate-900">
-                      {currentReadinessRow.workflow} — Reuse &amp; Policy Breakdown
+                      {currentReadinessRow.workflow} — Reuse Architecture vs. Client Policy
                     </h4>
-                    <span className="text-xs font-mono font-bold text-violet-700">
+                    <span className="text-xs font-mono font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full border border-violet-200">
                       {currentReadinessRow.reusePercent}% Reusable Software Foundation
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-emerald-700 text-[11px] uppercase">Reusable Software Architecture</span>
-                      <ul className="space-y-1 text-slate-700 text-[11px]">
-                        <li>✓ Pre-built Agent exception routing architecture</li>
-                        <li>✓ Standardized Approval Flow &amp; Escalation triggers</li>
-                        <li>✓ Automated Evidence Preparation &amp; Slack Handoffs</li>
-                        <li>✓ Pre-packaged Regression Validation Test Suite</li>
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1.5 shadow-2xs">
+                      <span className="font-bold text-emerald-800 text-[11px] uppercase tracking-wide flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>Reusable Software Architecture</span>
+                      </span>
+                      <ul className="space-y-1 text-slate-700 text-[11px] font-medium">
+                        <li>• Pre-built Agent exception routing architecture</li>
+                        <li>• Standardized Approval Flow &amp; Escalation triggers</li>
+                        <li>• Automated Evidence Preparation &amp; Slack Handoffs</li>
+                        <li>• Pre-packaged Regression Validation Test Suite</li>
                       </ul>
                     </div>
 
-                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-amber-700 text-[11px] uppercase">Client-Specific Policy Configuration</span>
-                      <ul className="space-y-1 text-slate-700 text-[11px]">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1.5 shadow-2xs">
+                      <span className="font-bold text-amber-800 text-[11px] uppercase tracking-wide flex items-center gap-1">
+                        <UserCheck className="w-3.5 h-3.5 text-amber-600" />
+                        <span>Client-Specific Policy Configuration</span>
+                      </span>
+                      <ul className="space-y-1 text-slate-700 text-[11px] font-medium">
                         <li>• Specific CFO margin floor thresholds</li>
                         <li>• Strategic-account qualification rules</li>
                         <li>• Exact manager approver hierarchy</li>
@@ -1215,7 +1338,7 @@ export function KnowledgePlaceholder() {
             <div className="border-b border-slate-100 pb-4 space-y-1">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <span>Compounding Advantage</span>
-                <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-xs font-mono font-semibold text-slate-800 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                   AI Implementation Economics
                 </span>
               </h2>
@@ -1224,14 +1347,14 @@ export function KnowledgePlaceholder() {
               </p>
             </div>
 
-            {/* 3-Stage Progression */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* 3 Horizontal Connected Progression Cards with Arrows */}
+            <div className="flex flex-col md:flex-row items-center gap-4">
               
               {/* Implementation #1 */}
-              <div className="bg-slate-50 border border-slate-200/90 p-5 rounded-2xl space-y-3">
+              <div className="flex-1 w-full bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3 shadow-2xs">
                 <span className="text-xs font-bold text-slate-500 font-mono">Implementation #1</span>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-slate-800">3 Reusable</p>
+                  <p className="text-3xl font-black text-slate-900">3 Reusable</p>
                   <p className="text-xs text-slate-500 font-medium">Software components created</p>
                 </div>
                 <div className="pt-2 border-t border-slate-200 space-y-1 text-xs font-mono">
@@ -1240,59 +1363,63 @@ export function KnowledgePlaceholder() {
                 </div>
               </div>
 
+              <ChevronRight className="hidden md:block w-5 h-5 text-slate-400 shrink-0" />
+
               {/* Implementation #6 */}
-              <div className="bg-slate-50 border border-slate-200/90 p-5 rounded-2xl space-y-3">
+              <div className="flex-1 w-full bg-violet-50/70 border border-violet-200 p-5 rounded-2xl space-y-3 shadow-2xs">
                 <span className="text-xs font-bold text-violet-700 font-mono">Implementation #6</span>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-violet-900">18 Reusable</p>
-                  <p className="text-xs text-slate-500 font-medium">Software components active</p>
+                  <p className="text-3xl font-black text-violet-900">18 Reusable</p>
+                  <p className="text-xs text-violet-700 font-medium">Software components active</p>
                 </div>
-                <div className="pt-2 border-t border-slate-200 space-y-1 text-xs font-mono">
-                  <p className="text-slate-700 font-semibold">~190 hrs SI effort</p>
-                  <p className="text-slate-500">90% mapping confidence</p>
+                <div className="pt-2 border-t border-violet-200 space-y-1 text-xs font-mono">
+                  <p className="text-slate-800 font-semibold">~190 hrs SI effort</p>
+                  <p className="text-violet-700">90% mapping confidence</p>
                 </div>
               </div>
 
+              <ChevronRight className="hidden md:block w-5 h-5 text-violet-500 shrink-0" />
+
               {/* Implementation #12 */}
-              <div className="bg-violet-50/70 border border-violet-300 p-5 rounded-2xl space-y-3 shadow-2xs">
-                <span className="text-xs font-bold text-violet-800 font-mono">Implementation #12</span>
+              <div className="flex-1 w-full bg-gradient-to-br from-violet-600 to-indigo-700 text-white border border-violet-700 p-5 rounded-2xl space-y-3 shadow-md">
+                <span className="text-xs font-bold text-violet-100 font-mono">Implementation #12</span>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-violet-900">32 Reusable</p>
-                  <p className="text-xs text-violet-700 font-medium">Software components matured</p>
+                  <p className="text-3xl font-black text-white">32 Reusable</p>
+                  <p className="text-xs text-violet-100 font-medium">Software components matured</p>
                 </div>
-                <div className="pt-2 border-t border-violet-200 space-y-1 text-xs font-mono">
-                  <p className="text-violet-900 font-bold">~110 hrs SI effort</p>
-                  <p className="text-emerald-700 font-bold">96% mapping confidence</p>
+                <div className="pt-2 border-t border-violet-400/60 space-y-1 text-xs font-mono">
+                  <p className="text-white font-bold">~110 hrs SI effort</p>
+                  <p className="text-emerald-300 font-bold">96% mapping confidence</p>
                 </div>
               </div>
 
             </div>
 
-            {/* Compact Trend Strip (Includes Client-specific discovery ↓) */}
-            <div className="bg-slate-50 border border-slate-200/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 text-xs">
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
+            {/* Compact Trend Strip */}
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-full flex flex-wrap items-center justify-between gap-4 text-xs px-6">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
                 <TrendingUp className="w-4 h-4 text-emerald-600" />
                 <span>Reusable agents ↑</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
                 <TrendingUp className="w-4 h-4 text-emerald-600" />
                 <span>Workflows &amp; automations ↑</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-violet-800">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
                 <TrendingDown className="w-4 h-4 text-violet-600" />
                 <span>Client-specific discovery ↓</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
-                <TrendingDown className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <TrendingDown className="w-4 h-4 text-violet-600" />
                 <span>Human implementation effort ↓</span>
               </div>
             </div>
 
-            {/* Bottom Statement */}
-            <div className="bg-gradient-to-r from-violet-600 to-indigo-700 text-white rounded-xl p-4 text-center shadow-2xs">
+            {/* Bottom Thesis Band */}
+            <div className="bg-slate-900 text-white rounded-2xl p-4 text-center shadow-2xs">
               <p className="text-sm font-bold">
                 More implementations → more prebuilt AI operations → less human implementation work
               </p>

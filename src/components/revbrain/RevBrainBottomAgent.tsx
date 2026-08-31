@@ -1150,8 +1150,8 @@ export function RevBrainBottomAgent() {
                             key={`screen-3-${learningLibraryTab}`}
                             text={
                               learningLibraryTab === 'packs'
-                                ? 'RevBrain turns repeated implementation behavior into reusable agents, workflows, automations, and validation packs.'
-                                : 'Complex Enterprise is high-value but highly customized. Discount Approval is 64% reusable; the remaining work is mostly client policy.'
+                                ? 'Repeated implementation behavior becomes reusable software — turning patterns into agents, workflows, automations, and validation packs.'
+                                : 'Complex Enterprise is high-value but customized. Discount Approval has a 64% reusable foundation; remaining work is client policy.'
                             }
                             speed={24}
                             enabled={chatFullyOpened}
@@ -1166,7 +1166,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-4"
-                            text="Each implementation increases what RevBrain can reuse on the next one. More context is already known before the next discovery starts."
+                            text="Each implementation increases what RevBrain can reuse on the next one. More context is already known before discovery starts."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
