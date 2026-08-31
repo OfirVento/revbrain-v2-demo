@@ -1109,7 +1109,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="47 implementations now give RevBrain learning coverage across the Q2C lifecycle. System + human learning is deepest in pricing, approvals, and quote-to-order."
+                            text="47 implementations now give RevBrain learning coverage across the Q2C lifecycle. The deepest system + human intelligence is in pricing, approvals, and quote-to-order."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}

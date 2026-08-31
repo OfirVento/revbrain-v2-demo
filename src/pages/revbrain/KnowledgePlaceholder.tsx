@@ -585,7 +585,7 @@ export function KnowledgePlaceholder() {
                   <Brain className="w-5 h-5 text-violet-600" />
                 </div>
                 <div>
-                  <div className="text-base font-bold text-slate-900 leading-tight">247 Learned Patterns</div>
+                  <div className="text-base font-bold text-slate-900 leading-tight">247 Unique Learned Patterns</div>
                   <div className="text-xs text-violet-700 font-medium mt-0.5">system + human context</div>
                 </div>
               </div>
@@ -638,15 +638,15 @@ export function KnowledgePlaceholder() {
                       {/* Pattern Badge & System/Human Breakdown */}
                       <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
                         <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                          {row.patterns} patterns
+                          {row.patterns} relevant patterns
                         </span>
                         <div className="flex items-center gap-1.5 font-semibold">
                           <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
+                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Learnings</span>
                             <span>{row.systemLearnings}</span>
                           </span>
                           <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
+                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Learnings</span>
                             <span>{row.humanLearnings}</span>
                           </span>
                         </div>
@@ -670,9 +670,9 @@ export function KnowledgePlaceholder() {
                     className="bg-violet-50/90 hover:bg-violet-100/90 border-2 border-violet-300/80 ring-8 ring-violet-100/60 rounded-full p-6 text-center shadow-sm flex flex-col items-center justify-center w-52 h-52 space-y-1.5 transform hover:scale-105 transition-all cursor-pointer group"
                   >
                     <Brain className="w-9 h-9 text-violet-600 group-hover:rotate-12 transition-transform" />
-                    <span className="text-[10px] font-black uppercase tracking-wider text-violet-700">RevBrain Core Hub</span>
-                    <span className="text-2xl font-black text-slate-900 leading-none">247 Patterns</span>
-                    <span className="text-[10px] text-slate-500 font-mono">Accumulated Q2C IP</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-violet-700">RevBrain Q2C Intelligence Core</span>
+                    <span className="text-xl font-black text-slate-900 leading-none">247 Generalized Patterns</span>
+                    <span className="text-[9px] text-slate-500 font-mono">Generalized implementation intelligence</span>
                   </div>
                 </div>
 
@@ -697,15 +697,15 @@ export function KnowledgePlaceholder() {
                       {/* Pattern Badge & System/Human Breakdown */}
                       <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
                         <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                          {row.patterns} patterns
+                          {row.patterns} relevant patterns
                         </span>
                         <div className="flex items-center gap-1.5 font-semibold">
                           <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
+                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Learnings</span>
                             <span>{row.systemLearnings}</span>
                           </span>
                           <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
+                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Learnings</span>
                             <span>{row.humanLearnings}</span>
                           </span>
                         </div>
