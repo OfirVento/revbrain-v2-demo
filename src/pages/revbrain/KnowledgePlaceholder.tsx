@@ -811,20 +811,20 @@ export function KnowledgePlaceholder() {
                     </div>
                   </div>
 
-                  {/* 3 Clean Sections with Micro-Card Items */}
+                  {/* 3 Clean Sections using Full Card Width with 2-Column Grids */}
                   <div className="space-y-4 text-xs">
                     
-                    {/* Section 1: Policies & Decision Rules */}
+                    {/* Section 1: Policies & Decision Rules (2-Column Grid) */}
                     <div className="space-y-2 border-b border-amber-200/60 pb-3.5">
                       <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
                         <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
                         <span>Policies &amp; Decision Rules</span>
                       </h4>
-                      <div className="space-y-1.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         {[...currentIntelData.human.businessPolicy, ...currentIntelData.human.decisionIntent.slice(0, 2)].map((p, i) => (
-                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span>{p}</span>
+                            <span className="leading-snug">{p}</span>
                           </div>
                         ))}
                       </div>
@@ -836,11 +836,11 @@ export function KnowledgePlaceholder() {
                         <FileText className="w-3.5 h-3.5 text-amber-600" />
                         <span>Undocumented Operations</span>
                       </h4>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         {currentIntelData.human.undocumentedOps.map((uo, i) => (
-                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-2.5 py-1.5 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-3 py-2 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span className="truncate">{uo}</span>
+                            <span className="leading-snug">{uo}</span>
                           </div>
                         ))}
                       </div>
@@ -852,11 +852,11 @@ export function KnowledgePlaceholder() {
                         <Target className="w-3.5 h-3.5 text-amber-600" />
                         <span>Future Intent</span>
                       </h4>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         {currentIntelData.human.futureIntent.map((fi, i) => (
-                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-2.5 py-1.5 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-3 py-2 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span className="truncate">{fi}</span>
+                            <span className="leading-snug">{fi}</span>
                           </div>
                         ))}
                       </div>
@@ -865,12 +865,22 @@ export function KnowledgePlaceholder() {
                   </div>
                 </div>
 
-                {/* Bottom Source Metadata Line */}
-                <div className="pt-3 border-t border-amber-200/60 text-[11px] font-mono text-slate-600 font-medium">
-                  <span>{currentIntelData.human.counts.siArchitect} SI Architect</span> · 
-                  <span> {currentIntelData.human.counts.financeRevOps} Finance/RevOps</span> · 
-                  <span> {currentIntelData.human.counts.salesDealDesk} Sales/Deal Desk</span> · 
-                  <span> {currentIntelData.human.counts.clientAdmin} Client/Admin</span>
+                {/* Bottom Source Metadata Grid Spanning Full Width */}
+                <div className="pt-3 border-t border-amber-200/60">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] font-mono font-medium text-amber-950 text-center">
+                    <span className="bg-white/90 border border-amber-200/80 rounded-lg py-1 px-1.5 shadow-2xs">
+                      {currentIntelData.human.counts.siArchitect} SI Architect
+                    </span>
+                    <span className="bg-white/90 border border-amber-200/80 rounded-lg py-1 px-1.5 shadow-2xs">
+                      {currentIntelData.human.counts.financeRevOps} Finance/RevOps
+                    </span>
+                    <span className="bg-white/90 border border-amber-200/80 rounded-lg py-1 px-1.5 shadow-2xs">
+                      {currentIntelData.human.counts.salesDealDesk} Sales/Deal Desk
+                    </span>
+                    <span className="bg-white/90 border border-amber-200/80 rounded-lg py-1 px-1.5 shadow-2xs">
+                      {currentIntelData.human.counts.clientAdmin} Client/Admin
+                    </span>
+                  </div>
                 </div>
 
               </div>
