@@ -1082,17 +1082,17 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            1 of 6 · Client Learning Map
+                            1 of 6 · Client Learning Corpus
                           </span>
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
-                            47 client learnings
+                            47 implementations
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="Approval routing repeats across 31 implementations. 27 share the same core pattern."
-                            speed={28}
+                            text="Across 47 implementations, recurring revenue workflows are increasingly collapsing into reusable components. Complex Enterprise Sales has the deepest coverage; Usage-Based still has the largest learning gaps."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1105,7 +1105,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show the pattern</span>
+                              <span>Show highest-leverage pattern</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1117,7 +1117,7 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            2 of 6 · Pattern Extraction
+                            2 of 6 · Pattern Decomposition
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             87% Reusable
@@ -1126,8 +1126,8 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-2"
-                            text="I found 4 reusable primitives. Thresholds and approvers remain client-specific. 87% can become a reusable component."
-                            speed={28}
+                            text="Across 31 implementations, 87% of approval behavior collapses into reusable logic. The remaining 13% is mostly policy, thresholds, and org structure. The system architecture repeats more than the business parameters."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1140,7 +1140,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Productize pattern</span>
+                              <span>Show what can be productized</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1161,8 +1161,8 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-3"
-                            text="Approval Routing Core now covers 82% of the work I typically find in this use case."
-                            speed={28}
+                            text="The architecture is reusable across multiple operating models; client policy stays configurable. This pattern is now validated across 143 business scenarios."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1175,7 +1175,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>See where it is reusable</span>
+                              <span>See readiness</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1187,17 +1187,17 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            4 of 6 · Segment Readiness
+                            4 of 6 · Q2C Operating Model Readiness
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            B2B SaaS 88% Ready
+                            Complex Enterprise 86% Ready
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-4"
-                            text="For B2B SaaS, Approval + Pricing are already mostly prebuilt. Renewals still need more client learning."
-                            speed={28}
+                            text="Complex Enterprise Sales is strongest in approval, pricing, and contracted terms. Renewals still require more client-specific work."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1225,14 +1225,14 @@ export function RevBrainBottomAgent() {
                             5 of 6 · Next Client Simulation
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            82% Ready Before Discovery
+                            86% Foundation Available
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-5"
-                            text="Based on 11 similar implementations, I can start with 6 components already configured. I only need 3 client-specific decisions."
-                            speed={28}
+                            text="I can reuse the architecture. I only need the three business policies that make this customer unique. 8 components are already available. Only 3 client decisions remain."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1269,14 +1269,14 @@ export function RevBrainBottomAgent() {
                             6 of 6 · Compounding Advantage
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            ~110 hrs SI Effort (vs ~320)
+                            96% Mapping Confidence
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-6"
-                            text="Every implementation expands what is ready for the next client. The next implementation starts further ahead than the last one."
-                            speed={28}
+                            text="We are not learning customer data. We are learning how these revenue operating models are implemented. The next implementation starts further ahead than the last one."
+                            speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
@@ -1289,7 +1289,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Explore component library</span>
+                              <span>Explore components</span>
                               <Sparkles className="w-3.5 h-3.5" />
                             </button>
 
@@ -1299,7 +1299,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer"
                             >
-                              <span>Simulate another segment</span>
+                              <span>Simulate another model</span>
                             </button>
                           </div>
                         )}

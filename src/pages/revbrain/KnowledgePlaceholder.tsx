@@ -1,11 +1,11 @@
-// ── Learning Engine — RevBrain Compounding Intelligence Factory ─────────────
-// Guided sequence of 6 screens:
-// 1. Client Learning Map
-// 2. Pattern Extraction
-// 3. Component Factory
-// 4. Segment Readiness
-// 5. Next Client Simulation
-// 6. Compounding Advantage
+// ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
+// 6 Guided Productized Screens:
+// 1. Client Learning Corpus (Operating Model Coverage & Learned Pattern Table)
+// 2. Discount Approval — Pattern Decomposition (87% Reusable Core & 13% Policy Variants)
+// 3. Component Factory (Approval Routing Core v3 Pipeline: Observed → Generalized → Validated → Productized → Ready)
+// 4. Q2C Operating Model Readiness (8 Q2C Workflows x 4 Revenue Operating Models Matrix)
+// 5. Next Client Simulation (Complex Enterprise Sales — 86% Foundation, 8 Prebuilt Components, 3 Decisions)
+// 6. Compounding Advantage (Implementation #1 → #6 → #12 Effort & Confidence Progression)
 
 import { useState, useEffect } from 'react';
 import {
@@ -18,19 +18,79 @@ import {
   Eye,
   GitMerge,
   Package,
-  Building2,
   X,
   Lock,
   Sliders,
   HelpCircle,
   Check,
+  TrendingUp,
+  TrendingDown,
+  Layers,
+  Building,
 } from 'lucide-react';
 
-/* ── Screen Definition ─────────────────────────────────────────────── */
+/* ── 4 Global Revenue Operating Models ──────────────────────────────── */
+
+export interface RevenueOperatingModel {
+  id: string;
+  name: string;
+  subtitle: string;
+  implementations: number;
+}
+
+export const REVENUE_OPERATING_MODELS: RevenueOperatingModel[] = [
+  {
+    id: 'saas',
+    name: 'Subscription SaaS',
+    subtitle: 'Renewals · amendments · seat changes · ARR logic',
+    implementations: 14,
+  },
+  {
+    id: 'usage',
+    name: 'Usage-Based / Consumption',
+    subtitle: 'Meters · credits · tiers · overages · variable pricing',
+    implementations: 8,
+  },
+  {
+    id: 'enterprise',
+    name: 'Complex Enterprise Sales',
+    subtitle: 'Discount approvals · contracted pricing · negotiated terms · multi-level approvals',
+    implementations: 17,
+  },
+  {
+    id: 'products_services',
+    name: 'Product + Services',
+    subtitle: 'Bundles · services attach · product dependencies · implementation packages',
+    implementations: 8,
+  },
+];
+
+/* ── Q2C Workflows x 4 Models Matrix Data (Screen 4) ────────────────── */
+
+export interface Q2CMatrixRow {
+  workflow: string;
+  saas: number;
+  usage: number;
+  enterprise: number;
+  productsServices: number;
+}
+
+export const Q2C_WORKFLOW_MATRIX: Q2CMatrixRow[] = [
+  { workflow: '1. Quote Creation', saas: 86, usage: 78, enterprise: 88, productsServices: 82 },
+  { workflow: '2. Bundle Configuration', saas: 74, usage: 61, enterprise: 77, productsServices: 90 },
+  { workflow: '3. Pricing & Discounts', saas: 86, usage: 92, enterprise: 88, productsServices: 79 },
+  { workflow: '4. Discount Approval', saas: 82, usage: 71, enterprise: 91, productsServices: 84 },
+  { workflow: '5. Contracted Pricing', saas: 72, usage: 68, enterprise: 89, productsServices: 81 },
+  { workflow: '6. Renewals & Amendments', saas: 89, usage: 64, enterprise: 72, productsServices: 58 },
+  { workflow: '7. Quote Documents', saas: 83, usage: 76, enterprise: 85, productsServices: 88 },
+  { workflow: '8. Quote-to-Order', saas: 76, usage: 81, enterprise: 84, productsServices: 86 },
+];
+
+/* ── Main Component ────────────────────────────────────────────────── */
 
 export function KnowledgePlaceholder() {
   const [screen, setScreen] = useState<number>(1);
-  const [selectedSegment, setSelectedSegment] = useState<string>('B2B SaaS');
+  const [selectedModel, setSelectedModel] = useState<string>('Complex Enterprise Sales');
   const [showQuestionsModal, setShowQuestionsModal] = useState<boolean>(false);
   const [showLibraryDrawer, setShowLibraryDrawer] = useState<boolean>(false);
   const [showLineagePopover, setShowLineagePopover] = useState<boolean>(false);
@@ -39,10 +99,10 @@ export function KnowledgePlaceholder() {
   useEffect(() => {
     window.dispatchEvent(
       new CustomEvent('revbrain-learning-screen-change', {
-        detail: { screen },
+        detail: { screen, selectedModel },
       })
     );
-  }, [screen]);
+  }, [screen, selectedModel]);
 
   // Listen for agent button actions
   useEffect(() => {
@@ -73,7 +133,7 @@ export function KnowledgePlaceholder() {
 
   return (
     <div className="w-full flex flex-col min-h-[calc(100vh-140px)] bg-slate-100/60 text-slate-800 font-sans">
-      <div className="max-w-[1400px] mx-auto w-full px-6 pt-5 pb-16 space-y-4 flex-1">
+      <div className="max-w-[1440px] mx-auto w-full px-6 pt-5 pb-20 space-y-4 flex-1">
 
         {/* ── Top Header Navigation Bar ──────────────────────────────── */}
         <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs flex items-center justify-between gap-4">
@@ -89,24 +149,24 @@ export function KnowledgePlaceholder() {
             )}
 
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[11px] font-bold tracking-wide">
+              <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[11px] font-bold tracking-wide font-mono">
                 {screen} of 6 · Learning Engine
               </span>
               <h1 className="text-base font-bold text-slate-900">
-                {screen === 1 && 'Client Learning Map'}
-                {screen === 2 && 'Pattern Extraction'}
+                {screen === 1 && 'Client Learning Corpus'}
+                {screen === 2 && 'Discount Approval — Pattern Decomposition'}
                 {screen === 3 && 'Component Factory'}
-                {screen === 4 && 'Segment Readiness'}
+                {screen === 4 && 'Q2C Operating Model Readiness'}
                 {screen === 5 && 'Next Client Simulation'}
-                {screen === 6 && 'Compounding Advantage'}
+                {screen === 6 && 'Compounding Implementation Advantage'}
               </h1>
             </div>
           </div>
 
           {/* Compact Top Metric Line */}
           <div className="flex items-center gap-4 text-xs font-medium text-slate-500">
-            <span className="hidden md:inline font-mono text-slate-700 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200/80">
-              47 client learnings · 247 patterns · 32 reusable components
+            <span className="hidden md:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold">
+              47 implementations · 247 learned patterns · 32 reusable components
             </span>
 
             {/* Screen Step Dots (1..6) */}
@@ -130,133 +190,126 @@ export function KnowledgePlaceholder() {
         </div>
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 1 — Client Learning Map */}
+        {/* SCREEN 1 — Client Learning Corpus */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 1 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div>
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Proprietary Intelligence Source Network
-                  </h2>
-                  <p className="text-sm font-bold text-slate-900 mt-0.5">
-                    Every customer implementation feeds RevBrain&apos;s generalized pattern engine.
-                  </p>
-                </div>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
+            <div className="space-y-6">
+              
+              {/* Top Block: 4 Revenue Operating Models */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  4 Revenue Operating Models
+                </span>
 
-                <div className="text-[11px] text-slate-400 flex items-center gap-1.5 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80">
-                  <Lock className="w-3 h-3 text-slate-500" />
-                  <span>Client data remains isolated. RevBrain reuses generalized patterns only.</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {REVENUE_OPERATING_MODELS.map((model) => (
+                    <div
+                      key={model.id}
+                      className="p-3.5 bg-slate-50/80 border border-slate-200 rounded-xl space-y-1.5 shadow-2xs hover:border-violet-300 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-slate-900 text-xs">{model.name}</span>
+                        <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                          {model.implementations} impls
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-slate-500 leading-normal">{model.subtitle}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Visual Map Canvas */}
-              <div className="py-6 relative flex items-center justify-center min-h-[400px]">
-                
-                {/* SVG Connecting Lines Background */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-violet-200/70" strokeWidth="1.5">
-                  <line x1="15%" y1="18%" x2="35%" y2="30%" strokeDasharray="4 4" className="animate-pulse" />
-                  <line x1="15%" y1="42%" x2="35%" y2="30%" strokeDasharray="4 4" />
-                  <line x1="15%" y1="65%" x2="35%" y2="52%" strokeDasharray="4 4" />
-                  <line x1="15%" y1="85%" x2="35%" y2="70%" strokeDasharray="4 4" />
-
-                  <line x1="85%" y1="18%" x2="65%" y2="30%" strokeDasharray="4 4" />
-                  <line x1="85%" y1="42%" x2="65%" y2="52%" strokeDasharray="4 4" />
-                  <line x1="85%" y1="65%" x2="65%" y2="52%" strokeDasharray="4 4" />
-                  <line x1="85%" y1="85%" x2="65%" y2="70%" strokeDasharray="4 4" />
-
-                  <line x1="35%" y1="30%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                  <line x1="35%" y1="52%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                  <line x1="35%" y1="70%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                  <line x1="65%" y1="30%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                  <line x1="65%" y1="52%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                  <line x1="65%" y1="70%" x2="50%" y2="50%" stroke="currentColor" strokeWidth="2" className="text-violet-400" />
-                </svg>
-
-                {/* Outer Layer: Anonymized Client Implementations */}
-                <div className="absolute left-4 top-4 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">B2B SaaS</span>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">CloudScale SaaS</div>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">DataFlow.io</div>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">SaaSify Corp</div>
+              {/* Learned Pattern Table / Cards */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Learned Areas &amp; Reusable Components
+                  </span>
+                  <span className="text-[10px] text-violet-600 font-semibold italic">
+                    ★ Discount Approval highlighted as highest-leverage pattern
+                  </span>
                 </div>
 
-                <div className="absolute left-4 bottom-6 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Manufacturing</span>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">PrecisionMfg Co</div>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">Industrial Solutions</div>
-                </div>
+                <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs text-xs">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-slate-50 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-200 font-mono">
+                        <th className="p-3 pl-4">Learned Pattern</th>
+                        <th className="p-3 text-right">Implementations</th>
+                        <th className="p-3 text-right">Shared Behavior</th>
+                        <th className="p-3 pr-4">Productized State</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 font-medium">
+                      {/* Highlighted Pattern: Discount Approval */}
+                      <tr
+                        onClick={() => setScreen(2)}
+                        className="bg-violet-50/80 hover:bg-violet-100/80 text-slate-900 font-bold transition-colors cursor-pointer ring-1 ring-violet-200"
+                      >
+                        <td className="p-3 pl-4 flex items-center gap-2 text-violet-950">
+                          <Sparkles className="w-3.5 h-3.5 text-violet-600 shrink-0" />
+                          <span>Discount Approval</span>
+                          <span className="text-[9px] bg-violet-600 text-white px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            Explore Next
+                          </span>
+                        </td>
+                        <td className="p-3 text-right font-mono text-violet-900">31</td>
+                        <td className="p-3 text-right font-mono text-emerald-700 font-bold">87%</td>
+                        <td className="p-3 pr-4 text-violet-800">Approval Routing Core v3</td>
+                      </tr>
 
-                <div className="absolute right-4 top-4 space-y-2 text-right">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Enterprise Software</span>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">Enterprise Systems Ltd</div>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">OmniSoft Global</div>
-                </div>
+                      <tr className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Pricing Procedure</td>
+                        <td className="p-3 text-right font-mono text-slate-600">24</td>
+                        <td className="p-3 text-right font-mono text-emerald-600">84%</td>
+                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Pricing Core v2</td>
+                      </tr>
 
-                <div className="absolute right-4 bottom-6 space-y-2 text-right">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Services</span>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">Apex Advisory</div>
-                  <div className="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-700 shadow-2xs">Global Services Group</div>
-                </div>
+                      <tr className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Quote-to-Order</td>
+                        <td className="p-3 text-right font-mono text-slate-600">21</td>
+                        <td className="p-3 text-right font-mono text-emerald-600">78%</td>
+                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Handoff Core v2</td>
+                      </tr>
 
-                {/* Middle Layer: Use Cases */}
-                <div className="absolute left-[30%] top-[20%] p-3 bg-violet-50 border-2 border-violet-400 rounded-xl shadow-md space-y-0.5 text-center animate-pulse">
-                  <span className="text-xs font-bold text-violet-900 block">Discount Approval</span>
-                  <span className="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded">31 Orgs · 87% Reusable</span>
-                </div>
+                      <tr className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Bundle Configuration</td>
+                        <td className="p-3 text-right font-mono text-slate-600">19</td>
+                        <td className="p-3 text-right font-mono text-emerald-600">81%</td>
+                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Bundle Logic v2</td>
+                      </tr>
 
-                <div className="absolute left-[28%] top-[48%] p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center space-y-0.5">
-                  <span className="text-xs font-bold text-slate-800 block">Pricing Procedure</span>
-                  <span className="text-[10px] text-slate-500 font-semibold">24 Orgs</span>
-                </div>
+                      <tr className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Renewals &amp; Amendments</td>
+                        <td className="p-3 text-right font-mono text-slate-600">18</td>
+                        <td className="p-3 text-right font-mono text-emerald-600">79%</td>
+                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Renewal Core v1</td>
+                      </tr>
 
-                <div className="absolute left-[30%] bottom-[18%] p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center space-y-0.5">
-                  <span className="text-xs font-bold text-slate-800 block">Bundle Configuration</span>
-                  <span className="text-[10px] text-slate-500 font-semibold">19 Orgs</span>
+                      <tr className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Contracted Pricing</td>
+                        <td className="p-3 text-right font-mono text-slate-600">14</td>
+                        <td className="p-3 text-right font-mono text-emerald-600">76%</td>
+                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Pricing Context v2</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-
-                <div className="absolute right-[30%] top-[20%] p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center space-y-0.5">
-                  <span className="text-xs font-bold text-slate-800 block">Renewals Automation</span>
-                  <span className="text-[10px] text-slate-500 font-semibold">18 Orgs</span>
-                </div>
-
-                <div className="absolute right-[28%] top-[48%] p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center space-y-0.5">
-                  <span className="text-xs font-bold text-slate-800 block">Quote-to-Order</span>
-                  <span className="text-[10px] text-slate-500 font-semibold">21 Orgs</span>
-                </div>
-
-                <div className="absolute right-[30%] bottom-[18%] p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center space-y-0.5">
-                  <span className="text-xs font-bold text-slate-800 block">Contracted Pricing</span>
-                  <span className="text-[10px] text-slate-500 font-semibold">14 Orgs</span>
-                </div>
-
-                {/* Center Core: RevBrain Learning Engine */}
-                <div className="relative z-10 p-6 bg-gradient-to-br from-violet-600 via-violet-700 to-indigo-800 text-white rounded-2xl shadow-xl border-2 border-violet-300 text-center space-y-2 max-w-[220px]">
-                  <div className="w-10 h-10 mx-auto rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-xs">
-                    <Brain className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold tracking-tight">RevBrain Learning Engine</h3>
-                    <p className="text-[10px] text-violet-200 font-medium">Accumulated Intelligence Core</p>
-                  </div>
-                  <div className="pt-1 text-[11px] font-mono text-violet-100 bg-black/20 rounded-md py-1 px-2 border border-white/10">
-                    47 Org Learnings
-                  </div>
-                </div>
-
               </div>
+
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-400 font-medium">
-                Multiple customer implementations continuously train shared use-case models.
+              <span className="text-xs text-slate-500 font-medium">
+                Deepest coverage observed in Complex Enterprise Sales (17 impls).
               </span>
               <button
                 onClick={() => setScreen(2)}
                 className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
               >
-                <span>Show the pattern</span>
+                <span>Show highest-leverage pattern</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -268,105 +321,128 @@ export function KnowledgePlaceholder() {
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 2 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
+            <div className="space-y-5">
+              
+              {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Deep-Dive Focus · Discount Approval
+                    Pattern Decomposition Focus
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Pattern Extraction: Shared vs. Client-Specific Behavior
+                    Discount Approval — Pattern Decomposition
                   </h2>
                 </div>
                 <div className="text-right">
                   <span className="text-2xl font-extrabold text-emerald-600 block">87% Reusable</span>
-                  <span className="text-[11px] font-semibold text-slate-400">31 implementations · 4 shared primitives · 6 policy variants</span>
+                  <span className="text-[11px] font-semibold text-slate-400 font-mono">
+                    31 implementations · 214 approval paths · 46 policy variants · 143 validation scenarios
+                  </span>
                 </div>
               </div>
 
-              {/* Two Clear Areas Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6">
+              {/* Two Main Columns: Reusable Core (87%) vs Client-Specific (13%) */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
-                {/* Shared Pattern — 87% */}
-                <div className="bg-emerald-50/60 border-2 border-emerald-300 rounded-2xl p-5 space-y-4 shadow-2xs relative overflow-hidden">
-                  <div className="flex items-center justify-between border-b border-emerald-200 pb-3">
+                {/* Left: Reusable Core — 87% */}
+                <div className="bg-emerald-50/60 border-2 border-emerald-300 rounded-2xl p-5 space-y-4 shadow-2xs">
+                  <div className="flex items-center justify-between border-b border-emerald-200 pb-2.5">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                      <h3 className="text-base font-bold text-emerald-950">Shared Pattern — 87%</h3>
+                      <h3 className="text-base font-bold text-emerald-950">Reusable Core — 87%</h3>
                     </div>
-                    <span className="text-xs font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-emerald-300 shadow-2xs">
-                      4 Shared Primitives
+                    <span className="text-xs font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-emerald-300">
+                      8 Recurring Logic Patterns
                     </span>
                   </div>
 
-                  <div className="space-y-2.5 text-xs font-semibold text-emerald-900">
-                    <div className="p-3 bg-white rounded-xl border border-emerald-200 flex items-center justify-between shadow-2xs">
-                      <span>• Margin threshold evaluation</span>
-                      <span className="text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Core Logic</span>
-                    </div>
-                    <div className="p-3 bg-white rounded-xl border border-emerald-200 flex items-center justify-between shadow-2xs">
-                      <span>• Manager approval routing</span>
-                      <span className="text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Slack Handoff</span>
-                    </div>
-                    <div className="p-3 bg-white rounded-xl border border-emerald-200 flex items-center justify-between shadow-2xs">
-                      <span>• Finance escalation trigger</span>
-                      <span className="text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Risk Gate</span>
-                    </div>
-                    <div className="p-3 bg-white rounded-xl border border-emerald-200 flex items-center justify-between shadow-2xs">
-                      <span>• Rationale &amp; evidence capture</span>
-                      <span className="text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Knowledge Loop</span>
-                    </div>
+                  {/* 8 Recurring Logic Patterns */}
+                  <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-800">
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">1. Margin threshold eval</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">2. Approval-path selection</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">3. Manager routing</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">4. Finance risk escalation</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">5. Strategic exception handling</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">6. Evidence packaging</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">7. Decision rationale capture</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">8. Post-approval writeback</div>
                   </div>
 
-                  <p className="text-[11px] font-mono text-slate-400 pt-2 border-t border-emerald-200/80">
-                    Learned from 31 implementations
-                  </p>
+                  {/* Common Implementation Components */}
+                  <div className="border-t border-emerald-200 pt-3 space-y-1.5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block">
+                      Common Implementation Components
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 text-[11px] font-medium text-slate-700">
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Revenue Cloud pricing context</span>
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Flow routing</span>
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Human approval handoff</span>
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Agent recommendation</span>
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Knowledge capture</span>
+                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Regression validation</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Client-Specific — 13% */}
-                <div className="bg-slate-50 border-2 border-slate-300 rounded-2xl p-5 space-y-4 shadow-2xs relative">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                {/* Right: Client-Specific — 13% */}
+                <div className="bg-slate-50 border-2 border-slate-300 rounded-2xl p-5 space-y-4 shadow-2xs">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
                     <div className="flex items-center gap-2">
                       <Sliders className="w-5 h-5 text-slate-700" />
                       <h3 className="text-base font-bold text-slate-900">Client-Specific — 13%</h3>
                     </div>
-                    <span className="text-xs font-bold text-slate-700 bg-white px-2.5 py-1 rounded-full border border-slate-300 shadow-2xs">
-                      6 Policy Variants
+                    <span className="text-xs font-bold text-slate-700 bg-white px-2.5 py-1 rounded-full border border-slate-300">
+                      46 Observed Variants
                     </span>
                   </div>
 
-                  <div className="space-y-2.5 text-xs font-semibold text-slate-800">
-                    <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-2xs">
-                      <span>• Threshold values (e.g. 25% vs 30%)</span>
-                      <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Config Parameter</span>
+                  {/* 8 Observed Variants list */}
+                  <div className="space-y-1.5 text-xs font-semibold text-slate-800">
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>Threshold values</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">11 variants</span>
                     </div>
-                    <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-2xs">
-                      <span>• Approver hierarchy &amp; SLA rules</span>
-                      <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Client Org Matrix</span>
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>Approver hierarchy</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">8 variants</span>
                     </div>
-                    <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-2xs">
-                      <span>• Strategic-account policy criteria</span>
-                      <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Business Override</span>
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>Strategic-account definition</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">7 variants</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>Finance escalation policy</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">6 variants</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>SLA / escalation timing</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">5 variants</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
+                      <span>Contracted pricing precedence</span>
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">4 variants</span>
                     </div>
                   </div>
 
-                  <p className="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-200">
-                    Generalized across 6 policy variants
+                  <p className="text-[11px] text-slate-500 font-medium border-t border-slate-200 pt-2">
+                    The system architecture repeats far more than the business parameters.
                   </p>
                 </div>
 
               </div>
+
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <span className="text-xs text-slate-500 font-medium">
-                87% of Discount Approval logic can be productized as a reusable component.
+                The remaining 13% consists of configurable policy thresholds and org hierarchy.
               </span>
               <button
                 onClick={() => setScreen(3)}
                 className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
               >
-                <span>Productize pattern</span>
+                <span>Show what can be productized</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -378,18 +454,20 @@ export function KnowledgePlaceholder() {
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 3 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
+            <div className="space-y-5">
+              
+              {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Factory Transformation Pipeline
+                    Productization Pipeline
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
                     Component Factory: Approval Routing Core v3
                   </h2>
                 </div>
 
-                {/* Lineage link */}
+                {/* Lineage Link */}
                 <div className="relative">
                   <button
                     onClick={() => setShowLineagePopover(!showLineagePopover)}
@@ -399,7 +477,6 @@ export function KnowledgePlaceholder() {
                     <HelpCircle className="w-3.5 h-3.5" />
                   </button>
 
-                  {/* Lightweight Popover */}
                   {showLineagePopover && (
                     <div className="absolute right-0 top-full mt-2 w-72 bg-slate-900 text-slate-100 rounded-xl p-4 shadow-xl border border-slate-800 text-xs space-y-2 z-50 animate-fadeIn">
                       <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
@@ -408,100 +485,114 @@ export function KnowledgePlaceholder() {
                           <X className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <p><strong className="text-white">Learned from:</strong> 31 implementations</p>
-                      <p><strong className="text-white">Generalized into:</strong> 4 common primitives</p>
-                      <p><strong className="text-white">Validated against:</strong> 143 business scenarios</p>
+                      <p><strong className="text-white">Observed:</strong> 31 implementations</p>
+                      <p><strong className="text-white">Generalized:</strong> 8 recurring logic patterns</p>
+                      <p><strong className="text-white">Validated:</strong> 143 business scenarios</p>
+                      <p><strong className="text-white">Productized:</strong> Revenue Cloud + Flow + Agentforce</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Horizontal Production Pipeline Flow */}
-              <div className="py-8 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-3 relative">
-                  
-                  {/* Stage 1: Observed */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                    <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                      <Eye className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-900 block">1. Observed</span>
-                    <span className="text-[11px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                      31 implementations
-                    </span>
-                    <p className="text-[10px] text-slate-500">Raw CPQ &amp; Approval logs</p>
+              {/* 5 Pipeline Stages: Observed -> Generalized -> Validated -> Productized -> Ready */}
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2">
+                
+                {/* 1. Observed */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <Eye className="w-4 h-4" />
                   </div>
-
-                  {/* Stage 2: Generalized */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                    <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                      <GitMerge className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-900 block">2. Generalized</span>
-                    <span className="text-[11px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                      4 shared primitives
-                    </span>
-                    <p className="text-[10px] text-slate-500">Standard policy abstraction</p>
-                  </div>
-
-                  {/* Stage 3: Validated */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                    <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-900 block">3. Validated</span>
-                    <span className="text-[11px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                      143 business scenarios
-                    </span>
-                    <p className="text-[10px] text-slate-500">Automated test pack pass</p>
-                  </div>
-
-                  {/* Stage 4: Productized */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                    <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                      <Package className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-900 block">4. Productized</span>
-                    <span className="text-[11px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                      Revenue Cloud + Flow + Agentforce
-                    </span>
-                    <p className="text-[10px] text-slate-500">Deployable metadata package</p>
-                  </div>
-
-                  {/* Stage 5: Ready */}
-                  <div className="p-4 bg-emerald-50/80 border-2 border-emerald-300 rounded-xl space-y-2 text-center shadow-md">
-                    <div className="w-8 h-8 mx-auto rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-emerald-950 block">5. Ready</span>
-                    <span className="text-[11px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">
-                      Reusable for next client
-                    </span>
-                    <p className="text-[10px] text-emerald-700 font-medium">Pre-built &amp; certified</p>
-                  </div>
-
+                  <span className="text-xs font-bold text-slate-900 block">1. Observed</span>
+                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                    31 implementations
+                  </span>
+                  <p className="text-[10px] text-slate-500">Raw CPQ &amp; Approval logs</p>
                 </div>
 
-                {/* Factory Pipeline Pulse Indicator */}
-                <div className="p-4 bg-slate-900 text-white rounded-xl flex items-center justify-between text-xs shadow-md">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="font-mono text-emerald-300 font-semibold">Approval Routing Core v3 — Active Component</span>
+                {/* 2. Generalized */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <GitMerge className="w-4 h-4" />
                   </div>
-                  <span className="font-mono text-slate-400">31 implementations · 143 validations · 6 variants · 82% reusable</span>
+                  <span className="text-xs font-bold text-slate-900 block">2. Generalized</span>
+                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                    8 recurring patterns
+                  </span>
+                  <p className="text-[10px] text-slate-500">Standard logic abstraction</p>
+                </div>
+
+                {/* 3. Validated */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-900 block">3. Validated</span>
+                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                    143 scenarios
+                  </span>
+                  <p className="text-[10px] text-slate-500">Automated test pack pass</p>
+                </div>
+
+                {/* 4. Productized */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <Package className="w-4 h-4" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-900 block">4. Productized</span>
+                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                    Revenue Cloud + Flow
+                  </span>
+                  <p className="text-[10px] text-slate-500">+ Agentforce Integration</p>
+                </div>
+
+                {/* 5. Ready */}
+                <div className="p-4 bg-emerald-50/90 border-2 border-emerald-300 rounded-xl space-y-2 text-center shadow-md">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <span className="text-xs font-bold text-emerald-950 block">5. Ready</span>
+                  <span className="text-[11px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">
+                    Next Client Ready
+                  </span>
+                  <p className="text-[10px] text-emerald-700 font-medium">Pre-built &amp; certified</p>
+                </div>
+
+              </div>
+
+              {/* Small Metadata & Validated Operating Models */}
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+                <div className="font-mono text-slate-700 font-semibold">
+                  31 implementations · 143 validations · 46 policy variants · 87% reusable
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Validated Models:
+                  </span>
+                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
+                    Complex Enterprise Sales
+                  </span>
+                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
+                    Subscription SaaS
+                  </span>
+                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
+                    Product + Services
+                  </span>
                 </div>
               </div>
+
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <span className="text-xs text-slate-500 font-medium">
-                Approval Routing Core now covers 82% of typical approval logic.
+                The architecture is reusable across multiple operating models; client policy stays configurable.
               </span>
               <button
                 onClick={() => setScreen(4)}
                 className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
               >
-                <span>See where it is reusable</span>
+                <span>See readiness</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -509,108 +600,117 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 4 — Segment Readiness */}
+        {/* SCREEN 4 — Q2C Operating Model Readiness */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 4 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
+            <div className="space-y-4">
+              
+              {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Productization Coverage
+                    Productization Coverage Matrix
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Segment Readiness Matrix
+                    Q2C Operating Model Readiness
                   </h2>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-slate-500 block">Ready for 4 customer segments</span>
-                  <span className="text-[11px] text-slate-400 font-semibold">Click segment column to focus</span>
+                  <span className="text-xs font-bold text-slate-700 block">8 Quote-to-Cash Workflows</span>
+                  <span className="text-[11px] text-slate-400 font-semibold">Click a model header to focus</span>
                 </div>
               </div>
 
-              {/* Segment Readiness Tile Map */}
-              <div className="py-4 space-y-4">
-                <div className="grid grid-cols-5 gap-3 text-xs text-center font-bold">
-                  <div className="text-left text-slate-400 uppercase tracking-wider text-[10px] self-end pb-1">Use Case</div>
-                  
-                  {['B2B SaaS', 'Manufacturing', 'Services', 'Enterprise Software'].map((seg) => (
+              {/* 8 Workflows x 4 Operating Models Matrix */}
+              <div className="space-y-2">
+                <div className="grid grid-cols-[200px_1fr_1fr_1fr_1fr] gap-2 text-xs font-bold text-center">
+                  <div className="text-left text-slate-400 uppercase tracking-wider text-[10px] self-end pb-1 pl-2">
+                    Q2C Workflow
+                  </div>
+
+                  {REVENUE_OPERATING_MODELS.map((model) => (
                     <button
-                      key={seg}
-                      onClick={() => setSelectedSegment(seg)}
-                      className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
-                        selectedSegment === seg
-                          ? 'bg-violet-600 text-white border-violet-700 shadow-md ring-2 ring-violet-300'
+                      key={model.name}
+                      onClick={() => setSelectedModel(model.name)}
+                      className={`p-2 rounded-xl border transition-all cursor-pointer ${
+                        selectedModel === model.name
+                          ? 'bg-violet-600 text-white border-violet-700 shadow-md ring-2 ring-violet-300 font-bold'
                           : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                     >
-                      {seg}
+                      <div className="truncate text-xs">{model.name}</div>
+                      <div className={`text-[9px] font-mono font-normal ${selectedModel === model.name ? 'text-violet-200' : 'text-slate-400'}`}>
+                        {model.implementations} impls
+                      </div>
                     </button>
                   ))}
                 </div>
 
-                {/* Rows */}
-                {[
-                  { useCase: 'Discount Approval', saas: '88%', mfg: '73%', svc: '81%', ent: '85%' },
-                  { useCase: 'Pricing', saas: '84%', mfg: '69%', svc: '76%', ent: '82%' },
-                  { useCase: 'Bundles', saas: '72%', mfg: '86%', svc: '58%', ent: '74%' },
-                  { useCase: 'Renewals', saas: '79%', mfg: '42%', svc: '68%', ent: '77%' },
-                  { useCase: 'Quote-to-Order', saas: '76%', mfg: '81%', svc: '71%', ent: '80%' },
-                ].map((row) => (
-                  <div key={row.useCase} className="grid grid-cols-5 gap-3 items-center text-xs font-semibold">
-                    <div className="text-slate-800 font-bold text-xs">{row.useCase}</div>
+                {/* Matrix Rows */}
+                {Q2C_WORKFLOW_MATRIX.map((row) => (
+                  <div key={row.workflow} className="grid grid-cols-[200px_1fr_1fr_1fr_1fr] gap-2 items-center text-xs">
+                    <div className="text-slate-900 font-bold pl-2 truncate">{row.workflow}</div>
 
-                    <div className={`p-3 rounded-xl text-center border font-mono text-xs font-bold transition-all ${
-                      selectedSegment === 'B2B SaaS'
+                    {/* Subscription SaaS */}
+                    <div className={`p-2 rounded-xl text-center border font-mono font-bold transition-all ${
+                      selectedModel === 'Subscription SaaS'
                         ? 'bg-violet-50 text-violet-900 border-violet-300 ring-1 ring-violet-200 shadow-2xs'
-                        : 'bg-slate-50/50 text-slate-400 border-slate-200/60'
+                        : 'bg-slate-50/60 text-slate-500 border-slate-200/80 opacity-70'
                     }`}>
-                      {row.saas}
+                      {row.saas}%
                     </div>
 
-                    <div className={`p-3 rounded-xl text-center border font-mono text-xs font-bold transition-all ${
-                      selectedSegment === 'Manufacturing'
+                    {/* Usage-Based / Consumption */}
+                    <div className={`p-2 rounded-xl text-center border font-mono font-bold transition-all ${
+                      selectedModel === 'Usage-Based / Consumption'
                         ? 'bg-violet-50 text-violet-900 border-violet-300 ring-1 ring-violet-200 shadow-2xs'
-                        : 'bg-slate-50/50 text-slate-400 border-slate-200/60'
+                        : 'bg-slate-50/60 text-slate-500 border-slate-200/80 opacity-70'
                     }`}>
-                      {row.mfg}
+                      {row.usage}%
                     </div>
 
-                    <div className={`p-3 rounded-xl text-center border font-mono text-xs font-bold transition-all ${
-                      selectedSegment === 'Services'
+                    {/* Complex Enterprise Sales */}
+                    <div className={`p-2 rounded-xl text-center border font-mono font-bold transition-all ${
+                      selectedModel === 'Complex Enterprise Sales'
                         ? 'bg-violet-50 text-violet-900 border-violet-300 ring-1 ring-violet-200 shadow-2xs'
-                        : 'bg-slate-50/50 text-slate-400 border-slate-200/60'
+                        : 'bg-slate-50/60 text-slate-500 border-slate-200/80 opacity-70'
                     }`}>
-                      {row.svc}
+                      {row.enterprise}%
                     </div>
 
-                    <div className={`p-3 rounded-xl text-center border font-mono text-xs font-bold transition-all ${
-                      selectedSegment === 'Enterprise Software'
+                    {/* Product + Services */}
+                    <div className={`p-2 rounded-xl text-center border font-mono font-bold transition-all ${
+                      selectedModel === 'Product + Services'
                         ? 'bg-violet-50 text-violet-900 border-violet-300 ring-1 ring-violet-200 shadow-2xs'
-                        : 'bg-slate-50/50 text-slate-400 border-slate-200/60'
+                        : 'bg-slate-50/60 text-slate-500 border-slate-200/80 opacity-70'
                     }`}>
-                      {row.ent}
+                      {row.productsServices}%
                     </div>
                   </div>
                 ))}
 
-                {/* Selected Segment Highlight summary */}
-                <div className="p-4 bg-violet-50/80 border border-violet-200 rounded-xl flex items-center justify-between text-xs text-violet-900">
+                {/* Selected Model Focus Summary Banner */}
+                <div className="p-3.5 bg-violet-50/90 border border-violet-200 rounded-xl flex items-center justify-between text-xs text-violet-900 mt-3">
                   <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-violet-600" />
-                    <span className="font-bold">{selectedSegment} Segment Focus:</span>
-                    <span>Approval (88%) + Pricing (84%) are mostly prebuilt. Renewals (79%) still expanding.</span>
+                    <Building className="w-4 h-4 text-violet-600 shrink-0" />
+                    <span className="font-bold">{selectedModel} Readiness Focus:</span>
+                    <span className="font-medium">
+                      Discount Approval 91% · Contracted Pricing 89% · Pricing 88% · Quote Creation 88% · and more...
+                    </span>
                   </div>
-                  <span className="font-bold text-violet-700 bg-white px-2.5 py-1 rounded border border-violet-200">
-                    84% Average Segment Readiness
+                  <span className="font-bold text-violet-800 bg-white px-2.5 py-1 rounded border border-violet-300 shrink-0 font-mono">
+                    86% Avg Coverage
                   </span>
                 </div>
               </div>
+
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <span className="text-xs text-slate-500 font-medium">
-                For B2B SaaS, Approval + Pricing are already mostly prebuilt.
+                Complex Enterprise Sales is strongest in approval, pricing, and contracted terms.
               </span>
               <button
                 onClick={() => setScreen(5)}
@@ -628,155 +728,166 @@ export function KnowledgePlaceholder() {
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 5 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
+            <div className="space-y-5">
+              
+              {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    New Client Onboarding Simulation
+                    New Client Simulation
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    New Client: Acme SaaS Corp · B2B SaaS Segment
+                    New Client: Complex Enterprise Sales
                   </h2>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
                   <span>Salesforce CPQ</span>
                   <span>·</span>
                   <span>Advanced Approvals</span>
+                  <span>·</span>
+                  <span>Negotiated Pricing</span>
                 </div>
               </div>
 
-              {/* Large Impact Result Banner */}
-              <div className="py-4 space-y-5">
-                <div className="p-6 bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 text-white rounded-2xl shadow-lg border border-violet-500/30 flex items-center justify-between">
-                  <div className="space-y-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-violet-300 block">Pre-Discovery Readiness</span>
-                    <h3 className="text-3xl font-extrabold text-white tracking-tight">
-                      82% ready before discovery starts
-                    </h3>
-                    <p className="text-xs text-slate-300 font-medium pt-1">
-                      6 components prebuilt · 3 client decisions still needed
-                    </p>
+              {/* 86% Foundation Banner */}
+              <div className="p-6 bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 text-white rounded-2xl shadow-lg border border-violet-500/30 flex items-center justify-between">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-violet-300 block">Pre-Discovery Foundation</span>
+                  <h3 className="text-3xl font-extrabold text-white tracking-tight">
+                    86% implementation foundation already available
+                  </h3>
+                  <p className="text-xs text-slate-300 font-medium pt-0.5">
+                    8 components prebuilt · 3 business decisions still needed
+                  </p>
+                </div>
+                <div className="p-4 bg-white/10 rounded-xl backdrop-blur-md border border-white/20 text-center font-mono">
+                  <span className="text-2xl font-black text-emerald-400 block">8 / 11</span>
+                  <span className="text-[10px] font-bold uppercase text-slate-200">Prebuilt Artifacts</span>
+                </div>
+              </div>
+
+              {/* Ready vs Still Client-Specific Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+                
+                {/* READY FROM PREVIOUS LEARNING (8 components) */}
+                <div className="p-4 bg-emerald-50/60 border border-emerald-200 rounded-xl space-y-3">
+                  <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
+                    <span className="font-bold text-emerald-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      READY FROM PREVIOUS LEARNING
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
+                      8 Components
+                    </span>
                   </div>
-                  <div className="p-4 bg-white/10 rounded-xl backdrop-blur-md border border-white/20 text-center">
-                    <span className="text-2xl font-black text-emerald-400 block">6 / 9</span>
-                    <span className="text-[10px] font-bold uppercase text-slate-200">Prebuilt Artifacts</span>
+
+                  <div className="grid grid-cols-2 gap-2 text-slate-800 font-semibold">
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Approval Routing Core</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Margin Risk Classification</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Pricing Context</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Strategic Exception Handling</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Human Approval Handoff</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Validation Pack</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Quote Document Mapping</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Quote-to-Order Handoff</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Two Comparison Columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
-                  
-                  {/* READY FROM PREVIOUS LEARNING */}
-                  <div className="p-4 bg-emerald-50/60 border border-emerald-200 rounded-xl space-y-3">
-                    <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
-                      <span className="font-bold text-emerald-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                        READY FROM PREVIOUS LEARNING
-                      </span>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
-                        6 Components
-                      </span>
-                    </div>
+                {/* STILL CLIENT-SPECIFIC (3 decisions) */}
+                <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-3">
+                  <div className="flex items-center justify-between border-b border-amber-200 pb-2">
+                    <span className="font-bold text-amber-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                      <Sliders className="w-4 h-4 text-amber-600" />
+                      STILL CLIENT-SPECIFIC
+                    </span>
+                    <span className="text-[10px] font-bold text-amber-800 bg-white px-2 py-0.5 rounded border border-amber-200">
+                      3 Business Decisions
+                    </span>
+                  </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-slate-800 font-semibold">
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Approval Routing Core</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Margin Risk Class.</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Pricing Context</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Slack Approval Handoff</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Knowledge Capture</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-emerald-200/80 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Regression Test Pack</span>
-                      </div>
+                  <div className="space-y-2 text-slate-800 font-semibold">
+                    <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
+                      <span>1. CFO margin policy floor</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy Input</span>
+                    </div>
+                    <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
+                      <span>2. Strategic-account criteria</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy Input</span>
+                    </div>
+                    <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
+                      <span>3. Approver escalation hierarchy</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Org Matrix</span>
                     </div>
                   </div>
 
-                  {/* STILL CLIENT-SPECIFIC */}
-                  <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-3">
-                    <div className="flex items-center justify-between border-b border-amber-200 pb-2">
-                      <span className="font-bold text-amber-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                        <Sliders className="w-4 h-4 text-amber-600" />
-                        STILL CLIENT-SPECIFIC
-                      </span>
-                      <span className="text-[10px] font-bold text-amber-800 bg-white px-2 py-0.5 rounded border border-amber-200">
-                        3 Decisions Needed
-                      </span>
-                    </div>
+                  <button
+                    onClick={() => setShowQuestionsModal(!showQuestionsModal)}
+                    className="w-full py-2 text-xs font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 rounded-lg border border-amber-300 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    <HelpCircle className="w-3.5 h-3.5" />
+                    <span>{showQuestionsModal ? 'Hide decision preview' : 'Preview 3 client questions'}</span>
+                  </button>
+                </div>
 
-                    <div className="space-y-2 text-slate-800 font-semibold">
-                      <div className="p-2 bg-white rounded-lg border border-amber-200/80 flex items-center justify-between">
-                        <span>1. CFO margin threshold value</span>
-                        <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Default: 28%</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-amber-200/80 flex items-center justify-between">
-                        <span>2. Strategic-account policy criteria</span>
-                        <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded">ARR &gt;$100k</span>
-                      </div>
-                      <div className="p-2 bg-white rounded-lg border border-amber-200/80 flex items-center justify-between">
-                        <span>3. Approver hierarchy mapping</span>
-                        <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Finance VP</span>
-                      </div>
-                    </div>
+              </div>
 
-                    <button
-                      onClick={() => setShowQuestionsModal(!showQuestionsModal)}
-                      className="w-full py-1.5 text-xs font-semibold text-amber-900 bg-amber-100 hover:bg-amber-200 rounded-lg border border-amber-300 transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                    >
-                      <HelpCircle className="w-3.5 h-3.5" />
-                      <span>{showQuestionsModal ? 'Hide decision preview' : 'Preview 3 client questions'}</span>
+              {/* Modal preview of the 3 questions */}
+              {showQuestionsModal && (
+                <div className="p-4 bg-slate-900 text-white rounded-xl space-y-3 animate-fadeIn border border-slate-800">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <span className="text-xs font-bold text-violet-300 uppercase tracking-wider">3 Client Decision Questions</span>
+                    <button onClick={() => setShowQuestionsModal(false)} className="text-slate-400 hover:text-white cursor-pointer">
+                      <X className="w-4 h-4" />
                     </button>
                   </div>
 
-                </div>
-
-                {/* Inline 3 Questions Preview Modal/Accordion */}
-                {showQuestionsModal && (
-                  <div className="p-4 bg-slate-900 text-white rounded-xl space-y-3 animate-fadeIn border border-slate-800">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                      <span className="text-xs font-bold text-violet-300 uppercase tracking-wider">Remaining 3 Client Decisions</span>
-                      <button onClick={() => setShowQuestionsModal(false)} className="text-slate-400 hover:text-white cursor-pointer">
-                        <X className="w-4 h-4" />
-                      </button>
+                  <div className="grid grid-cols-3 gap-3 text-xs">
+                    <div className="p-3 bg-slate-800 rounded-lg space-y-1">
+                      <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 1</span>
+                      <p className="font-semibold text-slate-200">What is the CFO margin floor?</p>
                     </div>
-
-                    <div className="grid grid-cols-3 gap-3 text-xs">
-                      <div className="p-3 bg-slate-800 rounded-lg space-y-1">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">Question 1</span>
-                        <p className="font-semibold text-slate-200">What is the CFO margin floor for auto-approval?</p>
-                      </div>
-                      <div className="p-3 bg-slate-800 rounded-lg space-y-1">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">Question 2</span>
-                        <p className="font-semibold text-slate-200">Which accounts qualify as strategic accounts?</p>
-                      </div>
-                      <div className="p-3 bg-slate-800 rounded-lg space-y-1">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">Question 3</span>
-                        <p className="font-semibold text-slate-200">Who owns final escalation for margin exceptions?</p>
-                      </div>
+                    <div className="p-3 bg-slate-800 rounded-lg space-y-1">
+                      <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 2</span>
+                      <p className="font-semibold text-slate-200">Which accounts qualify as strategic?</p>
+                    </div>
+                    <div className="p-3 bg-slate-800 rounded-lg space-y-1">
+                      <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 3</span>
+                      <p className="font-semibold text-slate-200">Who owns final escalation?</p>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
 
-              </div>
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <span className="text-xs text-slate-500 font-medium">
-                Based on 11 similar implementations, RevBrain starts with 6 prebuilt components.
+                I only need the three business policies that make this customer unique.
               </span>
               <button
                 onClick={() => setScreen(6)}
@@ -794,14 +905,16 @@ export function KnowledgePlaceholder() {
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 6 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
-            <div>
+            <div className="space-y-6">
+              
+              {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Implementation Economics Progression
+                    Compounding Economics
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Compounding Advantage: Declining Effort &amp; Rising Confidence
+                    Compounding Implementation Advantage
                   </h2>
                 </div>
                 <button
@@ -813,92 +926,98 @@ export function KnowledgePlaceholder() {
                 </button>
               </div>
 
-              {/* Implementation Progression Visuals */}
-              <div className="py-6 space-y-6">
+              {/* Implementation Progression: #1 -> #6 -> #12 */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
-                  
-                  {/* Implementation #1 */}
-                  <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 shadow-2xs relative">
-                    <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-                      <span className="font-bold text-slate-900 text-sm">Implementation #1</span>
-                      <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded">Initial Baseline</span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <span className="text-2xl font-extrabold text-slate-800 block">~320 hrs</span>
-                      <span className="text-xs font-semibold text-slate-500">SI Implementation Effort</span>
-                    </div>
-
-                    <div className="p-2.5 bg-white rounded-xl border border-slate-200 text-[11px] font-semibold text-slate-600">
-                      81% mapping confidence
-                    </div>
-
-                    <p className="text-[10px] text-slate-400 italic">Manual discovery &amp; custom Apex scripting</p>
+                {/* Implementation #1 */}
+                <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 shadow-2xs">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <span className="font-bold text-slate-900 text-sm">Implementation #1</span>
+                    <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded">Baseline</span>
                   </div>
 
-                  {/* Implementation #6 */}
-                  <div className="p-5 bg-violet-50/60 border border-violet-200 rounded-2xl space-y-3 shadow-2xs relative">
-                    <div className="flex items-center justify-between border-b border-violet-200 pb-2">
-                      <span className="font-bold text-violet-900 text-sm">Implementation #6</span>
-                      <span className="text-[10px] font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded">4 Shared Primitives</span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <span className="text-2xl font-extrabold text-violet-900 block">~190 hrs</span>
-                      <span className="text-xs font-semibold text-violet-700">SI Implementation Effort</span>
-                    </div>
-
-                    <div className="p-2.5 bg-white rounded-xl border border-violet-200 text-[11px] font-semibold text-violet-800">
-                      90% mapping confidence
-                    </div>
-
-                    <p className="text-[10px] text-violet-600 font-medium">• 41% effort reduction</p>
+                  <div className="space-y-1">
+                    <span className="text-2xl font-extrabold text-slate-800 block">~320 hrs</span>
+                    <span className="text-xs font-semibold text-slate-500">Human Implementation Effort</span>
                   </div>
 
-                  {/* Implementation #12 */}
-                  <div className="p-5 bg-emerald-50/70 border-2 border-emerald-300 rounded-2xl space-y-3 shadow-md relative">
-                    <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
-                      <span className="font-bold text-emerald-950 text-sm">Implementation #12</span>
-                      <span className="text-[10px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">6 Prebuilt Components</span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <span className="text-2xl font-extrabold text-emerald-700 block">~110 hrs</span>
-                      <span className="text-xs font-semibold text-emerald-800">SI Implementation Effort</span>
-                    </div>
-
-                    <div className="p-2.5 bg-white rounded-xl border border-emerald-200 text-[11px] font-semibold text-emerald-900">
-                      96% mapping confidence
-                    </div>
-
-                    <p className="text-[10px] text-emerald-700 font-bold">• 65% total effort reduction</p>
+                  <div className="p-2.5 bg-white rounded-xl border border-slate-200 text-[11px] font-bold text-slate-700 font-mono">
+                    81% mapping confidence
                   </div>
-
                 </div>
 
-                {/* Strong Bottom Line Banner */}
-                <div className="p-6 bg-slate-900 text-white rounded-2xl shadow-xl text-center space-y-2 border border-slate-800">
-                  <h3 className="text-xl font-extrabold text-white tracking-tight">
-                    More clients → more reusable context → less human implementation work
-                  </h3>
-                  <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-300 font-mono pt-2 border-t border-slate-800">
-                    <span>32 reusable components</span>
-                    <span>·</span>
-                    <span>247 learned patterns</span>
-                    <span>·</span>
-                    <span>96% mapping confidence</span>
-                    <span>·</span>
-                    <span>82% ready for next client</span>
+                {/* Implementation #6 */}
+                <div className="p-5 bg-violet-50/60 border border-violet-200 rounded-2xl space-y-3 shadow-2xs">
+                  <div className="flex items-center justify-between border-b border-violet-200 pb-2">
+                    <span className="font-bold text-violet-900 text-sm">Implementation #6</span>
+                    <span className="text-[10px] font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded">Midway</span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="text-2xl font-extrabold text-violet-900 block">~190 hrs</span>
+                    <span className="text-xs font-semibold text-violet-700">Human Implementation Effort</span>
+                  </div>
+
+                  <div className="p-2.5 bg-white rounded-xl border border-violet-200 text-[11px] font-bold text-violet-800 font-mono">
+                    90% mapping confidence
+                  </div>
+                </div>
+
+                {/* Implementation #12 */}
+                <div className="p-5 bg-emerald-50/70 border-2 border-emerald-300 rounded-2xl space-y-3 shadow-md">
+                  <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
+                    <span className="font-bold text-emerald-950 text-sm">Implementation #12</span>
+                    <span className="text-[10px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">Productized</span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="text-2xl font-extrabold text-emerald-700 block">~110 hrs</span>
+                    <span className="text-xs font-semibold text-emerald-800">Human Implementation Effort</span>
+                  </div>
+
+                  <div className="p-2.5 bg-white rounded-xl border border-emerald-200 text-[11px] font-bold text-emerald-900 font-mono">
+                    96% mapping confidence
                   </div>
                 </div>
 
               </div>
+
+              {/* 3 Simple Trends */}
+              <div className="grid grid-cols-3 gap-3 text-xs font-bold text-center">
+                <div className="p-3 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingUp className="w-4 h-4 text-emerald-600" />
+                  <span>Reusable components ↑</span>
+                </div>
+                <div className="p-3 bg-violet-50 text-violet-900 border border-violet-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingDown className="w-4 h-4 text-violet-600" />
+                  <span>Client-specific discovery ↓</span>
+                </div>
+                <div className="p-3 bg-indigo-50 text-indigo-900 border border-indigo-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingDown className="w-4 h-4 text-indigo-600" />
+                  <span>Human implementation effort ↓</span>
+                </div>
+              </div>
+
+              {/* Strong Bottom Line */}
+              <div className="p-5 bg-slate-900 text-white rounded-2xl shadow-xl text-center space-y-2 border border-slate-800">
+                <h3 className="text-lg font-extrabold text-white tracking-tight">
+                  More implementations → more reusable context → less human implementation work
+                </h3>
+                <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-300 font-mono pt-1">
+                  <span>32 reusable components</span>
+                  <span>·</span>
+                  <span>247 learned patterns</span>
+                  <span>·</span>
+                  <span>96% mapping confidence</span>
+                </div>
+              </div>
+
             </div>
 
+            {/* Bottom Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <span className="text-xs text-slate-500 font-medium">
-                Every implementation expands what is ready for the next client.
+                The next implementation starts further ahead than the last one.
               </span>
               <div className="flex items-center gap-2">
                 <button
@@ -906,13 +1025,13 @@ export function KnowledgePlaceholder() {
                   className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>Explore component library</span>
+                  <span>Explore components</span>
                 </button>
                 <button
                   onClick={() => setScreen(4)}
                   className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
                 >
-                  Simulate another segment
+                  Simulate another model
                 </button>
               </div>
             </div>
@@ -950,7 +1069,7 @@ export function KnowledgePlaceholder() {
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-slate-900 text-sm">Approval Routing Core v3</span>
                       <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        82% Reusable
+                        87% Reusable
                       </span>
                     </div>
                     <p className="text-slate-600 font-medium">Revenue Cloud + Flow + Agentforce</p>
