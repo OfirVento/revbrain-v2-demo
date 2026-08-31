@@ -1454,10 +1454,10 @@ export function KnowledgePlaceholder() {
         {/* AREA 4 — Compounding */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 4 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease]">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-4 animate-[fadeIn_300ms_ease]">
             
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <span>Compounding Advantage</span>
@@ -1472,8 +1472,8 @@ export function KnowledgePlaceholder() {
             </div>
 
             {/* ── 1. Overall Client ROI — First ────────────────────────────────── */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4.5 shadow-2xs space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/70 pb-2.5">
+            <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs space-y-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/70 pb-2">
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">
                     Observed Client ROI Across Q2C
@@ -1482,35 +1482,35 @@ export function KnowledgePlaceholder() {
                     ~1,350 hrs/qtr before RevBrain &rarr; ~523 hrs/qtr with RevBrain
                   </p>
                 </div>
-                <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-full border border-emerald-300">
+                <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-100/90 px-3 py-0.5 rounded-full border border-emerald-300">
                   61% less manual effort
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-0.5">
                   <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Primary Metric</span>
-                  <p className="text-xl sm:text-2xl font-black font-mono text-slate-900">~827 manual hours saved / quarter</p>
+                  <p className="text-xl font-black font-mono text-slate-900">~827 manual hours saved / quarter</p>
                   <p className="text-xs font-mono text-slate-500 mt-0.5">~1,350 hrs/qtr before RevBrain &rarr; ~523 hrs/qtr with RevBrain</p>
                 </div>
 
-                <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-1">
+                <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-2xs space-y-0.5">
                   <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Outcome</span>
-                  <p className="text-xl sm:text-2xl font-black text-emerald-700">61% less manual effort</p>
+                  <p className="text-xl font-black text-emerald-700">61% less manual effort</p>
                   <p className="text-xs text-slate-600 mt-0.5">Across implemented Q2C workflows and approval cycles</p>
                 </div>
               </div>
             </div>
 
             {/* ── 2. Observed ROI by Workflow — Glimpse Only ───────────────────── */}
-            <div className="space-y-3 pt-0.5">
+            <div className="space-y-2.5">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                   Observed ROI by Workflow
                 </h3>
                 <button
                   onClick={() => setShowExtraCompounding(!showExtraCompounding)}
-                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-1 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
                 >
                   <span>{showExtraCompounding ? 'Show fewer workflows' : 'View impact across all Q2C workflows'}</span>
                   {showExtraCompounding ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -1518,10 +1518,10 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Primary 3 Workflows Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
                 
                 {/* Discount Approvals */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5 hover:border-violet-300 transition-all">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
                   <div className="flex items-center justify-between">
                     <h4 className="text-xs font-bold text-slate-900">Discount Approvals</h4>
                     <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1533,7 +1533,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Pricing & Discounts */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5 hover:border-violet-300 transition-all">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
                   <div className="flex items-center justify-between">
                     <h4 className="text-xs font-bold text-slate-900">Pricing &amp; Discounts</h4>
                     <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
@@ -1545,7 +1545,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Quote-to-Order */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5 hover:border-violet-300 transition-all">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
                   <div className="flex items-center justify-between">
                     <h4 className="text-xs font-bold text-slate-900">Quote-to-Order</h4>
                     <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
@@ -1560,10 +1560,10 @@ export function KnowledgePlaceholder() {
 
               {/* Expandable 7 Additional Q2C Areas */}
               {showExtraCompounding && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-1 animate-[fadeIn_200ms_ease]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-0.5 animate-[fadeIn_200ms_ease]">
                   
                   {/* Renewals & Amendments */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Renewals &amp; Amendments</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1575,7 +1575,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Contracted / Account Pricing */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Contracted / Account Pricing</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1587,7 +1587,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Bundle / Product Configuration */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Bundle / Product Configuration</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1599,7 +1599,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Quote Creation */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Quote Creation</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1611,7 +1611,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Quote Documents */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Quote Documents</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1623,7 +1623,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Product / Pricing Changes */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Product / Pricing Changes</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1635,7 +1635,7 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Quote Exceptions / Issue Resolution */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1">
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
                     <div className="flex items-center justify-between">
                       <h4 className="text-xs font-bold text-slate-900">Quote Exceptions / Resolution</h4>
                       <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -1652,7 +1652,7 @@ export function KnowledgePlaceholder() {
             </div>
 
             {/* ── 3. RevBrain Implementation Leverage ──────────────────────────── */}
-            <div className="border-t border-slate-100 pt-4 space-y-3">
+            <div className="border-t border-slate-100 pt-3.5 space-y-2.5">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                   RevBrain Implementation Leverage
@@ -1663,10 +1663,10 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* 3 Metrics Grid: Implementation effort, Mapping confidence, Reusable foundation */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
                 
                 {/* Metric 1: Implementation Effort */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-0.5">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
                       Implementation effort
@@ -1675,7 +1675,7 @@ export function KnowledgePlaceholder() {
                       -66% effort
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl font-black font-mono text-slate-900 mt-1">
+                  <p className="text-lg sm:text-xl font-black font-mono text-slate-900 mt-0.5">
                     ~320 hrs &rarr; ~110 hrs
                   </p>
                   <p className="text-xs font-bold text-emerald-700">
@@ -1684,7 +1684,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Metric 2: Mapping Confidence */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-0.5">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
                       Mapping confidence
@@ -1693,7 +1693,7 @@ export function KnowledgePlaceholder() {
                       +15% accuracy
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl font-black font-mono text-emerald-700 mt-1">
+                  <p className="text-lg sm:text-xl font-black font-mono text-emerald-700 mt-0.5">
                     81% &rarr; 96%
                   </p>
                   <p className="text-xs text-slate-500">
@@ -1702,7 +1702,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Metric 3: Reusable Foundation */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1">
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-0.5">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
                       Reusable foundation
@@ -1711,7 +1711,7 @@ export function KnowledgePlaceholder() {
                       +8 components
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl font-black font-mono text-violet-900 mt-1">
+                  <p className="text-lg sm:text-xl font-black font-mono text-violet-900 mt-0.5">
                     24 &rarr; 32 components
                   </p>
                   <p className="text-xs text-slate-500">
