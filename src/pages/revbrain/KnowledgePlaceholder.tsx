@@ -1075,9 +1075,9 @@ export function KnowledgePlaceholder() {
 
                     <ChevronRight className="hidden sm:block w-4 h-4 text-violet-400 shrink-0" />
 
-                    {/* Stage 3: Componentized */}
+                    {/* Stage 3: Productized */}
                     <div className="flex-1 w-full bg-blue-50/80 p-3 rounded-xl border border-blue-200/80 space-y-1">
-                      <span className="font-bold text-blue-700 text-[10px] uppercase tracking-wide">3. Componentized</span>
+                      <span className="font-bold text-blue-700 text-[10px] uppercase tracking-wide">3. Productized</span>
                       <p className="font-mono font-bold text-blue-900">
                         {currentPackData.pipelineData.componentized.agents + currentPackData.pipelineData.componentized.workflows} components
                       </p>
