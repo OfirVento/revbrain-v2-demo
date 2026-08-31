@@ -676,7 +676,7 @@ export function KnowledgePlaceholder() {
                   Learning Intelligence
                 </h2>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  System evidence + SI/client context
+                  System Evidence + Human Context &rarr; Complete Business Understanding
                 </p>
               </div>
 
@@ -695,14 +695,6 @@ export function KnowledgePlaceholder() {
                   ))}
                 </select>
               </div>
-            </div>
-
-            {/* Subtle Center Relationship Connector */}
-            <div className="w-full flex justify-center py-1">
-              <span className="text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 flex items-center gap-1.5 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-violet-600" />
-                <span>System Evidence + Human Context → Complete Business Understanding</span>
-              </span>
             </div>
 
             {/* Main Layout — Balanced 50/50 Split */}
