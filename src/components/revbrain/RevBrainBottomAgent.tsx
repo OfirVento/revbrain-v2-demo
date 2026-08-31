@@ -1126,7 +1126,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Explore a learned area</span>
+                              <span>Next Screen: Pattern Extraction</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1161,7 +1161,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show the reusable stack</span>
+                              <span>Next Screen: Component Factory</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1196,7 +1196,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>See where it's ready</span>
+                              <span>Next Screen: Q2C Readiness</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1231,7 +1231,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Simulate next client</span>
+                              <span>Next Screen: Client Simulation</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1275,7 +1275,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show compounding impact</span>
+                              <span>Next Screen: Compounding Advantage</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1316,11 +1316,12 @@ export function RevBrainBottomAgent() {
 
                             <button
                               onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 4 } }));
+                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 1 } }));
                               }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer"
+                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer flex items-center gap-1"
                             >
-                              <span>Simulate another model</span>
+                              <span>Restart Tour (Screen 1)</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         )}
@@ -1344,18 +1345,6 @@ export function RevBrainBottomAgent() {
 
           {/* ─── Main Input Bar ─── */}
           <div className="relative bg-white border border-slate-200 rounded-b-xl shadow-lg px-3 py-2.5">
-            {/* Sent messages preview */}
-            {sentMessages.length > 0 && (
-              <div className="flex items-start gap-2 mb-2 px-1">
-                <div className="w-5 h-5 rounded-full bg-violet-100 flex items-center justify-center shrink-0 mt-0.5">
-                  <Bot className="w-3 h-3 text-violet-600" />
-                </div>
-                <div className="text-[11px] text-slate-500 leading-relaxed bg-slate-50 border border-slate-100 rounded-lg px-2.5 py-1.5">
-                  Noted. I'll incorporate that into the current {context.toLowerCase()} workspace.
-                </div>
-              </div>
-            )}
-
             {/* Input row */}
             <div className="flex items-center gap-2">
               {/* Plus icon */}
