@@ -1059,19 +1059,19 @@ export function KnowledgePlaceholder() {
                     <ChevronRight className="hidden sm:block w-4 h-4 text-blue-400 shrink-0" />
 
                     {/* Stage 4: Validated */}
-                    <div className="flex-1 w-full bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/80 space-y-1">
-                      <span className="font-bold text-emerald-700 text-[10px] uppercase tracking-wide">4. Validated</span>
-                      <p className="font-mono font-bold text-emerald-900">{currentPackData.pipelineData.validated.scenarios} scenarios</p>
-                      <p className="text-[10px] text-emerald-700">{currentPackData.pipelineData.validated.scope}</p>
+                    <div className="flex-1 w-full bg-amber-50/80 p-3 rounded-xl border border-amber-200/80 space-y-1">
+                      <span className="font-bold text-amber-700 text-[10px] uppercase tracking-wide">4. Validated</span>
+                      <p className="font-mono font-bold text-amber-900">{currentPackData.pipelineData.validated.scenarios} scenarios</p>
+                      <p className="text-[10px] text-amber-700">{currentPackData.pipelineData.validated.scope}</p>
                     </div>
 
-                    <ChevronRight className="hidden sm:block w-4 h-4 text-emerald-400 shrink-0" />
+                    <ChevronRight className="hidden sm:block w-4 h-4 text-amber-400 shrink-0" />
 
                     {/* Stage 5: Ready */}
-                    <div className="flex-1 w-full bg-emerald-600 text-white p-3 rounded-xl border border-emerald-700 space-y-1 shadow-2xs">
-                      <span className="font-bold text-emerald-100 text-[10px] uppercase tracking-wide">5. Ready</span>
-                      <p className="font-bold text-white text-[11px]">{currentPackData.pipelineData.ready.label}</p>
-                      <p className="text-[10px] text-emerald-100">{currentPackData.pipelineData.ready.sub}</p>
+                    <div className="flex-1 w-full bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/80 space-y-1">
+                      <span className="font-bold text-emerald-700 text-[10px] uppercase tracking-wide">5. Ready</span>
+                      <p className="font-bold text-emerald-900 text-[11px]">{currentPackData.pipelineData.ready.label}</p>
+                      <p className="text-[10px] text-emerald-700">{currentPackData.pipelineData.ready.sub}</p>
                     </div>
                   </div>
                 </div>
