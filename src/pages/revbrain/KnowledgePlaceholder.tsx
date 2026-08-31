@@ -628,24 +628,21 @@ export function KnowledgePlaceholder() {
             {/* Header + Q2C Area Selector */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
               <div>
-                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <span>Learning Intelligence</span>
-                  <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    System Evidence + Human Context
-                  </span>
+                <h2 className="text-[15px] font-semibold text-slate-900">
+                  Learning Intelligence
                 </h2>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  RevBrain captures operational behavior directly from system configuration AND human operational intent.
+                  System evidence + SI/client context
                 </p>
               </div>
 
               {/* Q2C Area Selector */}
               <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-slate-500">Selected Q2C Area:</span>
+                <span className="text-xs text-slate-500 font-medium">Selected Q2C Area:</span>
                 <select
                   value={selectedAreaId}
                   onChange={(e) => setSelectedAreaId(e.target.value)}
-                  className="text-xs font-bold text-violet-800 bg-violet-50 border border-violet-200/80 rounded-xl px-3 py-1.5 outline-none cursor-pointer focus:ring-2 focus:ring-violet-300"
+                  className="text-xs font-semibold text-slate-900 bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 outline-none cursor-pointer focus:ring-2 focus:ring-violet-300"
                 >
                   {Q2C_CORPUS_AREAS.map((a) => (
                     <option key={a.id} value={a.id}>
@@ -656,161 +653,147 @@ export function KnowledgePlaceholder() {
               </div>
             </div>
 
-            {/* Main Layout — Two Equal Sides (System vs Human) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Main Layout — Clean 55% / 45% Split */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               
-              {/* LEFT — Captured from Systems */}
-              <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-2xs">
-                <div className="space-y-1 border-b border-slate-200/70 pb-3">
-                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-violet-600" />
-                    <span>Captured from Systems</span>
-                  </h3>
-                  <p className="text-[11px] text-slate-500">
-                    What RevBrain can observe directly from configuration, usage, transactions, and runtime behavior.
-                  </p>
-                </div>
-
-                <div className="space-y-3 text-xs">
-                  {/* Current Process */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                    <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Current Process</span>
-                    <p className="font-mono font-bold text-violet-700 text-sm">{currentIntelData.system.observedPaths}</p>
+              {/* LEFT — Captured from Systems (55% / 7 cols) */}
+              <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
+                <div className="space-y-4">
+                  {/* Header & Subtitle */}
+                  <div className="border-b border-slate-100 pb-3 space-y-1">
+                    <h3 className="text-[14px] font-semibold text-slate-900">
+                      Captured from Systems
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      What RevBrain can observe directly
+                    </p>
+                    {/* Compact Top Summary Line */}
+                    <p className="text-[11px] font-mono text-violet-700 font-semibold pt-1">
+                      214 approval paths · 12 rules · 147 comparable approvals · 143 scenarios
+                    </p>
                   </div>
 
-                  {/* Configuration */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
-                    <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Configuration</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {currentIntelData.system.configRules.map((c, i) => (
-                        <span key={i} className="bg-slate-100 text-slate-800 font-mono text-[11px] px-2.5 py-0.5 rounded-md font-semibold border border-slate-200/80">
-                          {c}
-                        </span>
-                      ))}
+                  {/* 3 Clean Sections with Thin Dividers */}
+                  <div className="space-y-4 text-xs">
+                    
+                    {/* Section 1: Configuration */}
+                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Configuration</h4>
+                      <p className="text-xs text-slate-700 leading-relaxed font-mono">
+                        12 approval rules · 22 discount schedules · 3 QCP scripts · + more
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Runtime Behavior */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
-                    <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Runtime Behavior</span>
-                    <ul className="space-y-1 text-slate-700 font-medium">
-                      {currentIntelData.system.runtimeBehavior.map((b, i) => (
-                        <li key={i} className="flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-violet-600 shrink-0" />
-                          <span>{b}</span>
+                    {/* Section 2: Observed Behavior */}
+                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Observed Behavior</h4>
+                      <ul className="grid grid-cols-2 gap-1.5 text-xs text-slate-700 font-medium">
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                          <span>Finance escalation</span>
                         </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Outcomes */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
-                    <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Observed Outcomes</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {currentIntelData.system.outcomes.map((o, i) => (
-                        <span key={i} className="bg-violet-50 text-violet-800 text-[11px] px-2.5 py-0.5 rounded-md font-medium border border-violet-200/60">
-                          {o}
-                        </span>
-                      ))}
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                          <span>Strategic exceptions</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                          <span>Approval cycle patterns</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                          <span>Rework / rejection</span>
+                        </li>
+                      </ul>
                     </div>
-                  </div>
 
-                  {/* Validation */}
-                  <div className="bg-emerald-50/60 border border-emerald-200/80 p-2.5 rounded-xl flex items-center justify-between text-[11px]">
-                    <span className="font-semibold text-emerald-800">Observed Business Scenarios</span>
-                    <span className="font-mono font-bold text-emerald-700">{currentIntelData.system.scenariosCount} scenarios verified</span>
+                    {/* Section 3: Validation Evidence */}
+                    <div className="space-y-1.5 pt-0.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Validation Evidence</h4>
+                      <p className="text-xs text-slate-700 leading-relaxed font-mono">
+                        143 observed scenarios · 18 exception patterns · 31 implementation histories
+                      </p>
+                    </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* RIGHT — Captured from Humans */}
-              <div className="bg-amber-50/30 border border-amber-200/70 rounded-2xl p-5 space-y-4 shadow-2xs flex flex-col justify-between">
+              {/* RIGHT — Captured from Humans (45% / 5 cols) */}
+              <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs flex flex-col justify-between space-y-5">
                 <div className="space-y-4">
-                  <div className="space-y-1 border-b border-amber-200/70 pb-3 flex items-start justify-between">
+                  {/* Header Row */}
+                  <div className="border-b border-slate-100 pb-3 flex items-start justify-between gap-2">
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                        <UserCheck className="w-4 h-4 text-amber-600" />
-                        <span>Captured from Humans — SI + Client</span>
+                      <h3 className="text-[14px] font-semibold text-slate-900">
+                        Captured from Humans — SI + Client
                       </h3>
-                      <p className="text-[11px] text-slate-500">
-                        SI + client knowledge that cannot be reliably discovered from the system alone.
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        What people explain that the system cannot
                       </p>
                     </div>
 
-                    <span className="text-xs font-mono font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/80 shrink-0">
-                      {currentIntelData.human.counts.total} Human Learnings
-                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-[11px] font-mono font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/80">
+                        {currentIntelData.human.counts.total} learnings
+                      </span>
+
+                      <button
+                        onClick={() => setShowHumanSearch(!showHumanSearch)}
+                        className="px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+                      >
+                        <Search className="w-3 h-3 text-slate-500" />
+                        <span>Search</span>
+                      </button>
+                    </div>
                   </div>
 
-                  {/* Human Sub-Categories */}
-                  <div className="space-y-3 text-xs">
-                    {/* Business Policy */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Business Policy</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentIntelData.human.businessPolicy.map((bp, i) => (
-                          <span key={i} className="bg-amber-50 text-amber-900 font-medium text-[11px] px-2 py-0.5 rounded border border-amber-200/80">
-                            {bp}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Decision Intent */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Decision Intent</span>
-                      <ul className="space-y-1 text-slate-700 font-medium">
-                        {currentIntelData.human.decisionIntent.map((di, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span>{di}</span>
-                          </li>
-                        ))}
+                  {/* 3 Clean Sections with Thin Dividers */}
+                  <div className="space-y-4 text-xs">
+                    
+                    {/* Section 1: Policies & Decision Rules */}
+                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Policies &amp; Decision Rules</h4>
+                      <ul className="space-y-1 text-xs text-slate-700">
+                        <li className="flex items-center gap-1.5">• CFO margin floor</li>
+                        <li className="flex items-center gap-1.5">• Strategic-account definition</li>
+                        <li className="flex items-center gap-1.5">• Pricing exception policy</li>
+                        <li className="flex items-center gap-1.5">• When Finance gets involved</li>
+                        <li className="flex items-center gap-1.5">• When Deal Desk overrides</li>
                       </ul>
                     </div>
 
-                    {/* Undocumented Operations */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Undocumented Operations</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentIntelData.human.undocumentedOps.map((uo, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-200">
-                            {uo}
-                          </span>
-                        ))}
-                      </div>
+                    {/* Section 2: Undocumented Operations */}
+                    <div className="space-y-1.5 border-b border-slate-100 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Undocumented Operations</h4>
+                      <ul className="space-y-1 text-xs text-slate-700">
+                        <li className="flex items-center gap-1.5">• Manual stage transitions</li>
+                        <li className="flex items-center gap-1.5">• Slack / email workarounds</li>
+                        <li className="flex items-center gap-1.5">• Off-system approvals</li>
+                        <li className="flex items-center gap-1.5">• Exception handling</li>
+                      </ul>
                     </div>
 
-                    {/* Future Intent & Change Context */}
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                        <span className="font-bold text-slate-700 text-[10px] uppercase tracking-wide">Future Intent</span>
-                        <p className="text-[11px] text-slate-600 font-medium">{currentIntelData.human.futureIntent[0]}</p>
-                      </div>
-                      <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-                        <span className="font-bold text-slate-700 text-[10px] uppercase tracking-wide">Change Context</span>
-                        <p className="text-[11px] text-slate-600 font-medium">{currentIntelData.human.changeContext[0]}</p>
-                      </div>
+                    {/* Section 3: Future Intent */}
+                    <div className="space-y-1.5 pt-0.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900">Future Intent</h4>
+                      <ul className="space-y-1 text-xs text-slate-700">
+                        <li className="flex items-center gap-1.5">• What should be automated</li>
+                        <li className="flex items-center gap-1.5">• What should become an agent</li>
+                        <li className="flex items-center gap-1.5">• Where humans must remain</li>
+                        <li className="flex items-center gap-1.5">• Business priorities</li>
+                      </ul>
                     </div>
+
                   </div>
                 </div>
 
-                {/* Role Breakdown + Search Button */}
-                <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between">
-                  <div className="text-[10px] font-mono text-slate-500 space-x-1.5">
-                    <span>{currentIntelData.human.counts.siArchitect} SI</span> · 
-                    <span>{currentIntelData.human.counts.financeRevOps} Finance</span> · 
-                    <span>{currentIntelData.human.counts.salesDealDesk} Sales</span> · 
-                    <span>{currentIntelData.human.counts.clientAdmin} Admin</span>
-                  </div>
-
-                  <button
-                    onClick={() => setShowHumanSearch(!showHumanSearch)}
-                    className="px-3 py-1 text-xs font-bold text-amber-900 bg-amber-100 hover:bg-amber-200 rounded-lg border border-amber-300 transition-colors flex items-center gap-1.5 cursor-pointer"
-                  >
-                    <Search className="w-3.5 h-3.5" />
-                    <span>Search human learnings</span>
-                  </button>
+                {/* Bottom Source Metadata Line */}
+                <div className="pt-3 border-t border-slate-100 text-[11px] font-mono text-slate-500">
+                  <span>{currentIntelData.human.counts.siArchitect} SI Architect</span> · 
+                  <span> {currentIntelData.human.counts.financeRevOps} Finance/RevOps</span> · 
+                  <span> {currentIntelData.human.counts.salesDealDesk} Sales/Deal Desk</span> · 
+                  <span> {currentIntelData.human.counts.clientAdmin} Client/Admin</span>
                 </div>
 
               </div>
