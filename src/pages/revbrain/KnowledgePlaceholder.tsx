@@ -671,11 +671,11 @@ export function KnowledgePlaceholder() {
                           </span>
                           <div className="flex items-center gap-1.5 font-semibold">
                             <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-blue-500 font-sans uppercase text-[9px]">System</span>
+                              <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
                               <span>{row.systemLearnings}</span>
                             </span>
                             <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human</span>
+                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
                               <span>{row.humanLearnings}</span>
                             </span>
                           </div>
@@ -730,11 +730,11 @@ export function KnowledgePlaceholder() {
                           </span>
                           <div className="flex items-center gap-1.5 font-semibold">
                             <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-blue-500 font-sans uppercase text-[9px]">System</span>
+                              <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
                               <span>{row.systemLearnings}</span>
                             </span>
                             <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human</span>
+                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
                               <span>{row.humanLearnings}</span>
                             </span>
                           </div>
@@ -781,15 +781,15 @@ export function KnowledgePlaceholder() {
                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
                       </div>
 
-                      {/* RIGHT: Patterns, System, Human Badges (No Impl count) */}
+                      {/* RIGHT: Patterns, System Captured, Human Context Badges */}
                       <div className="flex items-center gap-2">
                         <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                          <span className="text-[10px] text-blue-500 font-sans uppercase">System</span>
+                          <span className="text-[10px] text-blue-500 font-sans uppercase">System Captured</span>
                           <span>{row.systemLearnings}</span>
                         </span>
 
                         <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                          <span className="text-[10px] text-amber-600 font-sans uppercase">Human</span>
+                          <span className="text-[10px] text-amber-600 font-sans uppercase">Human Context</span>
                           <span>{row.humanLearnings}</span>
                         </span>
 
