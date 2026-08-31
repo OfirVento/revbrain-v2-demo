@@ -1112,7 +1112,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="Across 47 implementations, RevBrain is increasingly reusing not just business logic, but the agents, workflows, automations, and validation needed to run it. Complex Enterprise Sales currently has the deepest reusable implementation stack."
+                            text="47 implementations have produced 32 reusable Q2C components across agents, workflows, automations, and validation. Complex Enterprise Sales currently has the deepest reusable coverage."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1126,7 +1126,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show how one is productized</span>
+                              <span>Explore a learned area</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>

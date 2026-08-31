@@ -1,7 +1,7 @@
 // ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
 // 6 Guided Productized Screens:
 // 1. Client Learning Corpus (Reusable Implementation Stack: Agents, Workflows, Automations)
-// 2. Discount Approval — Pattern Decomposition (87% Reusable Core -> AI Stack & 13% Policy)
+// 2. Discount Approvals & Exceptions — Pattern Decomposition (87% Reusable Core -> AI Stack & 13% Policy)
 // 3. Component Factory (Discount Approval Pack v3: Observed → Generalized → Componentized → Validated → Ready)
 // 4. Q2C Operating Model Readiness (10 Q2C Workflows x 4 Revenue Operating Models Matrix + Cell AI Breakdown)
 // 5. Next Client Simulation (Complex Enterprise Sales — 86% AI Stack Prebuilt by Type, 3 Policy Decisions)
@@ -142,6 +142,139 @@ export const REVENUE_OPERATING_MODELS: RevenueOperatingModel[] = [
   },
 ];
 
+/* ── Screen 1 Corpus Learned Areas Data ──────────────────────────────── */
+
+export interface LearnedAreaItem {
+  id: string;
+  name: string;
+  implementations: number;
+  reusablePercent: number;
+  stackSummary: string;
+  examplesLine: string;
+  detailComponents: string[];
+  isDemoTarget?: boolean;
+}
+
+export const CORPUS_LEARNED_AREAS: LearnedAreaItem[] = [
+  {
+    id: 'discount_approvals',
+    name: 'Discount Approvals & Exceptions',
+    implementations: 31,
+    reusablePercent: 87,
+    stackSummary: '4 Agents · 3 Automations · 2 Flows · 2 Handoffs · +3 more',
+    examplesLine: 'Discount Exception Agent · Margin Analysis Agent · Approval Routing Agent · Similar Deal Agent',
+    detailComponents: [
+      'Discount Exception Agent',
+      'Margin Analysis Agent',
+      'Approval Routing Agent',
+      'Similar Deal Agent',
+      'Approval Follow-Up Automation',
+      'Evidence Packaging Automation',
+      'Margin-Risk Flow',
+      'Strategic Exception Flow',
+      'Slack Manager Approval',
+      'Finance Handoff',
+      'Decision Knowledge Loop',
+      'Approval Regression Pack',
+    ],
+    isDemoTarget: true,
+  },
+  {
+    id: 'pricing_discounts',
+    name: 'Pricing & Discounts',
+    implementations: 24,
+    reusablePercent: 84,
+    stackSummary: '3 Agents · 4 Automations · 2 Foundations · 2 Validation Packs',
+    examplesLine: 'Pricing Context Agent · Pricing Validation Agent · Deal Desk Pricing Agent',
+    detailComponents: [
+      'Pricing Context Agent',
+      'Pricing Validation Agent',
+      'Deal Desk Pricing Agent',
+      'Pricing Procedure',
+      'Margin Threshold Foundation',
+      'Price Override Guard',
+      'Pricing Change Review',
+      'Price Book Validation',
+      'Discount Regression Pack',
+    ],
+  },
+  {
+    id: 'quote_to_order',
+    name: 'Quote-to-Order',
+    implementations: 21,
+    reusablePercent: 78,
+    stackSummary: '2 Agents · 4 Automations · 2 Workflows · 3 Validation Packs · +1',
+    examplesLine: 'Quote Status Agent · Order Readiness Agent',
+    detailComponents: [
+      'Quote Status Agent',
+      'Order Readiness Agent',
+      'Quote-to-Order Handoff',
+      'State Sync Automation',
+      'Missing Field Check',
+      'ERP Readiness Automation',
+      'Closed-Won Handoff Flow',
+      'Exception Routing',
+      'ERP / State Regression Packs',
+    ],
+  },
+  {
+    id: 'bundle_config',
+    name: 'Bundle / Product Configuration',
+    implementations: 19,
+    reusablePercent: 81,
+    stackSummary: '3 Agents · 2 Workflows · 2 Foundations · 2 Validation Packs',
+    examplesLine: 'Configuration Agent · Product Dependency Agent · Launch Readiness Agent',
+    detailComponents: [
+      'Configuration Agent',
+      'Product Dependency Agent',
+      'Launch Readiness Agent',
+      'Guided Selling Flow',
+      'Bundle Eligibility Flow',
+      'Product Model Foundation',
+      'Bundle Rule Foundation',
+      'Dependency Validation Pack',
+      'Configuration Regression Pack',
+    ],
+  },
+  {
+    id: 'renewals_amendments',
+    name: 'Renewals & Amendments',
+    implementations: 18,
+    reusablePercent: 79,
+    stackSummary: '3 Agents · 3 Automations · 2 Workflows · 2 Validation Packs · +1',
+    examplesLine: 'Renewal Amendment Agent · Renewal Risk Agent · Contract Context Agent',
+    detailComponents: [
+      'Renewal Amendment Agent',
+      'Renewal Risk Agent',
+      'Contract Context Agent',
+      'Renewal Prep Automation',
+      'Amendment Validation',
+      'Renewal Escalation',
+      'Renewal Approval Flow',
+      'Amendment Routing',
+      'Renewal Outcome Knowledge Loop',
+      'Renewal Regression Pack',
+    ],
+  },
+  {
+    id: 'contracted_pricing',
+    name: 'Contracted / Account Pricing',
+    implementations: 14,
+    reusablePercent: 76,
+    stackSummary: '2 Agents · 3 Automations · 2 Foundations · 2 Validation Packs',
+    examplesLine: 'Pricing Context Agent · Contract Eligibility Agent',
+    detailComponents: [
+      'Contracted Pricing Lookup',
+      'Account Eligibility Automation',
+      'Pricing Override Review',
+      'Contracted Pricing Foundation',
+      'Account Pricing Rules',
+      'Entitlement Validation Pack',
+      'Pricing Conflict Regression Pack',
+    ],
+  },
+];
+
 /* ── Q2C Workflows Matrix Data (Screen 4) ────────────────────────────── */
 
 export interface Q2CMatrixRow {
@@ -178,7 +311,7 @@ export function KnowledgePlaceholder() {
   const [showQuestionsModal, setShowQuestionsModal] = useState<boolean>(false);
   const [showLibraryDrawer, setShowLibraryDrawer] = useState<boolean>(false);
   const [showLineagePopover, setShowLineagePopover] = useState<boolean>(false);
-  const [expandedCorpusRow, setExpandedCorpusRow] = useState<string | null>(null);
+  const [expandedCorpusRowId, setExpandedCorpusRowId] = useState<string | null>(null);
 
   // Broadcast screen change to RevBrainBottomAgent
   useEffect(() => {
@@ -221,6 +354,13 @@ export function KnowledgePlaceholder() {
     : Q2C_WORKFLOW_MATRIX.filter((r) => !r.isExtra);
 
   const selectedMatrixRow = Q2C_WORKFLOW_MATRIX.find((r) => r.id === selectedRowId) || Q2C_WORKFLOW_MATRIX[3];
+
+  const handleCorpusRowClick = (item: LearnedAreaItem) => {
+    setExpandedCorpusRowId(expandedCorpusRowId === item.id ? null : item.id);
+    if (item.isDemoTarget) {
+      setScreen(2);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col min-h-[calc(100vh-140px)] bg-slate-100/60 text-slate-800 font-sans">
@@ -317,8 +457,8 @@ export function KnowledgePlaceholder() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Q2C Learned Areas &amp; Reusable Implementation IP
                   </span>
-                  <span className="text-[10px] text-violet-600 font-semibold italic">
-                    Click any area to inspect its reusable implementation stack
+                  <span className="text-[10px] text-slate-400 font-medium italic">
+                    Click any area to inspect its full reusable component breakdown
                   </span>
                 </div>
 
@@ -333,118 +473,65 @@ export function KnowledgePlaceholder() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-medium">
-                      
-                      {/* 1. Discount Approvals & Exceptions (Highlighted) */}
-                      <tr
-                        onClick={() => setScreen(2)}
-                        className="bg-violet-50/80 hover:bg-violet-100/80 text-slate-900 font-bold transition-colors cursor-pointer ring-1 ring-violet-200"
-                      >
-                        <td className="p-3 pl-4 text-violet-950 flex items-center gap-2">
-                          <Sparkles className="w-3.5 h-3.5 text-violet-600 shrink-0" />
-                          <span>Discount Approvals &amp; Exceptions</span>
-                        </td>
-                        <td className="p-3 text-right font-mono text-violet-900">31</td>
-                        <td className="p-3 text-right font-mono text-emerald-700 font-bold">87%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex flex-wrap items-center gap-1.5 text-[10px]">
-                            <span className="px-2 py-0.5 bg-purple-100 text-purple-800 font-bold rounded border border-purple-200 flex items-center gap-1">
-                              <Bot className="w-3 h-3 text-purple-600" />
-                              <span>Discount Exception Agent</span>
-                            </span>
-                            <span className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded border border-blue-200">
-                              Margin-Risk Flow
-                            </span>
-                            <span className="px-2 py-0.5 bg-amber-100 text-amber-800 rounded border border-amber-200">
-                              Follow-Up Auto
-                            </span>
-                            <span className="px-2 py-0.5 bg-rose-100 text-rose-800 rounded border border-rose-200">
-                              Slack Approval
-                            </span>
-                            <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-200">
-                              Decision Loop
-                            </span>
-                          </div>
-                        </td>
-                      </tr>
+                      {CORPUS_LEARNED_AREAS.map((item) => {
+                        const isExpanded = expandedCorpusRowId === item.id;
+                        return (
+                          <tr
+                            key={item.id}
+                            onClick={() => handleCorpusRowClick(item)}
+                            className={`transition-colors cursor-pointer ${
+                              isExpanded
+                                ? 'bg-violet-50/70 text-slate-900 border-l-4 border-l-violet-600'
+                                : 'bg-white hover:bg-slate-50/90 text-slate-800'
+                            }`}
+                          >
+                            <td className="p-3.5 pl-4 font-bold text-slate-900">
+                              <div className="flex items-center gap-2">
+                                <span>{item.name}</span>
+                                {item.isDemoTarget && (
+                                  <span className="text-[9px] text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded font-mono font-semibold">
+                                    Explore Flow
+                                  </span>
+                                )}
+                              </div>
+                            </td>
 
-                      {/* 2. Pricing & Discounts */}
-                      <tr
-                        onClick={() => setExpandedCorpusRow(expandedCorpusRow === 'pricing' ? null : 'pricing')}
-                        className="hover:bg-slate-50 transition-colors cursor-pointer"
-                      >
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Pricing &amp; Discounts</td>
-                        <td className="p-3 text-right font-mono text-slate-600">24</td>
-                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">84%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Foundation</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
-                            <span className="text-slate-400 font-semibold italic">Pricing Context Agent · Procedure · Validation</span>
-                          </div>
-                        </td>
-                      </tr>
+                            <td className="p-3.5 text-right font-mono text-slate-700">{item.implementations}</td>
+                            <td className="p-3.5 text-right font-mono text-emerald-600 font-bold">{item.reusablePercent}%</td>
 
-                      {/* 3. Quote-to-Order */}
-                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Quote-to-Order</td>
-                        <td className="p-3 text-right font-mono text-slate-600">21</td>
-                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">78%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Validation</span>
-                            <span className="text-slate-400 font-semibold italic">Handoff Agent · Readiness Auto · Order Test</span>
-                          </div>
-                        </td>
-                      </tr>
+                            <td className="p-3.5 pr-4 space-y-0.5">
+                              {/* Line 1: Stack summary count */}
+                              <div className="font-mono text-slate-800 font-semibold text-[11px]">
+                                {item.stackSummary}
+                              </div>
 
-                      {/* 4. Bundle / Product Configuration */}
-                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Bundle / Product Configuration</td>
-                        <td className="p-3 text-right font-mono text-slate-600">19</td>
-                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">81%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Validation</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
-                            <span className="text-slate-400 font-semibold italic">Configuration Agent · Dependency Pack</span>
-                          </div>
-                        </td>
-                      </tr>
+                              {/* Line 2: Examples line */}
+                              <div className="text-[10px] text-slate-400 font-normal italic">
+                                {item.examplesLine}
+                              </div>
 
-                      {/* 5. Renewals & Amendments */}
-                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Renewals &amp; Amendments</td>
-                        <td className="p-3 text-right font-mono text-slate-600">18</td>
-                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">79%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
-                            <span className="text-slate-400 font-semibold italic">Renewal Amendment Agent · Risk Flow</span>
-                          </div>
-                        </td>
-                      </tr>
-
-                      {/* 6. Contracted / Account-Specific Pricing */}
-                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Contracted / Account Pricing</td>
-                        <td className="p-3 text-right font-mono text-slate-600">14</td>
-                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">76%</td>
-                        <td className="p-3 pr-4">
-                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Foundation</span>
-                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
-                            <span className="text-slate-400 font-semibold italic">Contract Pricing Agent · Terms Procedure</span>
-                          </div>
-                        </td>
-                      </tr>
-
+                              {/* Expanded Component Drawer view on click */}
+                              {isExpanded && (
+                                <div className="pt-2 animate-fadeIn space-y-1 text-[11px]">
+                                  <span className="text-[10px] font-bold uppercase tracking-wider text-violet-800 block">
+                                    Full Reusable Component Stack ({item.detailComponents.length} Assets):
+                                  </span>
+                                  <div className="flex flex-wrap gap-1">
+                                    {item.detailComponents.map((comp, idx) => (
+                                      <span
+                                        key={idx}
+                                        className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 font-mono text-[10px]"
+                                      >
+                                        {comp}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
