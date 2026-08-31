@@ -638,17 +638,6 @@ export function RevBrainBottomAgent() {
                     {implPhase === 'phase3' && `Live Implementation · Step ${implBuildStepIndex + 1} of 7`}
                     {implPhase === 'phase4' && (isPhase4Completed ? 'Implementation Verified' : 'Validation & Testing')}
                   </span>
-                ) : isLearningRoute ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[10px] font-bold tracking-wide flex items-center gap-1">
-                    <span>Learning Engine</span>
-                    <span className="text-violet-400 font-normal">&gt;</span>
-                    <span>
-                      {learningScreen === 1 && 'Learning Corpus'}
-                      {learningScreen === 2 && 'Learning Intelligence'}
-                      {learningScreen === 3 && (learningLibraryTab === 'packs' ? 'Implementation Packs' : 'Q2C Readiness')}
-                      {learningScreen === 4 && 'Compounding'}
-                    </span>
-                  </span>
                 ) : (
                   <>
                     <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
