@@ -1459,11 +1459,8 @@ export function KnowledgePlaceholder() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
               <div>
-                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <span>Compounding Advantage</span>
-                  <span className="text-xs font-mono font-medium text-slate-700 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
-                    Client ROI &amp; Implementation Leverage
-                  </span>
+                <h2 className="text-base font-bold text-slate-900">
+                  Client ROI &amp; Implementation Leverage
                 </h2>
                 <p className="text-xs text-slate-500 mt-0.5">
                   How RevBrain accelerates business outcomes across Q2C while compounding implementation efficiency.
