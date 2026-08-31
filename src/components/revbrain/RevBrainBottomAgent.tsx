@@ -1102,10 +1102,7 @@ export function RevBrainBottomAgent() {
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     {learningScreen === 1 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Learning Corpus
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
                             47 implementations
                           </span>
@@ -1137,10 +1134,7 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 2 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Pattern Extraction
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             87% Reusable Core
                           </span>
@@ -1172,10 +1166,7 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 3 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Implementation Pack Factory
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
                             9 Packs Available
                           </span>
@@ -1207,10 +1198,7 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 4 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Q2C Operating Model Readiness
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             Complex Enterprise 91% Ready
                           </span>
@@ -1242,10 +1230,7 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 5 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Next Client Simulation
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             86% Foundation Available
                           </span>
@@ -1286,10 +1271,7 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 6 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            Compounding Advantage
-                          </span>
+                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             96% Mapping Confidence
                           </span>
