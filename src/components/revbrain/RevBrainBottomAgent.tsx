@@ -1102,11 +1102,6 @@ export function RevBrainBottomAgent() {
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     {learningScreen === 1 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-slate-400 font-semibold">
-                            47 implementations
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
@@ -1116,29 +1111,11 @@ export function RevBrainBottomAgent() {
                             onComplete={() => setShowButtons(true)}
                           />
                         </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 2 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Inspect learned patterns</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
 
                     {learningScreen === 2 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            87% Reusable Core
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-2"
@@ -1148,29 +1125,11 @@ export function RevBrainBottomAgent() {
                             onComplete={() => setShowButtons(true)}
                           />
                         </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 3 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Open implementation pack</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
 
                     {learningScreen === 3 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-slate-400 font-semibold">
-                            9 Packs Available
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-3"
@@ -1180,29 +1139,11 @@ export function RevBrainBottomAgent() {
                             onComplete={() => setShowButtons(true)}
                           />
                         </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 5 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Simulate next client</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
 
                     {learningScreen === 4 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            Complex Enterprise 91% Ready
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-4"
@@ -1212,29 +1153,11 @@ export function RevBrainBottomAgent() {
                             onComplete={() => setShowButtons(true)}
                           />
                         </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 5 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Simulate next client</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
 
                     {learningScreen === 5 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            86% Foundation Available
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-5"
@@ -1254,16 +1177,6 @@ export function RevBrainBottomAgent() {
                             >
                               <span>Show 3 client questions</span>
                             </button>
-
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 6 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>View compounding advantage</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
                           </div>
                         )}
                       </div>
@@ -1271,11 +1184,6 @@ export function RevBrainBottomAgent() {
 
                     {learningScreen === 6 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-end border-b border-slate-100 pb-2">
-                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            96% Mapping Confidence
-                          </span>
-                        </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-6"
@@ -1295,16 +1203,6 @@ export function RevBrainBottomAgent() {
                             >
                               <span>Explore component library</span>
                               <Sparkles className="w-3.5 h-3.5" />
-                            </button>
-
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 1 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer flex items-center gap-1"
-                            >
-                              <span>Back to Learning Corpus</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         )}
