@@ -1112,7 +1112,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="Across 47 implementations, recurring revenue workflows are increasingly collapsing into reusable components. Complex Enterprise Sales has the deepest coverage; Usage-Based still has the largest learning gaps."
+                            text="Across 47 implementations, RevBrain is increasingly reusing not just business logic, but the agents, workflows, automations, and validation needed to run it. Complex Enterprise Sales currently has the deepest reusable implementation stack."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1126,7 +1126,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show highest-leverage pattern</span>
+                              <span>Show how one is productized</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1138,7 +1138,7 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            2 of 6 · Pattern Decomposition
+                            2 of 6 · Pattern Extraction
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             87% Reusable
@@ -1147,7 +1147,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-2"
-                            text="Across 31 implementations, 87% of approval behavior collapses into reusable logic. The remaining 13% is mostly policy, thresholds, and org structure. The system architecture repeats more than the business parameters."
+                            text="87% of the business behavior repeats — and I can now map that behavior into a reusable agent, workflow, handoffs, and test pack. The architecture repeats more than the client-specific policy."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1161,7 +1161,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Show what can be productized</span>
+                              <span>Show the reusable stack</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1176,13 +1176,13 @@ export function RevBrainBottomAgent() {
                             3 of 6 · Component Factory
                           </span>
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
-                            Approval Routing Core v3
+                            Discount Approval Pack v3
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-3"
-                            text="The architecture is reusable across multiple operating models; client policy stays configurable. This pattern is now validated across 143 business scenarios."
+                            text="This is no longer only a learned pattern. It is now a reusable implementation pack across Agentforce, Flow, Revenue Cloud, Slack, and Knowledge."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1196,7 +1196,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>See readiness</span>
+                              <span>See where it's ready</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1211,13 +1211,13 @@ export function RevBrainBottomAgent() {
                             4 of 6 · Q2C Operating Model Readiness
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            Complex Enterprise 86% Ready
+                            Complex Enterprise 91% Ready
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-4"
-                            text="Complex Enterprise Sales is strongest in approval, pricing, and contracted terms. Renewals still require more client-specific work."
+                            text="For Complex Enterprise Sales, Discount Approval is 91% implementation-ready — the agent, workflow, handoffs, and validation are already reusable. Only the client policy still needs to be captured."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1252,7 +1252,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-5"
-                            text="I can reuse the architecture. I only need the three business policies that make this customer unique. 8 components are already available. Only 3 client decisions remain."
+                            text="I can start this client with the core agents, workflows, automations, and test coverage already prepared. I only need the three policies that make this customer unique."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1296,7 +1296,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-6"
-                            text="We are not learning customer data. We are learning how these revenue operating models are implemented. The next implementation starts further ahead than the last one."
+                            text="RevBrain is learning how these Q2C operating models should be implemented — which agents to use, what to automate, where humans remain, and how to validate the outcome. The next customer starts with more of that implementation already built."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}

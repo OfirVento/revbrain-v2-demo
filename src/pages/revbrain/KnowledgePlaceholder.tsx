@@ -1,11 +1,11 @@
 // ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
 // 6 Guided Productized Screens:
-// 1. Client Learning Corpus (Operating Model Coverage & Learned Pattern Table)
-// 2. Discount Approval — Pattern Decomposition (87% Reusable Core & 13% Policy Variants)
-// 3. Component Factory (Approval Routing Core v3 Pipeline: Observed → Generalized → Validated → Productized → Ready)
-// 4. Q2C Operating Model Readiness (8 Q2C Workflows x 4 Revenue Operating Models Matrix)
-// 5. Next Client Simulation (Complex Enterprise Sales — 86% Foundation, 8 Prebuilt Components, 3 Decisions)
-// 6. Compounding Advantage (Implementation #1 → #6 → #12 Effort & Confidence Progression)
+// 1. Client Learning Corpus (Reusable Implementation Stack: Agents, Workflows, Automations)
+// 2. Discount Approval — Pattern Decomposition (87% Reusable Core -> AI Stack & 13% Policy)
+// 3. Component Factory (Discount Approval Pack v3: Observed → Generalized → Componentized → Validated → Ready)
+// 4. Q2C Operating Model Readiness (10 Q2C Workflows x 4 Revenue Operating Models Matrix + Cell AI Breakdown)
+// 5. Next Client Simulation (Complex Enterprise Sales — 86% AI Stack Prebuilt by Type, 3 Policy Decisions)
+// 6. Compounding Advantage (Implementation #1 → #6 → #12 Reusable Agents & Automations Progression)
 
 import { useState, useEffect } from 'react';
 import {
@@ -25,9 +25,86 @@ import {
   Check,
   TrendingUp,
   TrendingDown,
+  Bot,
+  Zap,
+  GitFork,
   Layers,
+  UserCheck,
   Building,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
+
+/* ── Reusable Component Taxonomy Types ────────────────────────────────── */
+
+export type ComponentTaxonomyType =
+  | 'agent'
+  | 'automation'
+  | 'workflow'
+  | 'foundation'
+  | 'handoff'
+  | 'knowledge'
+  | 'validation';
+
+export interface ComponentTaxonomyMeta {
+  label: string;
+  colorBg: string;
+  colorText: string;
+  borderColor: string;
+  icon: typeof Bot;
+}
+
+export const TAXONOMY_META: Record<ComponentTaxonomyType, ComponentTaxonomyMeta> = {
+  agent: {
+    label: 'AI Agent',
+    colorBg: 'bg-purple-100',
+    colorText: 'text-purple-800',
+    borderColor: 'border-purple-300',
+    icon: Bot,
+  },
+  automation: {
+    label: 'Automation',
+    colorBg: 'bg-amber-100',
+    colorText: 'text-amber-800',
+    borderColor: 'border-amber-300',
+    icon: Zap,
+  },
+  workflow: {
+    label: 'Workflow',
+    colorBg: 'bg-blue-100',
+    colorText: 'text-blue-800',
+    borderColor: 'border-blue-300',
+    icon: GitFork,
+  },
+  foundation: {
+    label: 'Revenue Cloud Foundation',
+    colorBg: 'bg-slate-100',
+    colorText: 'text-slate-800',
+    borderColor: 'border-slate-300',
+    icon: Layers,
+  },
+  handoff: {
+    label: 'Human Handoff',
+    colorBg: 'bg-rose-100',
+    colorText: 'text-rose-800',
+    borderColor: 'border-rose-300',
+    icon: UserCheck,
+  },
+  knowledge: {
+    label: 'Knowledge / Learning',
+    colorBg: 'bg-emerald-100',
+    colorText: 'text-emerald-800',
+    borderColor: 'border-emerald-300',
+    icon: Brain,
+  },
+  validation: {
+    label: 'Validation',
+    colorBg: 'bg-teal-100',
+    colorText: 'text-teal-800',
+    borderColor: 'border-teal-300',
+    icon: ShieldCheck,
+  },
+};
 
 /* ── 4 Global Revenue Operating Models ──────────────────────────────── */
 
@@ -65,25 +142,29 @@ export const REVENUE_OPERATING_MODELS: RevenueOperatingModel[] = [
   },
 ];
 
-/* ── Q2C Workflows x 4 Models Matrix Data (Screen 4) ────────────────── */
+/* ── Q2C Workflows Matrix Data (Screen 4) ────────────────────────────── */
 
 export interface Q2CMatrixRow {
+  id: string;
   workflow: string;
   saas: number;
   usage: number;
   enterprise: number;
   productsServices: number;
+  isExtra?: boolean;
 }
 
 export const Q2C_WORKFLOW_MATRIX: Q2CMatrixRow[] = [
-  { workflow: '1. Quote Creation', saas: 86, usage: 78, enterprise: 88, productsServices: 82 },
-  { workflow: '2. Bundle Configuration', saas: 74, usage: 61, enterprise: 77, productsServices: 90 },
-  { workflow: '3. Pricing & Discounts', saas: 86, usage: 92, enterprise: 88, productsServices: 79 },
-  { workflow: '4. Discount Approval', saas: 82, usage: 71, enterprise: 91, productsServices: 84 },
-  { workflow: '5. Contracted Pricing', saas: 72, usage: 68, enterprise: 89, productsServices: 81 },
-  { workflow: '6. Renewals & Amendments', saas: 89, usage: 64, enterprise: 72, productsServices: 58 },
-  { workflow: '7. Quote Documents', saas: 83, usage: 76, enterprise: 85, productsServices: 88 },
-  { workflow: '8. Quote-to-Order', saas: 76, usage: 81, enterprise: 84, productsServices: 86 },
+  { id: '1', workflow: '1. Quote Creation', saas: 86, usage: 78, enterprise: 88, productsServices: 82 },
+  { id: '2', workflow: '2. Bundle / Product Config', saas: 74, usage: 61, enterprise: 77, productsServices: 90 },
+  { id: '3', workflow: '3. Pricing & Discounts', saas: 86, usage: 92, enterprise: 88, productsServices: 79 },
+  { id: '4', workflow: '4. Discount Approvals & Exceptions', saas: 82, usage: 71, enterprise: 91, productsServices: 84 },
+  { id: '5', workflow: '5. Contracted / Account Pricing', saas: 72, usage: 68, enterprise: 89, productsServices: 81 },
+  { id: '6', workflow: '6. Renewals & Amendments', saas: 89, usage: 64, enterprise: 72, productsServices: 58 },
+  { id: '7', workflow: '7. Quote Documents', saas: 83, usage: 76, enterprise: 85, productsServices: 88 },
+  { id: '8', workflow: '8. Quote-to-Order', saas: 76, usage: 81, enterprise: 84, productsServices: 86 },
+  { id: '9', workflow: '9. Product / Pricing Changes', saas: 78, usage: 85, enterprise: 81, productsServices: 76, isExtra: true },
+  { id: '10', workflow: '10. Quote Issues / Exceptions', saas: 80, usage: 74, enterprise: 87, productsServices: 83, isExtra: true },
 ];
 
 /* ── Main Component ────────────────────────────────────────────────── */
@@ -91,9 +172,13 @@ export const Q2C_WORKFLOW_MATRIX: Q2CMatrixRow[] = [
 export function KnowledgePlaceholder() {
   const [screen, setScreen] = useState<number>(1);
   const [selectedModel, setSelectedModel] = useState<string>('Complex Enterprise Sales');
+  const [selectedRowId, setSelectedRowId] = useState<string>('4');
+  const [showExtraWorkflows, setShowExtraWorkflows] = useState<boolean>(false);
+
   const [showQuestionsModal, setShowQuestionsModal] = useState<boolean>(false);
   const [showLibraryDrawer, setShowLibraryDrawer] = useState<boolean>(false);
   const [showLineagePopover, setShowLineagePopover] = useState<boolean>(false);
+  const [expandedCorpusRow, setExpandedCorpusRow] = useState<string | null>(null);
 
   // Broadcast screen change to RevBrainBottomAgent
   useEffect(() => {
@@ -131,6 +216,12 @@ export function KnowledgePlaceholder() {
     };
   }, []);
 
+  const visibleMatrixRows = showExtraWorkflows
+    ? Q2C_WORKFLOW_MATRIX
+    : Q2C_WORKFLOW_MATRIX.filter((r) => !r.isExtra);
+
+  const selectedMatrixRow = Q2C_WORKFLOW_MATRIX.find((r) => r.id === selectedRowId) || Q2C_WORKFLOW_MATRIX[3];
+
   return (
     <div className="w-full flex flex-col min-h-[calc(100vh-140px)] bg-slate-100/60 text-slate-800 font-sans">
       <div className="max-w-[1440px] mx-auto w-full px-6 pt-5 pb-20 space-y-4 flex-1">
@@ -154,11 +245,11 @@ export function KnowledgePlaceholder() {
               </span>
               <h1 className="text-base font-bold text-slate-900">
                 {screen === 1 && 'Client Learning Corpus'}
-                {screen === 2 && 'Discount Approval — Pattern Decomposition'}
-                {screen === 3 && 'Component Factory'}
+                {screen === 2 && 'Discount Approvals & Exceptions — Pattern Extraction'}
+                {screen === 3 && 'Component Factory — Discount Approval Pack v3'}
                 {screen === 4 && 'Q2C Operating Model Readiness'}
                 {screen === 5 && 'Next Client Simulation'}
-                {screen === 6 && 'Compounding Implementation Advantage'}
+                {screen === 6 && 'Compounding AI Implementation Advantage'}
               </h1>
             </div>
           </div>
@@ -195,7 +286,7 @@ export function KnowledgePlaceholder() {
         {screen === 1 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
             <div className="space-y-6">
-              
+
               {/* Top Block: 4 Revenue Operating Models */}
               <div className="space-y-2">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
@@ -220,11 +311,14 @@ export function KnowledgePlaceholder() {
                 </div>
               </div>
 
-              {/* Learned Pattern Table / Cards */}
+              {/* Learned Pattern Table / Cards — Productized Implementation Stack */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Learned Areas &amp; Reusable Components
+                    Q2C Learned Areas &amp; Reusable Implementation IP
+                  </span>
+                  <span className="text-[10px] text-violet-600 font-semibold italic">
+                    Click any area to inspect its reusable implementation stack
                   </span>
                 </div>
 
@@ -232,68 +326,131 @@ export function KnowledgePlaceholder() {
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-slate-50 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-200 font-mono">
-                        <th className="p-3 pl-4">Learned Pattern</th>
+                        <th className="p-3 pl-4">Q2C Learned Area</th>
                         <th className="p-3 text-right">Implementations</th>
-                        <th className="p-3 text-right">Shared Behavior</th>
-                        <th className="p-3 pr-4">Productized State</th>
+                        <th className="p-3 text-right">Reusable Logic</th>
+                        <th className="p-3 pr-4">Reusable Implementation Stack</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-medium">
-                      {/* Highlighted Pattern: Discount Approval */}
+                      
+                      {/* 1. Discount Approvals & Exceptions (Highlighted) */}
                       <tr
                         onClick={() => setScreen(2)}
                         className="bg-violet-50/80 hover:bg-violet-100/80 text-slate-900 font-bold transition-colors cursor-pointer ring-1 ring-violet-200"
                       >
-                        <td className="p-3 pl-4 flex items-center gap-2 text-violet-950">
+                        <td className="p-3 pl-4 text-violet-950 flex items-center gap-2">
                           <Sparkles className="w-3.5 h-3.5 text-violet-600 shrink-0" />
-                          <span>Discount Approval</span>
+                          <span>Discount Approvals &amp; Exceptions</span>
                         </td>
                         <td className="p-3 text-right font-mono text-violet-900">31</td>
                         <td className="p-3 text-right font-mono text-emerald-700 font-bold">87%</td>
-                        <td className="p-3 pr-4 text-violet-800">Approval Routing Core v3</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex flex-wrap items-center gap-1.5 text-[10px]">
+                            <span className="px-2 py-0.5 bg-purple-100 text-purple-800 font-bold rounded border border-purple-200 flex items-center gap-1">
+                              <Bot className="w-3 h-3 text-purple-600" />
+                              <span>Discount Exception Agent</span>
+                            </span>
+                            <span className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded border border-blue-200">
+                              Margin-Risk Flow
+                            </span>
+                            <span className="px-2 py-0.5 bg-amber-100 text-amber-800 rounded border border-amber-200">
+                              Follow-Up Auto
+                            </span>
+                            <span className="px-2 py-0.5 bg-rose-100 text-rose-800 rounded border border-rose-200">
+                              Slack Approval
+                            </span>
+                            <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-200">
+                              Decision Loop
+                            </span>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr className="hover:bg-slate-50 transition-colors">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Pricing Procedure</td>
+                      {/* 2. Pricing & Discounts */}
+                      <tr
+                        onClick={() => setExpandedCorpusRow(expandedCorpusRow === 'pricing' ? null : 'pricing')}
+                        className="hover:bg-slate-50 transition-colors cursor-pointer"
+                      >
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Pricing &amp; Discounts</td>
                         <td className="p-3 text-right font-mono text-slate-600">24</td>
-                        <td className="p-3 text-right font-mono text-emerald-600">84%</td>
-                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Pricing Core v2</td>
+                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">84%</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Foundation</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
+                            <span className="text-slate-400 font-semibold italic">Pricing Context Agent · Procedure · Validation</span>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr className="hover:bg-slate-50 transition-colors">
+                      {/* 3. Quote-to-Order */}
+                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
                         <td className="p-3 pl-4 font-semibold text-slate-800">Quote-to-Order</td>
                         <td className="p-3 text-right font-mono text-slate-600">21</td>
-                        <td className="p-3 text-right font-mono text-emerald-600">78%</td>
-                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Handoff Core v2</td>
+                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">78%</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Validation</span>
+                            <span className="text-slate-400 font-semibold italic">Handoff Agent · Readiness Auto · Order Test</span>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr className="hover:bg-slate-50 transition-colors">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Bundle Configuration</td>
+                      {/* 4. Bundle / Product Configuration */}
+                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Bundle / Product Configuration</td>
                         <td className="p-3 text-right font-mono text-slate-600">19</td>
-                        <td className="p-3 text-right font-mono text-emerald-600">81%</td>
-                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Bundle Logic v2</td>
+                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">81%</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Validation</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
+                            <span className="text-slate-400 font-semibold italic">Configuration Agent · Dependency Pack</span>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr className="hover:bg-slate-50 transition-colors">
+                      {/* 5. Renewals & Amendments */}
+                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
                         <td className="p-3 pl-4 font-semibold text-slate-800">Renewals &amp; Amendments</td>
                         <td className="p-3 text-right font-mono text-slate-600">18</td>
-                        <td className="p-3 text-right font-mono text-emerald-600">79%</td>
-                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Renewal Core v1</td>
+                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">79%</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Automation</span>
+                            <span className="text-slate-400 font-semibold italic">Renewal Amendment Agent · Risk Flow</span>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr className="hover:bg-slate-50 transition-colors">
-                        <td className="p-3 pl-4 font-semibold text-slate-800">Contracted Pricing</td>
+                      {/* 6. Contracted / Account-Specific Pricing */}
+                      <tr className="hover:bg-slate-50 transition-colors cursor-pointer">
+                        <td className="p-3 pl-4 font-semibold text-slate-800">Contracted / Account Pricing</td>
                         <td className="p-3 text-right font-mono text-slate-600">14</td>
-                        <td className="p-3 text-right font-mono text-emerald-600">76%</td>
-                        <td className="p-3 pr-4 text-slate-700 font-mono text-[11px]">Pricing Context v2</td>
+                        <td className="p-3 text-right font-mono text-emerald-600 font-bold">76%</td>
+                        <td className="p-3 pr-4">
+                          <div className="flex items-center gap-1.5 text-[10px] text-slate-700 font-mono">
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Agent</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Foundation</span>
+                            <span className="px-1.5 py-0.5 bg-slate-100 rounded border border-slate-200">1 Flow</span>
+                            <span className="text-slate-400 font-semibold italic">Contract Pricing Agent · Terms Procedure</span>
+                          </div>
+                        </td>
                       </tr>
+
                     </tbody>
                   </table>
                 </div>
               </div>
 
             </div>
-
           </div>
         )}
 
@@ -308,10 +465,10 @@ export function KnowledgePlaceholder() {
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Pattern Decomposition Focus
+                    Pattern Extraction &amp; Software Mapping
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Discount Approval — Pattern Decomposition
+                    Discount Approvals &amp; Exceptions — Pattern Decomposition
                   </h2>
                 </div>
                 <div className="text-right">
@@ -322,24 +479,23 @@ export function KnowledgePlaceholder() {
                 </div>
               </div>
 
-              {/* Two Main Columns: Reusable Core (87%) vs Client-Specific (13%) */}
+              {/* Two Main Columns: Learned Business Behavior vs Reusable Implementation Stack */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
-                {/* Left: Reusable Core — 87% */}
+                {/* Left: Reusable Core — Learned Business Behavior */}
                 <div className="bg-emerald-50/60 border-2 border-emerald-300 rounded-2xl p-5 space-y-4 shadow-2xs">
                   <div className="flex items-center justify-between border-b border-emerald-200 pb-2.5">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                      <h3 className="text-base font-bold text-emerald-950">Reusable Core — 87%</h3>
+                      <h3 className="text-base font-bold text-emerald-950">Learned Business Behavior — 87%</h3>
                     </div>
                     <span className="text-xs font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-emerald-300">
-                      8 Recurring Logic Patterns
+                      Repeating Logic
                     </span>
                   </div>
 
-                  {/* 8 Recurring Logic Patterns */}
                   <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-800">
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">1. Margin threshold eval</div>
+                    <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">1. Margin threshold evaluation</div>
                     <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">2. Approval-path selection</div>
                     <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">3. Manager routing</div>
                     <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">4. Finance risk escalation</div>
@@ -349,83 +505,82 @@ export function KnowledgePlaceholder() {
                     <div className="p-2 bg-white rounded-lg border border-emerald-200 shadow-2xs">8. Post-approval writeback</div>
                   </div>
 
-                  {/* Common Implementation Components */}
-                  <div className="border-t border-emerald-200 pt-3 space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block">
-                      Common Implementation Components
-                    </span>
-                    <div className="flex flex-wrap gap-1.5 text-[11px] font-medium text-slate-700">
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Revenue Cloud pricing context</span>
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Flow routing</span>
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Human approval handoff</span>
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Agent recommendation</span>
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Knowledge capture</span>
-                      <span className="px-2 py-0.5 bg-white rounded border border-emerald-200">Regression validation</span>
-                    </div>
-                  </div>
+                  <p className="text-[11px] text-emerald-900 font-medium border-t border-emerald-200 pt-2 italic">
+                    The repeating business unit translates directly into standard software components.
+                  </p>
                 </div>
 
-                {/* Right: Client-Specific — 13% */}
-                <div className="bg-slate-50 border-2 border-slate-300 rounded-2xl p-5 space-y-4 shadow-2xs">
+                {/* Right: Reusable Implementation Stack (Mapped Components) */}
+                <div className="bg-slate-50 border-2 border-violet-300 rounded-2xl p-5 space-y-3.5 shadow-2xs">
                   <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
                     <div className="flex items-center gap-2">
-                      <Sliders className="w-5 h-5 text-slate-700" />
-                      <h3 className="text-base font-bold text-slate-900">Client-Specific — 13%</h3>
+                      <Sparkles className="w-5 h-5 text-violet-600" />
+                      <h3 className="text-base font-bold text-slate-900">Reusable Implementation Stack</h3>
                     </div>
-                    <span className="text-xs font-bold text-slate-700 bg-white px-2.5 py-1 rounded-full border border-slate-300">
-                      46 Observed Variants
+                    <span className="text-xs font-bold text-violet-800 bg-violet-100 px-2.5 py-1 rounded-full border border-violet-300">
+                      6 Mapped Layers
                     </span>
                   </div>
 
-                  {/* 8 Observed Variants list */}
-                  <div className="space-y-1.5 text-xs font-semibold text-slate-800">
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>Threshold values</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">11 variants</span>
+                  <div className="space-y-2 text-xs">
+                    {/* Agent */}
+                    <div className="p-2.5 bg-white rounded-xl border border-purple-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Bot className="w-4 h-4 text-purple-600" />
+                        <span className="font-bold text-purple-900">AI Agent</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Discount Exception Agent</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>Approver hierarchy</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">8 variants</span>
+
+                    {/* Workflow */}
+                    <div className="p-2.5 bg-white rounded-xl border border-blue-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <GitFork className="w-4 h-4 text-blue-600" />
+                        <span className="font-bold text-blue-900">Workflow</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Margin-Risk Approval Flow</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>Strategic-account definition</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">7 variants</span>
+
+                    {/* Automations */}
+                    <div className="p-2.5 bg-white rounded-xl border border-amber-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Zap className="w-4 h-4 text-amber-600" />
+                        <span className="font-bold text-amber-900">Automations</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Approval routing · Follow-up + escalation</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>Finance escalation policy</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">6 variants</span>
+
+                    {/* Human Handoffs */}
+                    <div className="p-2.5 bg-white rounded-xl border border-rose-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <UserCheck className="w-4 h-4 text-rose-600" />
+                        <span className="font-bold text-rose-900">Human Handoffs</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Slack Manager approval · Finance review</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>SLA / escalation timing</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">5 variants</span>
+
+                    {/* Knowledge */}
+                    <div className="p-2.5 bg-white rounded-xl border border-emerald-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Brain className="w-4 h-4 text-emerald-600" />
+                        <span className="font-bold text-emerald-900">Knowledge</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Decision + rationale capture</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-                      <span>Contracted pricing precedence</span>
-                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">4 variants</span>
+
+                    {/* Validation */}
+                    <div className="p-2.5 bg-white rounded-xl border border-teal-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-teal-600" />
+                        <span className="font-bold text-teal-900">Validation</span>
+                      </div>
+                      <span className="font-semibold text-slate-800">Approval Behavior Test Pack</span>
                     </div>
                   </div>
-
-                  <p className="text-[11px] text-slate-500 font-medium border-t border-slate-200 pt-2">
-                    The system architecture repeats far more than the business parameters.
-                  </p>
                 </div>
 
               </div>
 
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                The remaining 13% consists of configurable policy thresholds and org hierarchy.
-              </span>
-              <button
-                onClick={() => setScreen(3)}
-                className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <span>Show what can be productized</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         )}
@@ -441,10 +596,10 @@ export function KnowledgePlaceholder() {
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Productization Pipeline
+                    AI-First Implementation Pack
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Component Factory: Approval Routing Core v3
+                    Component Factory: Discount Approval Pack v3
                   </h2>
                 </div>
 
@@ -454,28 +609,28 @@ export function KnowledgePlaceholder() {
                     onClick={() => setShowLineagePopover(!showLineagePopover)}
                     className="text-xs font-semibold text-violet-600 hover:text-violet-800 underline underline-offset-2 transition-colors flex items-center gap-1 cursor-pointer"
                   >
-                    <span>View lineage</span>
+                    <span>View pack lineage</span>
                     <HelpCircle className="w-3.5 h-3.5" />
                   </button>
 
                   {showLineagePopover && (
-                    <div className="absolute right-0 top-full mt-2 w-72 bg-slate-900 text-slate-100 rounded-xl p-4 shadow-xl border border-slate-800 text-xs space-y-2 z-50 animate-fadeIn">
+                    <div className="absolute right-0 top-full mt-2 w-80 bg-slate-900 text-slate-100 rounded-xl p-4 shadow-xl border border-slate-800 text-xs space-y-2 z-50 animate-fadeIn">
                       <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                        <span className="font-bold text-violet-300 uppercase text-[10px] tracking-wider">Component Lineage</span>
+                        <span className="font-bold text-violet-300 uppercase text-[10px] tracking-wider">Pack Lineage &amp; Stack</span>
                         <button onClick={() => setShowLineagePopover(false)} className="text-slate-400 hover:text-white cursor-pointer">
                           <X className="w-3.5 h-3.5" />
                         </button>
                       </div>
                       <p><strong className="text-white">Observed:</strong> 31 implementations</p>
-                      <p><strong className="text-white">Generalized:</strong> 8 recurring logic patterns</p>
+                      <p><strong className="text-white">Generalized:</strong> 87% shared behavior</p>
+                      <p><strong className="text-white">Componentized:</strong> 1 Agent · 1 Flow · 2 Automations · 2 Handoffs · 1 Knowledge</p>
                       <p><strong className="text-white">Validated:</strong> 143 business scenarios</p>
-                      <p><strong className="text-white">Productized:</strong> Revenue Cloud + Flow + Agentforce</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* 5 Pipeline Stages: Observed -> Generalized -> Validated -> Productized -> Ready */}
+              {/* 5 Pipeline Stages: Observed -> Generalized -> Componentized -> Validated -> Ready */}
               <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2">
                 
                 {/* 1. Observed */}
@@ -485,9 +640,9 @@ export function KnowledgePlaceholder() {
                   </div>
                   <span className="text-xs font-bold text-slate-900 block">1. Observed</span>
                   <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    31 implementations
+                    31 impls
                   </span>
-                  <p className="text-[10px] text-slate-500">Raw CPQ &amp; Approval logs</p>
+                  <p className="text-[10px] text-slate-500">Raw logs &amp; approvals</p>
                 </div>
 
                 {/* 2. Generalized */}
@@ -497,33 +652,33 @@ export function KnowledgePlaceholder() {
                   </div>
                   <span className="text-xs font-bold text-slate-900 block">2. Generalized</span>
                   <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    8 recurring patterns
+                    87% shared logic
                   </span>
-                  <p className="text-[10px] text-slate-500">Standard logic abstraction</p>
+                  <p className="text-[10px] text-slate-500">Logic abstraction</p>
                 </div>
 
-                {/* 3. Validated */}
+                {/* 3. Componentized */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
+                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <Layers className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-900 block">3. Componentized</span>
+                  <span className="text-[11px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">
+                    1 Agent · 1 Flow · 2 Autos
+                  </span>
+                  <p className="text-[10px] text-slate-500">Stack decomposition</p>
+                </div>
+
+                {/* 4. Validated */}
                 <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
                   <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-bold text-slate-900 block">3. Validated</span>
+                  <span className="text-xs font-bold text-slate-900 block">4. Validated</span>
                   <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
                     143 scenarios
                   </span>
-                  <p className="text-[10px] text-slate-500">Automated test pack pass</p>
-                </div>
-
-                {/* 4. Productized */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                    <Package className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 block">4. Productized</span>
-                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    Revenue Cloud + Flow
-                  </span>
-                  <p className="text-[10px] text-slate-500">+ Agentforce Integration</p>
+                  <p className="text-[10px] text-slate-500">Test pack certified</p>
                 </div>
 
                 {/* 5. Ready */}
@@ -535,47 +690,100 @@ export function KnowledgePlaceholder() {
                   <span className="text-[11px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">
                     Next Client Ready
                   </span>
-                  <p className="text-[10px] text-emerald-700 font-medium">Pre-built &amp; certified</p>
+                  <p className="text-[10px] text-emerald-700 font-medium">Prebuilt Pack</p>
                 </div>
 
               </div>
 
-              {/* Small Metadata & Validated Operating Models */}
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
-                <div className="font-mono text-slate-700 font-semibold">
-                  31 implementations · 143 validations · 46 policy variants · 87% reusable
-                </div>
+              {/* Productized Pack Visual Grid */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                  Productized Components in Discount Approval Pack v3
+                </span>
 
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Validated Models:
-                  </span>
-                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
-                    Complex Enterprise Sales
-                  </span>
-                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
-                    Subscription SaaS
-                  </span>
-                  <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-800 font-bold">
-                    Product + Services
-                  </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                  
+                  {/* AI Agent */}
+                  <div className="p-3 bg-purple-50/80 border border-purple-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-purple-200 text-purple-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <Bot className="w-3 h-3 text-purple-700" />
+                        <span>AI Agent</span>
+                      </span>
+                      <span className="text-[10px] text-purple-700 font-bold">Agentforce</span>
+                    </div>
+                    <h4 className="font-bold text-purple-950 text-xs pt-1">Discount Exception Agent</h4>
+                    <p className="text-[10px] text-slate-600">Evaluates margin risk &amp; suggests approval rationale</p>
+                  </div>
+
+                  {/* Workflow */}
+                  <div className="p-3 bg-blue-50/80 border border-blue-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-blue-200 text-blue-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <GitFork className="w-3 h-3 text-blue-700" />
+                        <span>Workflow</span>
+                      </span>
+                      <span className="text-[10px] text-blue-700 font-bold">Flow Builder</span>
+                    </div>
+                    <h4 className="font-bold text-blue-950 text-xs pt-1">Margin-Risk Approval Flow</h4>
+                    <p className="text-[10px] text-slate-600">Routes exceptions based on margin floors &amp; account tiers</p>
+                  </div>
+
+                  {/* Automation */}
+                  <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-amber-200 text-amber-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <Zap className="w-3 h-3 text-amber-700" />
+                        <span>Automation</span>
+                      </span>
+                      <span className="text-[10px] text-amber-700 font-bold">Revenue Cloud</span>
+                    </div>
+                    <h4 className="font-bold text-amber-950 text-xs pt-1">Approval Follow-Up &amp; Escalation</h4>
+                    <p className="text-[10px] text-slate-600">Auto-escalates stalled approvals after SLA expiration</p>
+                  </div>
+
+                  {/* Human Handoff */}
+                  <div className="p-3 bg-rose-50/80 border border-rose-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-rose-200 text-rose-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <UserCheck className="w-3 h-3 text-rose-700" />
+                        <span>Human Handoff</span>
+                      </span>
+                      <span className="text-[10px] text-rose-700 font-bold">Slack API</span>
+                    </div>
+                    <h4 className="font-bold text-rose-950 text-xs pt-1">Slack Manager Approval</h4>
+                    <p className="text-[10px] text-slate-600">Interactive block kit approval cards for manager action</p>
+                  </div>
+
+                  {/* Knowledge */}
+                  <div className="p-3 bg-emerald-50/80 border border-emerald-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-emerald-200 text-emerald-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <Brain className="w-3 h-3 text-emerald-700" />
+                        <span>Knowledge Loop</span>
+                      </span>
+                      <span className="text-[10px] text-emerald-700 font-bold">RevBrain Store</span>
+                    </div>
+                    <h4 className="font-bold text-emerald-950 text-xs pt-1">Decision &amp; Rationale Capture</h4>
+                    <p className="text-[10px] text-slate-600">Stores historical decision reasons to train future recommendations</p>
+                  </div>
+
+                  {/* Validation */}
+                  <div className="p-3 bg-teal-50/80 border border-teal-200 rounded-xl space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 bg-teal-200 text-teal-900 font-bold rounded text-[10px] flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3 text-teal-700" />
+                        <span>Validation</span>
+                      </span>
+                      <span className="text-[10px] text-teal-700 font-bold">Automated Suite</span>
+                    </div>
+                    <h4 className="font-bold text-teal-950 text-xs pt-1">Approval Behavior Test Pack</h4>
+                    <p className="text-[10px] text-slate-600">143 regression tests verifying rule execution accuracy</p>
+                  </div>
+
                 </div>
               </div>
 
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                The architecture is reusable across multiple operating models; client policy stays configurable.
-              </span>
-              <button
-                onClick={() => setScreen(4)}
-                className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <span>See readiness</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         )}
@@ -590,24 +798,33 @@ export function KnowledgePlaceholder() {
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    Productization Coverage Matrix
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
+                      Productization Coverage Matrix
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-medium bg-slate-50 px-2.5 py-0.5 rounded border border-slate-200">
+                      Readiness = reusable agents + workflows + automations + foundation + validation
+                    </span>
+                  </div>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Q2C Operating Model Readiness
+                    Q2C Operating Model Implementation Readiness
                   </h2>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-slate-700 block">8 Quote-to-Cash Workflows</span>
-                  <span className="text-[11px] text-slate-400 font-semibold">Click a model header to focus</span>
+                  <button
+                    onClick={() => setShowExtraWorkflows(!showExtraWorkflows)}
+                    className="text-xs font-semibold text-violet-600 hover:text-violet-800 underline underline-offset-2 cursor-pointer"
+                  >
+                    {showExtraWorkflows ? 'Show core 8 workflows' : '+ Product Changes · Exceptions · and more...'}
+                  </button>
                 </div>
               </div>
 
-              {/* 8 Workflows x 4 Operating Models Matrix */}
+              {/* 10 Workflows x 4 Operating Models Matrix */}
               <div className="space-y-2">
-                <div className="grid grid-cols-[200px_1fr_1fr_1fr_1fr] gap-2 text-xs font-bold text-center">
+                <div className="grid grid-cols-[220px_1fr_1fr_1fr_1fr] gap-2 text-xs font-bold text-center">
                   <div className="text-left text-slate-400 uppercase tracking-wider text-[10px] self-end pb-1 pl-2">
-                    Q2C Workflow
+                    Q2C Workflow Area
                   </div>
 
                   {REVENUE_OPERATING_MODELS.map((model) => (
@@ -629,9 +846,18 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Matrix Rows */}
-                {Q2C_WORKFLOW_MATRIX.map((row) => (
-                  <div key={row.workflow} className="grid grid-cols-[200px_1fr_1fr_1fr_1fr] gap-2 items-center text-xs">
-                    <div className="text-slate-900 font-bold pl-2 truncate">{row.workflow}</div>
+                {visibleMatrixRows.map((row) => (
+                  <div
+                    key={row.id}
+                    onClick={() => setSelectedRowId(row.id)}
+                    className={`grid grid-cols-[220px_1fr_1fr_1fr_1fr] gap-2 items-center text-xs rounded-xl transition-all cursor-pointer ${
+                      selectedRowId === row.id ? 'bg-violet-50/50 p-1 border border-violet-200' : 'p-0.5'
+                    }`}
+                  >
+                    <div className="text-slate-900 font-bold pl-2 truncate flex items-center justify-between pr-2">
+                      <span>{row.workflow}</span>
+                      {selectedRowId === row.id && <Sparkles className="w-3 h-3 text-violet-600 shrink-0" />}
+                    </div>
 
                     {/* Subscription SaaS */}
                     <div className={`p-2 rounded-xl text-center border font-mono font-bold transition-all ${
@@ -671,35 +897,56 @@ export function KnowledgePlaceholder() {
                   </div>
                 ))}
 
-                {/* Selected Model Focus Summary Banner */}
-                <div className="p-3.5 bg-violet-50/90 border border-violet-200 rounded-xl flex items-center justify-between text-xs text-violet-900 mt-3">
-                  <div className="flex items-center gap-2">
-                    <Building className="w-4 h-4 text-violet-600 shrink-0" />
-                    <span className="font-bold">{selectedModel} Readiness Focus:</span>
-                    <span className="font-medium">
-                      Discount Approval 91% · Contracted Pricing 89% · Pricing 88% · Quote Creation 88% · and more...
+                {/* Selected Cell AI-First Implementation Stack Breakdown */}
+                <div className="p-4 bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 text-white rounded-xl shadow-lg border border-violet-500/30 text-xs space-y-2 mt-3">
+                  <div className="flex items-center justify-between border-b border-violet-700/50 pb-2">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-violet-300 shrink-0" />
+                      <span className="font-bold text-white text-sm">
+                        {selectedModel} · {selectedMatrixRow.workflow}
+                      </span>
+                    </div>
+                    <span className="font-mono font-extrabold text-emerald-400 text-sm bg-white/10 px-2.5 py-0.5 rounded border border-white/20">
+                      {selectedModel === 'Complex Enterprise Sales'
+                        ? `${selectedMatrixRow.enterprise}% Implementation Ready`
+                        : `${selectedMatrixRow.saas}% Implementation Ready`}
                     </span>
                   </div>
-                  <span className="font-bold text-violet-800 bg-white px-2.5 py-1 rounded border border-violet-300 shrink-0 font-mono">
-                    86% Avg Coverage
-                  </span>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pt-1 font-semibold text-[11px]">
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-purple-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>AI Agent</span>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-blue-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Workflow</span>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-amber-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Automation</span>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-rose-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Human Handoffs</span>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-emerald-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Knowledge</span>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg flex items-center gap-1.5 text-teal-200">
+                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Validation</span>
+                    </div>
+                  </div>
+
+                  <div className="text-[11px] text-violet-200 pt-1 font-medium flex items-center gap-2">
+                    <span className="font-bold text-amber-300">Still Client-Specific:</span>
+                    <span>Margin threshold policy · Approver escalation hierarchy</span>
+                  </div>
                 </div>
               </div>
 
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                Complex Enterprise Sales is strongest in approval, pricing, and contracted terms.
-              </span>
-              <button
-                onClick={() => setScreen(5)}
-                className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <span>Simulate next client</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         )}
@@ -731,97 +978,111 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* 86% Foundation Banner */}
-              <div className="p-6 bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 text-white rounded-2xl shadow-lg border border-violet-500/30 flex items-center justify-between">
+              <div className="p-5 bg-gradient-to-r from-violet-900 via-indigo-900 to-slate-900 text-white rounded-2xl shadow-lg border border-violet-500/30 flex items-center justify-between">
                 <div className="space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-violet-300 block">Pre-Discovery Foundation</span>
-                  <h3 className="text-3xl font-extrabold text-white tracking-tight">
-                    86% implementation foundation already available
+                  <span className="text-xs font-bold uppercase tracking-wider text-violet-300 block">AI-First Foundation</span>
+                  <h3 className="text-2xl font-extrabold text-white tracking-tight">
+                    86% of the implementation foundation is already available
                   </h3>
-                  <p className="text-xs text-slate-300 font-medium pt-0.5">
-                    8 components prebuilt · 3 business decisions still needed
+                  <p className="text-xs text-slate-300 font-medium">
+                    RevBrain loads 12 implementation components immediately by type · 3 business decisions needed
                   </p>
                 </div>
-                <div className="p-4 bg-white/10 rounded-xl backdrop-blur-md border border-white/20 text-center font-mono">
-                  <span className="text-2xl font-black text-emerald-400 block">8 / 11</span>
+                <div className="p-3.5 bg-white/10 rounded-xl backdrop-blur-md border border-white/20 text-center font-mono">
+                  <span className="text-xl font-black text-emerald-400 block">12 / 15</span>
                   <span className="text-[10px] font-bold uppercase text-slate-200">Prebuilt Artifacts</span>
                 </div>
               </div>
 
-              {/* Ready vs Still Client-Specific Columns */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+              {/* RevBrain Loads Immediately (Grouped by Component Type) vs Still Client-Specific */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
                 
-                {/* READY FROM PREVIOUS LEARNING (8 components) */}
-                <div className="p-4 bg-emerald-50/60 border border-emerald-200 rounded-xl space-y-3">
-                  <div className="flex items-center justify-between border-b border-emerald-200 pb-2">
-                    <span className="font-bold text-emerald-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                      READY FROM PREVIOUS LEARNING
-                    </span>
-                    <span className="text-[10px] font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
-                      8 Components
-                    </span>
-                  </div>
+                {/* 1. AI AGENTS & WORKFLOWS */}
+                <div className="p-4 bg-purple-50/50 border border-purple-200 rounded-xl space-y-3">
+                  <span className="font-bold text-purple-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5 border-b border-purple-200 pb-1.5">
+                    <Bot className="w-4 h-4 text-purple-600" />
+                    AI AGENTS &amp; WORKFLOWS
+                  </span>
 
-                  <div className="grid grid-cols-2 gap-2 text-slate-800 font-semibold">
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Approval Routing Core</span>
+                  <div className="space-y-1.5 text-slate-800 font-semibold">
+                    <div className="p-2 bg-white rounded-lg border border-purple-200 flex items-center justify-between">
+                      <span>Discount Exception Agent</span>
+                      <span className="text-[9px] font-mono bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">Agent</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Margin Risk Classification</span>
+                    <div className="p-2 bg-white rounded-lg border border-purple-200 flex items-center justify-between">
+                      <span>Pricing Context Agent</span>
+                      <span className="text-[9px] font-mono bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">Agent</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Pricing Context</span>
+                    <div className="p-2 bg-white rounded-lg border border-purple-200 flex items-center justify-between">
+                      <span>Margin Analysis Agent</span>
+                      <span className="text-[9px] font-mono bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold">Agent</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Strategic Exception Handling</span>
+                    <div className="p-2 bg-white rounded-lg border border-blue-200 flex items-center justify-between">
+                      <span>Margin-Risk Approval Flow</span>
+                      <span className="text-[9px] font-mono bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-bold">Flow</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Human Approval Handoff</span>
-                    </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Validation Pack</span>
-                    </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Quote Document Mapping</span>
-                    </div>
-                    <div className="p-2 bg-white rounded-lg border border-emerald-200 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Quote-to-Order Handoff</span>
+                    <div className="p-2 bg-white rounded-lg border border-blue-200 flex items-center justify-between">
+                      <span>Strategic Exception Flow</span>
+                      <span className="text-[9px] font-mono bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-bold">Flow</span>
                     </div>
                   </div>
                 </div>
 
-                {/* STILL CLIENT-SPECIFIC (3 decisions) */}
-                <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-3">
-                  <div className="flex items-center justify-between border-b border-amber-200 pb-2">
+                {/* 2. AUTOMATIONS, HANDOFFS & TESTS */}
+                <div className="p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl space-y-3">
+                  <span className="font-bold text-emerald-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5 border-b border-emerald-200 pb-1.5">
+                    <Zap className="w-4 h-4 text-emerald-600" />
+                    AUTOMATIONS, HANDOFFS &amp; TESTS
+                  </span>
+
+                  <div className="space-y-1.5 text-slate-800 font-semibold">
+                    <div className="p-2 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
+                      <span>Approval Routing &amp; Follow-Up</span>
+                      <span className="text-[9px] font-mono bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">Auto</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
+                      <span>Quote Validation Engine</span>
+                      <span className="text-[9px] font-mono bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">Auto</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-rose-200 flex items-center justify-between">
+                      <span>Slack Manager Approval</span>
+                      <span className="text-[9px] font-mono bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded font-bold">Handoff</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-rose-200 flex items-center justify-between">
+                      <span>Finance Escalation Channel</span>
+                      <span className="text-[9px] font-mono bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded font-bold">Handoff</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-teal-200 flex items-center justify-between">
+                      <span>Decision Capture &amp; Regression Pack</span>
+                      <span className="text-[9px] font-mono bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-bold">Test</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. STILL CLIENT-SPECIFIC (3 Decisions) */}
+                <div className="p-4 bg-amber-50/70 border-2 border-amber-300 rounded-xl space-y-3">
+                  <div className="flex items-center justify-between border-b border-amber-200 pb-1.5">
                     <span className="font-bold text-amber-950 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
                       <Sliders className="w-4 h-4 text-amber-600" />
                       STILL CLIENT-SPECIFIC
                     </span>
-                    <span className="text-[10px] font-bold text-amber-800 bg-white px-2 py-0.5 rounded border border-amber-200">
-                      3 Business Decisions
+                    <span className="text-[10px] font-bold text-amber-800 bg-white px-2 py-0.5 rounded border border-amber-300">
+                      3 Decisions
                     </span>
                   </div>
 
                   <div className="space-y-2 text-slate-800 font-semibold">
                     <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
-                      <span>1. CFO margin policy floor</span>
-                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy Input</span>
+                      <span>1. CFO margin threshold</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy</span>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
-                      <span>2. Strategic-account criteria</span>
-                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy Input</span>
+                      <span>2. Strategic-account policy</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Policy</span>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-amber-200 flex items-center justify-between">
-                      <span>3. Approver escalation hierarchy</span>
-                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Org Matrix</span>
+                      <span>3. Approver hierarchy</span>
+                      <span className="text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">Org</span>
                     </div>
                   </div>
 
@@ -849,34 +1110,20 @@ export function KnowledgePlaceholder() {
                   <div className="grid grid-cols-3 gap-3 text-xs">
                     <div className="p-3 bg-slate-800 rounded-lg space-y-1">
                       <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 1</span>
-                      <p className="font-semibold text-slate-200">What is the CFO margin floor?</p>
+                      <p className="font-semibold text-slate-200">What is the CFO margin floor threshold?</p>
                     </div>
                     <div className="p-3 bg-slate-800 rounded-lg space-y-1">
                       <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 2</span>
-                      <p className="font-semibold text-slate-200">Which accounts qualify as strategic?</p>
+                      <p className="font-semibold text-slate-200">Which account tiers qualify for strategic overrides?</p>
                     </div>
                     <div className="p-3 bg-slate-800 rounded-lg space-y-1">
                       <span className="text-[10px] font-mono text-slate-400 uppercase font-bold">Question 3</span>
-                      <p className="font-semibold text-slate-200">Who owns final escalation?</p>
+                      <p className="font-semibold text-slate-200">Who owns final escalation approval hierarchy?</p>
                     </div>
                   </div>
                 </div>
               )}
 
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                I only need the three business policies that make this customer unique.
-              </span>
-              <button
-                onClick={() => setScreen(6)}
-                className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <span>Show compounding impact</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
         )}
@@ -895,7 +1142,7 @@ export function KnowledgePlaceholder() {
                     Compounding Economics
                   </span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Compounding Implementation Advantage
+                    Compounding AI Implementation Advantage
                   </h2>
                 </div>
                 <button
@@ -918,8 +1165,8 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   <div className="space-y-1">
-                    <span className="text-2xl font-extrabold text-slate-800 block">~320 hrs</span>
-                    <span className="text-xs font-semibold text-slate-500">Human Implementation Effort</span>
+                    <span className="text-2xl font-extrabold text-slate-800 block">3 components</span>
+                    <span className="text-xs font-semibold text-slate-500">~320 hrs human effort</span>
                   </div>
 
                   <div className="p-2.5 bg-white rounded-xl border border-slate-200 text-[11px] font-bold text-slate-700 font-mono">
@@ -935,8 +1182,8 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   <div className="space-y-1">
-                    <span className="text-2xl font-extrabold text-violet-900 block">~190 hrs</span>
-                    <span className="text-xs font-semibold text-violet-700">Human Implementation Effort</span>
+                    <span className="text-2xl font-extrabold text-violet-900 block">18 components</span>
+                    <span className="text-xs font-semibold text-violet-700">~190 hrs human effort</span>
                   </div>
 
                   <div className="p-2.5 bg-white rounded-xl border border-violet-200 text-[11px] font-bold text-violet-800 font-mono">
@@ -952,8 +1199,8 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   <div className="space-y-1">
-                    <span className="text-2xl font-extrabold text-emerald-700 block">~110 hrs</span>
-                    <span className="text-xs font-semibold text-emerald-800">Human Implementation Effort</span>
+                    <span className="text-2xl font-extrabold text-emerald-700 block">32 components</span>
+                    <span className="text-xs font-semibold text-emerald-800">~110 hrs human effort</span>
                   </div>
 
                   <div className="p-2.5 bg-white rounded-xl border border-emerald-200 text-[11px] font-bold text-emerald-900 font-mono">
@@ -963,26 +1210,30 @@ export function KnowledgePlaceholder() {
 
               </div>
 
-              {/* 3 Simple Trends */}
-              <div className="grid grid-cols-3 gap-3 text-xs font-bold text-center">
+              {/* 4 Compounding Indicators */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-bold text-center">
+                <div className="p-3 bg-purple-50 text-purple-900 border border-purple-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingUp className="w-4 h-4 text-purple-600" />
+                  <span>Reusable agents ↑</span>
+                </div>
+                <div className="p-3 bg-blue-50 text-blue-900 border border-blue-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingUp className="w-4 h-4 text-blue-600" />
+                  <span>Workflows &amp; automations ↑</span>
+                </div>
+                <div className="p-3 bg-amber-50 text-amber-900 border border-amber-200 rounded-xl flex items-center justify-center gap-1.5">
+                  <TrendingDown className="w-4 h-4 text-amber-600" />
+                  <span>Client configuration ↓</span>
+                </div>
                 <div className="p-3 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl flex items-center justify-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-emerald-600" />
-                  <span>Reusable components ↑</span>
-                </div>
-                <div className="p-3 bg-violet-50 text-violet-900 border border-violet-200 rounded-xl flex items-center justify-center gap-1.5">
-                  <TrendingDown className="w-4 h-4 text-violet-600" />
-                  <span>Client-specific discovery ↓</span>
-                </div>
-                <div className="p-3 bg-indigo-50 text-indigo-900 border border-indigo-200 rounded-xl flex items-center justify-center gap-1.5">
-                  <TrendingDown className="w-4 h-4 text-indigo-600" />
-                  <span>Human implementation effort ↓</span>
+                  <TrendingDown className="w-4 h-4 text-emerald-600" />
+                  <span>Human effort ↓</span>
                 </div>
               </div>
 
               {/* Strong Bottom Line */}
               <div className="p-5 bg-slate-900 text-white rounded-2xl shadow-xl text-center space-y-2 border border-slate-800">
                 <h3 className="text-lg font-extrabold text-white tracking-tight">
-                  More implementations → more reusable context → less human implementation work
+                  More implementations → more prebuilt AI operations → less human implementation work
                 </h3>
                 <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-300 font-mono pt-1">
                   <span>32 reusable components</span>
@@ -993,28 +1244,6 @@ export function KnowledgePlaceholder() {
                 </div>
               </div>
 
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                The next implementation starts further ahead than the last one.
-              </span>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setShowLibraryDrawer(true)}
-                  className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>Explore components</span>
-                </button>
-                <button
-                  onClick={() => setScreen(4)}
-                  className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
-                >
-                  Simulate another model
-                </button>
-              </div>
             </div>
           </div>
         )}
@@ -1046,62 +1275,62 @@ export function KnowledgePlaceholder() {
 
                 <div className="py-4 space-y-3.5 text-xs">
                   {/* Component 1 */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="p-4 bg-purple-50/60 border border-purple-200 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-900 text-sm">Approval Routing Core v3</span>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        87% Reusable
+                      <span className="font-bold text-slate-900 text-sm">Discount Exception Agent</span>
+                      <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded border border-purple-300">
+                        AI Agent
                       </span>
                     </div>
-                    <p className="text-slate-600 font-medium">Revenue Cloud + Flow + Agentforce</p>
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-200/80 font-mono">
+                    <p className="text-slate-600 font-medium">Agentforce Topic &amp; Guardrails</p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-purple-200/80 font-mono">
                       <span>31 implementations</span>
-                      <span>143 validations</span>
+                      <span>87% reusable</span>
                     </div>
                   </div>
 
                   {/* Component 2 */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-900 text-sm">Margin Risk Classification</span>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        86% Reusable
+                      <span className="font-bold text-slate-900 text-sm">Margin-Risk Approval Flow</span>
+                      <span className="text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded border border-blue-300">
+                        Workflow
                       </span>
                     </div>
-                    <p className="text-slate-600 font-medium">Pricing Engine + Custom Metadata</p>
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-200/80 font-mono">
-                      <span>24 implementations</span>
-                      <span>91 validations</span>
+                    <p className="text-slate-600 font-medium">Salesforce Flow Orchestrator</p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-blue-200/80 font-mono">
+                      <span>31 implementations</span>
+                      <span>87% reusable</span>
                     </div>
                   </div>
 
                   {/* Component 3 */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-900 text-sm">Pricing Context Procedure</span>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        79% Reusable
+                      <span className="font-bold text-slate-900 text-sm">Approval Follow-Up &amp; Escalation</span>
+                      <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">
+                        Automation
                       </span>
                     </div>
-                    <p className="text-slate-600 font-medium">Revenue Cloud Pricing</p>
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-200/80 font-mono">
-                      <span>19 implementations</span>
-                      <span>74 validations</span>
+                    <p className="text-slate-600 font-medium">Revenue Cloud Event Trigger</p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-amber-200/80 font-mono">
+                      <span>24 implementations</span>
+                      <span>84% reusable</span>
                     </div>
                   </div>
 
                   {/* Component 4 */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="p-4 bg-rose-50/60 border border-rose-200 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-900 text-sm">Knowledge Engine Capture</span>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        88% Reusable
+                      <span className="font-bold text-slate-900 text-sm">Slack Manager Approval Handoff</span>
+                      <span className="text-[10px] font-bold text-rose-800 bg-rose-100 px-2 py-0.5 rounded border border-rose-300">
+                        Human Handoff
                       </span>
                     </div>
-                    <p className="text-slate-600 font-medium">Agentforce + Slack</p>
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-200/80 font-mono">
-                      <span>17 implementations</span>
-                      <span>68 validations</span>
+                    <p className="text-slate-600 font-medium">Slack Block Kit Cards</p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-rose-200/80 font-mono">
+                      <span>21 implementations</span>
+                      <span>78% reusable</span>
                     </div>
                   </div>
 
