@@ -491,65 +491,99 @@ export function KnowledgePlaceholder() {
                       <h3 className="text-base font-bold text-slate-900">Reusable Implementation Stack</h3>
                     </div>
                     <span className="text-xs font-bold text-violet-800 bg-violet-100 px-2.5 py-1 rounded-full border border-violet-300">
-                      6 Mapped Layers
+                      88 learned implementation patterns
                     </span>
                   </div>
 
                   <div className="space-y-2 text-xs">
-                    {/* Agent */}
-                    <div className="p-2.5 bg-white rounded-xl border border-purple-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Agents — 12 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-purple-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <Bot className="w-4 h-4 text-purple-600" />
-                        <span className="font-bold text-purple-900">AI Agent</span>
+                        <span className="font-bold text-purple-900">Agents</span>
+                        <span className="px-2 py-0.5 bg-purple-100 text-purple-800 font-mono font-bold rounded-md text-[10px] border border-purple-200">
+                          12
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Discount Exception Agent</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Discount Exception · Margin Analysis · Similar Deal · +9
+                      </span>
                     </div>
 
-                    {/* Workflow */}
-                    <div className="p-2.5 bg-white rounded-xl border border-blue-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Workflows — 15 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-blue-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <GitFork className="w-4 h-4 text-blue-600" />
-                        <span className="font-bold text-blue-900">Workflow</span>
+                        <span className="font-bold text-blue-900">Workflows</span>
+                        <span className="px-2 py-0.5 bg-blue-100 text-blue-800 font-mono font-bold rounded-md text-[10px] border border-blue-200">
+                          15
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Margin-Risk Approval Flow</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Margin-Risk Approval · Strategic Exception · Manager Routing · +12
+                      </span>
                     </div>
 
-                    {/* Automations */}
-                    <div className="p-2.5 bg-white rounded-xl border border-amber-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Automations — 23 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-amber-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <Zap className="w-4 h-4 text-amber-600" />
                         <span className="font-bold text-amber-900">Automations</span>
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-800 font-mono font-bold rounded-md text-[10px] border border-amber-200">
+                          23
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Approval routing · Follow-up + escalation</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Approval Routing · Follow-Up · Escalation · Evidence Prep · +19
+                      </span>
                     </div>
 
-                    {/* Human Handoffs */}
-                    <div className="p-2.5 bg-white rounded-xl border border-rose-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Human Handoffs — 9 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-rose-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <UserCheck className="w-4 h-4 text-rose-600" />
                         <span className="font-bold text-rose-900">Human Handoffs</span>
+                        <span className="px-2 py-0.5 bg-rose-100 text-rose-800 font-mono font-bold rounded-md text-[10px] border border-rose-200">
+                          9
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Slack Manager approval · Finance review</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Manager Approval · Finance Review · Deal Desk Escalation · +6
+                      </span>
                     </div>
 
-                    {/* Knowledge */}
-                    <div className="p-2.5 bg-white rounded-xl border border-emerald-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Knowledge Patterns — 11 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-emerald-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <Brain className="w-4 h-4 text-emerald-600" />
-                        <span className="font-bold text-emerald-900">Knowledge</span>
+                        <span className="font-bold text-emerald-900">Knowledge Patterns</span>
+                        <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-mono font-bold rounded-md text-[10px] border border-emerald-200">
+                          11
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Decision + rationale capture</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Decision Rationale · Exception Classification · Outcome Capture · +8
+                      </span>
                     </div>
 
-                    {/* Validation */}
-                    <div className="p-2.5 bg-white rounded-xl border border-teal-200 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                    {/* Validation Patterns — 18 */}
+                    <div className="p-2.5 bg-white rounded-xl border border-teal-200 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 shrink-0">
                         <ShieldCheck className="w-4 h-4 text-teal-600" />
-                        <span className="font-bold text-teal-900">Validation</span>
+                        <span className="font-bold text-teal-900">Validation Patterns</span>
+                        <span className="px-2 py-0.5 bg-teal-100 text-teal-800 font-mono font-bold rounded-md text-[10px] border border-teal-200">
+                          18
+                        </span>
                       </div>
-                      <span className="font-semibold text-slate-800">Approval Behavior Test Pack</span>
+                      <span className="text-[11px] font-normal text-slate-500 text-right truncate">
+                        Margin Risk · Strategic Exception · Pricing Conflict · Regression · +14
+                      </span>
                     </div>
                   </div>
+
+                  <p className="text-[10px] text-slate-400 font-normal pt-1.5 border-t border-slate-200/80">
+                    31 client implementations → 88 implementation patterns learned → reusable core identified → components productized
+                  </p>
                 </div>
 
               </div>
