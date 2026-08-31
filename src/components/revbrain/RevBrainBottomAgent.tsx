@@ -205,6 +205,25 @@ export function RevBrainBottomAgent() {
 
   const [learningScreen, setLearningScreen] = useState<number>(1);
 
+  // Dynamic running tasks counter (starts 1-9 per page, updates +-1/2/3 every 3s)
+  const [runningTasksCount, setRunningTasksCount] = useState<number>(() => Math.floor(Math.random() * 9) + 1);
+
+  useEffect(() => {
+    setRunningTasksCount(Math.floor(Math.random() * 9) + 1);
+  }, [pathname]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRunningTasksCount((prevCount) => {
+        const deltas = [-3, -2, -1, 1, 2, 3];
+        const delta = deltas[Math.floor(Math.random() * deltas.length)];
+        return Math.max(1, Math.min(15, prevCount + delta));
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Learning Engine route event listener and auto-expand
   useEffect(() => {
     if (!isLearningRoute) return;
@@ -617,7 +636,9 @@ export function RevBrainBottomAgent() {
                 ) : (
                   <>
                     <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
-                    <span className="font-semibold text-slate-700 text-xs">1 task running</span>
+                    <span className="font-semibold text-slate-700 text-xs">
+                      {runningTasksCount} {runningTasksCount === 1 ? 'task' : 'tasks'} running
+                    </span>
                   </>
                 )}
 
