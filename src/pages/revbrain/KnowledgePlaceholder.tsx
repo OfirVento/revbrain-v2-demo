@@ -523,12 +523,6 @@ export function KnowledgePlaceholder() {
               );
             })}
           </div>
-
-          <div className="flex items-center gap-3 text-xs shrink-0 pr-2">
-            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-full border border-slate-200/80 font-bold text-[11px]">
-              47 implementations · 247 learned patterns · 32 reusable components
-            </span>
-          </div>
         </div>
 
         {/* ────────────────────────────────────────────────────────────── */}
