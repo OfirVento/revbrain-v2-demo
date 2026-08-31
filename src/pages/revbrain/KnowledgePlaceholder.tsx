@@ -428,10 +428,9 @@ export const Q2C_READINESS_ROWS: Q2CReadinessRow[] = [
 export function KnowledgePlaceholder() {
   const [screen, setScreen] = useState<number>(1);
 
-  // Corpus filter, extra toggle & view mode (Knowledge Graph vs Landscape)
+  // Corpus filter & extra toggle
   const [corpusFilter, setCorpusFilter] = useState<string>('All');
   const [showExtraCorpus, setShowExtraCorpus] = useState<boolean>(false);
-  const [corpusViewMode, setCorpusViewMode] = useState<'graph' | 'landscape'>('graph');
 
   // Selected Q2C Area for Intelligence
   const [selectedAreaId, setSelectedAreaId] = useState<string>('discount_approvals');
@@ -535,7 +534,7 @@ export function KnowledgePlaceholder() {
         {screen === 1 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-5 animate-[fadeIn_300ms_ease]">
             
-            {/* Header, Operating Model Filter & View Toggle */}
+            {/* Header & Operating Model Filter */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -546,51 +545,21 @@ export function KnowledgePlaceholder() {
                 </p>
               </div>
 
-              {/* Actions: View Toggle + Operating Model Filter */}
-              <div className="flex flex-wrap items-center gap-2 shrink-0">
-                {/* View Toggle */}
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 text-xs">
+              {/* Operating Model Filter Bar */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 text-xs shrink-0">
+                {['All', 'Subscription SaaS', 'Usage-Based', 'Complex Enterprise', 'Product + Services'].map((f) => (
                   <button
-                    onClick={() => setCorpusViewMode('graph')}
-                    className={`px-3 py-1 rounded-full font-bold transition-all text-[11px] cursor-pointer flex items-center gap-1.5 ${
-                      corpusViewMode === 'graph'
-                        ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
+                    key={f}
+                    onClick={() => setCorpusFilter(f)}
+                    className={`px-3 py-1 rounded-full font-semibold transition-all text-[11px] cursor-pointer ${
+                      corpusFilter === f
+                        ? 'bg-slate-800 text-white shadow-2xs'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Brain className="w-3.5 h-3.5" />
-                    <span>Knowledge Graph</span>
+                    {f}
                   </button>
-
-                  <button
-                    onClick={() => setCorpusViewMode('landscape')}
-                    className={`px-3 py-1 rounded-full font-bold transition-all text-[11px] cursor-pointer flex items-center gap-1.5 ${
-                      corpusViewMode === 'landscape'
-                        ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    <Layers className="w-3.5 h-3.5" />
-                    <span>Landscape List</span>
-                  </button>
-                </div>
-
-                {/* Operating Model Filter Bar */}
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 text-xs">
-                  {['All', 'Subscription SaaS', 'Usage-Based', 'Complex Enterprise', 'Product + Services'].map((f) => (
-                    <button
-                      key={f}
-                      onClick={() => setCorpusFilter(f)}
-                      className={`px-3 py-1 rounded-full font-semibold transition-all text-[11px] cursor-pointer ${
-                        corpusFilter === f
-                          ? 'bg-slate-800 text-white shadow-2xs'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      {f}
-                    </button>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
 
@@ -630,193 +599,135 @@ export function KnowledgePlaceholder() {
               </div>
             </div>
 
-            {/* VIEW MODE 1 — RevBrain Knowledge Graph Topology */}
-            {corpusViewMode === 'graph' ? (
-              <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-6 shadow-2xs space-y-5 relative overflow-hidden animate-[fadeIn_200ms_ease]">
-                <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
-                  <h3 className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                    <Brain className="w-4 h-4 text-violet-600" />
-                    <span>RevBrain Q2C Knowledge Graph Topology</span>
-                  </h3>
-                  <span className="text-[11px] font-mono text-slate-500">
-                    Connected Q2C intelligence · Click any node to inspect
-                  </span>
-                </div>
-
-                {/* 3-Column Balanced Topology Grid with Central Hub */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center relative py-2">
-                  
-                  {/* Left Column — 4 Q2C Domain Cards */}
-                  <div className="space-y-3 z-10">
-                    {visibleCorpusRows.slice(0, 4).map((row) => (
-                      <div
-                        key={row.id}
-                        onClick={() => {
-                          setSelectedAreaId(row.id);
-                          setScreen(2);
-                        }}
-                        className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
-                      >
-                        <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
-                          <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
-                            {row.name}
-                          </span>
-                          <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
-                        </div>
-
-                        {/* Pattern Badge & System/Human Breakdown */}
-                        <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
-                          <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                            {row.patterns} patterns
-                          </span>
-                          <div className="flex items-center gap-1.5 font-semibold">
-                            <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
-                              <span>{row.systemLearnings}</span>
-                            </span>
-                            <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
-                              <span>{row.humanLearnings}</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Center Column — Glowing Central RevBrain Intelligence Hub */}
-                  <div className="flex flex-col items-center justify-center relative py-6 z-10">
-                    {/* Visual Pulse Ring */}
-                    <div className="hidden lg:block absolute inset-0 pointer-events-none flex items-center justify-center">
-                      <div className="w-56 h-56 rounded-full border border-violet-200/80 animate-ping opacity-15" />
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        setSelectedAreaId('discount_approvals');
-                        setScreen(2);
-                      }}
-                      className="bg-gradient-to-br from-violet-600 via-indigo-600 to-violet-700 text-white rounded-full p-6 text-center shadow-xl border-4 border-white ring-8 ring-violet-100 flex flex-col items-center justify-center w-52 h-52 space-y-1.5 transform hover:scale-105 transition-all cursor-pointer group"
-                    >
-                      <Brain className="w-10 h-10 text-violet-200 group-hover:rotate-12 transition-transform" />
-                      <span className="text-[10px] font-black uppercase tracking-wider text-violet-200">RevBrain Core Hub</span>
-                      <span className="text-2xl font-black leading-none">247 Patterns</span>
-                      <span className="text-[10px] text-violet-200 font-mono">Accumulated Q2C IP</span>
-                    </div>
-                  </div>
-
-                  {/* Right Column — 4 Q2C Domain Cards */}
-                  <div className="space-y-3 z-10">
-                    {visibleCorpusRows.slice(4).map((row) => (
-                      <div
-                        key={row.id}
-                        onClick={() => {
-                          setSelectedAreaId(row.id);
-                          setScreen(2);
-                        }}
-                        className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
-                      >
-                        <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
-                          <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
-                            {row.name}
-                          </span>
-                          <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
-                        </div>
-
-                        {/* Pattern Badge & System/Human Breakdown */}
-                        <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
-                          <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                            {row.patterns} patterns
-                          </span>
-                          <div className="flex items-center gap-1.5 font-semibold">
-                            <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
-                              <span>{row.systemLearnings}</span>
-                            </span>
-                            <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
-                              <span>{row.humanLearnings}</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-
-                {/* Expand +2 More Button */}
-                <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-200/60">
-                  <button
-                    onClick={() => setShowExtraCorpus(!showExtraCorpus)}
-                    className="text-xs font-semibold text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
-                  >
-                    <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
-                    {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                  </button>
-                  <span className="text-slate-400 text-[11px]">
-                    Click any node to navigate to Learning Intelligence
-                  </span>
-                </div>
-
+            {/* RevBrain Knowledge Graph Topology */}
+            <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-6 shadow-2xs space-y-5 relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
+                <h3 className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                  <Brain className="w-4 h-4 text-violet-600" />
+                  <span>RevBrain Q2C Knowledge Graph Topology</span>
+                </h3>
+                <span className="text-[11px] font-mono text-slate-500">
+                  Connected Q2C intelligence · Click any node to inspect
+                </span>
               </div>
-            ) : (
-              /* VIEW MODE 2 — Landscape List View */
-              <div className="space-y-3 pt-1 animate-[fadeIn_200ms_ease]">
-                <div className="space-y-2">
-                  {visibleCorpusRows.map((row) => (
+
+              {/* 3-Column Balanced Topology Grid with Central Hub */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center relative py-2">
+                
+                {/* Left Column — 4 Q2C Domain Cards */}
+                <div className="space-y-3 z-10">
+                  {visibleCorpusRows.slice(0, 4).map((row) => (
                     <div
                       key={row.id}
                       onClick={() => {
                         setSelectedAreaId(row.id);
                         setScreen(2);
                       }}
-                      className="border border-slate-200/90 rounded-xl p-3.5 bg-white hover:border-violet-300 hover:shadow-2xs transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
+                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
                     >
-                      {/* LEFT: Q2C Area Title */}
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-slate-900 group-hover:text-violet-700 transition-colors">
+                      <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
+                        <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
                           {row.name}
                         </span>
-                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
                       </div>
 
-                      {/* RIGHT: Patterns, System Captured, Human Context Badges */}
-                      <div className="flex items-center gap-2">
-                        <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                          <span className="text-[10px] text-blue-500 font-sans uppercase">System Captured</span>
-                          <span>{row.systemLearnings}</span>
+                      {/* Pattern Badge & System/Human Breakdown */}
+                      <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
+                        <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                          {row.patterns} patterns
                         </span>
-
-                        <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                          <span className="text-[10px] text-amber-600 font-sans uppercase">Human Context</span>
-                          <span>{row.humanLearnings}</span>
-                        </span>
-
-                        <span className="bg-violet-50 text-violet-700 border border-violet-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-bold flex items-center gap-1">
-                          <span className="text-[10px] text-violet-500 font-sans uppercase">Patterns</span>
-                          <span>{row.patterns}</span>
-                        </span>
+                        <div className="flex items-center gap-1.5 font-semibold">
+                          <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
+                            <span>{row.systemLearnings}</span>
+                          </span>
+                          <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
+                            <span>{row.humanLearnings}</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Expand +2 More Button */}
-                <div className="flex items-center justify-between text-xs pt-1">
-                  <button
-                    onClick={() => setShowExtraCorpus(!showExtraCorpus)}
-                    className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
+                {/* Center Column — Soft Background Central RevBrain Intelligence Hub */}
+                <div className="flex flex-col items-center justify-center relative py-6 z-10">
+                  {/* Visual Pulse Ring */}
+                  <div className="hidden lg:block absolute inset-0 pointer-events-none flex items-center justify-center">
+                    <div className="w-56 h-56 rounded-full border border-violet-200/60 animate-ping opacity-20" />
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      setSelectedAreaId('discount_approvals');
+                      setScreen(2);
+                    }}
+                    className="bg-violet-50/90 hover:bg-violet-100/90 border-2 border-violet-300/80 ring-8 ring-violet-100/60 rounded-full p-6 text-center shadow-sm flex flex-col items-center justify-center w-52 h-52 space-y-1.5 transform hover:scale-105 transition-all cursor-pointer group"
                   >
-                    <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
-                    {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                  </button>
-                  <span className="text-slate-400 text-[11px]">
-                    Click any Q2C area row to inspect system vs human intelligence
-                  </span>
+                    <Brain className="w-9 h-9 text-violet-600 group-hover:rotate-12 transition-transform" />
+                    <span className="text-[10px] font-black uppercase tracking-wider text-violet-700">RevBrain Core Hub</span>
+                    <span className="text-2xl font-black text-slate-900 leading-none">247 Patterns</span>
+                    <span className="text-[10px] text-slate-500 font-mono">Accumulated Q2C IP</span>
+                  </div>
                 </div>
+
+                {/* Right Column — 4 Q2C Domain Cards */}
+                <div className="space-y-3 z-10">
+                  {visibleCorpusRows.slice(4).map((row) => (
+                    <div
+                      key={row.id}
+                      onClick={() => {
+                        setSelectedAreaId(row.id);
+                        setScreen(2);
+                      }}
+                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
+                    >
+                      <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
+                        <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
+                          {row.name}
+                        </span>
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
+                      </div>
+
+                      {/* Pattern Badge & System/Human Breakdown */}
+                      <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
+                        <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                          {row.patterns} patterns
+                        </span>
+                        <div className="flex items-center gap-1.5 font-semibold">
+                          <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Captured</span>
+                            <span>{row.systemLearnings}</span>
+                          </span>
+                          <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Context</span>
+                            <span>{row.humanLearnings}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
               </div>
-            )}
+
+              {/* Expand +2 More Button */}
+              <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-200/60">
+                <button
+                  onClick={() => setShowExtraCorpus(!showExtraCorpus)}
+                  className="text-xs font-semibold text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
+                  {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                </button>
+                <span className="text-slate-400 text-[11px]">
+                  Click any node to navigate to Learning Intelligence
+                </span>
+              </div>
+
+            </div>
 
           </div>
         )}
