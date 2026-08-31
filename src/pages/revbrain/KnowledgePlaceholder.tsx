@@ -1428,7 +1428,7 @@ export function KnowledgePlaceholder() {
                   </span>
                 </h2>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  How every customer implementation increases RevBrain's prebuilt software foundation and reduces human SI effort.
+                  How every customer implementation increases RevBrain's prebuilt software foundation and reduces human implementation effort.
                 </p>
               </div>
             </div>
@@ -1445,11 +1445,11 @@ export function KnowledgePlaceholder() {
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-xl font-black text-slate-900">3 Reusable</p>
-                  <span className="text-[11px] text-slate-500">Software components</span>
+                  <p className="text-xl font-black font-mono text-slate-900">~320 hrs</p>
+                  <span className="text-[11px] text-slate-500 font-medium">Implementation effort</span>
                 </div>
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700 font-semibold">~320 hrs SI effort</span>
+                  <span className="text-slate-700 font-semibold">3 Reusable components</span>
                   <span className="text-slate-500">81% confidence</span>
                 </div>
               </div>
@@ -1465,11 +1465,11 @@ export function KnowledgePlaceholder() {
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-xl font-black text-violet-900">18 Reusable</p>
-                  <span className="text-[11px] text-violet-700 font-medium">Software components</span>
+                  <p className="text-xl font-black font-mono text-violet-900">~190 hrs</p>
+                  <span className="text-[11px] text-violet-700 font-medium">Implementation effort</span>
                 </div>
                 <div className="pt-2 border-t border-violet-200/60 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-800 font-semibold">~190 hrs SI effort</span>
+                  <span className="text-slate-800 font-semibold">18 Reusable components</span>
                   <span className="text-violet-700 font-medium">90% confidence</span>
                 </div>
               </div>
@@ -1485,11 +1485,11 @@ export function KnowledgePlaceholder() {
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-xl font-black text-emerald-950">32 Reusable</p>
-                  <span className="text-[11px] text-emerald-800 font-medium">Software components</span>
+                  <p className="text-xl font-black font-mono text-emerald-950">~110 hrs</p>
+                  <span className="text-[11px] text-emerald-800 font-medium">Implementation effort</span>
                 </div>
                 <div className="pt-2 border-t border-emerald-200/60 flex items-center justify-between text-xs font-mono">
-                  <span className="text-emerald-950 font-bold">~110 hrs SI effort</span>
+                  <span className="text-emerald-950 font-bold">32 Reusable components</span>
                   <span className="text-emerald-800 font-bold">96% confidence</span>
                 </div>
               </div>
