@@ -1653,16 +1653,13 @@ export function KnowledgePlaceholder() {
 
             {/* ── 3. RevBrain Implementation Leverage ──────────────────────────── */}
             <div className="border-t border-slate-100 pt-4 space-y-3">
-              <div>
-                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                  <span>RevBrain Implementation Leverage</span>
-                  <span className="text-[11px] font-mono font-medium text-violet-800 bg-violet-100/80 px-2.5 py-0.5 rounded-full border border-violet-200">
-                    Platform Economics
-                  </span>
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                  RevBrain Implementation Leverage
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Each implementation makes the next one easier to deliver.
-                </p>
+                <span className="text-[11px] font-mono font-medium text-violet-800 bg-violet-100/80 px-2.5 py-0.5 rounded-full border border-violet-200 shrink-0">
+                  Platform Economics
+                </span>
               </div>
 
               {/* 3 Metrics Grid: Implementation effort, Mapping confidence, Reusable foundation */}
