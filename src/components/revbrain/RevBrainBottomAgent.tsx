@@ -639,9 +639,9 @@ export function RevBrainBottomAgent() {
                     {implPhase === 'phase4' && (isPhase4Completed ? 'Implementation Verified' : 'Validation & Testing')}
                   </span>
                 ) : isLearningRoute ? (
-                  <span className="px-3 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-bold tracking-wide flex items-center gap-1">
+                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[10px] font-bold tracking-wide flex items-center gap-1">
                     <span>Learning Engine</span>
-                    <span className="text-slate-400 font-normal">&gt;</span>
+                    <span className="text-violet-400 font-normal">&gt;</span>
                     <span>
                       {learningScreen === 1 && 'Learning Corpus'}
                       {learningScreen === 2 && 'Learning Intelligence'}
