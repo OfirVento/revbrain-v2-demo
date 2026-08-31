@@ -670,11 +670,13 @@ export function KnowledgePlaceholder() {
                             {row.patterns} patterns
                           </span>
                           <div className="flex items-center gap-1.5 font-semibold">
-                            <span className="bg-blue-50 text-blue-700 border border-blue-200 px-1.5 py-0.5 rounded">
-                              Sys {row.systemLearnings}
+                            <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                              <span className="text-blue-500 font-sans uppercase text-[9px]">System</span>
+                              <span>{row.systemLearnings}</span>
                             </span>
-                            <span className="bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded">
-                              Hum {row.humanLearnings}
+                            <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human</span>
+                              <span>{row.humanLearnings}</span>
                             </span>
                           </div>
                         </div>
@@ -727,11 +729,13 @@ export function KnowledgePlaceholder() {
                             {row.patterns} patterns
                           </span>
                           <div className="flex items-center gap-1.5 font-semibold">
-                            <span className="bg-blue-50 text-blue-700 border border-blue-200 px-1.5 py-0.5 rounded">
-                              Sys {row.systemLearnings}
+                            <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                              <span className="text-blue-500 font-sans uppercase text-[9px]">System</span>
+                              <span>{row.systemLearnings}</span>
                             </span>
-                            <span className="bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded">
-                              Hum {row.humanLearnings}
+                            <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
+                              <span className="text-amber-600 font-sans uppercase text-[9px]">Human</span>
+                              <span>{row.humanLearnings}</span>
                             </span>
                           </div>
                         </div>
