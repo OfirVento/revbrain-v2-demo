@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.npm
+
+# build output
+dist/
+dist-ssr/
+
+# env files — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# vite
+*.local
+vite.config.js.timestamp-*
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+.vercel
+.env*.local

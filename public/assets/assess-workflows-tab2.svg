@@ -1,0 +1,32 @@
+<svg width="100%" viewBox="0 0 680 390" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Approval funnel: 11,401 approval actions, 18 rejections</title>
+<style>
+  .h1 { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .th { font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .ts { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #6B6455; }
+  .big { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .red { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #C0392B; }
+</style>
+<text class="h1" x="24" y="38">Your approval process, two years of it</text>
+<text class="ts" x="24" y="62">Every quote passes through about 4 approval steps. Here is what those steps decided.</text>
+
+<text class="big" x="24" y="126">11,401</text>
+<text class="ts" x="24" y="148">approval decisions made</text>
+
+<text class="big" x="250" y="126">2</text>
+<text class="ts" x="250" y="148">people made 96% of them</text>
+
+<text class="red" x="450" y="126">18</text>
+<text class="ts" x="450" y="148">times the answer was "no"</text>
+
+<rect x="24" y="186" width="632" height="46" rx="6" fill="#DCEFEA" stroke="#2C7A6E" stroke-width="1"/>
+<rect x="654" y="186" width="2" height="46" fill="#C0392B"/>
+<text class="th" x="40" y="214">Approved — 98.4%</text>
+<text class="ts" x="500" y="252">↑ rejections are this red line</text>
+
+<text class="th" x="24" y="292">What this means</text>
+<text class="ts" x="24" y="314">Two senior people spend their attention confirming decisions that had already been</text>
+<text class="ts" x="24" y="332">made. Reviews take about 12 minutes each — these are glances, not deliberation.</text>
+<text class="ts" x="24" y="350">Meanwhile 145 quotes were pulled back and redone by the reps themselves:</text>
+<text class="ts" x="24" y="368">self-correction catches 8× more problems than the formal review does.</text>
+</svg>

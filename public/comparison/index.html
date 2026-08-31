@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vento Build Comparison — Screenshot Index</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f0f11;
+      color: #e4e4e7;
+      padding: 40px 24px 80px;
+    }
+    header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      border-bottom: 1px solid #27272a;
+      padding-bottom: 24px;
+    }
+    header h1 { font-size: 1.4rem; font-weight: 600; color: #fafafa; }
+    header p  { font-size: 0.85rem; color: #71717a; margin-top: 6px; }
+    .pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .pill-a { background: #1e3a5f; color: #60a5fa; }
+    .pill-b { background: #3b1f1f; color: #f87171; }
+    section {
+      max-width: 1200px;
+      margin: 0 auto 64px;
+    }
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #52525b;
+      margin-bottom: 20px;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .single {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card-label {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #27272a;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #a1a1aa;
+    }
+    .card img {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+    }
+    .card img:hover { opacity: 0.95; }
+    .note {
+      font-size: 0.78rem;
+      color: #52525b;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .note strong { color: #71717a; }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 700px) {
+      .pair, .single { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>
+    Vento Build Comparison
+    <span class="pill pill-a">Build A</span>
+    <span class="pill pill-b">Build B</span>
+  </h1>
+  <p>
+    Build A: <a href="https://sf-demo-b1.vercel.app" target="_blank">sf-demo-b1.vercel.app</a> · commit be0ed41
+    &nbsp;·&nbsp;
+    Build B: <a href="https://sfd-wine.vercel.app" target="_blank">sfd-wine.vercel.app</a> · commit c257a8a
+    &nbsp;·&nbsp;
+    Generated 2026-05-09
+  </p>
+</header>
+
+<!-- TEST 1 -->
+<section>
+  <h2>Test 1 — Executive layer, light mode</h2>
+  <div class="pair">
+    <div class="card">
+      <div class="card-label"><span class="pill pill-a">Build A</span> sf-demo-b1.vercel.app · TechFlow Solutions</div>
+      <a href="/preview/comparison/a_t1_light.png" target="_blank">
+        <img src="/preview/comparison/a_t1_light.png" alt="Build A executive layer light mode" />
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="pill pill-b">Build B</span> sfd-wine.vercel.app · Acme Cloud Holdings</div>
+      <a href="/preview/comparison/b_t1_light.png" target="_blank">
+        <img src="/preview/comparison/b_t1_light.png" alt="Build B executive layer light mode" />
+      </a>
+    </div>
+  </div>
+  <p class="note">
+    <strong>Build A:</strong> 5-tab nav · "Proceed with Caution" · 68/100 · CPQ Today vs RCA Potential bar chart · full truth label system · onboarding overlay on first load.<br/>
+    <strong>Build B:</strong> 5-tab nav · "Proceed with caution" · Friction dimensions / RCA capabilities bar pair · inline "AI-generated draft" labels · no onboarding overlay. Different payload (Acme vs TechFlow).
+  </p>
+</section>
+
+<!-- TEST 6 — Migration -->
+<section>
+  <h2>Test 6 — Migration Drafts layer</h2>
+  <div class="pair">
+    <div class="card">
+      <div class="card-label"><span class="pill pill-a">Build A</span> 20 artifacts · 3-pane code viewer · Draft + Reasoning tabs</div>
+      <a href="/preview/comparison/a_t6_migration_with_agent.png" target="_blank">
+        <img src="/preview/comparison/a_t6_migration_with_agent.png" alt="Build A Migration Drafts 3-pane layout" />
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="pill pill-b">Build B</span> Migration layer</div>
+      <a href="/preview/comparison/b_t6_migration.png" target="_blank">
+        <img src="/preview/comparison/b_t6_migration.png" alt="Build B Migration layer" />
+      </a>
+    </div>
+  </div>
+  <p class="note">
+    <strong>Build A:</strong> Left sidebar: 20 artifacts (QCP scripts, price rules, product rules) with High/Medium/Low severity badges and Manual Review / Manual Design flags. Center: full CPQ JavaScript source. Right: Plain Language pane + RCA Draft pane with Draft / Reasoning / AI-Generated / Pricing Procedure tabs. Re-generate button. "View evidence trail" link.<br/>
+    <strong>Build B:</strong> Migration layer contents as rendered.
+  </p>
+</section>
+
+<!-- TEST 4 — Sales stub -->
+<section>
+  <h2>Test 4 — Sales layer (Build B)</h2>
+  <div class="single">
+    <div class="card">
+      <div class="card-label"><span class="pill pill-b">Build B</span> Sales layer — placeholder state</div>
+      <a href="/preview/comparison/b_t4_sales_stub.png" target="_blank">
+        <img src="/preview/comparison/b_t4_sales_stub.png" alt="Build B Sales layer placeholder" />
+      </a>
+    </div>
+    <div style="display:flex;align-items:center;padding:24px;">
+      <p class="note" style="margin:0">
+        Build B Sales layer renders a single placeholder sentence:<br/>
+        <em>"M4 will populate AI talking points, chart cards (copy-as-image), and the LOE section with confidence and disclaimer."</em><br/><br/>
+        Build A Sales layer is fully built: AI Talking Points card, 4 charts (complexity by dimension, LOE by phase, severity distribution, RCA opportunity donut), co-sell narrative, LOE estimate.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TEST 5 — Re-roll -->
+<section>
+  <h2>Test 5 — Narrative re-roll</h2>
+  <div class="pair">
+    <div class="card">
+      <div class="card-label"><span class="pill pill-a">Build A</span> Re-roll button on hover (prior session)</div>
+      <a href="/preview/comparison/a_t5_narrative_reroll.png" target="_blank">
+        <img src="/preview/comparison/a_t5_narrative_reroll.png" alt="Build A narrative re-roll" />
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="pill pill-b">Build B</span> Re-roll button visible · API error inline</div>
+      <a href="/preview/comparison/b_t5_narrative_reroll.png" target="_blank">
+        <img src="/preview/comparison/b_t5_narrative_reroll.png" alt="Build B narrative re-roll" />
+      </a>
+    </div>
+  </div>
+  <p class="note">
+    Both builds implement narrative re-roll on hover. Neither produced a new response due to API model errors on both sides during testing. Build A additionally has per-message re-roll on agent panel assistant bubbles (RotateCcw button on hover).
+  </p>
+</section>
+
+<!-- TEST 7 — Implementation -->
+<section>
+  <h2>Test 7 — Implementation layer</h2>
+  <div class="pair">
+    <div class="card">
+      <div class="card-label"><span class="pill pill-a">Build A</span> FindingCard list with evidence drawer (prior session)</div>
+      <a href="/preview/comparison/a_t7_evidence.png" target="_blank">
+        <img src="/preview/comparison/a_t7_evidence.png" alt="Build A implementation evidence drawer" />
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="pill pill-b">Build B</span> Implementation report — 15 findings, 6 sections</div>
+      <a href="/preview/comparison/b_t7_evidence.png" target="_blank">
+        <img src="/preview/comparison/b_t7_evidence.png" alt="Build B implementation findings" />
+      </a>
+    </div>
+  </div>
+  <p class="note">
+    <strong>Build A:</strong> Evidence drawer with Summary / Detailed / Raw tabs confirmed (3-level). Locked v2.1 banner present.<br/>
+    <strong>Build B:</strong> 15 findings across 6 sections (Pricing 4, Configuration 3, Custom Code 3, Data Migration 2, Integrations 2, Deprecated Config 1). "View supporting evidence" link on each finding. Evidence drawer tabs: not confirmed in test. Locked v2.1 banner present.
+  </p>
+</section>
+
+</body>
+</html>

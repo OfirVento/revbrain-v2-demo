@@ -1,0 +1,49 @@
+<svg width="100%" viewBox="0 0 680 470" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Key person dependencies in the bid process</title>
+<style>
+  .h1 { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .th { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .ts { font: 400 11px 'Segoe UI', Arial, sans-serif; fill: #6B6455; }
+  .hi rect { fill: #F9DCDC; stroke: #C0392B; }
+  .md rect { fill: #FCEFD6; stroke: #C9962E; }
+  .lo rect { fill: #EEECE7; stroke: #8A8578; }
+</style>
+<text class="h1" x="24" y="34">Who the process actually depends on</text>
+<text class="ts" x="24" y="56">Roughly a dozen people run this entire process. Six of them are difficult to replace at short notice.</text>
+
+<g class="hi"><rect x="24" y="78" width="632" height="76" rx="6" stroke-width="1.5"/>
+<text class="th" x="40" y="100">Ray Scott — Director of IT</text>
+<text class="ts" x="40" y="119">The automated feed that loads every product and price from Vista signs in using his personal account,</text>
+<text class="ts" x="40" y="135">with a password set in October 2020. If that account is disabled or the password is changed, the feed</text>
+<text class="ts" x="40" y="147">stops — and nothing alerts anyone. This has already happened once, in August 2025.</text></g>
+
+<g class="hi"><rect x="24" y="168" width="310" height="76" rx="6" stroke-width="1.5"/>
+<text class="th" x="40" y="190">Alex Collins</text>
+<text class="ts" x="40" y="209">First approver on almost every rule —</text>
+<text class="ts" x="40" y="225">11 of them. If he is away, quotes queue</text>
+<text class="ts" x="40" y="238">at the first step.</text></g>
+
+<g class="hi"><rect x="346" y="168" width="310" height="76" rx="6" stroke-width="1.5"/>
+<text class="th" x="362" y="190">Lou Mangiaracina</text>
+<text class="ts" x="362" y="209">The escalation path — 6 rules, mostly</text>
+<text class="ts" x="362" y="225">second and third step. Together with Alex,</text>
+<text class="ts" x="362" y="238">96% of all approvals.</text></g>
+
+<g class="md"><rect x="24" y="258" width="310" height="64" rx="6" stroke-width="1"/>
+<text class="th" x="40" y="280">Mary Irizarry</text>
+<text class="ts" x="40" y="299">Generates about half of the 305 customer</text>
+<text class="ts" x="40" y="315">proposals produced every month, by hand.</text></g>
+
+<g class="md"><rect x="346" y="258" width="310" height="64" rx="6" stroke-width="1"/>
+<text class="th" x="362" y="280">Your outside consultant</text>
+<text class="ts" x="362" y="299">Makes 100% of configuration changes to</text>
+<text class="ts" x="362" y="315">the quoting system. Nobody internal does.</text></g>
+
+<g class="lo"><rect x="24" y="336" width="632" height="52" rx="6" stroke-width="1"/>
+<text class="th" x="40" y="358">Mark Evans + around 7 sales people</text>
+<text class="ts" x="40" y="377">Account and tax upkeep, and the open bid pipeline. Spread across enough people to absorb an absence.</text></g>
+
+<rect x="24" y="404" width="632" height="52" rx="6" fill="#DCEFEA" stroke="#2C7A6E" stroke-width="1"/>
+<text class="th" x="40" y="426">The upside of a small team</text>
+<text class="ts" x="40" y="445">Any change here reaches about a dozen people. That is a pilot, not a company-wide rollout programme.</text>
+</svg>

@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens: Light mode (default) ───────────────────────── */
+:root,
+[data-theme="light"] {
+  --background: 0 0% 100%;
+  --foreground: 220 10% 12%;
+  --muted: 220 10% 96%;
+  --muted-foreground: 220 8% 45%;
+  --border: 220 12% 90%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 10% 12%;
+  --accent: 245 70% 58%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Severity */
+  --severity-info: 220 14% 60%;
+  --severity-low: 48 95% 60%;
+  --severity-medium: 28 90% 58%;
+  --severity-high: 8 80% 55%;
+  --severity-critical: 355 75% 45%;
+
+  /* Confidence */
+  --confidence-high: 142 71% 45%;
+  --confidence-medium: 38 92% 50%;
+  --confidence-low: 220 9% 55%;
+  --confidence-manual: 28 90% 55%;
+
+  /* Truth labels */
+  --truth-real: 142 71% 45%;
+  --truth-sample: 217 91% 60%;
+  --truth-ai: 262 83% 58%;
+  --truth-heuristic: 48 95% 55%;
+  --truth-human: 28 90% 55%;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --background: 222 18% 10%;
+  --foreground: 220 10% 92%;
+  --muted: 222 16% 16%;
+  --muted-foreground: 220 8% 56%;
+  --border: 220 12% 22%;
+  --card: 222 16% 13%;
+  --card-foreground: 220 10% 92%;
+  --accent: 245 70% 65%;
+  --accent-foreground: 0 0% 100%;
+
+  --severity-info: 220 14% 55%;
+  --severity-low: 48 90% 55%;
+  --severity-medium: 28 85% 55%;
+  --severity-high: 8 75% 58%;
+  --severity-critical: 355 70% 55%;
+
+  --confidence-high: 142 60% 50%;
+  --confidence-medium: 38 85% 55%;
+  --confidence-low: 220 9% 50%;
+  --confidence-manual: 28 85% 55%;
+}
+
+/* ── Base ───────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* ── Utilities ──────────────────────────────────────────────────── */
+.card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.card-sm {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.section-header {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+}
+
+.body-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+}
+
+.muted-text {
+  font-size: 14px;
+  color: hsl(var(--muted-foreground));
+}
+
+.mono {
+  font-family: 'JetBrains Mono', Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Transitions ────────────────────────────────────────────────── */
+.drawer-enter {
+  transform: translateX(100%);
+}
+.drawer-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-out;
+}
+.drawer-exit {
+  transform: translateX(0);
+}
+.drawer-exit-active {
+  transform: translateX(100%);
+  transition: transform 300ms ease-out;
+}
+
+/* ── Print styles (Layer 3 briefing) ────────────────────────────── */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+  .card { border: 1px solid #ccc; break-inside: avoid; }
+}
+
+/* ── Shiki code highlighting (Layer 4) ──────────────────────────── */
+.shiki-container pre {
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  tab-size: 2;
+}
+.shiki-container code {
+  font-family: inherit;
+}
+/* Remove Shiki's default background so our dark container shows through */
+.shiki-container .shiki {
+  background: transparent !important;
+}
+
+/* ── Animations §7.5 ────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 220ms ease-out both;
+}
+
+@keyframes buttonStaggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-button-stagger {
+  animation: buttonStaggerFadeIn 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Page-level fade — applied to each layer's root element */
+@keyframes pageFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.page-fade {
+  animation: pageFade 180ms ease-out both;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Hover card lift — subtle depth on interactive cards */
+.card-interactive {
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+.card-interactive:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .card-interactive:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}

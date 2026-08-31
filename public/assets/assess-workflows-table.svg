@@ -1,0 +1,101 @@
+<svg width="100%" viewBox="0 0 680 1290" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Braen Stone Bid O2C step-level map, manual versus automated</title>
+<style>
+  .th { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #3D3929; }
+  .ts { font: 400 11px 'Segoe UI', Arial, sans-serif; fill: #6B6455; }
+  .man rect { fill: #FBE3DA; stroke: #D97757; }
+  .aut rect { fill: #DCEFEA; stroke: #2C7A6E; }
+  .amb rect { fill: #FCEFD6; stroke: #C9962E; }
+  .red rect { fill: #F9DCDC; stroke: #C0392B; }
+  .pur rect { fill: #E8E3F5; stroke: #6B5CA5; }
+  .gry rect { fill: #EEECE7; stroke: #8A8578; }
+  .arr { stroke: #8A8578; stroke-width: 1.5; fill: none; }
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#8A8578" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+
+<text class="th" x="24" y="64">Opportunity spine</text>
+<text class="th" x="356" y="64">Quote sub-process</text>
+
+<g class="man"><rect x="24" y="80" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="100">Rep creates Bid opportunity</text><text class="ts" x="36" y="117">no automation — human entry</text><text class="ts" x="312" y="100" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="24" y="136" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="156">Defaults + tax code set on insert</text><text class="ts" x="36" y="173">Opp Before Save Flow ×2</text><text class="ts" x="312" y="156" text-anchor="end">AUTO</text></g>
+<g class="aut"><rect x="24" y="192" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="212">D&amp;B credit check runs</text><text class="ts" x="36" y="229">DNBi_AutoTrigger (managed)</text><text class="ts" x="312" y="212" text-anchor="end">AUTO</text></g>
+<g class="aut"><rect x="24" y="248" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="268">Post-save updates + DocuSign</text><text class="ts" x="36" y="285">3 after-save flows</text><text class="ts" x="312" y="268" text-anchor="end">AUTO</text></g>
+<g class="man"><rect x="24" y="304" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="324">Set Bid_Opportunity__c checkbox</text><text class="ts" x="36" y="341">627 records conflict with RecordType</text><text class="ts" x="312" y="324" text-anchor="end">MANUAL</text></g>
+<g class="man"><rect x="24" y="360" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="380">Pre-Planning → Planning</text><text class="ts" x="36" y="397">no writer found — inferred manual</text><text class="ts" x="312" y="380" text-anchor="end">MANUAL</text></g>
+<g class="man"><rect x="24" y="416" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="436">Planning → Out to Bid</text><text class="ts" x="36" y="453">no writer found — inferred manual</text><text class="ts" x="312" y="436" text-anchor="end">MANUAL</text></g>
+<g class="pur"><rect x="24" y="472" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="492">Out to Bid → Quoting</text><text class="ts" x="36" y="509">flow can auto-advance · also manual</text><text class="ts" x="312" y="492" text-anchor="end">MIXED</text></g>
+<g class="gry"><rect x="24" y="528" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="548">Hand off to quote sub-process</text><text class="ts" x="36" y="565">see right column</text><text class="ts" x="312" y="548" text-anchor="end">→</text></g>
+<g class="aut"><rect x="24" y="584" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="604">Quoting → Sent to Customer</text><text class="ts" x="36" y="621">auto on doc generation (Quote_Document flow)</text><text class="ts" x="312" y="604" text-anchor="end">AUTO</text></g>
+<g class="man"><rect x="24" y="640" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="660">→ Awaiting Bid Results</text><text class="ts" x="36" y="677">no writer found — inferred manual</text><text class="ts" x="312" y="660" text-anchor="end">MANUAL</text></g>
+<g class="man"><rect x="24" y="696" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="716">→ Awaiting Order Results</text><text class="ts" x="36" y="733">80 opps stuck &gt;60d · no SLA exists</text><text class="ts" x="312" y="716" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="24" y="752" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="772">Opportunity auto-closed Won/Lost</text><text class="ts" x="36" y="789">Quote_After_Save_Flow · Close_Oppty</text><text class="ts" x="312" y="772" text-anchor="end">AUTO</text></g>
+<g class="red"><rect x="24" y="808" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="828">Close gate — bidder fields only</text><text class="ts" x="36" y="845">9 of 314 closed with no approval</text><text class="ts" x="312" y="828" text-anchor="end">GATE</text></g>
+<g class="amb"><rect x="24" y="864" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="36" y="884">Handoff to Vista / Epicor ERP</text><text class="ts" x="36" y="901">Order/Contract/Subscription = 0 records</text><text class="ts" x="312" y="884" text-anchor="end">UNKNOWN</text></g>
+
+<line x1="48" y1="126" x2="48" y2="132" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="182" x2="48" y2="188" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="238" x2="48" y2="244" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="294" x2="48" y2="300" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="350" x2="48" y2="356" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="406" x2="48" y2="412" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="462" x2="48" y2="468" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="518" x2="48" y2="524" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="574" x2="48" y2="580" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="630" x2="48" y2="636" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="686" x2="48" y2="692" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="742" x2="48" y2="748" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="798" x2="48" y2="804" class="arr" marker-end="url(#arrow)"/>
+<line x1="48" y1="854" x2="48" y2="860" class="arr" marker-end="url(#arrow)"/>
+
+<g class="pur"><rect x="356" y="80" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="100">Create quote</text><text class="ts" x="368" y="117">buttons OR AutoQuoteFlowLauncher</text><text class="ts" x="644" y="100" text-anchor="end">MIXED</text></g>
+<g class="man"><rect x="356" y="136" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="156">Add / import quote lines</text><text class="ts" x="368" y="173">Edit Lines · Import Lines (VF)</text><text class="ts" x="644" y="156" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="356" y="192" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="212">Calculate pricing</text><text class="ts" x="368" y="229">CPQ engine · SBQQ_QuoteTrigger</text><text class="ts" x="644" y="212" text-anchor="end">AUTO</text></g>
+<g class="amb"><rect x="356" y="248" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="268">QCP custom script runs</text><text class="ts" x="368" y="285">Count MSU JS · slot value unconfirmed</text><text class="ts" x="644" y="268" text-anchor="end">AUTO?</text></g>
+<g class="man"><rect x="356" y="304" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="324">Submit for approval</text><text class="ts" x="368" y="341">button click — human initiated</text><text class="ts" x="644" y="324" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="356" y="360" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="380">Route to approvers</text><text class="ts" x="368" y="397">sbaa approval rules + chains</text><text class="ts" x="644" y="380" text-anchor="end">AUTO</text></g>
+<g class="man"><rect x="356" y="416" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="436">Approvers decide (Alex + Lou)</text><text class="ts" x="368" y="453">11,401 Bid actions · 18 rejected (0.16%)</text><text class="ts" x="644" y="436" text-anchor="end">MANUAL</text></g>
+<g class="man"><rect x="356" y="472" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="492">If rejected → rework lines</text><text class="ts" x="368" y="509">no rejection counter exists</text><text class="ts" x="644" y="492" text-anchor="end">MANUAL</text></g>
+<g class="man"><rect x="356" y="528" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="548">Recall / revoke approval</text><text class="ts" x="368" y="565">98 recalled · 47 revoked (Bid-scoped)</text><text class="ts" x="644" y="548" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="356" y="584" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="604">Lock quote-line pricing on approval</text><text class="ts" x="368" y="621">Quote_After_Save_Flow</text><text class="ts" x="644" y="604" text-anchor="end">AUTO</text></g>
+<g class="man"><rect x="356" y="640" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="660">Mark as primary quote</text><text class="ts" x="368" y="677">no automation found</text><text class="ts" x="644" y="660" text-anchor="end">MANUAL</text></g>
+<g class="aut"><rect x="356" y="696" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="716">Roll quote amount to Opportunity</text><text class="ts" x="368" y="733">Quote_After_Save_Flow + Updates_V2_1</text><text class="ts" x="644" y="716" text-anchor="end">AUTO</text></g>
+<g class="aut"><rect x="356" y="752" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="772">Sync approved-primary flag</text><text class="ts" x="368" y="789">admin-settable · 36 records drift</text><text class="ts" x="644" y="772" text-anchor="end">AUTO</text></g>
+<g class="man"><rect x="356" y="808" width="300" height="46" rx="8" stroke-width="1"/><text class="th" x="368" y="828">Pick close stage on the quote</text><text class="ts" x="368" y="845">Opportunity_Stage_User_Selected__c</text><text class="ts" x="644" y="828" text-anchor="end">MANUAL</text></g>
+
+<line x1="380" y1="126" x2="380" y2="132" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="182" x2="380" y2="188" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="238" x2="380" y2="244" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="294" x2="380" y2="300" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="350" x2="380" y2="356" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="406" x2="380" y2="412" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="462" x2="380" y2="468" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="518" x2="380" y2="524" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="574" x2="380" y2="580" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="630" x2="380" y2="636" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="686" x2="380" y2="692" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="742" x2="380" y2="748" class="arr" marker-end="url(#arrow)"/>
+<line x1="380" y1="798" x2="380" y2="804" class="arr" marker-end="url(#arrow)"/>
+
+<path d="M324 551 H340 V103 H352" class="arr" marker-end="url(#arrow)"/>
+<path d="M356 831 H340 V775 H328" class="arr" marker-end="url(#arrow)"/>
+<path d="M656 495 H668 V159 H660" class="arr" marker-end="url(#arrow)"/>
+
+<text class="th" x="24" y="953">Tax lane</text>
+<g class="aut"><rect x="24" y="966" width="118" height="52" rx="8" stroke-width="1"/><text class="ts" x="34" y="987">Tax code set</text><text class="ts" x="34" y="1003">on insert · AUTO</text></g>
+<g class="amb"><rect x="152" y="966" width="118" height="52" rx="8" stroke-width="1"/><text class="ts" x="162" y="987">Set status /</text><text class="ts" x="162" y="1003">exempt · ?</text></g>
+<g class="amb"><rect x="280" y="966" width="118" height="52" rx="8" stroke-width="1"/><text class="ts" x="290" y="987">Cert sent</text><text class="ts" x="290" y="1003">no automation · ?</text></g>
+<g class="amb"><rect x="408" y="966" width="118" height="52" rx="8" stroke-width="1"/><text class="ts" x="418" y="987">Received /</text><text class="ts" x="418" y="1003">verified · ?</text></g>
+<g class="red"><rect x="536" y="966" width="120" height="52" rx="8" stroke-width="1"/><text class="ts" x="546" y="987">Post-close change</text><text class="ts" x="546" y="1003">needs approval</text></g>
+<text class="ts" x="24" y="1037">Cert gate at close is Stone-only — Bid is not gated at close</text>
+
+<text class="th" x="24" y="1077">Credit lane</text>
+<g class="aut"><rect x="24" y="1090" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="34" y="1108">D&amp;B auto check</text><text class="ts" x="34" y="1124">DNBi managed · AUTO</text></g>
+<g class="man"><rect x="234" y="1090" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="244" y="1108">Submit for credit approval</text><text class="ts" x="244" y="1124">Lightning cmp · MANUAL</text></g>
+<g class="aut"><rect x="444" y="1090" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="454" y="1108">Account hold flags</text><text class="ts" x="454" y="1124">Account flows ×2 · AUTO</text></g>
+
+<text class="th" x="24" y="1179">Scheduled jobs — none target Awaiting Order Results</text>
+<g class="aut"><rect x="24" y="1192" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="34" y="1210">Stone_Opportunity_</text><text class="ts" x="34" y="1226">Schedule_Flow</text></g>
+<g class="aut"><rect x="234" y="1192" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="244" y="1210">Fill_in_Missing_AC_Oil_</text><text class="ts" x="244" y="1226">Price_Stone_Quotes</text></g>
+<g class="aut"><rect x="444" y="1192" width="200" height="46" rx="8" stroke-width="1"/><text class="ts" x="454" y="1210">Supply_Case_</text><text class="ts" x="454" y="1226">Schedule_Flow</text></g>
+</svg>
