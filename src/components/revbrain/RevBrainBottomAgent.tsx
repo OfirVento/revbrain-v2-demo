@@ -1097,14 +1097,14 @@ export function RevBrainBottomAgent() {
                   </div>
                 )}
 
-                {/* 5. Learning Engine Route Guided Tour */}
+                {/* 5. Learning Engine Route Guided Workspace */}
                 {isLearningRoute && (
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     {learningScreen === 1 && (
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            1 of 6 · Client Learning Corpus
+                            Learning Corpus
                           </span>
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
                             47 implementations
@@ -1113,7 +1113,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="47 implementations have produced 32 reusable Q2C components across agents, workflows, automations, and validation. Complex Enterprise Sales currently has the deepest reusable coverage."
+                            text="47 implementations have produced reusable AI implementation IP across the Q2C lifecycle."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1127,7 +1127,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Next Screen: Pattern Extraction</span>
+                              <span>Inspect learned patterns</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1139,16 +1139,16 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            2 of 6 · Pattern Extraction
+                            Pattern Extraction
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            87% Reusable
+                            87% Reusable Core
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-2"
-                            text="87% of the business behavior repeats — and I can now map that behavior into a reusable agent, workflow, handoffs, and test pack. The architecture repeats more than the client-specific policy."
+                            text="Most architecture repeats. Client policy creates most of the remaining variation."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1162,7 +1162,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Next Screen: Component Factory</span>
+                              <span>Open implementation pack</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1174,51 +1174,16 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            3 of 6 · Component Factory
+                            Implementation Pack Factory
                           </span>
                           <span className="text-[10px] font-mono text-slate-400 font-semibold">
-                            Discount Approval Pack v3
+                            9 Packs Available
                           </span>
                         </div>
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-3"
-                            text="This is no longer only a learned pattern. It is now a reusable implementation pack across Agentforce, Flow, Revenue Cloud, Slack, and Knowledge."
-                            speed={24}
-                            enabled={chatFullyOpened}
-                            onComplete={() => setShowButtons(true)}
-                          />
-                        </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 4 } }));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Next Screen: Q2C Readiness</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {learningScreen === 4 && (
-                      <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            4 of 6 · Q2C Operating Model Readiness
-                          </span>
-                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            Complex Enterprise 91% Ready
-                          </span>
-                        </div>
-                        <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
-                          <TypewriterText
-                            key="screen-4"
-                            text="For Complex Enterprise Sales, Discount Approval is 91% implementation-ready — the agent, workflow, handoffs, and validation are already reusable. Only the client policy still needs to be captured."
+                            text="RevBrain turns repeated implementation behavior into reusable agents, workflows, automations, and tests."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1232,7 +1197,42 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Next Screen: Client Simulation</span>
+                              <span>Simulate next client</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {learningScreen === 4 && (
+                      <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
+                        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                          <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
+                            Q2C Operating Model Readiness
+                          </span>
+                          <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            Complex Enterprise 91% Ready
+                          </span>
+                        </div>
+                        <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                          <TypewriterText
+                            key="screen-4"
+                            text="This shows how much of a similar client's AI-first implementation is already reusable."
+                            speed={24}
+                            enabled={chatFullyOpened}
+                            onComplete={() => setShowButtons(true)}
+                          />
+                        </p>
+                        {showButtons && (
+                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
+                            <button
+                              onClick={() => {
+                                window.dispatchEvent(new CustomEvent('revbrain-learning-navigate', { detail: { screen: 5 } }));
+                              }}
+                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                            >
+                              <span>Simulate next client</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1244,7 +1244,7 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            5 of 6 · Next Client Simulation
+                            Next Client Simulation
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             86% Foundation Available
@@ -1253,7 +1253,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-5"
-                            text="I can start this client with the core agents, workflows, automations, and test coverage already prepared. I only need the three policies that make this customer unique."
+                            text="The architecture is ready. I only need the policies that make this customer unique."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1267,7 +1267,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer"
                             >
-                              <span>Show the 3 questions</span>
+                              <span>Show 3 client questions</span>
                             </button>
 
                             <button
@@ -1276,7 +1276,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Next Screen: Compounding Advantage</span>
+                              <span>View compounding advantage</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -1288,7 +1288,7 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                           <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-md border border-violet-200/60">
-                            6 of 6 · Compounding Advantage
+                            Compounding Advantage
                           </span>
                           <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             96% Mapping Confidence
@@ -1297,7 +1297,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-6"
-                            text="RevBrain is learning how these Q2C operating models should be implemented — which agents to use, what to automate, where humans remain, and how to validate the outcome. The next customer starts with more of that implementation already built."
+                            text="Each implementation increases what RevBrain can reuse on the next one."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1311,7 +1311,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                             >
-                              <span>Explore components</span>
+                              <span>Explore component library</span>
                               <Sparkles className="w-3.5 h-3.5" />
                             </button>
 
@@ -1321,7 +1321,7 @@ export function RevBrainBottomAgent() {
                               }}
                               className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer flex items-center gap-1"
                             >
-                              <span>Restart Tour (Screen 1)</span>
+                              <span>Back to Learning Corpus</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </button>
                           </div>

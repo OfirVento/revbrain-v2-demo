@@ -1,25 +1,22 @@
 // ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
-// 6 Guided Productized Screens:
-// 1. Client Learning Corpus (Reusable Implementation Stack: Agents, Workflows, Automations)
-// 2. Discount Approvals & Exceptions — Pattern Decomposition (87% Reusable Core -> AI Stack & 13% Policy)
-// 3. Component Factory (Discount Approval Pack v3: Observed → Generalized → Componentized → Validated → Ready)
-// 4. Q2C Operating Model Readiness (10 Q2C Workflows x 4 Revenue Operating Models Matrix + Cell AI Breakdown)
-// 5. Next Client Simulation (Complex Enterprise Sales — 86% AI Stack Prebuilt by Type, 3 Policy Decisions)
-// 6. Compounding Advantage (Implementation #1 → #6 → #12 Reusable Agents & Automations Progression)
+// Navigable Product Workspace:
+// 1. Learning Corpus (Q2C Learned Areas & Reusable Implementation IP)
+// 2. Pattern Extraction (Pattern Decomposition & Software Mapping)
+// 3. Implementation Pack Factory (Productized Packs & Representative Reusable Components)
+// 4. Q2C Readiness (Q2C Workflows x 4 Revenue Operating Models Matrix)
+// 5. Next Client (Complex Enterprise Sales Simulation & AI Stack)
+// 6. Compounding (AI Implementation Economics & Reusable Advantage)
 
 import { useState, useEffect } from 'react';
 import {
   Brain,
   Sparkles,
   ArrowRight,
-  ArrowLeft,
   CheckCircle2,
   ShieldCheck,
   Eye,
   GitMerge,
-  Package,
   X,
-  Lock,
   Sliders,
   HelpCircle,
   Check,
@@ -30,8 +27,19 @@ import {
   GitFork,
   Layers,
   UserCheck,
-  Building,
+  Layers3,
 } from 'lucide-react';
+
+/* ── Persistent Learning Sub-Nav Tabs ────────────────────────────────── */
+
+export const LEARNING_TABS = [
+  { id: 1, label: 'Learning Corpus' },
+  { id: 2, label: 'Pattern Extraction' },
+  { id: 3, label: 'Implementation Packs' },
+  { id: 4, label: 'Q2C Readiness' },
+  { id: 5, label: 'Next Client' },
+  { id: 6, label: 'Compounding' },
+];
 
 /* ── 4 Global Revenue Operating Models ──────────────────────────────── */
 
@@ -69,6 +77,280 @@ export const REVENUE_OPERATING_MODELS: RevenueOperatingModel[] = [
   },
 ];
 
+/* ── Implementation Pack Factory Data ──────────────────────────────── */
+
+export interface ImplementationPackData {
+  id: string;
+  name: string;
+  reusablePercent: number;
+  implementationsCount: number;
+  pipelineData: {
+    observed: { impls: number; paths: string };
+    generalized: { shared: number; variants: string };
+    componentized: {
+      agents: number;
+      workflows: number;
+      automations: number;
+      handoffs: number;
+      knowledge: number;
+      validation: number;
+    };
+    validated: { scenarios: number; scope: string };
+    ready: { label: string; sub: string };
+  };
+  representativeComponents: {
+    agents: string[];
+    workflows: string[];
+    automations: string[];
+    handoffs: string[];
+    knowledge: string[];
+    validation: string[];
+    moreCount: number;
+  };
+}
+
+export const IMPLEMENTATION_PACKS_DATA: Record<string, ImplementationPackData> = {
+  discount_approval: {
+    id: 'discount_approval',
+    name: 'Discount Approval Pack v3',
+    reusablePercent: 87,
+    implementationsCount: 31,
+    pipelineData: {
+      observed: { impls: 31, paths: '214 approval paths' },
+      generalized: { shared: 87, variants: '46 policy variants isolated' },
+      componentized: {
+        agents: 12,
+        workflows: 15,
+        automations: 23,
+        handoffs: 9,
+        knowledge: 11,
+        validation: 18,
+      },
+      validated: { scenarios: 143, scope: 'Across 31 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'Client policy remains configurable' },
+    },
+    representativeComponents: {
+      agents: ['Discount Exception Agent', 'Margin Analysis Agent', 'Similar Deal Agent', 'Approval Routing Agent'],
+      workflows: ['Margin-Risk Approval Flow', 'Strategic Exception Flow'],
+      automations: ['Approval Follow-Up', 'Evidence Preparation', 'Escalation Automation'],
+      handoffs: ['Slack Manager Approval', 'Finance Review'],
+      knowledge: ['Decision & Rationale Capture'],
+      validation: ['Approval Behavior Test Pack'],
+      moreCount: 14,
+    },
+  },
+
+  pricing_discounts: {
+    id: 'pricing_discounts',
+    name: 'Pricing & Discounts Pack v2',
+    reusablePercent: 84,
+    implementationsCount: 24,
+    pipelineData: {
+      observed: { impls: 24, paths: '182 pricing rules' },
+      generalized: { shared: 84, variants: '38 tier models isolated' },
+      componentized: {
+        agents: 9,
+        workflows: 11,
+        automations: 17,
+        handoffs: 8,
+        knowledge: 8,
+        validation: 14,
+      },
+      validated: { scenarios: 118, scope: 'Across 24 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'Price books remain configurable' },
+    },
+    representativeComponents: {
+      agents: ['Pricing Context Agent', 'Pricing Validation Agent', 'Deal Desk Pricing Agent'],
+      workflows: ['Pricing Procedure Flow', 'Price Book Evaluation Flow'],
+      automations: ['Margin Threshold Automation', 'Price Override Review', 'Price Escalation'],
+      handoffs: ['Deal Desk Approval', 'Finance Pricing Handoff'],
+      knowledge: ['Historical Price Rationale Store'],
+      validation: ['Discount Regression Pack'],
+      moreCount: 12,
+    },
+  },
+
+  quote_to_order: {
+    id: 'quote_to_order',
+    name: 'Quote-to-Order Pack v2',
+    reusablePercent: 78,
+    implementationsCount: 21,
+    pipelineData: {
+      observed: { impls: 21, paths: '156 state transitions' },
+      generalized: { shared: 78, variants: '29 ERP schemas isolated' },
+      componentized: {
+        agents: 7,
+        workflows: 12,
+        automations: 19,
+        handoffs: 7,
+        knowledge: 9,
+        validation: 15,
+      },
+      validated: { scenarios: 104, scope: 'Across 21 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'ERP endpoints remain configurable' },
+    },
+    representativeComponents: {
+      agents: ['Quote Status Agent', 'Order Readiness Agent'],
+      workflows: ['Quote-to-Order Handoff Flow', 'Closed-Won Order Generation Flow'],
+      automations: ['State Sync Automation', 'Missing Field Check', 'ERP Readiness Trigger'],
+      handoffs: ['Sales Ops Handoff', 'Fulfillment Handoff'],
+      knowledge: ['Order Exception Knowledge Loop'],
+      validation: ['ERP / State Regression Pack'],
+      moreCount: 10,
+    },
+  },
+
+  bundle_config: {
+    id: 'bundle_config',
+    name: 'Bundle Configuration Pack v2',
+    reusablePercent: 81,
+    implementationsCount: 19,
+    pipelineData: {
+      observed: { impls: 19, paths: '198 bundle options' },
+      generalized: { shared: 81, variants: '33 rule schemas isolated' },
+      componentized: {
+        agents: 8,
+        workflows: 10,
+        automations: 16,
+        handoffs: 6,
+        knowledge: 7,
+        validation: 13,
+      },
+      validated: { scenarios: 96, scope: 'Across 19 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'Product catalog remains configurable' },
+    },
+    representativeComponents: {
+      agents: ['Configuration Agent', 'Product Dependency Agent', 'Launch Readiness Agent'],
+      workflows: ['Guided Selling Flow', 'Bundle Eligibility Flow'],
+      automations: ['Product Model Validator', 'Rule Dependency Automation'],
+      handoffs: ['Product Manager Review'],
+      knowledge: ['Bundle Compatibility Store'],
+      validation: ['Dependency Validation Pack'],
+      moreCount: 9,
+    },
+  },
+
+  renewals_amendments: {
+    id: 'renewals_amendments',
+    name: 'Renewals & Amendments Pack v3',
+    reusablePercent: 79,
+    implementationsCount: 18,
+    pipelineData: {
+      observed: { impls: 18, paths: '144 contract lifecycles' },
+      generalized: { shared: 79, variants: '27 term models isolated' },
+      componentized: {
+        agents: 8,
+        workflows: 11,
+        automations: 14,
+        handoffs: 8,
+        knowledge: 9,
+        validation: 12,
+      },
+      validated: { scenarios: 89, scope: 'Across 18 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'SLA parameters remain configurable' },
+    },
+    representativeComponents: {
+      agents: ['Renewal Amendment Agent', 'Renewal Risk Agent', 'Contract Context Agent'],
+      workflows: ['Renewal Approval Flow', 'Amendment Routing Flow'],
+      automations: ['Renewal Prep Automation', 'Amendment Validation Trigger'],
+      handoffs: ['Account Manager Escalation', 'CSM Review'],
+      knowledge: ['Renewal Outcome Knowledge Loop'],
+      validation: ['Renewal Regression Pack'],
+      moreCount: 11,
+    },
+  },
+
+  contracted_pricing: {
+    id: 'contracted_pricing',
+    name: 'Contracted Pricing Pack v1',
+    reusablePercent: 76,
+    implementationsCount: 14,
+    pipelineData: {
+      observed: { impls: 14, paths: '112 agreement types' },
+      generalized: { shared: 76, variants: '22 clause variations isolated' },
+      componentized: {
+        agents: 6,
+        workflows: 8,
+        automations: 12,
+        handoffs: 6,
+        knowledge: 6,
+        validation: 10,
+      },
+      validated: { scenarios: 72, scope: 'Across 14 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'Account tiers remain configurable' },
+    },
+    representativeComponents: {
+      agents: ['Pricing Context Agent', 'Contract Eligibility Agent'],
+      workflows: ['Contracted Pricing Lookup Flow', 'Account Pricing Rules Flow'],
+      automations: ['Account Eligibility Trigger', 'Pricing Override Review'],
+      handoffs: ['Legal Handoff', 'Finance Review'],
+      knowledge: ['Entitlement Decision Store'],
+      validation: ['Pricing Conflict Regression Pack'],
+      moreCount: 8,
+    },
+  },
+
+  quote_creation: {
+    id: 'quote_creation',
+    name: 'Quote Creation Pack v2',
+    reusablePercent: 82,
+    implementationsCount: 22,
+    pipelineData: {
+      observed: { impls: 22, paths: '168 quote forms' },
+      generalized: { shared: 82, variants: '31 layout variations isolated' },
+      componentized: {
+        agents: 7,
+        workflows: 9,
+        automations: 15,
+        handoffs: 5,
+        knowledge: 8,
+        validation: 11,
+      },
+      validated: { scenarios: 108, scope: 'Across 22 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'Fields remain configurable' },
+    },
+    representativeComponents: {
+      agents: ['Quote Intake Agent', 'Header Context Agent'],
+      workflows: ['Quote Initialization Flow', 'Field Pre-fill Flow'],
+      automations: ['Opportunity Sync Auto', 'Quote Auto-naming'],
+      handoffs: ['Rep Draft Review'],
+      knowledge: ['Intake Rationale Store'],
+      validation: ['Quote Field Test Pack'],
+      moreCount: 10,
+    },
+  },
+
+  quote_documents: {
+    id: 'quote_documents',
+    name: 'Quote Documents Pack v1',
+    reusablePercent: 80,
+    implementationsCount: 16,
+    pipelineData: {
+      observed: { impls: 16, paths: '134 doc templates' },
+      generalized: { shared: 80, variants: '24 e-signature flows isolated' },
+      componentized: {
+        agents: 5,
+        workflows: 7,
+        automations: 13,
+        handoffs: 6,
+        knowledge: 5,
+        validation: 9,
+      },
+      validated: { scenarios: 81, scope: 'Across 16 implementations' },
+      ready: { label: 'Reusable implementation pack', sub: 'PDF branding remains configurable' },
+    },
+    representativeComponents: {
+      agents: ['Document Generation Agent', 'Terms Extraction Agent'],
+      workflows: ['DocuSign Envelope Flow', 'Template Render Flow'],
+      automations: ['PDF Render Auto', 'E-Signature Callback'],
+      handoffs: ['Legal Clause Review'],
+      knowledge: ['Template Usage Memory'],
+      validation: ['Document Render Test Pack'],
+      moreCount: 7,
+    },
+  },
+};
+
 /* ── Q2C Workflows Matrix Data (Screen 4) ────────────────────────────── */
 
 export interface Q2CMatrixRow {
@@ -101,6 +383,8 @@ export function KnowledgePlaceholder() {
   const [selectedModel, setSelectedModel] = useState<string>('Complex Enterprise Sales');
   const [selectedRowId, setSelectedRowId] = useState<string>('4');
   const [showExtraWorkflows, setShowExtraWorkflows] = useState<boolean>(false);
+
+  const [selectedPackKey, setSelectedPackKey] = useState<string>('discount_approval');
 
   const [showQuestionsModal, setShowQuestionsModal] = useState<boolean>(false);
   const [showLibraryDrawer, setShowLibraryDrawer] = useState<boolean>(false);
@@ -148,66 +432,42 @@ export function KnowledgePlaceholder() {
 
   const selectedMatrixRow = Q2C_WORKFLOW_MATRIX.find((r) => r.id === selectedRowId) || Q2C_WORKFLOW_MATRIX[3];
 
+  const currentPackData = IMPLEMENTATION_PACKS_DATA[selectedPackKey] || IMPLEMENTATION_PACKS_DATA.discount_approval;
+
   return (
     <div className="w-full flex flex-col min-h-[calc(100vh-140px)] bg-slate-100/60 text-slate-800 font-sans">
       <div className="max-w-[1440px] mx-auto w-full px-6 pt-5 pb-20 space-y-4 flex-1">
 
-        {/* ── Top Header Navigation Bar ──────────────────────────────── */}
-        <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            {screen > 1 && (
-              <button
-                onClick={() => setScreen(screen - 1)}
-                className="px-2.5 py-1 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back</span>
-              </button>
-            )}
-
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[11px] font-bold tracking-wide font-mono">
-                {screen} of 6 · Learning Engine
-              </span>
-              <h1 className="text-base font-bold text-slate-900">
-                {screen === 1 && 'Client Learning Corpus'}
-                {screen === 2 && 'Discount Approvals & Exceptions — Pattern Extraction'}
-                {screen === 3 && 'Component Factory — Discount Approval Pack v3'}
-                {screen === 4 && 'Q2C Operating Model Readiness'}
-                {screen === 5 && 'Next Client Simulation'}
-                {screen === 6 && 'Compounding AI Implementation Advantage'}
-              </h1>
-            </div>
+        {/* ── Persistent Learning Engine Sub-Navigation ───────────────────── */}
+        <div className="bg-white border border-slate-200/90 rounded-2xl p-2 shadow-2xs flex items-center justify-between gap-2 overflow-x-auto">
+          <div className="flex items-center gap-1.5 min-w-max">
+            {LEARNING_TABS.map((tab) => {
+              const isActive = screen === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setScreen(tab.id)}
+                  className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                    isActive
+                      ? 'bg-violet-600 text-white shadow-2xs'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/70'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Compact Top Metric Line */}
-          <div className="flex items-center gap-4 text-xs font-medium text-slate-500">
-            <span className="hidden md:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold">
+          <div className="flex items-center gap-3 text-xs shrink-0 pr-2">
+            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold text-[11px]">
               47 implementations · 247 learned patterns · 32 reusable components
             </span>
-
-            {/* Screen Step Dots (1..6) */}
-            <div className="flex items-center gap-1.5">
-              {[1, 2, 3, 4, 5, 6].map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setScreen(s)}
-                  title={`Go to Screen ${s}`}
-                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                    s === screen
-                      ? 'bg-violet-600 ring-2 ring-violet-300 scale-125'
-                      : s < screen
-                      ? 'bg-emerald-500'
-                      : 'bg-slate-300 hover:bg-slate-400'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 1 — Client Learning Corpus */}
+        {/* TAB 1 — Client Learning Corpus */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 1 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
@@ -293,7 +553,10 @@ export function KnowledgePlaceholder() {
 
                       {/* 2. Pricing & Discounts */}
                       <tr
-                        onClick={() => setSelectedRowId('3')}
+                        onClick={() => {
+                          setSelectedRowId('3');
+                          setScreen(2);
+                        }}
                         className={`transition-colors cursor-pointer ${
                           selectedRowId === '3'
                             ? 'bg-violet-50/70 text-slate-900 font-semibold'
@@ -318,7 +581,10 @@ export function KnowledgePlaceholder() {
 
                       {/* 3. Quote-to-Order */}
                       <tr
-                        onClick={() => setSelectedRowId('8')}
+                        onClick={() => {
+                          setSelectedRowId('8');
+                          setScreen(2);
+                        }}
                         className={`transition-colors cursor-pointer ${
                           selectedRowId === '8'
                             ? 'bg-violet-50/70 text-slate-900 font-semibold'
@@ -344,7 +610,10 @@ export function KnowledgePlaceholder() {
 
                       {/* 4. Bundle / Product Configuration */}
                       <tr
-                        onClick={() => setSelectedRowId('2')}
+                        onClick={() => {
+                          setSelectedRowId('2');
+                          setScreen(2);
+                        }}
                         className={`transition-colors cursor-pointer ${
                           selectedRowId === '2'
                             ? 'bg-violet-50/70 text-slate-900 font-semibold'
@@ -369,7 +638,10 @@ export function KnowledgePlaceholder() {
 
                       {/* 5. Renewals & Amendments */}
                       <tr
-                        onClick={() => setSelectedRowId('6')}
+                        onClick={() => {
+                          setSelectedRowId('6');
+                          setScreen(2);
+                        }}
                         className={`transition-colors cursor-pointer ${
                           selectedRowId === '6'
                             ? 'bg-violet-50/70 text-slate-900 font-semibold'
@@ -395,7 +667,10 @@ export function KnowledgePlaceholder() {
 
                       {/* 6. Contracted / Account-Specific Pricing */}
                       <tr
-                        onClick={() => setSelectedRowId('5')}
+                        onClick={() => {
+                          setSelectedRowId('5');
+                          setScreen(2);
+                        }}
                         className={`transition-colors cursor-pointer ${
                           selectedRowId === '5'
                             ? 'bg-violet-50/70 text-slate-900 font-semibold'
@@ -428,7 +703,7 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 2 — Pattern Extraction */}
+        {/* TAB 2 — Pattern Extraction */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 2 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
@@ -444,11 +719,25 @@ export function KnowledgePlaceholder() {
                     Discount Approvals &amp; Exceptions — Pattern Decomposition
                   </h2>
                 </div>
-                <div className="text-right">
-                  <span className="text-2xl font-extrabold text-emerald-600 block">87% Reusable</span>
-                  <span className="text-[11px] font-semibold text-slate-400 font-mono">
-                    31 implementations · 214 approval paths · 46 policy variants · 143 validation scenarios
-                  </span>
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <span className="text-2xl font-extrabold text-emerald-600 block">87% Reusable</span>
+                    <span className="text-[11px] font-semibold text-slate-400 font-mono">
+                      31 implementations · 214 approval paths · 46 policy variants · 143 validation scenarios
+                    </span>
+                  </div>
+
+                  {/* Direct Action Link to Implementation Pack tab */}
+                  <button
+                    onClick={() => {
+                      setSelectedPackKey('discount_approval');
+                      setScreen(3);
+                    }}
+                    className="px-3.5 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                  >
+                    <span>Open Implementation Pack</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
 
@@ -593,7 +882,7 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 3 — Component Factory */}
+        {/* TAB 3 — Implementation Pack Factory */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 3 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
@@ -602,11 +891,16 @@ export function KnowledgePlaceholder() {
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
-                    AI-First Implementation Pack
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded border border-violet-200">
+                      Productized Component Factory
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-semibold bg-slate-50 px-2.5 py-0.5 rounded border border-slate-200">
+                      9 implementation packs · 32 reusable components · 247 learned patterns
+                    </span>
+                  </div>
                   <h2 className="text-lg font-bold text-slate-900 mt-1">
-                    Component Factory: Discount Approval Pack v3
+                    Implementation Pack Factory
                   </h2>
                 </div>
 
@@ -628,164 +922,335 @@ export function KnowledgePlaceholder() {
                           <X className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <p><strong className="text-white">Observed:</strong> 31 implementations</p>
-                      <p><strong className="text-white">Generalized:</strong> 87% shared behavior</p>
-                      <p><strong className="text-white">Componentized:</strong> 1 Agent · 1 Flow · 2 Automations · 2 Handoffs · 1 Knowledge</p>
-                      <p><strong className="text-white">Validated:</strong> 143 business scenarios</p>
+                      <p><strong className="text-white">Observed:</strong> {currentPackData.pipelineData.observed.impls} implementations</p>
+                      <p><strong className="text-white">Generalized:</strong> {currentPackData.pipelineData.generalized.shared}% shared behavior</p>
+                      <p><strong className="text-white">Componentized:</strong> {currentPackData.pipelineData.componentized.agents} Agents · {currentPackData.pipelineData.componentized.workflows} Workflows · {currentPackData.pipelineData.componentized.automations} Autos</p>
+                      <p><strong className="text-white">Validated:</strong> {currentPackData.pipelineData.validated.scenarios} scenarios</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* 5 Pipeline Stages: Observed -> Generalized -> Componentized -> Validated -> Ready */}
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2">
-                
-                {/* 1. Observed */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                    <Eye className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 block">1. Observed</span>
-                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    31 impls
-                  </span>
-                  <p className="text-[10px] text-slate-500">Raw logs &amp; approvals</p>
-                </div>
+              {/* Horizontal Pack Selector (Compact Tiles) */}
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                  Select Implementation Pack
+                </span>
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+                  
+                  {/* Pack 1: Discount Approval */}
+                  <button
+                    onClick={() => setSelectedPackKey('discount_approval')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'discount_approval'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Discount Approval</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'discount_approval' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      87% reusable
+                    </div>
+                  </button>
 
-                {/* 2. Generalized */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                    <GitMerge className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 block">2. Generalized</span>
-                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    87% shared logic
-                  </span>
-                  <p className="text-[10px] text-slate-500">Logic abstraction</p>
-                </div>
+                  {/* Pack 2: Pricing & Discounts */}
+                  <button
+                    onClick={() => setSelectedPackKey('pricing_discounts')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'pricing_discounts'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Pricing &amp; Discounts</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'pricing_discounts' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      84% reusable
+                    </div>
+                  </button>
 
-                {/* 3. Componentized */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                    <Layers className="w-4 h-4 text-purple-600" />
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 block">3. Componentized</span>
-                  <span className="text-[11px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">
-                    1 Agent · 1 Flow · 2 Autos
-                  </span>
-                  <p className="text-[10px] text-slate-500">Stack decomposition</p>
-                </div>
+                  {/* Pack 3: Quote-to-Order */}
+                  <button
+                    onClick={() => setSelectedPackKey('quote_to_order')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'quote_to_order'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Quote-to-Order</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'quote_to_order' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      78% reusable
+                    </div>
+                  </button>
 
-                {/* 4. Validated */}
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-center shadow-2xs">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-bold text-slate-900 block">4. Validated</span>
-                  <span className="text-[11px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                    143 scenarios
-                  </span>
-                  <p className="text-[10px] text-slate-500">Test pack certified</p>
-                </div>
+                  {/* Pack 4: Bundle Configuration */}
+                  <button
+                    onClick={() => setSelectedPackKey('bundle_config')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'bundle_config'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Bundle Configuration</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'bundle_config' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      81% reusable
+                    </div>
+                  </button>
 
-                {/* 5. Ready */}
-                <div className="p-4 bg-emerald-50/90 border-2 border-emerald-300 rounded-xl space-y-2 text-center shadow-md">
-                  <div className="w-8 h-8 mx-auto rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-bold text-emerald-950 block">5. Ready</span>
-                  <span className="text-[11px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300">
-                    Next Client Ready
-                  </span>
-                  <p className="text-[10px] text-emerald-700 font-medium">Prebuilt Pack</p>
-                </div>
+                  {/* Pack 5: Renewals & Amendments */}
+                  <button
+                    onClick={() => setSelectedPackKey('renewals_amendments')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'renewals_amendments'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Renewals &amp; Amendments</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'renewals_amendments' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      79% reusable
+                    </div>
+                  </button>
 
+                  {/* Pack 6: Contracted Pricing */}
+                  <button
+                    onClick={() => setSelectedPackKey('contracted_pricing')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'contracted_pricing'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Contracted Pricing</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'contracted_pricing' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      76% reusable
+                    </div>
+                  </button>
+
+                  {/* Pack 7: Quote Creation */}
+                  <button
+                    onClick={() => setSelectedPackKey('quote_creation')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'quote_creation'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Quote Creation</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'quote_creation' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      82% reusable
+                    </div>
+                  </button>
+
+                  {/* Pack 8: Quote Documents */}
+                  <button
+                    onClick={() => setSelectedPackKey('quote_documents')}
+                    className={`px-3 py-2 rounded-xl border transition-all cursor-pointer shrink-0 text-left ${
+                      selectedPackKey === 'quote_documents'
+                        ? 'bg-violet-600 text-white border-violet-700 shadow-md font-bold'
+                        : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-semibold'
+                    }`}
+                  >
+                    <div className="text-xs">Quote Documents</div>
+                    <div className={`text-[10px] font-mono ${selectedPackKey === 'quote_documents' ? 'text-violet-200' : 'text-emerald-600 font-bold'}`}>
+                      80% reusable
+                    </div>
+                  </button>
+
+                  <span className="px-2 py-1 bg-slate-100 text-slate-500 text-[11px] font-mono font-bold rounded-lg shrink-0 border border-slate-200">
+                    +1 more
+                  </span>
+                </div>
               </div>
 
-              {/* Productized Pack Visual Grid */}
+              {/* Selected Pack Factory Pipeline Flow */}
+              <div className="space-y-2 pt-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-bold text-slate-900">
+                    {currentPackData.name}
+                  </h3>
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 font-mono">
+                    {currentPackData.reusablePercent}% Reusable
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+                  
+                  {/* 1. Observed */}
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-center shadow-2xs">
+                    <div className="w-7 h-7 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                      <Eye className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 block">1. Observed</span>
+                    <span className="text-[10px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200 block">
+                      {currentPackData.pipelineData.observed.impls} implementations
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-mono pt-0.5">
+                      {currentPackData.pipelineData.observed.paths}
+                    </p>
+                  </div>
+
+                  {/* 2. Generalized */}
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-center shadow-2xs">
+                    <div className="w-7 h-7 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                      <GitMerge className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 block">2. Generalized</span>
+                    <span className="text-[10px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200 block">
+                      {currentPackData.pipelineData.generalized.shared}% shared behavior
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-mono pt-0.5">
+                      {currentPackData.pipelineData.generalized.variants}
+                    </p>
+                  </div>
+
+                  {/* 3. Componentized (Showing accumulated implementation depth) */}
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-center shadow-2xs">
+                    <div className="w-7 h-7 mx-auto rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+                      <Layers3 className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 block">3. Componentized</span>
+                    <div className="grid grid-cols-2 gap-1 text-[9px] font-mono font-bold pt-0.5">
+                      <span className="px-1 py-0.5 bg-purple-100 text-purple-800 rounded">{currentPackData.pipelineData.componentized.agents} Agents</span>
+                      <span className="px-1 py-0.5 bg-blue-100 text-blue-800 rounded">{currentPackData.pipelineData.componentized.workflows} Flows</span>
+                      <span className="px-1 py-0.5 bg-amber-100 text-amber-800 rounded">{currentPackData.pipelineData.componentized.automations} Autos</span>
+                      <span className="px-1 py-0.5 bg-rose-100 text-rose-800 rounded">{currentPackData.pipelineData.componentized.handoffs} Handoffs</span>
+                    </div>
+                  </div>
+
+                  {/* 4. Validated */}
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-center shadow-2xs">
+                    <div className="w-7 h-7 mx-auto rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900 block">4. Validated</span>
+                    <span className="text-[10px] font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200 block">
+                      {currentPackData.pipelineData.validated.scenarios} scenarios
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-mono pt-0.5">
+                      {currentPackData.pipelineData.validated.scope}
+                    </p>
+                  </div>
+
+                  {/* 5. Ready */}
+                  <div className="p-3.5 bg-emerald-50/90 border-2 border-emerald-300 rounded-xl space-y-1 text-center shadow-md">
+                    <div className="w-7 h-7 mx-auto rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
+                      <Sparkles className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-emerald-950 block">5. Ready</span>
+                    <span className="text-[10px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300 block truncate">
+                      {currentPackData.pipelineData.ready.label}
+                    </span>
+                    <p className="text-[10px] text-emerald-700 font-medium pt-0.5">
+                      {currentPackData.pipelineData.ready.sub}
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Representative Productized Components */}
               <div className="space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-                  Productized Components in Discount Approval Pack v3
-                </span>
+                <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Representative Productized Components ({currentPackData.name})
+                  </span>
+                  <span className="text-[10px] font-mono text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200 font-bold">
+                    +{currentPackData.representativeComponents.moreCount} more reusable components in pack
+                  </span>
+                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
                   
-                  {/* AI Agent */}
-                  <div className="p-3 bg-purple-50/80 border border-purple-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-purple-200 text-purple-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <Bot className="w-3 h-3 text-purple-700" />
-                        <span>AI Agent</span>
-                      </span>
-                      <span className="text-[10px] text-purple-700 font-bold">Agentforce</span>
+                  {/* Agents */}
+                  <div className="p-3 bg-purple-50/70 border border-purple-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-purple-900 font-bold text-xs">
+                      <Bot className="w-3.5 h-3.5 text-purple-600" />
+                      <span>Agents</span>
                     </div>
-                    <h4 className="font-bold text-purple-950 text-xs pt-1">Discount Exception Agent</h4>
-                    <p className="text-[10px] text-slate-600">Evaluates margin risk &amp; suggests approval rationale</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.agents.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-purple-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Workflow */}
-                  <div className="p-3 bg-blue-50/80 border border-blue-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-blue-200 text-blue-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <GitFork className="w-3 h-3 text-blue-700" />
-                        <span>Workflow</span>
-                      </span>
-                      <span className="text-[10px] text-blue-700 font-bold">Flow Builder</span>
+                  {/* Workflows */}
+                  <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-blue-900 font-bold text-xs">
+                      <GitFork className="w-3.5 h-3.5 text-blue-600" />
+                      <span>Workflows</span>
                     </div>
-                    <h4 className="font-bold text-blue-950 text-xs pt-1">Margin-Risk Approval Flow</h4>
-                    <p className="text-[10px] text-slate-600">Routes exceptions based on margin floors &amp; account tiers</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.workflows.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-blue-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Automation */}
-                  <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-amber-200 text-amber-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <Zap className="w-3 h-3 text-amber-700" />
-                        <span>Automation</span>
-                      </span>
-                      <span className="text-[10px] text-amber-700 font-bold">Revenue Cloud</span>
+                  {/* Automations */}
+                  <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-amber-900 font-bold text-xs">
+                      <Zap className="w-3.5 h-3.5 text-amber-600" />
+                      <span>Automations</span>
                     </div>
-                    <h4 className="font-bold text-amber-950 text-xs pt-1">Approval Follow-Up &amp; Escalation</h4>
-                    <p className="text-[10px] text-slate-600">Auto-escalates stalled approvals after SLA expiration</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.automations.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-amber-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Human Handoff */}
-                  <div className="p-3 bg-rose-50/80 border border-rose-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-rose-200 text-rose-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <UserCheck className="w-3 h-3 text-rose-700" />
-                        <span>Human Handoff</span>
-                      </span>
-                      <span className="text-[10px] text-rose-700 font-bold">Slack API</span>
+                  {/* Human Handoffs */}
+                  <div className="p-3 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-rose-900 font-bold text-xs">
+                      <UserCheck className="w-3.5 h-3.5 text-rose-600" />
+                      <span>Human Handoffs</span>
                     </div>
-                    <h4 className="font-bold text-rose-950 text-xs pt-1">Slack Manager Approval</h4>
-                    <p className="text-[10px] text-slate-600">Interactive block kit approval cards for manager action</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.handoffs.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-rose-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Knowledge */}
-                  <div className="p-3 bg-emerald-50/80 border border-emerald-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-emerald-200 text-emerald-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <Brain className="w-3 h-3 text-emerald-700" />
-                        <span>Knowledge Loop</span>
-                      </span>
-                      <span className="text-[10px] text-emerald-700 font-bold">RevBrain Store</span>
+                  <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-emerald-900 font-bold text-xs">
+                      <Brain className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Knowledge Patterns</span>
                     </div>
-                    <h4 className="font-bold text-emerald-950 text-xs pt-1">Decision &amp; Rationale Capture</h4>
-                    <p className="text-[10px] text-slate-600">Stores historical decision reasons to train future recommendations</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.knowledge.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-emerald-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Validation */}
-                  <div className="p-3 bg-teal-50/80 border border-teal-200 rounded-xl space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2 py-0.5 bg-teal-200 text-teal-900 font-bold rounded text-[10px] flex items-center gap-1">
-                        <ShieldCheck className="w-3 h-3 text-teal-700" />
-                        <span>Validation</span>
-                      </span>
-                      <span className="text-[10px] text-teal-700 font-bold">Automated Suite</span>
+                  <div className="p-3 bg-teal-50/70 border border-teal-200 rounded-xl space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-teal-900 font-bold text-xs">
+                      <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+                      <span>Validation Packs</span>
                     </div>
-                    <h4 className="font-bold text-teal-950 text-xs pt-1">Approval Behavior Test Pack</h4>
-                    <p className="text-[10px] text-slate-600">143 regression tests verifying rule execution accuracy</p>
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {currentPackData.representativeComponents.validation.map((item, idx) => (
+                        <span key={idx} className="px-2 py-0.5 bg-white border border-teal-200 rounded text-slate-800 text-[11px] font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                 </div>
@@ -796,7 +1261,7 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 4 — Q2C Operating Model Readiness */}
+        {/* TAB 4 — Q2C Operating Model Readiness */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 4 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
@@ -959,7 +1424,7 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 5 — Next Client Simulation */}
+        {/* TAB 5 — Next Client Simulation */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 5 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
@@ -1136,7 +1601,7 @@ export function KnowledgePlaceholder() {
         )}
 
         {/* ────────────────────────────────────────────────────────────── */}
-        {/* SCREEN 6 — Compounding Advantage */}
+        {/* TAB 6 — Compounding Advantage */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 6 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease] min-h-[580px] flex flex-col justify-between">
