@@ -1357,7 +1357,23 @@ export function RevBrainBottomAgent() {
                 <span className="text-[10px] font-semibold text-slate-600">RevBrain Agent</span>
               </div>
               <span className="text-slate-300">·</span>
-              <span className="text-[10px] text-slate-400 font-medium">{stage} · {context}</span>
+              <span className="text-[10px] text-slate-400 font-medium">
+                {isLearningRoute ? (
+                  <>
+                    Learning Engine &gt;{' '}
+                    {learningScreen === 1 && 'Learning Corpus'}
+                    {learningScreen === 2 && 'Pattern Extraction'}
+                    {learningScreen === 3 && 'Implementation Pack Factory'}
+                    {learningScreen === 4 && 'Q2C Operating Model Readiness'}
+                    {learningScreen === 5 && 'Next Client Simulation'}
+                    {learningScreen === 6 && 'Compounding Advantage'}
+                  </>
+                ) : stage === context ? (
+                  stage
+                ) : (
+                  `${stage} · ${context}`
+                )}
+              </span>
             </div>
 
             {/* Mic or Send — absolute bottom-right */}
