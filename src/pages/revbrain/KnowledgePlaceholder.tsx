@@ -495,10 +495,10 @@ export function KnowledgePlaceholder() {
                 <button
                   key={tab.id}
                   onClick={() => setScreen(tab.id)}
-                  className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-[hsl(var(--accent))] text-white shadow-2xs'
-                      : 'bg-slate-900 text-white hover:bg-slate-800'
+                      ? 'bg-violet-600 text-white shadow-2xs'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/70'
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -508,7 +508,7 @@ export function KnowledgePlaceholder() {
           </div>
 
           <div className="flex items-center gap-3 text-xs shrink-0 pr-2">
-            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-full border border-slate-200/80 font-bold text-[11px]">
+            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold text-[11px]">
               47 implementations · 247 learned patterns · 32 reusable components
             </span>
           </div>
