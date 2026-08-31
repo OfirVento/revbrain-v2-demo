@@ -632,72 +632,108 @@ export function KnowledgePlaceholder() {
 
             {/* VIEW MODE 1 — RevBrain Knowledge Graph Topology */}
             {corpusViewMode === 'graph' ? (
-              <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-6 shadow-2xs space-y-6 relative overflow-hidden animate-[fadeIn_200ms_ease]">
+              <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-6 shadow-2xs space-y-5 relative overflow-hidden animate-[fadeIn_200ms_ease]">
                 <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
                   <h3 className="text-xs font-bold text-slate-900 flex items-center gap-2">
                     <Brain className="w-4 h-4 text-violet-600" />
                     <span>RevBrain Q2C Knowledge Graph Topology</span>
                   </h3>
                   <span className="text-[11px] font-mono text-slate-500">
-                    Click any domain node to inspect its evidence &amp; reusable IP
+                    Connected Q2C intelligence · Click any node to inspect
                   </span>
                 </div>
 
-                {/* Graph Grid Canvas */}
-                <div className="space-y-6 relative">
+                {/* 3-Column Balanced Topology Grid with Central Hub */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center relative py-2">
                   
-                  {/* Central Hub Node */}
-                  <div className="w-full flex justify-center py-2">
-                    <div
-                      onClick={() => {
-                        setSelectedAreaId('discount_approvals');
-                        setScreen(2);
-                      }}
-                      className="bg-gradient-to-br from-violet-600 via-indigo-600 to-violet-700 text-white rounded-full p-6 text-center shadow-lg border-4 border-white ring-4 ring-violet-200 flex flex-col items-center justify-center w-48 h-48 space-y-1 transform hover:scale-105 transition-all cursor-pointer group"
-                    >
-                      <Brain className="w-8 h-8 text-violet-200 group-hover:rotate-12 transition-transform" />
-                      <span className="text-[10px] font-black uppercase tracking-wider text-violet-200">RevBrain Intelligence</span>
-                      <span className="text-2xl font-black leading-none">247 Patterns</span>
-                      <span className="text-[11px] text-violet-200 font-mono">47 Implementations</span>
-                    </div>
-                  </div>
-
-                  {/* 8 Surrounding Q2C Domain Nodes Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {visibleCorpusRows.map((row) => (
+                  {/* Left Column — 4 Q2C Domain Cards */}
+                  <div className="space-y-3 z-10">
+                    {visibleCorpusRows.slice(0, 4).map((row) => (
                       <div
                         key={row.id}
                         onClick={() => {
                           setSelectedAreaId(row.id);
                           setScreen(2);
                         }}
-                        className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-4 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2.5 group"
+                        className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
                       >
-                        <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-2">
+                        <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
                           <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
                             {row.name}
                           </span>
                           <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
                         </div>
 
-                        {/* Implementation Count & Reuse Badge */}
-                        <div className="flex items-center justify-between text-[11px]">
-                          <span className="font-mono text-slate-600 font-medium">
-                            {row.implementations} impls
-                          </span>
-                          <span className="font-mono font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                        {/* Pattern Badge & System/Human Breakdown */}
+                        <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
+                          <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
                             {row.patterns} patterns
                           </span>
+                          <div className="flex items-center gap-1.5 font-semibold">
+                            <span className="bg-blue-50 text-blue-700 border border-blue-200 px-1.5 py-0.5 rounded">
+                              Sys {row.systemLearnings}
+                            </span>
+                            <span className="bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded">
+                              Hum {row.humanLearnings}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Center Column — Glowing Central RevBrain Intelligence Hub */}
+                  <div className="flex flex-col items-center justify-center relative py-6 z-10">
+                    {/* Visual Pulse Ring */}
+                    <div className="hidden lg:block absolute inset-0 pointer-events-none flex items-center justify-center">
+                      <div className="w-56 h-56 rounded-full border border-violet-200/80 animate-ping opacity-15" />
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        setSelectedAreaId('discount_approvals');
+                        setScreen(2);
+                      }}
+                      className="bg-gradient-to-br from-violet-600 via-indigo-600 to-violet-700 text-white rounded-full p-6 text-center shadow-xl border-4 border-white ring-8 ring-violet-100 flex flex-col items-center justify-center w-52 h-52 space-y-1.5 transform hover:scale-105 transition-all cursor-pointer group"
+                    >
+                      <Brain className="w-10 h-10 text-violet-200 group-hover:rotate-12 transition-transform" />
+                      <span className="text-[10px] font-black uppercase tracking-wider text-violet-200">RevBrain Core Hub</span>
+                      <span className="text-2xl font-black leading-none">247 Patterns</span>
+                      <span className="text-[10px] text-violet-200 font-mono">Accumulated Q2C IP</span>
+                    </div>
+                  </div>
+
+                  {/* Right Column — 4 Q2C Domain Cards */}
+                  <div className="space-y-3 z-10">
+                    {visibleCorpusRows.slice(4).map((row) => (
+                      <div
+                        key={row.id}
+                        onClick={() => {
+                          setSelectedAreaId(row.id);
+                          setScreen(2);
+                        }}
+                        className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
+                      >
+                        <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
+                          <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
+                            {row.name}
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
                         </div>
 
-                        {/* Mini Visual Indicators */}
-                        <div className="flex items-center gap-1.5 text-[10px] font-mono font-semibold pt-0.5">
-                          <span className="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded">
-                            Sys {row.systemLearnings}
+                        {/* Pattern Badge & System/Human Breakdown */}
+                        <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
+                          <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+                            {row.patterns} patterns
                           </span>
-                          <span className="bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded">
-                            Hum {row.humanLearnings}
-                          </span>
+                          <div className="flex items-center gap-1.5 font-semibold">
+                            <span className="bg-blue-50 text-blue-700 border border-blue-200 px-1.5 py-0.5 rounded">
+                              Sys {row.systemLearnings}
+                            </span>
+                            <span className="bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.5 rounded">
+                              Hum {row.humanLearnings}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -741,29 +777,22 @@ export function KnowledgePlaceholder() {
                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
                       </div>
 
-                      {/* MIDDLE: Implementation Coverage */}
-                      <div className="flex items-center gap-3 shrink-0">
-                        <span className="text-xs font-mono font-medium text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
-                          {row.implementations} implementations
+                      {/* RIGHT: Patterns, System, Human Badges (No Impl count) */}
+                      <div className="flex items-center gap-2">
+                        <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
+                          <span className="text-[10px] text-blue-500 font-sans uppercase">System</span>
+                          <span>{row.systemLearnings}</span>
                         </span>
 
-                        {/* RIGHT: System vs Human vs Patterns Mini Visual Markers */}
-                        <div className="flex items-center gap-2">
-                          <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                            <span className="text-[10px] text-blue-500 font-sans uppercase">System</span>
-                            <span>{row.systemLearnings}</span>
-                          </span>
+                        <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
+                          <span className="text-[10px] text-amber-600 font-sans uppercase">Human</span>
+                          <span>{row.humanLearnings}</span>
+                        </span>
 
-                          <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-semibold flex items-center gap-1">
-                            <span className="text-[10px] text-amber-600 font-sans uppercase">Human</span>
-                            <span>{row.humanLearnings}</span>
-                          </span>
-
-                          <span className="bg-violet-50 text-violet-700 border border-violet-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-bold flex items-center gap-1">
-                            <span className="text-[10px] text-violet-500 font-sans uppercase">Patterns</span>
-                            <span>{row.patterns}</span>
-                          </span>
-                        </div>
+                        <span className="bg-violet-50 text-violet-700 border border-violet-200/80 px-2.5 py-1 rounded-lg font-mono text-xs font-bold flex items-center gap-1">
+                          <span className="text-[10px] text-violet-500 font-sans uppercase">Patterns</span>
+                          <span>{row.patterns}</span>
+                        </span>
                       </div>
                     </div>
                   ))}
