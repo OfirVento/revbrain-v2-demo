@@ -1504,13 +1504,17 @@ export function KnowledgePlaceholder() {
 
             {/* ── 2. Observed ROI by Workflow — Glimpse Only ───────────────────── */}
             <div className="space-y-3 pt-0.5">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                   Observed ROI by Workflow
                 </h3>
-                <span className="text-[11px] font-mono text-slate-500">
-                  Representative sample of measured Q2C areas
-                </span>
+                <button
+                  onClick={() => setShowExtraCompounding(!showExtraCompounding)}
+                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-1 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                >
+                  <span>{showExtraCompounding ? 'Show fewer workflows' : 'View impact across all Q2C workflows'}</span>
+                  {showExtraCompounding ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                </button>
               </div>
 
               {/* Primary 3 Workflows Grid */}
@@ -1644,17 +1648,6 @@ export function KnowledgePlaceholder() {
 
                 </div>
               )}
-
-              {/* Expand / Collapse Button */}
-              <div className="pt-1">
-                <button
-                  onClick={() => setShowExtraCompounding(!showExtraCompounding)}
-                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>{showExtraCompounding ? 'Show fewer workflows' : 'View impact across all Q2C workflows'}</span>
-                  {showExtraCompounding ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                </button>
-              </div>
 
             </div>
 
