@@ -1454,10 +1454,10 @@ export function KnowledgePlaceholder() {
         {/* AREA 4 — Compounding */}
         {/* ────────────────────────────────────────────────────────────── */}
         {screen === 4 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs space-y-6 animate-[fadeIn_300ms_ease]">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3.5 animate-[fadeIn_300ms_ease]">
             
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <span>Compounding Advantage</span>
@@ -1471,265 +1471,242 @@ export function KnowledgePlaceholder() {
               </div>
             </div>
 
-            {/* ── 1. Overall Client ROI — First ────────────────────────────────── */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 shadow-2xs space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/70 pb-3">
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">
-                    Observed Client ROI Across Q2C
-                  </h3>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">
-                    ~1,350 hrs/qtr before RevBrain &rarr; ~523 hrs/qtr with RevBrain
-                  </p>
-                </div>
-                <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-full border border-emerald-300">
-                  61% less manual effort
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-2xs space-y-1">
-                  <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Primary Metric</span>
-                  <p className="text-2xl font-black font-mono text-slate-900">~827 manual hours saved / quarter</p>
-                  <p className="text-xs font-mono text-slate-500 mt-1">~1,350 hrs/qtr before RevBrain &rarr; ~523 hrs/qtr with RevBrain</p>
+            {/* ── Top Dual Pillars: Client ROI (Left) + RevBrain Leverage (Right) ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
+              
+              {/* Pillar 1: Observed Client ROI Across Q2C (6 cols on lg) */}
+              <div className="lg:col-span-6 bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 space-y-2.5 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-start justify-between gap-2 border-b border-slate-200/70 pb-2">
+                  <div>
+                    <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                      Observed Client ROI Across Q2C
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-mono mt-0.5">
+                      ~1,350 hrs/qtr before RevBrain &rarr; ~523 hrs/qtr with RevBrain
+                    </p>
+                  </div>
+                  <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300 shrink-0">
+                    61% less effort
+                  </span>
                 </div>
 
-                <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-2xs space-y-1">
-                  <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Outcome</span>
-                  <p className="text-2xl font-black text-emerald-700">61% less manual effort</p>
-                  <p className="text-xs text-slate-600 mt-1">Across implemented Q2C workflows and approval cycles</p>
+                <div className="grid grid-cols-2 gap-2.5 pt-0.5">
+                  <div className="bg-white border border-slate-200 rounded-lg p-2.5 shadow-2xs space-y-0.5">
+                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wide">Primary Metric</span>
+                    <p className="text-base sm:text-lg font-black font-mono text-slate-900 leading-tight">~827 hrs saved / qtr</p>
+                    <p className="text-[10px] text-slate-500">~1,350 &rarr; ~523 hrs/qtr</p>
+                  </div>
+
+                  <div className="bg-white border border-slate-200 rounded-lg p-2.5 shadow-2xs space-y-0.5">
+                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wide">Outcome</span>
+                    <p className="text-base sm:text-lg font-black text-emerald-700 leading-tight">61% Less Effort</p>
+                    <p className="text-[10px] text-slate-500">Across Q2C workflows</p>
+                  </div>
                 </div>
               </div>
+
+              {/* Pillar 2: RevBrain Implementation Leverage (6 cols on lg) */}
+              <div className="lg:col-span-6 bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 space-y-2.5 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-start justify-between gap-2 border-b border-slate-200/70 pb-2">
+                  <div>
+                    <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                      RevBrain Implementation Leverage
+                    </h3>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Each implementation makes the next one easier to deliver.
+                    </p>
+                  </div>
+                  <span className="text-[10px] font-mono font-bold text-violet-800 bg-violet-100 px-2 py-0.5 rounded-full border border-violet-300 shrink-0">
+                    Platform Economics
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 pt-0.5">
+                  {/* Metric 1: Implementation Effort */}
+                  <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-2xs space-y-0.5">
+                    <span className="text-[9.5px] font-bold text-slate-500 font-mono uppercase tracking-tight block truncate">
+                      Impl effort
+                    </span>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">~320 &rarr; ~110 hrs</p>
+                    <p className="text-[9.5px] font-bold text-emerald-700 leading-tight truncate">66% less effort</p>
+                  </div>
+
+                  {/* Metric 2: Mapping Confidence */}
+                  <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-2xs space-y-0.5">
+                    <span className="text-[9.5px] font-bold text-slate-500 font-mono uppercase tracking-tight block truncate">
+                      Confidence
+                    </span>
+                    <p className="text-sm font-black font-mono text-emerald-700 leading-tight">81% &rarr; 96%</p>
+                    <p className="text-[9.5px] text-slate-500 leading-tight truncate">+15% accuracy</p>
+                  </div>
+
+                  {/* Metric 3: Reusable Foundation */}
+                  <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-2xs space-y-0.5">
+                    <span className="text-[9.5px] font-bold text-slate-500 font-mono uppercase tracking-tight block truncate">
+                      Reusable
+                    </span>
+                    <p className="text-sm font-black font-mono text-violet-900 leading-tight">24 &rarr; 32</p>
+                    <p className="text-[9.5px] text-violet-700 leading-tight truncate">+8 components</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            {/* ── 2. Observed ROI by Workflow — Glimpse Only ───────────────────── */}
-            <div className="space-y-3 pt-1">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                  Observed ROI by Workflow
-                </h3>
-                <span className="text-[11px] font-mono text-slate-500">
-                  Representative sample of measured Q2C areas
-                </span>
-              </div>
-
-              {/* Primary 3 Workflows Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                
-                {/* Discount Approvals */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-2 hover:border-violet-300 transition-all">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-900">Discount Approvals</h4>
-                    <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                      34% faster approvals
-                    </span>
-                  </div>
-                  <p className="text-lg font-black font-mono text-slate-900">340 &rarr; 88 hrs/qtr</p>
-                  <p className="text-[11px] text-slate-500">Pre-built approval agents &amp; policy rules</p>
+            {/* ── Bottom Section: Observed ROI by Workflow ────────────────────── */}
+            <div className="space-y-2.5 pt-0.5">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                    Observed ROI by Workflow
+                  </h3>
+                  <span className="hidden sm:inline text-[11px] font-mono text-slate-400">
+                    — Representative sample of measured Q2C areas
+                  </span>
                 </div>
 
-                {/* Pricing & Discounts */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-2 hover:border-violet-300 transition-all">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-900">Pricing &amp; Discounts</h4>
-                    <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                      28% fewer pricing errors
-                    </span>
-                  </div>
-                  <p className="text-lg font-black font-mono text-slate-900">420 &rarr; 170 hrs/qtr</p>
-                  <p className="text-[11px] text-slate-500">Automated discount matrix validation</p>
-                </div>
-
-                {/* Quote-to-Order */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-2 hover:border-violet-300 transition-all">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-900">Quote-to-Order</h4>
-                    <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                      41% fewer handoff issues
-                    </span>
-                  </div>
-                  <p className="text-lg font-black font-mono text-slate-900">310 &rarr; 125 hrs/qtr</p>
-                  <p className="text-[11px] text-slate-500">Continuous contract-to-order synchronization</p>
-                </div>
-
-              </div>
-
-              {/* Expandable 7 Additional Q2C Areas */}
-              {showExtraCompounding && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-2 animate-[fadeIn_200ms_ease]">
-                  
-                  {/* Renewals & Amendments */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Renewals &amp; Amendments</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        39% faster renewal cycles
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">280 &rarr; 110 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Automated renewal uplift &amp; terms mapping</p>
-                  </div>
-
-                  {/* Contracted / Account Pricing */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Contracted / Account Pricing</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        45% less dispute time
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">210 &rarr; 85 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Master customer agreement rate indexing</p>
-                  </div>
-
-                  {/* Bundle / Product Configuration */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Bundle / Product Configuration</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        36% fewer rework cycles
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">260 &rarr; 95 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Automated option constraint &amp; dependency pack</p>
-                  </div>
-
-                  {/* Quote Creation */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Quote Creation</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        48% faster quote drafting
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">190 &rarr; 70 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Pre-populated opportunity line item generation</p>
-                  </div>
-
-                  {/* Quote Documents */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Quote Documents</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        52% faster doc generation
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">150 &rarr; 55 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Automated legal terms &amp; formatting injection</p>
-                  </div>
-
-                  {/* Product / Pricing Changes */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Product / Pricing Changes</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        65% faster rule updates
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">175 &rarr; 60 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Automated rule migration &amp; SKU versioning</p>
-                  </div>
-
-                  {/* Quote Exceptions / Issue Resolution */}
-                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3.5 shadow-2xs space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900">Quote Exceptions / Resolution</h4>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                        63% faster resolution
-                      </span>
-                    </div>
-                    <p className="text-base font-black font-mono text-slate-900">220 &rarr; 80 hrs/qtr</p>
-                    <p className="text-[11px] text-slate-500">Intelligent fallback validation &amp; root cause triage</p>
-                  </div>
-
-                </div>
-              )}
-
-              {/* Expand / Collapse Button */}
-              <div className="pt-1">
+                {/* Inline Header Expand/Collapse Button to save vertical height */}
                 <button
                   onClick={() => setShowExtraCompounding(!showExtraCompounding)}
-                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-2 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1 rounded-full transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
                 >
                   <span>{showExtraCompounding ? 'Show fewer workflows' : 'View impact across all Q2C workflows'}</span>
                   {showExtraCompounding ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                 </button>
               </div>
 
-            </div>
-
-            {/* ── 3. RevBrain Implementation Leverage ──────────────────────────── */}
-            <div className="border-t border-slate-100 pt-5 space-y-3">
-              <div>
-                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                  <span>RevBrain Implementation Leverage</span>
-                  <span className="text-[11px] font-mono font-medium text-violet-800 bg-violet-100/80 px-2.5 py-0.5 rounded-full border border-violet-200">
-                    Platform Economics
-                  </span>
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Each implementation makes the next one easier to deliver.
-                </p>
-              </div>
-
-              {/* 3 Metrics Grid: Implementation effort, Mapping confidence, Reusable foundation */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {/* Primary 3 Workflows Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
                 
-                {/* Metric 1: Implementation Effort */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
-                      Implementation effort
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
-                      -66% effort
+                {/* Discount Approvals */}
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
+                  <div className="flex items-center justify-between gap-1">
+                    <h4 className="text-xs font-bold text-slate-900 truncate">Discount Approvals</h4>
+                    <span className="text-[9.5px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                      34% faster approvals
                     </span>
                   </div>
-                  <p className="text-xl font-black font-mono text-slate-900 mt-1">
-                    ~320 hrs &rarr; ~110 hrs
-                  </p>
-                  <p className="text-xs font-bold text-emerald-700">
-                    66% less implementation effort
-                  </p>
+                  <p className="text-base font-black font-mono text-slate-900 leading-tight">340 &rarr; 88 hrs/qtr</p>
+                  <p className="text-[10.5px] text-slate-500 truncate">Pre-built approval agents &amp; policy rules</p>
                 </div>
 
-                {/* Metric 2: Mapping Confidence */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
-                      Mapping confidence
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
-                      +15% accuracy
+                {/* Pricing & Discounts */}
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
+                  <div className="flex items-center justify-between gap-1">
+                    <h4 className="text-xs font-bold text-slate-900 truncate">Pricing &amp; Discounts</h4>
+                    <span className="text-[9.5px] font-mono font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 shrink-0">
+                      28% fewer pricing errors
                     </span>
                   </div>
-                  <p className="text-xl font-black font-mono text-emerald-700 mt-1">
-                    81% &rarr; 96%
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    Automated schema &amp; rule mapping accuracy
-                  </p>
+                  <p className="text-base font-black font-mono text-slate-900 leading-tight">420 &rarr; 170 hrs/qtr</p>
+                  <p className="text-[10.5px] text-slate-500 truncate">Automated discount matrix validation</p>
                 </div>
 
-                {/* Metric 3: Reusable Foundation */}
-                <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-slate-500 font-mono uppercase tracking-wide">
-                      Reusable foundation
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-violet-800 bg-violet-100 px-2 py-0.5 rounded border border-violet-300">
-                      +8 components
+                {/* Quote-to-Order */}
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs space-y-1 hover:border-violet-300 transition-all">
+                  <div className="flex items-center justify-between gap-1">
+                    <h4 className="text-xs font-bold text-slate-900 truncate">Quote-to-Order</h4>
+                    <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded border border-violet-200 shrink-0">
+                      41% fewer handoff issues
                     </span>
                   </div>
-                  <p className="text-xl font-black font-mono text-violet-900 mt-1">
-                    24 &rarr; 32 components
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    Pre-built agents, workflows &amp; automations
-                  </p>
+                  <p className="text-base font-black font-mono text-slate-900 leading-tight">310 &rarr; 125 hrs/qtr</p>
+                  <p className="text-[10.5px] text-slate-500 truncate">Continuous contract-to-order sync</p>
                 </div>
 
               </div>
+
+              {/* Expandable 7 Additional Q2C Areas */}
+              {showExtraCompounding && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1 animate-[fadeIn_200ms_ease]">
+                  
+                  {/* Renewals & Amendments */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Renewals &amp; Amend</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        39% faster
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">280 &rarr; 110 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Automated uplift &amp; terms mapping</p>
+                  </div>
+
+                  {/* Contracted / Account Pricing */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Account Pricing</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        45% less dispute
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">210 &rarr; 85 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Master agreement rate indexing</p>
+                  </div>
+
+                  {/* Bundle / Product Configuration */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Bundle Config</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        36% fewer rework
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">260 &rarr; 95 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Automated option constraint pack</p>
+                  </div>
+
+                  {/* Quote Creation */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Quote Creation</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        48% faster
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">190 &rarr; 70 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Pre-populated opportunity line items</p>
+                  </div>
+
+                  {/* Quote Documents */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Quote Documents</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        52% faster
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">150 &rarr; 55 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Automated legal terms injection</p>
+                  </div>
+
+                  {/* Product / Pricing Changes */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Pricing Changes</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        65% faster
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">175 &rarr; 60 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Automated rule migration &amp; versioning</p>
+                  </div>
+
+                  {/* Quote Exceptions / Issue Resolution */}
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1 md:col-span-2 lg:col-span-2">
+                    <div className="flex items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold text-slate-900 truncate">Quote Exceptions &amp; Issue Resolution</h4>
+                      <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
+                        63% faster resolution
+                      </span>
+                    </div>
+                    <p className="text-sm font-black font-mono text-slate-900 leading-tight">220 &rarr; 80 hrs/qtr</p>
+                    <p className="text-[10px] text-slate-500 truncate">Intelligent fallback validation &amp; root cause triage</p>
+                  </div>
+
+                </div>
+              )}
+
             </div>
 
           </div>
