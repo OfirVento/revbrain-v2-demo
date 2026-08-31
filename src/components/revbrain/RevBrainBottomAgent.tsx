@@ -204,6 +204,7 @@ export function RevBrainBottomAgent() {
   const isLearningRoute = pathname.includes('/knowledge');
 
   const [learningScreen, setLearningScreen] = useState<number>(1);
+  const [learningLibraryTab, setLearningLibraryTab] = useState<'packs' | 'readiness'>('packs');
 
   // Dynamic running tasks counter (starts 1-6 per page, updates +-1 one-by-one every 4.5s)
   const [runningTasksCount, setRunningTasksCount] = useState<number>(() => Math.floor(Math.random() * 6) + 1);
@@ -238,6 +239,9 @@ export function RevBrainBottomAgent() {
     const handleLearningScreenChange = (e: CustomEvent) => {
       if (e.detail?.screen) {
         setLearningScreen(e.detail.screen);
+        if (e.detail?.libraryTab) {
+          setLearningLibraryTab(e.detail.libraryTab);
+        }
         setShowButtons(false);
         setWorkingExpanded(true);
         setChatFullyOpened(true);
@@ -633,6 +637,17 @@ export function RevBrainBottomAgent() {
                     {implPhase === 'phase2' && `Reviewing Component ${implReviewStepIndex + 1} of 7`}
                     {implPhase === 'phase3' && `Live Implementation · Step ${implBuildStepIndex + 1} of 7`}
                     {implPhase === 'phase4' && (isPhase4Completed ? 'Implementation Verified' : 'Validation & Testing')}
+                  </span>
+                ) : isLearningRoute ? (
+                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-800 text-[10px] font-bold tracking-wide flex items-center gap-1">
+                    <span>Learning Engine</span>
+                    <span className="text-violet-400 font-normal">&gt;</span>
+                    <span>
+                      {learningScreen === 1 && 'Learning Corpus'}
+                      {learningScreen === 2 && 'Learning Intelligence'}
+                      {learningScreen === 3 && (learningLibraryTab === 'packs' ? 'Implementation Packs' : 'Q2C Readiness')}
+                      {learningScreen === 4 && 'Compounding'}
+                    </span>
                   </span>
                 ) : (
                   <>
@@ -1105,7 +1120,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-1"
-                            text="47 implementations have produced reusable AI implementation IP across the Q2C lifecycle."
+                            text="47 implementations now give RevBrain learning coverage across the Q2C lifecycle. System + human learning is deepest in pricing, approvals, and quote-to-order."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1119,7 +1134,7 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-2"
-                            text="Most architecture repeats. Client policy creates most of the remaining variation."
+                            text="Systems show what happens. SI + client context explains why, where exceptions matter, and what should change."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1132,8 +1147,12 @@ export function RevBrainBottomAgent() {
                       <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
-                            key="screen-3"
-                            text="RevBrain turns repeated implementation behavior into reusable agents, workflows, automations, and tests."
+                            key={`screen-3-${learningLibraryTab}`}
+                            text={
+                              learningLibraryTab === 'packs'
+                                ? 'RevBrain turns repeated implementation behavior into reusable agents, workflows, automations, and validation packs.'
+                                : 'Complex Enterprise is high-value but highly customized. Discount Approval is 64% reusable; the remaining work is mostly client policy.'
+                            }
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
@@ -1147,65 +1166,12 @@ export function RevBrainBottomAgent() {
                         <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                           <TypewriterText
                             key="screen-4"
-                            text="This shows how much of a similar client's AI-first implementation is already reusable."
+                            text="Each implementation increases what RevBrain can reuse on the next one. More context is already known before the next discovery starts."
                             speed={24}
                             enabled={chatFullyOpened}
                             onComplete={() => setShowButtons(true)}
                           />
                         </p>
-                      </div>
-                    )}
-
-                    {learningScreen === 5 && (
-                      <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
-                          <TypewriterText
-                            key="screen-5"
-                            text="The architecture is ready. I only need the policies that make this customer unique."
-                            speed={24}
-                            enabled={chatFullyOpened}
-                            onComplete={() => setShowButtons(true)}
-                          />
-                        </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-toggle-questions'));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shrink-0 cursor-pointer"
-                            >
-                              <span>Show 3 client questions</span>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {learningScreen === 6 && (
-                      <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
-                        <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
-                          <TypewriterText
-                            key="screen-6"
-                            text="Each implementation increases what RevBrain can reuse on the next one."
-                            speed={24}
-                            enabled={chatFullyOpened}
-                            onComplete={() => setShowButtons(true)}
-                          />
-                        </p>
-                        {showButtons && (
-                          <div className="pt-0.5 flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                window.dispatchEvent(new CustomEvent('revbrain-learning-open-library'));
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                            >
-                              <span>Explore component library</span>
-                              <Sparkles className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
                   </div>
@@ -1260,11 +1226,9 @@ export function RevBrainBottomAgent() {
                   <>
                     Learning Engine &gt;{' '}
                     {learningScreen === 1 && 'Learning Corpus'}
-                    {learningScreen === 2 && 'Pattern Extraction'}
-                    {learningScreen === 3 && 'Implementation Pack Factory'}
-                    {learningScreen === 4 && 'Q2C Operating Model Readiness'}
-                    {learningScreen === 5 && 'Next Client Simulation'}
-                    {learningScreen === 6 && 'Compounding Advantage'}
+                    {learningScreen === 2 && 'Learning Intelligence'}
+                    {learningScreen === 3 && (learningLibraryTab === 'packs' ? 'Implementation Packs' : 'Q2C Readiness')}
+                    {learningScreen === 4 && 'Compounding'}
                   </>
                 ) : stage === context ? (
                   stage
