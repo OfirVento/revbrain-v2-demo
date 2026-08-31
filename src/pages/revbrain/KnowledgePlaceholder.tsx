@@ -226,9 +226,6 @@ export function KnowledgePlaceholder() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Learned Areas &amp; Reusable Components
                   </span>
-                  <span className="text-[10px] text-violet-600 font-semibold italic">
-                    ★ Discount Approval highlighted as highest-leverage pattern
-                  </span>
                 </div>
 
                 <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs text-xs">
@@ -250,9 +247,6 @@ export function KnowledgePlaceholder() {
                         <td className="p-3 pl-4 flex items-center gap-2 text-violet-950">
                           <Sparkles className="w-3.5 h-3.5 text-violet-600 shrink-0" />
                           <span>Discount Approval</span>
-                          <span className="text-[9px] bg-violet-600 text-white px-1.5 py-0.5 rounded uppercase tracking-wider">
-                            Explore Next
-                          </span>
                         </td>
                         <td className="p-3 text-right font-mono text-violet-900">31</td>
                         <td className="p-3 text-right font-mono text-emerald-700 font-bold">87%</td>
@@ -300,19 +294,6 @@ export function KnowledgePlaceholder() {
 
             </div>
 
-            {/* Bottom Action Bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-              <span className="text-xs text-slate-500 font-medium">
-                Deepest coverage observed in Complex Enterprise Sales (17 impls).
-              </span>
-              <button
-                onClick={() => setScreen(2)}
-                className="px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-2xs transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <span>Show highest-leverage pattern</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
           </div>
         )}
 
