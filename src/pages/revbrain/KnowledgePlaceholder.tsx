@@ -626,7 +626,7 @@ export function KnowledgePlaceholder() {
                         setSelectedAreaId(row.id);
                         setScreen(2);
                       }}
-                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
+                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
                     >
                       <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
                         <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
@@ -635,19 +635,35 @@ export function KnowledgePlaceholder() {
                         <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
                       </div>
 
-                      {/* Pattern Badge & System/Human Breakdown */}
-                      <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
-                        <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                          {row.patterns} relevant patterns
-                        </span>
-                        <div className="flex items-center gap-1.5 font-semibold">
-                          <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Learnings</span>
-                            <span>{row.systemLearnings}</span>
+                      {/* 3 Metric Columns: Relevant Patterns, System Learnings, Human Learnings */}
+                      <div className="grid grid-cols-3 gap-1.5 pt-0.5 text-center">
+                        {/* Relevant Patterns */}
+                        <div className="bg-violet-50/80 border border-violet-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-violet-600 uppercase tracking-tight whitespace-nowrap">
+                            Relevant Patterns
                           </span>
-                          <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Learnings</span>
-                            <span>{row.humanLearnings}</span>
+                          <span className="text-xs font-black font-mono text-violet-900 leading-none mt-1">
+                            {row.patterns}
+                          </span>
+                        </div>
+
+                        {/* System Learnings */}
+                        <div className="bg-blue-50/80 border border-blue-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-blue-600 uppercase tracking-tight whitespace-nowrap">
+                            System Learnings
+                          </span>
+                          <span className="text-xs font-black font-mono text-blue-900 leading-none mt-1">
+                            {row.systemLearnings}
+                          </span>
+                        </div>
+
+                        {/* Human Learnings */}
+                        <div className="bg-amber-50/80 border border-amber-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-amber-700 uppercase tracking-tight whitespace-nowrap">
+                            Human Learnings
+                          </span>
+                          <span className="text-xs font-black font-mono text-amber-900 leading-none mt-1">
+                            {row.humanLearnings}
                           </span>
                         </div>
                       </div>
@@ -655,7 +671,7 @@ export function KnowledgePlaceholder() {
                   ))}
                 </div>
 
-                {/* Center Column — Soft Background Central RevBrain Intelligence Hub */}
+                {/* Center Column — Simplified Soft Background Central RevBrain Intelligence Hub */}
                 <div className="flex flex-col items-center justify-center relative py-6 z-10">
                   {/* Visual Pulse Ring */}
                   <div className="hidden lg:block absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -669,10 +685,16 @@ export function KnowledgePlaceholder() {
                     }}
                     className="bg-violet-50/90 hover:bg-violet-100/90 border-2 border-violet-300/80 ring-8 ring-violet-100/60 rounded-full p-6 text-center shadow-sm flex flex-col items-center justify-center w-52 h-52 space-y-1.5 transform hover:scale-105 transition-all cursor-pointer group"
                   >
-                    <Brain className="w-9 h-9 text-violet-600 group-hover:rotate-12 transition-transform" />
-                    <span className="text-[10px] font-black uppercase tracking-wider text-violet-700">RevBrain Q2C Intelligence Core</span>
-                    <span className="text-xl font-black text-slate-900 leading-none">247 Generalized Patterns</span>
-                    <span className="text-[9px] text-slate-500 font-mono">Generalized implementation intelligence</span>
+                    <Brain className="w-9 h-9 text-violet-600 group-hover:rotate-12 transition-transform mb-0.5" />
+                    <span className="text-[10px] font-black uppercase tracking-wider text-violet-700">
+                      Q2C INTELLIGENCE CORE
+                    </span>
+                    <span className="text-4xl font-black text-slate-900 leading-none">
+                      247
+                    </span>
+                    <span className="text-xs font-semibold text-violet-800">
+                      Generalized Patterns
+                    </span>
                   </div>
                 </div>
 
@@ -685,7 +707,7 @@ export function KnowledgePlaceholder() {
                         setSelectedAreaId(row.id);
                         setScreen(2);
                       }}
-                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3.5 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
+                      className="bg-white border border-slate-200 hover:border-violet-400 rounded-xl p-3 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
                     >
                       <div className="flex items-center justify-between gap-1 border-b border-slate-100 pb-1.5">
                         <span className="text-xs font-bold text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
@@ -694,19 +716,35 @@ export function KnowledgePlaceholder() {
                         <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-600 shrink-0 transition-colors" />
                       </div>
 
-                      {/* Pattern Badge & System/Human Breakdown */}
-                      <div className="flex items-center justify-between text-[10px] font-mono pt-0.5">
-                        <span className="font-bold text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
-                          {row.patterns} relevant patterns
-                        </span>
-                        <div className="flex items-center gap-1.5 font-semibold">
-                          <span className="bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-blue-500 font-sans uppercase text-[9px]">System Learnings</span>
-                            <span>{row.systemLearnings}</span>
+                      {/* 3 Metric Columns: Relevant Patterns, System Learnings, Human Learnings */}
+                      <div className="grid grid-cols-3 gap-1.5 pt-0.5 text-center">
+                        {/* Relevant Patterns */}
+                        <div className="bg-violet-50/80 border border-violet-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-violet-600 uppercase tracking-tight whitespace-nowrap">
+                            Relevant Patterns
                           </span>
-                          <span className="bg-amber-50 text-amber-800 border border-amber-200/80 px-2 py-0.5 rounded flex items-center gap-1">
-                            <span className="text-amber-600 font-sans uppercase text-[9px]">Human Learnings</span>
-                            <span>{row.humanLearnings}</span>
+                          <span className="text-xs font-black font-mono text-violet-900 leading-none mt-1">
+                            {row.patterns}
+                          </span>
+                        </div>
+
+                        {/* System Learnings */}
+                        <div className="bg-blue-50/80 border border-blue-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-blue-600 uppercase tracking-tight whitespace-nowrap">
+                            System Learnings
+                          </span>
+                          <span className="text-xs font-black font-mono text-blue-900 leading-none mt-1">
+                            {row.systemLearnings}
+                          </span>
+                        </div>
+
+                        {/* Human Learnings */}
+                        <div className="bg-amber-50/80 border border-amber-200/80 rounded-lg p-1 flex flex-col items-center justify-center">
+                          <span className="text-[8.5px] font-bold text-amber-700 uppercase tracking-tight whitespace-nowrap">
+                            Human Learnings
+                          </span>
+                          <span className="text-xs font-black font-mono text-amber-900 leading-none mt-1">
+                            {row.humanLearnings}
                           </span>
                         </div>
                       </div>
