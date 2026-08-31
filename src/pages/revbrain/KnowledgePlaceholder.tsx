@@ -1,28 +1,17 @@
 // ── Learning Engine — RevBrain Accumulated Implementation Intelligence ─────
-// Navigable Product Workspace (4 Top-Level Areas):
-// 1. Learning Corpus (8 main Q2C learned areas + filter)
-// 2. Learning Intelligence (Systems vs. Humans captured behavior + Search across 47 impls)
-// 3. Implementation Library (Merged workspace: Implementation Packs & Q2C Readiness internal tabs)
-// 4. Compounding (Software economics & client-specific discovery reduction trend)
+// Unified Design System (Slate/Black Palette, Simple & Rounded Full Buttons)
 
 import { useState, useEffect, useMemo } from 'react';
 import {
-  Brain,
-  Sparkles,
   ArrowRight,
   CheckCircle2,
-  ShieldCheck,
   Search,
-  Filter,
-  Check,
-  TrendingUp,
-  TrendingDown,
   Layers,
   UserCheck,
   ChevronDown,
   ChevronUp,
-  BookOpen,
-  Zap,
+  TrendingUp,
+  TrendingDown,
 } from 'lucide-react';
 
 /* ── Persistent Learning Sub-Nav Tabs (4 Areas) ───────────────────────── */
@@ -487,18 +476,18 @@ export function KnowledgePlaceholder() {
       <div className="max-w-[1440px] mx-auto w-full px-6 pt-5 pb-20 space-y-4 flex-1">
 
         {/* ── Persistent Learning Engine Sub-Navigation ───────────────────── */}
-        <div className="bg-white border border-slate-200/90 rounded-2xl p-2 shadow-2xs flex items-center justify-between gap-2 overflow-x-auto">
-          <div className="flex items-center gap-1.5 min-w-max">
+        <div className="bg-white border border-slate-200 rounded-full p-1.5 shadow-2xs flex items-center justify-between gap-2 overflow-x-auto">
+          <div className="flex items-center gap-1 min-w-max">
             {LEARNING_TABS.map((tab) => {
               const isActive = screen === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setScreen(tab.id)}
-                  className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-5 py-2 text-xs font-bold rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-violet-600 text-white shadow-2xs'
-                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/70'
+                      ? 'bg-slate-900 text-white shadow-2xs'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/60'
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -507,8 +496,8 @@ export function KnowledgePlaceholder() {
             })}
           </div>
 
-          <div className="flex items-center gap-3 text-xs shrink-0 pr-2">
-            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/80 font-bold text-[11px]">
+          <div className="flex items-center gap-3 text-xs shrink-0 pr-3">
+            <span className="hidden lg:inline font-mono text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 font-bold text-[11px]">
               47 implementations · 247 learned patterns · 32 reusable components
             </span>
           </div>
@@ -526,7 +515,7 @@ export function KnowledgePlaceholder() {
                 <div>
                   <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <span>Client Learning Corpus</span>
-                    <span className="text-xs font-mono font-medium text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full border border-violet-200/60">
+                    <span className="text-xs font-mono font-medium text-slate-700 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                       47 Implementations
                     </span>
                   </h2>
@@ -536,14 +525,14 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Compact Filter Bar */}
-                <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-xl border border-slate-200/80 text-xs shrink-0">
+                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 text-xs shrink-0">
                   {['All', 'Subscription SaaS', 'Usage-Based', 'Complex Enterprise', 'Product + Services'].map((f) => (
                     <button
                       key={f}
                       onClick={() => setCorpusFilter(f)}
-                      className={`px-2.5 py-1 rounded-lg font-medium transition-all text-[11px] cursor-pointer ${
+                      className={`px-3 py-1 rounded-full font-semibold transition-all text-[11px] cursor-pointer ${
                         corpusFilter === f
-                          ? 'bg-white text-violet-700 font-bold shadow-2xs border border-slate-200/80'
+                          ? 'bg-slate-900 text-white shadow-2xs'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
@@ -554,10 +543,10 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Clean 8-Row Matrix (+2 Expandable) */}
-              <div className="border border-slate-200/90 rounded-xl overflow-hidden shadow-2xs bg-white">
+              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs bg-white">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                    <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                       <th className="py-3 px-4 font-semibold w-[36%]">Q2C Area</th>
                       <th className="py-3 px-4 text-right font-semibold w-[16%]">Implementations</th>
                       <th className="py-3 px-4 text-right font-semibold w-[16%]">System Learnings</th>
@@ -573,26 +562,26 @@ export function KnowledgePlaceholder() {
                           setSelectedAreaId(row.id);
                           setScreen(2);
                         }}
-                        className="hover:bg-violet-50/40 transition-colors cursor-pointer group"
+                        className="hover:bg-slate-50 transition-colors cursor-pointer group"
                       >
-                        <td className="py-3.5 px-4 font-bold text-slate-900 group-hover:text-violet-700">
+                        <td className="py-3.5 px-4 font-bold text-slate-900">
                           <div className="flex items-center gap-2">
                             <span>{row.name}</span>
-                            <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-violet-600 transition-opacity" />
+                            <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-slate-700 transition-opacity" />
                           </div>
                         </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
+                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-700">
                           {row.implementations}
                         </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-600">
+                        <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-700">
                           {row.systemLearnings}
                         </td>
                         <td className="py-3.5 px-4 text-right">
-                          <span className="font-mono font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/80 inline-block">
+                          <span className="font-mono font-bold text-slate-900 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 inline-block">
                             {row.humanLearnings}
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 text-right font-mono font-bold text-violet-700">
+                        <td className="py-3.5 px-4 text-right font-mono font-bold text-slate-900">
                           {row.patterns}
                         </td>
                       </tr>
@@ -605,7 +594,7 @@ export function KnowledgePlaceholder() {
               <div className="flex items-center justify-between text-xs pt-1">
                 <button
                   onClick={() => setShowExtraCorpus(!showExtraCorpus)}
-                  className="text-xs font-semibold text-violet-700 hover:text-violet-900 bg-violet-50 hover:bg-violet-100/70 border border-violet-200/80 px-3.5 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-xs font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-4 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <span>{showExtraCorpus ? 'Show 8 main Q2C areas' : '+2 additional Q2C areas (Product Changes, Quote Exceptions)'}</span>
                   {showExtraCorpus ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -630,7 +619,7 @@ export function KnowledgePlaceholder() {
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <span>Learning Intelligence</span>
-                  <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  <span className="text-xs font-mono font-semibold text-slate-800 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                     System Evidence + Human Context
                   </span>
                 </h2>
@@ -645,7 +634,7 @@ export function KnowledgePlaceholder() {
                 <select
                   value={selectedAreaId}
                   onChange={(e) => setSelectedAreaId(e.target.value)}
-                  className="text-xs font-bold text-violet-800 bg-violet-50 border border-violet-200/80 rounded-xl px-3 py-1.5 outline-none cursor-pointer focus:ring-2 focus:ring-violet-300"
+                  className="text-xs font-bold text-slate-900 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 outline-none cursor-pointer focus:ring-2 focus:ring-slate-300"
                 >
                   {Q2C_CORPUS_AREAS.map((a) => (
                     <option key={a.id} value={a.id}>
@@ -660,10 +649,10 @@ export function KnowledgePlaceholder() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* LEFT — Captured from Systems */}
-              <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-2xs">
-                <div className="space-y-1 border-b border-slate-200/70 pb-3">
+              <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-2xs">
+                <div className="space-y-1 border-b border-slate-200 pb-3">
                   <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-violet-600" />
+                    <Layers className="w-4 h-4 text-slate-900" />
                     <span>Captured from Systems</span>
                   </h3>
                   <p className="text-[11px] text-slate-500">
@@ -673,17 +662,17 @@ export function KnowledgePlaceholder() {
 
                 <div className="space-y-3 text-xs">
                   {/* Current Process */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                     <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Current Process</span>
-                    <p className="font-mono font-bold text-violet-700 text-sm">{currentIntelData.system.observedPaths}</p>
+                    <p className="font-mono font-bold text-slate-900 text-sm">{currentIntelData.system.observedPaths}</p>
                   </div>
 
                   {/* Configuration */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
+                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
                     <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Configuration</span>
                     <div className="flex flex-wrap gap-1.5">
                       {currentIntelData.system.configRules.map((c, i) => (
-                        <span key={i} className="bg-slate-100 text-slate-800 font-mono text-[11px] px-2.5 py-0.5 rounded-md font-semibold border border-slate-200/80">
+                        <span key={i} className="bg-slate-100 text-slate-800 font-mono text-[11px] px-3 py-0.5 rounded-full font-semibold border border-slate-200">
                           {c}
                         </span>
                       ))}
@@ -691,12 +680,12 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Runtime Behavior */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
+                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
                     <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Runtime Behavior</span>
                     <ul className="space-y-1 text-slate-700 font-medium">
                       {currentIntelData.system.runtimeBehavior.map((b, i) => (
                         <li key={i} className="flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-violet-600 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-slate-800 shrink-0" />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -704,11 +693,11 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Outcomes */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1.5">
+                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
                     <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Observed Outcomes</span>
                     <div className="flex flex-wrap gap-1.5">
                       {currentIntelData.system.outcomes.map((o, i) => (
-                        <span key={i} className="bg-violet-50 text-violet-800 text-[11px] px-2.5 py-0.5 rounded-md font-medium border border-violet-200/60">
+                        <span key={i} className="bg-slate-100 text-slate-800 text-[11px] px-3 py-0.5 rounded-full font-medium border border-slate-200">
                           {o}
                         </span>
                       ))}
@@ -716,20 +705,20 @@ export function KnowledgePlaceholder() {
                   </div>
 
                   {/* Validation */}
-                  <div className="bg-emerald-50/60 border border-emerald-200/80 p-2.5 rounded-xl flex items-center justify-between text-[11px]">
-                    <span className="font-semibold text-emerald-800">Observed Business Scenarios</span>
-                    <span className="font-mono font-bold text-emerald-700">{currentIntelData.system.scenariosCount} scenarios verified</span>
+                  <div className="bg-slate-100 border border-slate-200 p-3 rounded-xl flex items-center justify-between text-[11px]">
+                    <span className="font-semibold text-slate-800">Observed Business Scenarios</span>
+                    <span className="font-mono font-bold text-slate-900">{currentIntelData.system.scenariosCount} scenarios verified</span>
                   </div>
                 </div>
               </div>
 
               {/* RIGHT — Captured from Humans */}
-              <div className="bg-amber-50/30 border border-amber-200/70 rounded-2xl p-5 space-y-4 shadow-2xs flex flex-col justify-between">
+              <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-2xs flex flex-col justify-between">
                 <div className="space-y-4">
-                  <div className="space-y-1 border-b border-amber-200/70 pb-3 flex items-start justify-between">
+                  <div className="space-y-1 border-b border-slate-200 pb-3 flex items-start justify-between">
                     <div>
                       <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                        <UserCheck className="w-4 h-4 text-amber-600" />
+                        <UserCheck className="w-4 h-4 text-slate-900" />
                         <span>Captured from Humans — SI + Client</span>
                       </h3>
                       <p className="text-[11px] text-slate-500">
@@ -737,7 +726,7 @@ export function KnowledgePlaceholder() {
                       </p>
                     </div>
 
-                    <span className="text-xs font-mono font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/80 shrink-0">
+                    <span className="text-xs font-mono font-bold text-slate-900 bg-slate-200 px-3 py-1 rounded-full border border-slate-300 shrink-0">
                       {currentIntelData.human.counts.total} Human Learnings
                     </span>
                   </div>
@@ -745,11 +734,11 @@ export function KnowledgePlaceholder() {
                   {/* Human Sub-Categories */}
                   <div className="space-y-3 text-xs">
                     {/* Business Policy */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Business Policy</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentIntelData.human.businessPolicy.map((bp, i) => (
-                          <span key={i} className="bg-amber-50 text-amber-900 font-medium text-[11px] px-2 py-0.5 rounded border border-amber-200/80">
+                          <span key={i} className="bg-slate-100 text-slate-900 font-semibold text-[11px] px-3 py-0.5 rounded-full border border-slate-200">
                             {bp}
                           </span>
                         ))}
@@ -757,12 +746,12 @@ export function KnowledgePlaceholder() {
                     </div>
 
                     {/* Decision Intent */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Decision Intent</span>
                       <ul className="space-y-1 text-slate-700 font-medium">
                         {currentIntelData.human.decisionIntent.map((di, i) => (
                           <li key={i} className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-800 shrink-0" />
                             <span>{di}</span>
                           </li>
                         ))}
@@ -770,11 +759,11 @@ export function KnowledgePlaceholder() {
                     </div>
 
                     {/* Undocumented Operations */}
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Undocumented Operations</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentIntelData.human.undocumentedOps.map((uo, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-200">
+                          <span key={i} className="bg-slate-100 text-slate-800 text-[11px] px-3 py-0.5 rounded-full border border-slate-200">
                             {uo}
                           </span>
                         ))}
@@ -783,11 +772,11 @@ export function KnowledgePlaceholder() {
 
                     {/* Future Intent & Change Context */}
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                      <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                         <span className="font-bold text-slate-700 text-[10px] uppercase tracking-wide">Future Intent</span>
                         <p className="text-[11px] text-slate-600 font-medium">{currentIntelData.human.futureIntent[0]}</p>
                       </div>
-                      <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                      <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                         <span className="font-bold text-slate-700 text-[10px] uppercase tracking-wide">Change Context</span>
                         <p className="text-[11px] text-slate-600 font-medium">{currentIntelData.human.changeContext[0]}</p>
                       </div>
@@ -796,7 +785,7 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Role Breakdown + Search Button */}
-                <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between">
+                <div className="pt-2 border-t border-slate-200 flex items-center justify-between">
                   <div className="text-[10px] font-mono text-slate-500 space-x-1.5">
                     <span>{currentIntelData.human.counts.siArchitect} SI</span> · 
                     <span>{currentIntelData.human.counts.financeRevOps} Finance</span> · 
@@ -806,7 +795,7 @@ export function KnowledgePlaceholder() {
 
                   <button
                     onClick={() => setShowHumanSearch(!showHumanSearch)}
-                    className="px-3 py-1 text-xs font-bold text-amber-900 bg-amber-100 hover:bg-amber-200 rounded-lg border border-amber-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-4 py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-full transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                   >
                     <Search className="w-3.5 h-3.5" />
                     <span>Search human learnings</span>
@@ -820,8 +809,8 @@ export function KnowledgePlaceholder() {
             {showHumanSearch && (
               <div className="bg-slate-900 text-slate-100 rounded-2xl p-5 shadow-xl space-y-4 animate-[fadeIn_200ms_ease] border border-slate-800">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                  <h4 className="text-xs font-bold text-amber-400 flex items-center gap-2">
-                    <Search className="w-4 h-4" />
+                  <h4 className="text-xs font-bold text-white flex items-center gap-2">
+                    <Search className="w-4 h-4 text-slate-400" />
                     <span>Search Institutional Memory (47 Implementations)</span>
                   </h4>
                   <button
@@ -835,13 +824,13 @@ export function KnowledgePlaceholder() {
                 {/* Search Input & Filter Chips */}
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <div className="relative flex-1 w-full">
-                    <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+                    <Search className="w-4 h-4 absolute left-3.5 top-2.5 text-slate-400" />
                     <input
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search policies, workarounds, or intent..."
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder:text-slate-400 outline-none focus:border-amber-400"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder:text-slate-400 outline-none focus:border-slate-400"
                     />
                   </div>
 
@@ -850,7 +839,7 @@ export function KnowledgePlaceholder() {
                     <select
                       value={searchRoleFilter}
                       onChange={(e) => setSearchRoleFilter(e.target.value)}
-                      className="bg-slate-800 text-slate-200 border border-slate-700 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer"
+                      className="bg-slate-800 text-slate-200 border border-slate-700 rounded-full px-3 py-1.5 outline-none cursor-pointer"
                     >
                       <option value="All">All Roles</option>
                       <option value="SI Architect">SI Architect</option>
@@ -862,7 +851,7 @@ export function KnowledgePlaceholder() {
                     <select
                       value={searchAreaFilter}
                       onChange={(e) => setSearchAreaFilter(e.target.value)}
-                      className="bg-slate-800 text-slate-200 border border-slate-700 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer"
+                      className="bg-slate-800 text-slate-200 border border-slate-700 rounded-full px-3 py-1.5 outline-none cursor-pointer"
                     >
                       <option value="All">All Areas</option>
                       <option value="discount_approvals">Discount Approvals</option>
@@ -881,16 +870,16 @@ export function KnowledgePlaceholder() {
                     filteredHumanLearnings.map((rec) => (
                       <div key={rec.id} className="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div className="space-y-1">
-                          <div className="flex items-center gap-2 text-[10px] text-amber-400 font-semibold">
+                          <div className="flex items-center gap-2 text-[10px] text-slate-300 font-semibold">
                             <span>{rec.role}</span>
                             <span className="text-slate-500">·</span>
-                            <span className="text-slate-300 font-mono">{rec.implTag}</span>
+                            <span className="text-slate-400 font-mono">{rec.implTag}</span>
                             <span className="text-slate-500">·</span>
-                            <span className="text-violet-300">{rec.areaName}</span>
+                            <span className="text-slate-200 font-bold">{rec.areaName}</span>
                           </div>
                           <p className="text-xs text-slate-100 font-medium">"{rec.text}"</p>
                         </div>
-                        <span className="bg-slate-700 text-slate-300 text-[10px] px-2 py-0.5 rounded font-mono shrink-0 self-start sm:self-center">
+                        <span className="bg-slate-700 text-slate-300 text-[10px] px-2.5 py-0.5 rounded-full font-mono shrink-0 self-start sm:self-center">
                           {rec.contextTag}
                         </span>
                       </div>
@@ -914,7 +903,7 @@ export function KnowledgePlaceholder() {
               <div>
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <span>Implementation Library</span>
-                  <span className="text-xs font-mono font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
+                  <span className="text-xs font-mono font-medium text-slate-700 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                     Productized Packs &amp; Q2C Readiness
                   </span>
                 </h2>
@@ -924,12 +913,12 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Internal Tabs */}
-              <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200/80 text-xs">
+              <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-full border border-slate-200 text-xs">
                 <button
                   onClick={() => setLibraryTab('packs')}
-                  className={`px-4 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-5 py-1.5 rounded-full font-bold transition-all cursor-pointer ${
                     libraryTab === 'packs'
-                      ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                      ? 'bg-slate-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -938,9 +927,9 @@ export function KnowledgePlaceholder() {
 
                 <button
                   onClick={() => setLibraryTab('readiness')}
-                  className={`px-4 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-5 py-1.5 rounded-full font-bold transition-all cursor-pointer ${
                     libraryTab === 'readiness'
-                      ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                      ? 'bg-slate-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -964,10 +953,10 @@ export function KnowledgePlaceholder() {
                     <button
                       key={p.key}
                       onClick={() => setSelectedPackKey(p.key)}
-                      className={`px-3.5 py-1.5 text-xs font-bold rounded-xl border transition-all shrink-0 cursor-pointer ${
+                      className={`px-4 py-1.5 text-xs font-bold rounded-full border transition-all shrink-0 cursor-pointer ${
                         selectedPackKey === p.key
-                          ? 'bg-violet-50 text-violet-900 border-violet-300 shadow-2xs'
-                          : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200/80'
+                          ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
+                          : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
                       }`}
                     >
                       {p.label}
@@ -977,10 +966,10 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Calm Pack Factory Pipeline */}
-                <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 space-y-4">
+                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-bold text-slate-900">{currentPackData.name}</h3>
-                    <span className="text-xs font-mono text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                    <span className="text-xs font-mono text-slate-900 font-bold bg-slate-200 px-3 py-1 rounded-full border border-slate-300">
                       {currentPackData.reusablePercent}% Reusable Core
                     </span>
                   </div>
@@ -994,7 +983,7 @@ export function KnowledgePlaceholder() {
 
                     <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
                       <span className="font-bold text-slate-400 text-[10px] uppercase">2. Generalized</span>
-                      <p className="font-mono font-bold text-violet-700">{currentPackData.pipelineData.generalized.shared}% shared</p>
+                      <p className="font-mono font-bold text-slate-900">{currentPackData.pipelineData.generalized.shared}% shared</p>
                       <p className="text-[10px] text-slate-500">{currentPackData.pipelineData.generalized.variants}</p>
                     </div>
 
@@ -1012,10 +1001,10 @@ export function KnowledgePlaceholder() {
                       <p className="text-[10px] text-slate-500">{currentPackData.pipelineData.validated.scope}</p>
                     </div>
 
-                    <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200/80 space-y-1">
-                      <span className="font-bold text-emerald-800 text-[10px] uppercase">5. Ready</span>
-                      <p className="font-bold text-emerald-900 text-[11px]">{currentPackData.pipelineData.ready.label}</p>
-                      <p className="text-[10px] text-emerald-700">{currentPackData.pipelineData.ready.sub}</p>
+                    <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 space-y-1">
+                      <span className="font-bold text-slate-300 text-[10px] uppercase">5. Ready</span>
+                      <p className="font-bold text-white text-[11px]">{currentPackData.pipelineData.ready.label}</p>
+                      <p className="text-[10px] text-slate-400">{currentPackData.pipelineData.ready.sub}</p>
                     </div>
                   </div>
                 </div>
@@ -1030,7 +1019,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Agents</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.agents.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1042,7 +1031,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Workflows</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.workflows.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1054,7 +1043,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Automations</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.automations.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1066,7 +1055,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Human Handoffs</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.handoffs.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1078,7 +1067,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Knowledge Patterns</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.knowledge.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1090,7 +1079,7 @@ export function KnowledgePlaceholder() {
                       <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wide">Validation Patterns</span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentPackData.representativeComponents.validation.map((comp, i) => (
-                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2 py-0.5 rounded border border-slate-200/80 text-[11px]">
+                          <span key={i} className="bg-slate-100 text-slate-800 font-medium px-2.5 py-0.5 rounded-full border border-slate-200 text-[11px]">
                             {comp}
                           </span>
                         ))}
@@ -1107,16 +1096,16 @@ export function KnowledgePlaceholder() {
               <div className="space-y-6 animate-[fadeIn_200ms_ease]">
                 
                 {/* Revenue Operating Model Selector */}
-                <div className="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                <div className="flex items-center justify-between bg-slate-50 p-3 rounded-full border border-slate-200 px-4">
                   <span className="text-xs font-medium text-slate-600">Select Revenue Operating Model:</span>
                   <div className="flex items-center gap-1.5 text-xs">
                     {['Subscription SaaS', 'Usage-Based', 'Complex Enterprise Sales', 'Product + Services'].map((m) => (
                       <button
                         key={m}
                         onClick={() => setSelectedReadinessModel(m)}
-                        className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer text-[11px] ${
+                        className={`px-4 py-1 rounded-full font-bold transition-all cursor-pointer text-[11px] ${
                           selectedReadinessModel === m
-                            ? 'bg-white text-violet-700 shadow-2xs border border-slate-200'
+                            ? 'bg-slate-900 text-white shadow-2xs'
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
@@ -1144,33 +1133,33 @@ export function KnowledgePlaceholder() {
                         onClick={() => setSelectedReadinessId(row.id)}
                         className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                           isSelected
-                            ? 'bg-violet-50/60 border-violet-300 shadow-2xs'
-                            : 'bg-white hover:bg-slate-50 border-slate-200/80'
+                            ? 'bg-slate-100 border-slate-400 shadow-2xs'
+                            : 'bg-white hover:bg-slate-50 border-slate-200'
                         }`}
                       >
                         <span className="text-xs font-bold text-slate-900">{row.workflow}</span>
 
                         <div className="flex items-center gap-8">
-                          {/* Neutral / Purple Progress Bar */}
+                          {/* Progress Bar */}
                           <div className="flex items-center gap-2 shrink-0">
-                            <div className="w-24 bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                            <div className="w-24 bg-slate-200 rounded-full h-2 overflow-hidden">
                               <div
-                                className="bg-violet-600 h-full rounded-full"
+                                className="bg-slate-900 h-full rounded-full"
                                 style={{ width: `${row.reusePercent}%` }}
                               />
                             </div>
-                            <span className="font-mono font-bold text-slate-700 text-xs w-9 text-right">
+                            <span className="font-mono font-bold text-slate-900 text-xs w-9 text-right">
                               {row.reusePercent}%
                             </span>
                           </div>
 
                           {/* Importance Color Signal */}
                           <span
-                            className={`px-2.5 py-0.5 rounded-md text-[11px] font-bold border shrink-0 ${
+                            className={`px-3 py-0.5 rounded-full text-[11px] font-bold border shrink-0 ${
                               row.importance === 'Critical'
-                                ? 'bg-rose-50 text-rose-800 border-rose-200'
+                                ? 'bg-slate-900 text-white border-slate-900'
                                 : row.importance === 'High'
-                                ? 'bg-amber-50 text-amber-800 border-amber-200'
+                                ? 'bg-slate-800 text-white border-slate-800'
                                 : 'bg-slate-100 text-slate-700 border-slate-200'
                             }`}
                           >
@@ -1184,19 +1173,19 @@ export function KnowledgePlaceholder() {
                 </div>
 
                 {/* Selected Readiness Detail */}
-                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3">
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3">
                   <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                     <h4 className="text-xs font-bold text-slate-900">
                       {currentReadinessRow.workflow} — Reuse &amp; Policy Breakdown
                     </h4>
-                    <span className="text-xs font-mono font-bold text-violet-700">
+                    <span className="text-xs font-mono font-bold text-slate-900">
                       {currentReadinessRow.reusePercent}% Reusable Software Foundation
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                     <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-emerald-700 text-[11px] uppercase">Reusable Software Architecture</span>
+                      <span className="font-bold text-slate-900 text-[11px] uppercase">Reusable Software Architecture</span>
                       <ul className="space-y-1 text-slate-700 text-[11px]">
                         <li>✓ Pre-built Agent exception routing architecture</li>
                         <li>✓ Standardized Approval Flow &amp; Escalation triggers</li>
@@ -1206,7 +1195,7 @@ export function KnowledgePlaceholder() {
                     </div>
 
                     <div className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <span className="font-bold text-amber-700 text-[11px] uppercase">Client-Specific Policy Configuration</span>
+                      <span className="font-bold text-slate-900 text-[11px] uppercase">Client-Specific Policy Configuration</span>
                       <ul className="space-y-1 text-slate-700 text-[11px]">
                         <li>• Specific CFO margin floor thresholds</li>
                         <li>• Strategic-account qualification rules</li>
@@ -1232,7 +1221,7 @@ export function KnowledgePlaceholder() {
             <div className="border-b border-slate-100 pb-4 space-y-1">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <span>Compounding Advantage</span>
-                <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-xs font-mono font-semibold text-slate-800 bg-slate-100 px-3 py-0.5 rounded-full border border-slate-200">
                   AI Implementation Economics
                 </span>
               </h2>
@@ -1245,7 +1234,7 @@ export function KnowledgePlaceholder() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               
               {/* Implementation #1 */}
-              <div className="bg-slate-50 border border-slate-200/90 p-5 rounded-2xl space-y-3">
+              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
                 <span className="text-xs font-bold text-slate-500 font-mono">Implementation #1</span>
                 <div className="space-y-1">
                   <p className="text-2xl font-black text-slate-800">3 Reusable</p>
@@ -1258,10 +1247,10 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Implementation #6 */}
-              <div className="bg-slate-50 border border-slate-200/90 p-5 rounded-2xl space-y-3">
-                <span className="text-xs font-bold text-violet-700 font-mono">Implementation #6</span>
+              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-3">
+                <span className="text-xs font-bold text-slate-900 font-mono">Implementation #6</span>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-violet-900">18 Reusable</p>
+                  <p className="text-2xl font-black text-slate-900">18 Reusable</p>
                   <p className="text-xs text-slate-500 font-medium">Software components active</p>
                 </div>
                 <div className="pt-2 border-t border-slate-200 space-y-1 text-xs font-mono">
@@ -1271,45 +1260,45 @@ export function KnowledgePlaceholder() {
               </div>
 
               {/* Implementation #12 */}
-              <div className="bg-violet-50/70 border border-violet-300 p-5 rounded-2xl space-y-3 shadow-2xs">
-                <span className="text-xs font-bold text-violet-800 font-mono">Implementation #12</span>
+              <div className="bg-slate-900 text-white border border-slate-800 p-5 rounded-2xl space-y-3 shadow-md">
+                <span className="text-xs font-bold text-slate-300 font-mono">Implementation #12</span>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-violet-900">32 Reusable</p>
-                  <p className="text-xs text-violet-700 font-medium">Software components matured</p>
+                  <p className="text-2xl font-black text-white">32 Reusable</p>
+                  <p className="text-xs text-slate-300 font-medium">Software components matured</p>
                 </div>
-                <div className="pt-2 border-t border-violet-200 space-y-1 text-xs font-mono">
-                  <p className="text-violet-900 font-bold">~110 hrs SI effort</p>
-                  <p className="text-emerald-700 font-bold">96% mapping confidence</p>
+                <div className="pt-2 border-t border-slate-800 space-y-1 text-xs font-mono">
+                  <p className="text-white font-bold">~110 hrs SI effort</p>
+                  <p className="text-slate-300 font-bold">96% mapping confidence</p>
                 </div>
               </div>
 
             </div>
 
-            {/* Compact Trend Strip (Includes Client-specific discovery ↓) */}
-            <div className="bg-slate-50 border border-slate-200/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 text-xs">
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
-                <TrendingUp className="w-4 h-4 text-emerald-600" />
+            {/* Compact Trend Strip */}
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-full flex flex-wrap items-center justify-between gap-4 text-xs px-6">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <TrendingUp className="w-4 h-4 text-slate-900" />
                 <span>Reusable agents ↑</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
-                <TrendingUp className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <TrendingUp className="w-4 h-4 text-slate-900" />
                 <span>Workflows &amp; automations ↑</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-violet-800">
-                <TrendingDown className="w-4 h-4 text-violet-600" />
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <TrendingDown className="w-4 h-4 text-slate-900" />
                 <span>Client-specific discovery ↓</span>
               </div>
 
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
-                <TrendingDown className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <TrendingDown className="w-4 h-4 text-slate-900" />
                 <span>Human implementation effort ↓</span>
               </div>
             </div>
 
             {/* Bottom Statement */}
-            <div className="bg-gradient-to-r from-violet-600 to-indigo-700 text-white rounded-xl p-4 text-center shadow-2xs">
+            <div className="bg-slate-900 text-white rounded-2xl p-4 text-center shadow-2xs">
               <p className="text-sm font-bold">
                 More implementations → more prebuilt AI operations → less human implementation work
               </p>
