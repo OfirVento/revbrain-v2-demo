@@ -24,6 +24,9 @@ import {
   Activity,
   Zap,
   BookOpen,
+  FileText,
+  ShieldAlert,
+  Target,
 } from 'lucide-react';
 
 /* ── Persistent Learning Sub-Nav Tabs (4 Areas) ───────────────────────── */
@@ -721,45 +724,57 @@ export function KnowledgePlaceholder() {
                     </p>
                   </div>
 
-                  {/* 3 Clean Sections with Subtle Icons */}
+                  {/* 3 Clean Sections with Micro-Card Items & Pill Badges */}
                   <div className="space-y-4 text-xs">
                     
                     {/* Section 1: Configuration */}
-                    <div className="space-y-1.5 border-b border-blue-200/60 pb-3.5">
+                    <div className="space-y-2 border-b border-blue-200/60 pb-3.5">
                       <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
                         <Sliders className="w-3.5 h-3.5 text-blue-600" />
                         <span>Configuration</span>
                       </h4>
-                      <p className="text-xs text-slate-700 leading-relaxed font-mono">
-                        {currentIntelData.system.configRules.join(' · ')}
-                      </p>
+                      <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+                        {currentIntelData.system.configRules.map((cr, i) => (
+                          <span key={i} className="bg-white/90 border border-blue-200/90 rounded-lg px-2.5 py-1 font-semibold text-blue-900 shadow-2xs">
+                            {cr}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Section 2: Observed Behavior */}
-                    <div className="space-y-1.5 border-b border-blue-200/60 pb-3.5">
+                    <div className="space-y-2 border-b border-blue-200/60 pb-3.5">
                       <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
                         <Activity className="w-3.5 h-3.5 text-blue-600" />
                         <span>Observed Behavior</span>
                       </h4>
-                      <ul className="grid grid-cols-2 gap-1.5 text-xs text-slate-700 font-medium">
+                      <div className="grid grid-cols-2 gap-2 text-xs">
                         {currentIntelData.system.runtimeBehavior.map((b, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
+                          <div key={i} className="bg-white/90 border border-blue-200/70 rounded-xl px-2.5 py-1.5 flex items-center gap-2 shadow-2xs text-slate-800 font-medium hover:border-blue-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-                            <span>{b}</span>
-                          </li>
+                            <span className="truncate">{b}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
 
                     {/* Section 3: Validation Evidence */}
-                    <div className="space-y-1.5 pt-0.5">
+                    <div className="space-y-2 pt-0.5">
                       <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
                         <span>Validation Evidence</span>
                       </h4>
-                      <p className="text-xs text-slate-700 leading-relaxed font-mono">
-                        {currentIntelData.system.scenariosCount} observed scenarios · 18 exception patterns · 31 implementation histories
-                      </p>
+                      <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+                        <span className="bg-white/90 border border-blue-200/80 rounded-lg px-2.5 py-1 font-semibold text-blue-900 shadow-2xs">
+                          {currentIntelData.system.scenariosCount} scenarios verified
+                        </span>
+                        <span className="bg-white/90 border border-blue-200/80 rounded-lg px-2.5 py-1 font-semibold text-blue-900 shadow-2xs">
+                          18 exception patterns
+                        </span>
+                        <span className="bg-white/90 border border-blue-200/80 rounded-lg px-2.5 py-1 font-semibold text-blue-900 shadow-2xs">
+                          31 impl histories
+                        </span>
+                      </div>
                     </div>
 
                   </div>
@@ -796,52 +811,55 @@ export function KnowledgePlaceholder() {
                     </div>
                   </div>
 
-                  {/* 3 Clean Sections with Amber Markers */}
+                  {/* 3 Clean Sections with Micro-Card Items */}
                   <div className="space-y-4 text-xs">
                     
                     {/* Section 1: Policies & Decision Rules */}
-                    <div className="space-y-1.5 border-b border-amber-200/60 pb-3.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Policies &amp; Decision Rules</h4>
-                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
-                        {currentIntelData.human.businessPolicy.map((p, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
+                    <div className="space-y-2 border-b border-amber-200/60 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
+                        <span>Policies &amp; Decision Rules</span>
+                      </h4>
+                      <div className="space-y-1.5">
+                        {[...currentIntelData.human.businessPolicy, ...currentIntelData.human.decisionIntent.slice(0, 2)].map((p, i) => (
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                             <span>{p}</span>
-                          </li>
+                          </div>
                         ))}
-                        {currentIntelData.human.decisionIntent.slice(0, 2).map((di, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span>{di}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      </div>
                     </div>
 
                     {/* Section 2: Undocumented Operations */}
-                    <div className="space-y-1.5 border-b border-amber-200/60 pb-3.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Undocumented Operations</h4>
-                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                    <div className="space-y-2 border-b border-amber-200/60 pb-3.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5 text-amber-600" />
+                        <span>Undocumented Operations</span>
+                      </h4>
+                      <div className="grid grid-cols-2 gap-2 text-xs">
                         {currentIntelData.human.undocumentedOps.map((uo, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-2.5 py-1.5 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span>{uo}</span>
-                          </li>
+                            <span className="truncate">{uo}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
 
                     {/* Section 3: Future Intent */}
-                    <div className="space-y-1.5 pt-0.5">
-                      <h4 className="text-[12px] font-semibold text-slate-900">Future Intent</h4>
-                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                    <div className="space-y-2 pt-0.5">
+                      <h4 className="text-[12px] font-semibold text-slate-900 flex items-center gap-1.5">
+                        <Target className="w-3.5 h-3.5 text-amber-600" />
+                        <span>Future Intent</span>
+                      </h4>
+                      <div className="grid grid-cols-2 gap-2 text-xs">
                         {currentIntelData.human.futureIntent.map((fi, i) => (
-                          <li key={i} className="flex items-center gap-1.5">
+                          <div key={i} className="bg-white/90 border border-amber-200/70 rounded-xl px-2.5 py-1.5 flex items-center gap-2 font-medium text-slate-800 shadow-2xs hover:border-amber-300 transition-all">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                            <span>{fi}</span>
-                          </li>
+                            <span className="truncate">{fi}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
 
                   </div>
