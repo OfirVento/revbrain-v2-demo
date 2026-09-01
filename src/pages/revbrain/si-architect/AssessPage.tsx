@@ -2,7 +2,7 @@
 // The trust-building screen showing extracted CPQ demographics, visual
 // usage map, tabbed metadata catalog, operational workflows, and ROI.
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Sparkles,
@@ -317,6 +317,28 @@ export function AssessPage() {
   const [userLens, setUserLens] = useState<'business' | 'admin'>('business');
   const [subTab, setSubTab] = useState<'workflows' | 'config' | 'opportunities'>('workflows');
   const [svgTab, setSvgTab] = useState(0);
+
+  useEffect(() => {
+    const handleSetSvgTab = (e: CustomEvent<number>) => {
+      if (typeof e.detail === 'number') {
+        setSvgTab(e.detail);
+        setUserLens('business');
+        setSubTab('workflows');
+      }
+    };
+    const handleSetSubTab = (e: CustomEvent<{ lens?: 'business' | 'admin'; tab?: 'workflows' | 'config' | 'opportunities' }>) => {
+      if (e.detail?.lens) setUserLens(e.detail.lens);
+      if (e.detail?.tab) setSubTab(e.detail.tab);
+    };
+
+    window.addEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
+    window.addEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
+
+    return () => {
+      window.removeEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
+      window.removeEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
+    };
+  }, []);
 
   const stats = HERO_STATS;
 

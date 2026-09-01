@@ -275,31 +275,39 @@ export function RevBrainBottomAgent() {
     };
   }, [isLearningRoute]);
 
-  // Assess route verification question flow state
-  type AssessFlowState = 'idle' | 'waiting' | 'asking' | 'answered';
-  const [assessFlowState, setAssessFlowState] = useState<AssessFlowState>('idle');
-  const [assessAnswer, setAssessAnswer] = useState<string | null>(null);
+  // Assess route intelligence flow state
+  type AssessStep = 'overview' | 'biggest_opportunity';
+  const [assessStep, setAssessStep] = useState<AssessStep>('overview');
+  const [assessShowButtons, setAssessShowButtons] = useState<boolean>(false);
   const assessVisitedRef = useRef<string | null>(null);
 
-  // Initialize Assess scroll trigger: opens chat when scrolling towards the middle of the workflow SVG/page
+  // Initialize Assess chat flow
   useEffect(() => {
     if (!isAssessRoute) {
       assessVisitedRef.current = null;
-      setAssessFlowState('idle');
+      setAssessStep('overview');
+      setAssessShowButtons(false);
       return;
     }
 
     if (assessVisitedRef.current !== pathname) {
       assessVisitedRef.current = pathname;
-      setAssessFlowState('waiting');
+      setAssessStep('overview');
+      setAssessShowButtons(false);
+
+      const timer = setTimeout(() => {
+        setWorkingExpanded(true);
+        setChatFullyOpened(true);
+      }, 3500);
 
       const handleScroll = () => {
         const mainEl = document.querySelector('main');
         const scrollTop = mainEl ? mainEl.scrollTop : (window.scrollY || document.documentElement.scrollTop);
 
-        if (scrollTop > 280) {
-          setAssessFlowState('asking');
+        if (scrollTop > 120) {
           setWorkingExpanded(true);
+          setChatFullyOpened(true);
+          clearTimeout(timer);
           if (mainEl) mainEl.removeEventListener('scroll', handleScroll);
           window.removeEventListener('scroll', handleScroll, { capture: true });
         }
@@ -312,26 +320,12 @@ export function RevBrainBottomAgent() {
       window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
 
       return () => {
+        clearTimeout(timer);
         if (mainEl) mainEl.removeEventListener('scroll', handleScroll);
         window.removeEventListener('scroll', handleScroll, { capture: true });
       };
     }
   }, [pathname, isAssessRoute]);
-
-  const handleAssessAnswer = (chosenValue: string) => {
-    setAssessAnswer(chosenValue);
-    const toastText = chosenValue === 'Sent to client' ? 'Question sent to client' : 'Saved to RevBrain context';
-    setToastMessage(toastText);
-    setAssessFlowState('answered');
-
-    setShowOtherInput(false);
-    setOtherInputText('');
-
-    setTimeout(() => {
-      setToastMessage(null);
-      setWorkingExpanded(false);
-    }, 1800);
-  };
 
   // Implementation route 4-Phase demo state
   type ImplPhase = 'phase1' | 'phase2' | 'phase3' | 'phase4';
@@ -479,7 +473,7 @@ export function RevBrainBottomAgent() {
   // Reset showButtons whenever question or route context changes
   useEffect(() => {
     setShowButtons(false);
-  }, [pathname, currentQuestionIndex, designCardIndex, assessFlowState, implPhase, implReviewStepIndex]);
+  }, [pathname, currentQuestionIndex, designCardIndex, assessStep, implPhase, implReviewStepIndex]);
 
   // Sync designCardIndex with DesignFutureStatePage cardIndex navigation
   useEffect(() => {
@@ -709,83 +703,119 @@ export function RevBrainBottomAgent() {
                   </div>
                 )}
 
-                {/* 1. Assess Route Verification Question Flow State */}
-                {isAssessRoute && assessFlowState === 'asking' && (
+                {/* 1. Assess Route Intelligence Flow */}
+                {isAssessRoute && (
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                       
-                      {/* Main Question */}
-                      <div className="space-y-1">
-                        <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[36px]">
-                          <TypewriterText
-                            text="I couldn’t find automation moving Bid opportunities from {Planning} → {Out to Bid}. How does this happen today?"
-                            speed={28}
-                            enabled={chatFullyOpened}
-                            onComplete={() => setShowButtons(true)}
-                          />
-                        </p>
-                      </div>
+                      {assessStep === 'overview' && (
+                        <>
+                          {/* Main Finding Text */}
+                          <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                            <TypewriterText
+                              key="assess-overview-msg"
+                              text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with automation or agents."
+                              speed={22}
+                              enabled={chatFullyOpened}
+                              onComplete={() => setAssessShowButtons(true)}
+                            />
+                          </p>
 
-                      {/* Ready-made Answer Chips + Send to client + Other on SAME row */}
-                      {showButtons && (
-                        <div className="flex flex-wrap items-center gap-2 pt-0.5">
-                          {[
-                            'Sales rep changes the stage manually',
-                            'Bid team updates it after the bid is ready',
-                            'It happens outside Salesforce',
-                          ].map((opt, i) => (
-                            <button
-                              key={i}
-                              onClick={() => handleAssessAnswer(opt)}
-                              style={{ animationDelay: `${i * 180}ms` }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center justify-center shrink-0"
-                            >
-                              {opt}
-                            </button>
-                          ))}
+                          {/* Small labels */}
+                          {assessShowButtons && (
+                            <div className="flex flex-wrap items-center gap-1.5 pt-0.5 animate-fadeIn">
+                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
+                                Approvals ~4,560h
+                              </span>
+                              <span className="text-slate-300 text-xs">·</span>
+                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
+                                Quote prep ~720h
+                              </span>
+                              <span className="text-slate-300 text-xs">·</span>
+                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
+                                Finance exceptions ~460h
+                              </span>
+                              <span className="text-slate-300 text-xs">·</span>
+                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
+                                Quote-to-order fixes ~360h
+                              </span>
+                            </div>
+                          )}
 
-                          <button
-                            onClick={() => handleAssessAnswer('Sent to client')}
-                            style={{ animationDelay: `540ms` }}
-                            className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center justify-center shrink-0"
-                          >
-                            <span>Send to client</span>
-                          </button>
+                          {/* Actions: Show biggest opportunity | Review all manual work */}
+                          {assessShowButtons && (
+                            <div className="flex flex-wrap items-center gap-2 pt-1 animate-fadeIn">
+                              <button
+                                onClick={() => {
+                                  setAssessStep('biggest_opportunity');
+                                  setAssessShowButtons(false);
+                                }}
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                              >
+                                <span>Show biggest opportunity</span>
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </button>
 
-                          <button
-                            onClick={() => setShowOtherInput(!showOtherInput)}
-                            style={{ animationDelay: `720ms` }}
-                            className="animate-button-stagger text-xs font-medium text-slate-500 hover:text-slate-800 underline underline-offset-2 transition-colors ml-auto"
-                          >
-                            {showOtherInput ? 'Cancel custom answer' : 'Other...'}
-                          </button>
-                        </div>
+                              <button
+                                onClick={() => {
+                                  window.dispatchEvent(new CustomEvent('revbrain-set-assess-subtab', { detail: { lens: 'admin', tab: 'workflows' } }));
+                                  setToastMessage('Showing manual work breakdown by role');
+                                  setTimeout(() => setToastMessage(null), 2500);
+                                }}
+                                style={{ animationDelay: '120ms' }}
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center shrink-0 cursor-pointer"
+                              >
+                                <span>Review all manual work</span>
+                              </button>
+                            </div>
+                          )}
+                        </>
                       )}
 
-                      {/* Free-text input field when Other is selected */}
-                      {showOtherInput && (
-                        <div className="pt-2 animate-fadeIn flex items-center gap-2 border-t border-slate-100">
-                          <input
-                            type="text"
-                            value={otherInputText}
-                            onChange={(e) => setOtherInputText(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter') {
-                                handleAssessAnswer(otherInputText.trim() || 'Custom response');
-                              }
-                            }}
-                            placeholder="Type custom answer for this transition..."
-                            className="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-800 placeholder:text-slate-400 outline-none focus:border-violet-400 focus:bg-white"
-                            autoFocus
-                          />
-                          <button
-                            onClick={() => handleAssessAnswer(otherInputText.trim() || 'Custom response')}
-                            className="px-3.5 py-1.5 text-xs font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-lg transition-colors shrink-0"
-                          >
-                            Save &amp; Continue
-                          </button>
-                        </div>
+                      {assessStep === 'biggest_opportunity' && (
+                        <>
+                          {/* Biggest Opportunity Text */}
+                          <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                            <TypewriterText
+                              key="assess-opp-msg"
+                              text="11.4K approvals/year are reviewed manually by two senior managers, taking ~4,560 hours/year. 98.4% are approved."
+                              speed={22}
+                              enabled={true}
+                              onComplete={() => setAssessShowButtons(true)}
+                            />
+                          </p>
+
+                          {/* Actions: Validate with client | Review evidence */}
+                          {assessShowButtons && (
+                            <div className="flex flex-wrap items-center gap-2 pt-1 animate-fadeIn">
+                              <button
+                                onClick={() => {
+                                  window.dispatchEvent(new CustomEvent('revbrain-open-client-context'));
+                                  setToastMessage('Inquiry logged: Validate 11.4K approvals pattern with client');
+                                  setTimeout(() => setToastMessage(null), 3000);
+                                }}
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                              >
+                                <span>Validate with client</span>
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                              </button>
+
+                              <button
+                                onClick={() => {
+                                  window.dispatchEvent(new CustomEvent('revbrain-set-assess-svg-tab', { detail: 1 }));
+                                  setToastMessage('Showing approval process evidence (Bottlenecks)');
+                                  setTimeout(() => setToastMessage(null), 2500);
+                                }}
+                                style={{ animationDelay: '120ms' }}
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center shrink-0 cursor-pointer"
+                              >
+                                <span>Review evidence</span>
+                              </button>
+                            </div>
+                          )}
+                        </>
                       )}
+
                     </div>
                   </div>
                 )}
@@ -1202,7 +1232,7 @@ export function RevBrainBottomAgent() {
                 )}
 
                 {/* 6. Default task display for non-interactive state */}
-                {(!isMapRoute || mapFlowState === 'idle') && !isDesignRoute && !isImplementationRoute && !isLearningRoute && !isCommandCenterRoute && (!isAssessRoute || assessFlowState === 'idle' || assessFlowState === 'waiting') && (
+                {(!isMapRoute || mapFlowState === 'idle') && !isDesignRoute && !isImplementationRoute && !isLearningRoute && !isCommandCenterRoute && !isAssessRoute && (
                   <div className="px-4 pb-2.5 pt-2">
                     <div className="flex items-center gap-2.5 px-3 py-2 bg-slate-50 border border-slate-100 rounded-lg">
                       <div className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse shrink-0" />
