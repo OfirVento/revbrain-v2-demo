@@ -287,7 +287,7 @@ export function MigrationMapPage() {
                     {viewMode === 'business' ? (
                       // ── Business Workflow Comparison — SVG-inspired ──
                       <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-[5fr_2fr_5fr] gap-4 md:gap-2 items-stretch">
+                        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-[2px] items-stretch">
 
                           {/* LEFT: Current approval process */}
                           <div className="rounded-xl border border-[#D5D0C8] bg-[#FAF9F7] p-4 flex flex-col justify-between space-y-3">
@@ -331,8 +331,8 @@ export function MigrationMapPage() {
                           </div>
 
                           {/* MIDDLE: Bridge connector */}
-                          <div className="flex flex-col justify-center items-center py-6 md:py-0 px-2 text-center select-none shrink-0 self-center">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-xl px-3 py-1 text-center shadow-sm leading-tight">
+                          <div className="flex flex-col justify-center items-center py-6 md:py-0 px-0 text-center select-none shrink-0 self-center">
+                            <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-xl px-2.5 py-1 text-center shadow-sm leading-tight">
                               <div>74% less</div>
                               <div>manual effort</div>
                             </div>
