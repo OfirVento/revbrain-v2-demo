@@ -111,7 +111,7 @@ function getRouteContext(pathname: string): RouteContext {
   return { stage: 'Implementation', context: 'Implementation', task: 'Monitoring implementation workspace' };
 }
 
-/* ── Helper: Render {} terms as white background non-bold labels ──── */
+/* ── Helper: Render {} terms as bolder text without boxes ──── */
 
 function renderTextWithVariableLabels(text: string) {
   const parts = text.split(/(\{[^}]+\})/g);
@@ -120,7 +120,7 @@ function renderTextWithVariableLabels(text: string) {
       return (
         <span
           key={idx}
-          className="inline-flex items-center px-1.5 py-0.5 mx-0.5 rounded bg-white text-slate-700 border border-slate-200/90 text-xs font-normal font-mono shadow-2xs leading-none"
+          className="font-semibold text-slate-800"
         >
           {part}
         </span>
@@ -715,7 +715,7 @@ export function RevBrainBottomAgent() {
                             <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                               <TypewriterText
                                 key="assess-overview-msg"
-                                text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with automation or agents."
+                                text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with agentic workflows."
                                 speed={22}
                                 enabled={chatFullyOpened}
                                 onComplete={() => setAssessShowButtons(true)}
