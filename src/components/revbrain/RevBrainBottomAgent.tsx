@@ -281,17 +281,9 @@ export function RevBrainBottomAgent() {
   const [assessShowButtons, setAssessShowButtons] = useState<boolean>(false);
   const assessVisitedRef = useRef<string | null>(null);
 
-  // Initialize Assess chat flow
+  // Initialize Assess chat flow - strictly starts closed
   useEffect(() => {
-    if (!isAssessRoute) {
-      assessVisitedRef.current = null;
-      setAssessStep('overview');
-      setAssessShowButtons(false);
-      return;
-    }
-
-    if (assessVisitedRef.current !== pathname) {
-      assessVisitedRef.current = pathname;
+    if (isAssessRoute) {
       setAssessStep('overview');
       setAssessShowButtons(false);
       setWorkingExpanded(false);

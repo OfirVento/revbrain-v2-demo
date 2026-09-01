@@ -354,13 +354,6 @@ export function AssessPage() {
     window.addEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);
     window.addEventListener('revbrain-open-assess-chat', handleOpenChat as EventListener);
 
-    if (sessionStorage.getItem('revbrain-open-assess-chat-on-load') === 'true') {
-      sessionStorage.removeItem('revbrain-open-assess-chat-on-load');
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('revbrain-open-assess-chat'));
-      }, 350);
-    }
-
     return () => {
       window.removeEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
       window.removeEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);

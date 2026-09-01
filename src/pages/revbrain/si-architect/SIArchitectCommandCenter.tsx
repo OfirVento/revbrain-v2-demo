@@ -465,9 +465,6 @@ export function SIArchitectCommandCenter() {
                     key={item.id}
                     onClick={() => {
                       if (item.link) {
-                        if (item.id === 'att-1' || item.link.includes('assess')) {
-                          sessionStorage.setItem('revbrain-open-assess-chat-on-load', 'true');
-                        }
                         navigate(item.link);
                       }
                     }}
@@ -524,9 +521,6 @@ export function SIArchitectCommandCenter() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            if (item.id === 'att-1' || item.link?.includes('assess')) {
-                              sessionStorage.setItem('revbrain-open-assess-chat-on-load', 'true');
-                            }
                             navigate(item.link!);
                           }}
                           className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
