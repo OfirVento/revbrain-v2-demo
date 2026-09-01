@@ -112,82 +112,13 @@ export interface ClientInteraction {
 
 export const CLIENT_INQUIRIES: ClientInquiry[] = [
   {
-    id: 'c2',
-    title: 'Investigate Finance margin overrides',
-    area: 'Pricing',
-    status: 'Blocking',
-    statusDetail: 'Client replied · Needs business validation',
-    impactLabel: '23% below policy · ≈$370K modeled annual margin exposure',
-    statusLabel: 'Needs business validation',
-    owner: {
-      name: 'David Zhao',
-      role: 'Director of FP&A',
-      avatarInitials: 'DZ',
-    },
-    latestInteraction: {
-      channel: 'Email',
-      timeAgo: '4h ago',
-      summary: 'Client replied via Email · Needs business validation',
-    },
-    revbrainFinding: {
-      summary: '23% of observed quotes fall below the documented 20% margin floor through manual overrides.',
-      evidence: '142 quotes in the past 12 months used the override code "EXEC_DIRECT_ALLOW" without documented justification in CPQ.',
-      impact: '23% below policy · ≈$370K modeled annual margin exposure',
-    },
-    questionSent: {
-      channel: 'Email',
-      sentAt: 'Yesterday, 4:30 PM',
-      targetRecipient: 'David Zhao (david.zhao@vectorsystems.com)',
-      questionText: 'We found 23% of historical quotes bypass the 20% margin floor using code EXEC_DIRECT_ALLOW. What is the true operational margin floor we should build into Revenue Cloud rules?',
-      isDraft: false,
-    },
-    clientResponse: {
-      author: 'David Zhao',
-      role: 'Director of FP&A',
-      respondedAt: 'Today, 11:15 AM',
-      channel: 'Email',
-      text: 'For Enterprise and Strategic accounts, the true floor is 14% as long as the multi-year contract commitments exceed 24 months. 20% is strictly for SMB and mid-market.',
-      avatarInitials: 'DZ',
-    },
-    siValidation: {
-      validated: false,
-      note: 'Need to cross-reference with Account Segment taxonomy to ensure Enterprise accounts are deterministically flagged before applying the 14% floor.',
-      clarificationNeeded: true,
-    },
-    confirmedContext: {
-      ruleTitle: 'Segment-Aware Margin Floor Policy',
-      ruleDefinition: 'Enterprise accounts (ARR >$100K or 24+ mo commitment): 14% margin floor. SMB/Mid-Market: 20% margin floor.',
-      targetComponent: 'Pricing Matrix: Price Rule — Floor Validation',
-    },
-    materials: [
-      {
-        id: 'm2',
-        name: 'Pricing Matrix.xlsx',
-        type: 'sheet',
-        area: 'Pricing',
-        sizeOrCount: '1.1 MB',
-        updatedAt: '4h ago',
-        snippet: 'Sheet 2: Discount & Margin Floor Rules by Customer Tier',
-      },
-      {
-        id: 'm5',
-        name: 'Email: Q3 approval process sign-off',
-        type: 'email',
-        area: 'Approvals',
-        sizeOrCount: '3 replies',
-        updatedAt: 'Yesterday',
-        snippet: 'Discussion on enterprise exception thresholds and deal desk sign-offs',
-      },
-    ],
-  },
-  {
     id: 'c1',
-    title: 'Validate manual senior-manager approvals',
+    title: 'Two senior managers manual sign-off rationale',
     area: 'Approvals',
     status: 'Blocking',
-    statusDetail: 'Waiting on Finance',
+    statusDetail: 'Blocking · Waiting on Finance',
     impactLabel: '11.4K approvals · ~4,560 hrs/yr · ≈$410K annual effort',
-    statusLabel: 'Client validation needed',
+    statusLabel: 'Blocking · Waiting on Finance',
     owner: {
       name: 'Sarah Jenkins',
       role: 'VP Finance',
@@ -250,8 +181,77 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     ],
   },
   {
+    id: 'c2',
+    title: 'Finance margin risk threshold vs reality',
+    area: 'Pricing',
+    status: 'Blocking',
+    statusDetail: 'Needs validation · Client replied',
+    impactLabel: '23% below policy · ≈$370K modeled annual margin exposure',
+    statusLabel: 'Needs validation · Client replied',
+    owner: {
+      name: 'David Zhao',
+      role: 'Director of FP&A',
+      avatarInitials: 'DZ',
+    },
+    latestInteraction: {
+      channel: 'Email',
+      timeAgo: '4h ago',
+      summary: 'Client replied via Email · Needs SI validation',
+    },
+    revbrainFinding: {
+      summary: '23% of observed quotes fall below the documented 20% margin floor through manual overrides.',
+      evidence: '142 quotes in the past 12 months used the override code "EXEC_DIRECT_ALLOW" without documented justification in CPQ.',
+      impact: '23% below policy · ≈$370K modeled annual margin exposure',
+    },
+    questionSent: {
+      channel: 'Email',
+      sentAt: 'Yesterday, 4:30 PM',
+      targetRecipient: 'David Zhao (david.zhao@vectorsystems.com)',
+      questionText: 'We found 23% of historical quotes bypass the 20% margin floor using code EXEC_DIRECT_ALLOW. What is the true operational margin floor we should build into Revenue Cloud rules?',
+      isDraft: false,
+    },
+    clientResponse: {
+      author: 'David Zhao',
+      role: 'Director of FP&A',
+      respondedAt: 'Today, 11:15 AM',
+      channel: 'Email',
+      text: 'For Enterprise and Strategic accounts, the true floor is 14% as long as the multi-year contract commitments exceed 24 months. 20% is strictly for SMB and mid-market.',
+      avatarInitials: 'DZ',
+    },
+    siValidation: {
+      validated: false,
+      note: 'Need to cross-reference with Account Segment taxonomy to ensure Enterprise accounts are deterministically flagged before applying the 14% floor.',
+      clarificationNeeded: true,
+    },
+    confirmedContext: {
+      ruleTitle: 'Segment-Aware Margin Floor Policy',
+      ruleDefinition: 'Enterprise accounts (ARR >$100K or 24+ mo commitment): 14% margin floor. SMB/Mid-Market: 20% margin floor.',
+      targetComponent: 'Pricing Matrix: Price Rule — Floor Validation',
+    },
+    materials: [
+      {
+        id: 'm2',
+        name: 'Pricing Matrix.xlsx',
+        type: 'sheet',
+        area: 'Pricing',
+        sizeOrCount: '1.1 MB',
+        updatedAt: '4h ago',
+        snippet: 'Sheet 2: Discount & Margin Floor Rules by Customer Tier',
+      },
+      {
+        id: 'm5',
+        name: 'Email: Q3 approval process sign-off',
+        type: 'email',
+        area: 'Approvals',
+        sizeOrCount: '3 replies',
+        updatedAt: 'Yesterday',
+        snippet: 'Discussion on enterprise exception thresholds and deal desk sign-offs',
+      },
+    ],
+  },
+  {
     id: 'c5',
-    title: 'Investigate renewal uplift leakage',
+    title: 'Renewal uplift leakage',
     area: 'Renewals',
     status: 'Needs SI Validation',
     statusDetail: 'Needs RevOps validation',
@@ -311,7 +311,7 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
   },
   {
     id: 'c8',
-    title: 'Investigate contracted pricing leakage',
+    title: 'Contracted pricing leakage',
     area: 'Pricing',
     status: 'Waiting on Client',
     statusDetail: 'Needs SalesOps validation',
@@ -339,10 +339,23 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
       questionText: 'When quotes are created outside the standard guided flow, should contracted customer pricing automatically override or require manager validation?',
       isDraft: false,
     },
+    clientResponse: {
+      author: 'Elena Rostova',
+      role: 'SalesOps Director',
+      respondedAt: 'Today, 1:20 PM',
+      channel: 'Slack',
+      text: 'Contracted pricing should always take precedence automatically, even when cloned from non-standard quotes. Sales reps should see an alert if account terms differ.',
+      avatarInitials: 'ER',
+    },
     siValidation: {
       validated: false,
       note: 'Awaiting Elena confirmation to enforce deterministic customer contracted price books across all entry paths.',
       clarificationNeeded: false,
+    },
+    confirmedContext: {
+      ruleTitle: 'Deterministic Contracted Price Book Priority',
+      ruleDefinition: 'Contracted account price books override standard catalogs across all quote creation paths.',
+      targetComponent: 'Pricing Engine: Contracted Price Rule Override',
     },
     materials: [
       {
@@ -358,12 +371,12 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
   },
   {
     id: 'c3',
-    title: 'Confirm strategic-account exception path',
+    title: 'Strategic account exception rule path',
     area: 'Accounts',
     status: 'Draft Ready',
-    statusDetail: 'Draft question ready for RevOps',
-    impactLabel: '≈$185K modeled annual revenue exposure',
-    statusLabel: 'Waiting on RevOps',
+    statusDetail: 'Ready to ask RevOps',
+    impactLabel: 'Strategic-account exceptions observed · ≈$185K modeled annual revenue exposure',
+    statusLabel: 'Ready to ask RevOps',
     owner: {
       name: 'Marcus Vance',
       role: 'RevOps Lead',
@@ -405,12 +418,12 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
   },
   {
     id: 'c4',
-    title: 'Validate quote repricing after approval',
+    title: 'Repricing behavior post-approval lock',
     area: 'Quotes',
     status: 'Waiting on Client',
     statusDetail: 'Waiting on SalesOps',
-    impactLabel: '≈$160K modeled annual pricing exposure',
-    statusLabel: 'Validation needed',
+    impactLabel: 'Post-approval repricing observed · ≈$160K modeled annual pricing exposure',
+    statusLabel: 'Waiting on SalesOps',
     owner: {
       name: 'Elena Rostova',
       role: 'SalesOps Director',
@@ -451,6 +464,53 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     ],
   },
   {
+    id: 'c7',
+    title: 'Deal Desk SLA on urgent quarter-end quotes',
+    area: 'Operations',
+    status: 'Waiting on Client',
+    statusDetail: 'Waiting on Deal Desk VP',
+    impactLabel: '~160 hrs/yr at quarter-end · ≈$15K annual effort',
+    statusLabel: 'Waiting on Deal Desk VP',
+    owner: {
+      name: 'Thomas Wright',
+      role: 'VP Deal Desk',
+      avatarInitials: 'TW',
+    },
+    latestInteraction: {
+      channel: 'In-app',
+      timeAgo: '3h ago',
+      summary: 'Inquiry prompt dispatched in workspace',
+    },
+    revbrainFinding: {
+      summary: 'Quarter-end deal cycles suffer 48hr turnaround delays due to batch Deal Desk queueing without priority classification.',
+      evidence: 'Average approval turnaround extends from 4.2 hours in month 1 to 48.6 hours in final 5 days of quarter.',
+      impact: '~160 hrs/yr at quarter-end · ≈$15K annual effort',
+    },
+    questionSent: {
+      channel: 'In-app',
+      sentAt: 'Today, 12:00 PM',
+      targetRecipient: 'Thomas Wright (In-app Prompt)',
+      questionText: 'What criteria should elevate an in-flight quote to "Urgent Quarter-End SLA" (e.g. ARR >$250K, close date within 72 hrs, or executive flag)?',
+      isDraft: false,
+    },
+    siValidation: {
+      validated: false,
+      note: 'Waiting for Thomas to define priority thresholds for the final 5 days of quarter.',
+      clarificationNeeded: false,
+    },
+    materials: [
+      {
+        id: 'm6',
+        name: 'Client discovery notes — Vector Systems',
+        type: 'meeting',
+        area: 'Operations',
+        sizeOrCount: 'Doc',
+        updatedAt: '2d ago',
+        snippet: 'Deal Desk SLA bottlenecks and quarter-end escalation workflows',
+      },
+    ],
+  },
+  {
     id: 'c6',
     title: 'EMEA multi-currency rounding rules',
     area: 'Billing',
@@ -471,7 +531,7 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     revbrainFinding: {
       summary: 'Currency conversion rounding variations (EUR & JPY) created ±$0.02 reconciliation variances between quote lines and invoice schedules.',
       evidence: 'Analyzed 320 cross-border invoices in EMEA org with line-level conversion differences.',
-      impact: 'Billing schedule generation must align with EMEA tax and ISO 4217 standard calculation rules.',
+      impact: '320 invoices/yr · ~120 hrs/yr · ≈$11K annual effort',
     },
     questionSent: {
       channel: 'Meeting',
@@ -509,53 +569,6 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
         sizeOrCount: '650 KB',
         updatedAt: '4d ago',
         snippet: 'EMEA & APAC Exchange Rate Sync and Rounding Rules',
-      },
-    ],
-  },
-  {
-    id: 'c7',
-    title: 'Deal Desk SLA on urgent quarter-end quotes',
-    area: 'Operations',
-    status: 'Waiting on Client',
-    statusDetail: 'Waiting on Deal Desk VP',
-    impactLabel: '~160 hrs/yr at quarter-end · ≈$15K annual effort',
-    statusLabel: 'Waiting on Deal Desk VP',
-    owner: {
-      name: 'Thomas Wright',
-      role: 'VP Deal Desk',
-      avatarInitials: 'TW',
-    },
-    latestInteraction: {
-      channel: 'In-app',
-      timeAgo: '3h ago',
-      summary: 'Inquiry prompt dispatched in workspace',
-    },
-    revbrainFinding: {
-      summary: 'Quarter-end deal cycles suffer 48hr turnaround delays due to batch Deal Desk queueing without priority classification.',
-      evidence: 'Average approval turnaround extends from 4.2 hours in month 1 to 48.6 hours in final 5 days of quarter.',
-      impact: 'Implementing automated priority routing will recover ~14% at-risk revenue at quarter-close.',
-    },
-    questionSent: {
-      channel: 'In-app',
-      sentAt: 'Today, 12:00 PM',
-      targetRecipient: 'Thomas Wright (In-app Prompt)',
-      questionText: 'What criteria should elevate an in-flight quote to "Urgent Quarter-End SLA" (e.g. ARR >$250K, close date within 72 hrs, or executive flag)?',
-      isDraft: false,
-    },
-    siValidation: {
-      validated: false,
-      note: 'Waiting for Thomas to define priority thresholds for the final 5 days of quarter.',
-      clarificationNeeded: false,
-    },
-    materials: [
-      {
-        id: 'm6',
-        name: 'Client discovery notes — Vector Systems',
-        type: 'meeting',
-        area: 'Operations',
-        sizeOrCount: 'Doc',
-        updatedAt: '2d ago',
-        snippet: 'Deal Desk SLA bottlenecks and quarter-end escalation workflows',
       },
     ],
   },
@@ -1034,18 +1047,22 @@ export function ClientContextDrawer({ isOpen, onClose, initialInquiryId }: Clien
 
                     {/* Connected Labels: Impact + Status */}
                     {(selectedInquiry.impactLabel || selectedInquiry.statusLabel) && (
-                      <div className="flex flex-wrap items-center gap-1.5 text-[11px] pt-1">
-                        {selectedInquiry.impactLabel && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/80 font-medium shadow-2xs">
-                            <span className="font-bold text-amber-950">Impact:</span>
-                            <span>{selectedInquiry.impactLabel}</span>
-                          </span>
-                        )}
+                      <div className="space-y-1.5 pt-1">
                         {selectedInquiry.statusLabel && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 border border-slate-200 font-medium shadow-2xs">
-                            <span className="font-bold text-slate-900">Status:</span>
-                            <span>{selectedInquiry.statusLabel}</span>
-                          </span>
+                          <div>
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10.5px] font-mono font-bold border ${getStatusBadgeClass(selectedInquiry.status)}`}>
+                              <span className="font-semibold opacity-75 mr-0.5">Status:</span>
+                              <span>{selectedInquiry.statusLabel}</span>
+                            </span>
+                          </div>
+                        )}
+                        {selectedInquiry.impactLabel && (
+                          <div>
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium text-emerald-950/85 bg-emerald-50/45 border border-emerald-200/50 shadow-2xs">
+                              <span className="font-bold text-emerald-950">Impact:</span>
+                              <span>{selectedInquiry.impactLabel}</span>
+                            </span>
+                          </div>
                         )}
                       </div>
                     )}
@@ -1281,7 +1298,7 @@ export function ClientContextDrawer({ isOpen, onClose, initialInquiryId }: Clien
                     ))}
                   </div>
 
-                  {/* List of 7 Open Context Inquiries */}
+                  {/* List of Open Context Inquiries */}
                   <div className="space-y-2.5 pt-1">
                     {filteredInquiries.map((item) => (
                       <div
@@ -1289,62 +1306,62 @@ export function ClientContextDrawer({ isOpen, onClose, initialInquiryId }: Clien
                         onClick={() => setSelectedInquiryId(item.id)}
                         className={`p-3.5 rounded-xl border transition-all cursor-pointer group shadow-2xs ${
                           item.status === 'Blocking'
-                            ? 'bg-rose-50/40 border-rose-200/90 hover:border-rose-300 hover:bg-rose-50/70'
+                            ? 'bg-rose-50/30 border-rose-200/80 hover:border-rose-300 hover:bg-rose-50/60'
                             : 'bg-white border-slate-200/90 hover:border-violet-300 hover:bg-slate-50/50'
                         }`}
                       >
-                        {/* Card Top: Area + Status Pill */}
+                        {/* 1. Category (Area) */}
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-[10px] font-mono font-semibold text-slate-500 uppercase tracking-wide">
+                          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
                             {item.area}
-                          </span>
-                          <span
-                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${getStatusBadgeClass(
-                              item.status
-                            )}`}
-                          >
-                            {item.statusDetail}
                           </span>
                         </div>
 
-                        {/* Title */}
-                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors mt-1.5 leading-snug">
+                        {/* 2. Title */}
+                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors mt-1 leading-snug">
                           {item.title}
                         </h4>
 
-                        {/* Summary / Telemetry note */}
-                        <p className="text-[11.5px] text-slate-600 line-clamp-2 mt-1 leading-snug font-normal">
+                        {/* 3. One short context sentence */}
+                        <p className="text-[11.5px] text-slate-600 line-clamp-2 mt-1 leading-relaxed font-normal">
                           {item.revbrainFinding.summary}
                         </p>
 
-                        {/* Two Connected Labels: Impact + Status */}
-                        {(item.impactLabel || item.statusLabel) && (
-                          <div className="mt-2.5 pt-2 border-t border-slate-100/90 flex flex-wrap items-center gap-1.5 text-[10.5px]">
-                            {item.impactLabel && (
-                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 font-medium shadow-2xs">
-                                <span className="font-bold text-amber-950">Impact:</span>
+                        {/* 4. Status label directly above Impact label */}
+                        <div className="mt-2.5 pt-2 border-t border-slate-100/90 flex flex-col gap-1.5">
+                          <div>
+                            <span
+                              className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border inline-block ${getStatusBadgeClass(
+                                item.status
+                              )}`}
+                            >
+                              <span className="font-semibold opacity-75 mr-1">Status:</span>
+                              <span>{item.statusLabel || item.statusDetail}</span>
+                            </span>
+                          </div>
+
+                          {/* 5. Impact label (same soft green treatment used in Command Center) */}
+                          {item.impactLabel && (
+                            <div>
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium text-emerald-950/85 bg-emerald-50/45 border border-emerald-200/50 shadow-2xs">
+                                <span className="font-bold text-emerald-950">Impact:</span>
                                 <span>{item.impactLabel}</span>
                               </span>
-                            )}
-                            {item.statusLabel && (
-                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 font-medium shadow-2xs">
-                                <span className="font-bold text-slate-900">Status:</span>
-                                <span>{item.statusLabel}</span>
-                              </span>
-                            )}
-                          </div>
-                        )}
+                            </div>
+                          )}
+                        </div>
 
-                        {/* Card Bottom: Owner + Latest Interaction */}
+                        {/* 6. Footer: Stakeholder · Channel · latest interaction */}
                         <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                          <span className="flex items-center gap-1 font-medium text-slate-700">
-                            <span className="w-3.5 h-3.5 rounded-full bg-slate-200 text-slate-700 font-bold text-[8px] flex items-center justify-center">
+                          <span className="flex items-center gap-1.5 font-medium text-slate-700">
+                            <span className="w-4 h-4 rounded-full bg-violet-100 text-violet-700 font-bold text-[8.5px] flex items-center justify-center">
                               {item.owner.avatarInitials}
                             </span>
-                            {item.owner.name}
+                            <span>{item.owner.name} · {item.latestInteraction.channel} · {item.latestInteraction.timeAgo}</span>
                           </span>
-                          <span className="text-[10.5px] text-slate-500 font-mono">
-                            {item.latestInteraction.summary}
+                          <span className="text-violet-600 font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5 text-[10.5px]">
+                            <span>Review</span>
+                            <ChevronRight className="w-3 h-3" />
                           </span>
                         </div>
                       </div>
