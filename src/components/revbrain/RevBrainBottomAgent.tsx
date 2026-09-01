@@ -403,10 +403,12 @@ export function RevBrainBottomAgent() {
   }
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [isAgentResponding, setIsAgentResponding] = useState<boolean>(false);
+  const [chatAgentStage, setChatAgentStage] = useState<'idle' | 'thinking' | 'typing' | 'done'>('idle');
 
   useEffect(() => {
     setChatMessages([]);
     setIsAgentResponding(false);
+    setChatAgentStage('idle');
   }, [pathname]);
 
   // Track when chat is fully opened (after 450ms expand animation completes)
@@ -614,23 +616,30 @@ export function RevBrainBottomAgent() {
     // Close the top working questions area as requested
     setWorkingExpanded(false);
 
-    // Add user message & agent response with animated dots
+    // Add user message to active thread
     const userMsgId = Date.now().toString();
-    const agentMsgId = (Date.now() + 1).toString();
-
     setChatMessages([
-      { id: userMsgId, sender: 'user', text: userText },
-      { id: agentMsgId, sender: 'agent', text: 'Sure, let me build something...' }
+      { id: userMsgId, sender: 'user', text: userText }
     ]);
     setIsAgentResponding(true);
+    setChatAgentStage('thinking');
 
-    // After 8 seconds, navigate to the Map page
+    // Wait 1 second before starting typewriter animation
+    setTimeout(() => {
+      setChatAgentStage('typing');
+    }, 1000);
+  }
+
+  const handleChatTypewriterComplete = () => {
+    setChatAgentStage('done');
+    // Wait a few more seconds (10s) before navigating to the Map page
     setTimeout(() => {
       setIsAgentResponding(false);
       setChatMessages([]);
+      setChatAgentStage('idle');
       navigate('/revbrain/migration/si-architect/map');
-    }, 8000);
-  }
+    }, 10000);
+  };
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -674,34 +683,47 @@ export function RevBrainBottomAgent() {
                   key={msg.id}
                   className={`flex items-start gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  {msg.sender === 'agent' && (
-                    <div className="w-5 h-5 rounded-md bg-violet-600 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-                      <span className="text-white text-[9px] font-bold">R</span>
-                    </div>
-                  )}
+                  <div className="text-xs px-3.5 py-2 rounded-xl leading-relaxed bg-violet-600 text-white font-medium rounded-br-xs shadow-2xs max-w-[85%]">
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
 
-                  <div
-                    className={`text-xs px-3.5 py-2 rounded-xl leading-relaxed ${
-                      msg.sender === 'user'
-                        ? 'bg-violet-600 text-white font-medium rounded-br-xs shadow-2xs max-w-[85%]'
-                        : 'bg-slate-50 text-slate-800 font-medium rounded-bl-xs border border-slate-200/80 shadow-2xs max-w-[85%]'
-                    }`}
-                  >
-                    {msg.sender === 'agent' ? (
+              {/* Agent Response with 1s thinking and typewriter animation */}
+              {isAgentResponding && (
+                <div className="flex items-start gap-2.5 justify-start animate-fadeIn">
+                  <div className="w-5 h-5 rounded-md bg-violet-600 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <span className="text-white text-[9px] font-bold">R</span>
+                  </div>
+
+                  <div className="text-xs px-3.5 py-2 rounded-xl leading-relaxed bg-slate-50 text-slate-800 font-medium rounded-bl-xs border border-slate-200/80 shadow-2xs max-w-[85%]">
+                    {chatAgentStage === 'thinking' ? (
+                      <div className="flex items-center gap-1 py-1 px-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '160ms' }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '320ms' }} />
+                      </div>
+                    ) : (
                       <div className="flex items-center gap-1.5 py-0.5">
-                        <span className="font-semibold text-slate-900">Sure, let me build something</span>
+                        <span className="font-semibold text-slate-900">
+                          <TypewriterText
+                            key="chat-response-typewriter"
+                            text="Sure, let me build something..."
+                            speed={28}
+                            enabled={true}
+                            onComplete={handleChatTypewriterComplete}
+                          />
+                        </span>
                         <span className="inline-flex items-center gap-1 ml-1 text-violet-600 font-bold">
                           <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '0ms' }} />
                           <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '160ms' }} />
                           <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '320ms' }} />
                         </span>
                       </div>
-                    ) : (
-                      msg.text
                     )}
                   </div>
                 </div>
-              ))}
+              )}
             </div>
           )}
 
