@@ -664,16 +664,16 @@ export function SIArchitectCommandCenter() {
                     </p>
                   </div>
 
-                  {/* Moving Dashed Line (Bigger dashes & gaps with breathing fade pulse) */}
-                  <div className="w-full h-2 flex items-center overflow-hidden mt-1.5">
-                    <svg className="w-full h-2" preserveAspectRatio="none">
+                  {/* Moving Dashed Line (Soft faded color, constant subtle transparency, no harsh pulse) */}
+                  <div className="w-full h-1.5 flex items-center overflow-hidden mt-1.5 opacity-30">
+                    <svg className="w-full h-1.5" preserveAspectRatio="none">
                       <line
                         x1="0"
-                        y1="4"
+                        y1="3"
                         x2="100%"
-                        y2="4"
+                        y2="3"
                         stroke="#8b5cf6"
-                        strokeWidth="2.5"
+                        strokeWidth="2"
                         strokeDasharray="14 10"
                         strokeLinecap="round"
                         className="animate-moving-dash"
