@@ -702,20 +702,20 @@ After the decision, capture the approval rationale, exception reason, and outcom
                       {[
                         {
                           category: 'Margin',
-                          items: ['Margin Analysis Agent', '{quote.margin_after_discount}', '{CFO Margin Policy}', '{Approved Margin Threshold}'],
+                          items: ['Margin Analysis Agent', 'quote.margin_after_discount', 'CFO Margin Policy', 'Approved Margin Threshold'],
                         },
                         {
                           category: 'Pricing',
-                          items: ['Pricing Context Agent', '{Contracted Pricing}', '{Discount Schedules}', '{Current Quote}', '{Pricing Rule Output}'],
+                          items: ['Pricing Context Agent', 'Contracted Pricing', 'Discount Schedules', 'Current Quote', 'Pricing Rule Output'],
                         },
                         {
                           category: 'Deal Context',
-                          items: ['{Account Tier}', '{Product Mix}', '{ARR Exposure}', '{Strategic Account Status}'],
+                          items: ['Account Tier', 'Product Mix', 'ARR Exposure', 'Strategic Account Status'],
                         },
                         {
                           category: 'Historical Evidence',
                           isEvidence: true,
-                          items: ['147 Comparable Approvals ↗', '{Approval History}', '{Outcome Pattern}'],
+                          items: ['147 Comparable Approvals ↗', 'Approval History', 'Outcome Pattern'],
                         },
                       ].map((group, idx) => (
                         <div key={idx} className="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between gap-3 shadow-2xs">
@@ -731,7 +731,7 @@ After the decision, capture the approval rationale, exception reason, and outcom
                                     {item}
                                   </button>
                                 ) : (
-                                  <span className="px-2.5 py-1 rounded-lg bg-violet-50 text-violet-700 border border-violet-200/60 text-[11px] font-semibold font-mono">
+                                  <span className="px-2.5 py-1 rounded-lg bg-violet-50 text-violet-700 border border-violet-200/60 text-[11px] font-semibold font-mono underline decoration-violet-300 underline-offset-2">
                                     {item}
                                   </span>
                                 )}
@@ -942,7 +942,7 @@ After the decision, capture the approval rationale, exception reason, and outcom
                       {[
                         {
                           name: 'Margin Analysis Agent',
-                          reads: '{quote.margin} + {CFO policy}',
+                          reads: 'quote.margin + CFO policy',
                           returns: 'Margin risk classification',
                         },
                         {

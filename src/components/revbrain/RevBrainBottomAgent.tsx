@@ -111,18 +111,19 @@ function getRouteContext(pathname: string): RouteContext {
   return { stage: 'Implementation', context: 'Implementation', task: 'Monitoring implementation workspace' };
 }
 
-/* ── Helper: Render {} terms as bolder text without boxes ──── */
+/* ── Helper: Render {} terms as underlined text without brackets ──── */
 
 function renderTextWithVariableLabels(text: string) {
   const parts = text.split(/(\{[^}]+\})/g);
   return parts.map((part, idx) => {
     if (part.startsWith('{') && part.endsWith('}')) {
+      const content = part.slice(1, -1);
       return (
         <span
           key={idx}
-          className="font-semibold text-slate-800"
+          className="font-semibold text-slate-800 underline decoration-slate-400 underline-offset-2"
         >
-          {part}
+          {content}
         </span>
       );
     }
