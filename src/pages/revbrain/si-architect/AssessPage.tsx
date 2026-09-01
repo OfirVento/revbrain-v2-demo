@@ -624,7 +624,7 @@ export function AssessPage() {
           </div>
 
           {/* Inner 3-tab navigation */}
-          <div className="flex gap-1 border-b border-slate-100 pb-2 px-5 pt-4">
+          <div className="flex justify-center items-center gap-1.5 border-b border-slate-100 pb-2.5 px-5 pt-3.5">
             {(['workflows', 'config', 'opportunities'] as const).map((tab) => {
               const label = tab === 'workflows' ? 'Current Workflows' : tab === 'config' ? 'Supporting Configuration' : 'Transformation Opportunities';
               const isActive = tab === subTab;
