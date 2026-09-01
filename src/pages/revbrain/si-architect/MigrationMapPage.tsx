@@ -292,8 +292,11 @@ export function MigrationMapPage() {
                           {/* LEFT: Current approval process */}
                           <div className="rounded-xl border border-[#D5D0C8] bg-[#FAF9F7] p-4 flex flex-col justify-between space-y-3">
                             <div className="space-y-1">
-                              <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#3D3929] border-b border-[#D5D0C8] pb-2 mb-3">
-                                Current approval process
+                              <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#3D3929] border-b border-[#D5D0C8] pb-2 mb-3 flex flex-wrap items-center justify-between gap-1.5">
+                                <span>Current approval process</span>
+                                <span className="text-[11px] font-semibold text-slate-700 tracking-normal normal-case">
+                                  ~60 min / approval · ~340 manual hrs / quarter
+                                </span>
                               </h4>
 
                               {CURRENT_FLOW.map((node, i) => {
@@ -325,20 +328,19 @@ export function MigrationMapPage() {
                                 );
                               })}
                             </div>
-
-                            <div className="border-t border-[#D5D0C8] pt-2.5 text-center">
-                              <p className="text-[13px] font-bold text-slate-900">
-                                ~60 min / approval · ~340 manual hrs / quarter
-                              </p>
-                            </div>
                           </div>
 
                           {/* RIGHT: Future approval process */}
                           <div className="rounded-xl border border-[#C5BFD6] bg-[#F9F8FC] p-4 flex flex-col justify-between space-y-3">
                             <div className="space-y-1">
-                              <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#3D3929] border-b border-[#C5BFD6] pb-2 mb-3 flex items-center gap-1.5">
-                                <Sparkles className="w-3.5 h-3.5 text-[#6B5CA5] animate-pulse" />
-                                Future approval process
+                              <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#3D3929] border-b border-[#C5BFD6] pb-2 mb-3 flex flex-wrap items-center justify-between gap-1.5">
+                                <span className="flex items-center gap-1.5">
+                                  <Sparkles className="w-3.5 h-3.5 text-[#6B5CA5] animate-pulse" />
+                                  <span>Future approval process</span>
+                                </span>
+                                <span className="text-[11px] font-semibold text-[#6B5CA5] tracking-normal normal-case">
+                                  &lt;5 min / approval · ~25 manual hrs / quarter (92% reduction)
+                                </span>
                               </h4>
 
                               {FUTURE_FLOW.map((node, i) => {
@@ -375,12 +377,6 @@ export function MigrationMapPage() {
                                   </div>
                                 );
                               })}
-                            </div>
-
-                            <div className="border-t border-[#C5BFD6] pt-2.5 text-center">
-                              <p className="text-[13px] font-bold text-slate-900">
-                                ~16 min / approval · ~88 manual hrs / quarter
-                              </p>
                             </div>
                           </div>
 
