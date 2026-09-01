@@ -281,28 +281,24 @@ export function RevBrainBottomAgent() {
   const [assessShowButtons, setAssessShowButtons] = useState<boolean>(false);
   const assessVisitedRef = useRef<string | null>(null);
 
-  // Initialize Assess chat flow - strictly starts closed
+  // Initialize Assess chat flow: closed by default, opens if navigated with openChat=true
   useEffect(() => {
     if (isAssessRoute) {
-      setAssessStep('overview');
-      setAssessShowButtons(false);
-      setWorkingExpanded(false);
-      setChatFullyOpened(false);
+      const shouldOpen = location.search.includes('openChat=true');
+      if (shouldOpen) {
+        setAssessStep('overview');
+        setAssessShowButtons(false);
+        setWorkingExpanded(true);
+        setChatFullyOpened(true);
+        window.dispatchEvent(new CustomEvent('revbrain-highlight-assess-step'));
+      } else {
+        setAssessStep('overview');
+        setAssessShowButtons(false);
+        setWorkingExpanded(false);
+        setChatFullyOpened(false);
+      }
     }
-  }, [pathname, isAssessRoute]);
-
-  // Listen for explicit chat open trigger from clicking the attention box or SVG step
-  useEffect(() => {
-    const handleOpenAssessChat = () => {
-      setAssessStep('overview');
-      setAssessShowButtons(false);
-      setWorkingExpanded(true);
-      setChatFullyOpened(true);
-    };
-
-    window.addEventListener('revbrain-open-assess-chat', handleOpenAssessChat as EventListener);
-    return () => window.removeEventListener('revbrain-open-assess-chat', handleOpenAssessChat as EventListener);
-  }, []);
+  }, [pathname, location.search, isAssessRoute]);
 
   const handleAssessCustomInput = () => {
     const note = otherInputText.trim() || 'Custom response';

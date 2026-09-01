@@ -164,7 +164,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
     context: 'Confirm why two senior managers still review these manually.',
     status: 'Client validation needed',
     statusType: 'amber',
-    link: '/revbrain/migration/si-architect/assess',
+    link: '/revbrain/migration/si-architect/assess?openChat=true',
   },
   {
     id: 'att-2',
