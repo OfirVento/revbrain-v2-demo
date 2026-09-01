@@ -470,11 +470,8 @@ export function SIArchitectCommandCenter() {
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <span>Needs Attention</span>
-                    <span className="text-[10.5px] font-mono font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-                      High-Value Judgment &amp; Discovery
-                    </span>
+                  <h3 className="text-sm font-bold text-slate-900">
+                    Needs Attention
                   </h3>
                   <p className="text-[11px] text-slate-500 mt-0.5">
                     Highest-value items where human judgment, client context, validation, and transformation decisions matter most.
