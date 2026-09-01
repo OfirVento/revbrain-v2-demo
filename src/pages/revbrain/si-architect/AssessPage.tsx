@@ -654,23 +654,42 @@ export function AssessPage() {
                 <p className="text-xs text-slate-500 leading-normal mt-0.5">{headerInfo.subtitle}</p>
               </div>
               
-              {/* Compact visual metric pill */}
-              <div className="bg-indigo-50/50 border border-indigo-100/80 rounded-full px-4 py-1.5 flex items-center gap-2.5 shrink-0 self-start sm:self-center">
-                {/* Small indicator circle */}
-                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse shrink-0" />
-                
-                <span className="text-sm font-extrabold text-indigo-600 tracking-tight leading-none">
-                  {metricInfo.value}
-                </span>
-                
-                <span className="text-[11px] font-bold text-indigo-950 uppercase tracking-wide leading-none border-l border-indigo-100 pl-2.5">
-                  {metricInfo.label}
-                </span>
-                
-                <span className="text-[11px] text-indigo-900/60 font-semibold border-l border-indigo-100 pl-2.5 leading-none">
-                  {metricInfo.helper}
-                </span>
-              </div>
+              {/* 3 SVG tabs instead of revenue coverage component */}
+              {userLens === 'business' && subTab === 'workflows' ? (
+                <div className="flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                  {[
+                    { label: 'Main Workflow', file: 'assess-workflows-table.svg' },
+                    { label: 'Bottlenecks', file: 'assess-workflows-tab2.svg' },
+                    { label: 'Dependencies', file: 'assess-workflows-tab3.svg' },
+                  ].map((tab, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSvgTab(idx)}
+                      className={`px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all cursor-pointer ${
+                        svgTab === idx
+                          ? 'bg-slate-900 text-white shadow-xs'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                /* Compact visual metric pill for other tabs */
+                <div className="bg-indigo-50/50 border border-indigo-100/80 rounded-full px-4 py-1.5 flex items-center gap-2.5 shrink-0 self-start sm:self-center">
+                  <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse shrink-0" />
+                  <span className="text-sm font-extrabold text-indigo-600 tracking-tight leading-none">
+                    {metricInfo.value}
+                  </span>
+                  <span className="text-[11px] font-bold text-indigo-950 uppercase tracking-wide leading-none border-l border-indigo-100 pl-2.5">
+                    {metricInfo.label}
+                  </span>
+                  <span className="text-[11px] text-indigo-900/60 font-semibold border-l border-indigo-100 pl-2.5 leading-none">
+                    {metricInfo.helper}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* 1. BUSINESS USERS LENS */}
@@ -678,27 +697,6 @@ export function AssessPage() {
               <>
                 {subTab === 'workflows' && (
                   <div className="space-y-3">
-                    {/* SVG tab navigation */}
-                    <div className="flex items-center justify-center gap-1">
-                      {[
-                        { label: 'Main Workflow', file: 'assess-workflows-table.svg' },
-                        { label: 'Bottlenecks', file: 'assess-workflows-tab2.svg' },
-                        { label: 'Dependencies', file: 'assess-workflows-tab3.svg' },
-                      ].map((tab, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setSvgTab(idx)}
-                          className={`px-4 py-1.5 text-xs font-medium rounded-full transition-colors ${
-                            svgTab === idx
-                              ? 'bg-slate-800 text-white'
-                              : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700'
-                          }`}
-                        >
-                          {tab.label}
-                        </button>
-                      ))}
-                    </div>
-
                     {/* SVG display */}
                     <div className="w-full flex items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50/50 p-6 min-h-[320px]">
                       <img
