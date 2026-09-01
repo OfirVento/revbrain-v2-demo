@@ -745,6 +745,7 @@ export function RevBrainBottomAgent() {
                                   setAssessStep('biggest_opportunity');
                                   setAssessShowButtons(false);
                                   setShowOtherInput(false);
+                                  window.dispatchEvent(new CustomEvent('revbrain-highlight-assess-step'));
                                 }}
                                 className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center shrink-0 cursor-pointer active:scale-[0.99]"
                               >

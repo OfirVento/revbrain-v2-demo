@@ -318,6 +318,8 @@ export function AssessPage() {
   const [subTab, setSubTab] = useState<'workflows' | 'config' | 'opportunities'>('workflows');
   const [svgTab, setSvgTab] = useState(0);
 
+  const [highlightApprovalsStep, setHighlightApprovalsStep] = useState(false);
+
   useEffect(() => {
     const handleSetSvgTab = (e: CustomEvent<number>) => {
       if (typeof e.detail === 'number') {
@@ -330,13 +332,28 @@ export function AssessPage() {
       if (e.detail?.lens) setUserLens(e.detail.lens);
       if (e.detail?.tab) setSubTab(e.detail.tab);
     };
+    const handleHighlight = () => {
+      setUserLens('business');
+      setSubTab('workflows');
+      setSvgTab(0);
+      setHighlightApprovalsStep(true);
+
+      setTimeout(() => {
+        const targetEl = document.getElementById('approvers-step-target');
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 150);
+    };
 
     window.addEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
     window.addEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
+    window.addEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);
 
     return () => {
       window.removeEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
       window.removeEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
+      window.removeEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);
     };
   }, []);
 
@@ -723,18 +740,38 @@ export function AssessPage() {
                   <div className="space-y-2">
                     {/* SVG display */}
                     <div className="w-full flex items-start justify-center rounded-lg bg-white pt-2 pb-5 px-6">
-                      <img
-                        key={svgTab}
-                        src={`/assets/${['assess-workflows-table.svg', 'assess-workflows-tab2.svg', 'assess-workflows-tab3.svg'][svgTab]}`}
-                        alt={`Workflows view ${svgTab + 1}`}
-                        className="h-auto" style={{ width: '50%' }}
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          target.style.display = 'none';
-                          const filename = ['assess-workflows-table.svg', 'assess-workflows-tab2.svg', 'assess-workflows-tab3.svg'][svgTab];
-                          target.parentElement!.innerHTML = `<p class="text-sm text-slate-400 font-medium text-center">SVG placeholder — upload <code>public/assets/${filename}</code></p>`;
-                        }}
-                      />
+                      <div className="relative" style={{ width: '50%' }}>
+                        <img
+                          key={svgTab}
+                          src={`/assets/${['assess-workflows-table.svg', 'assess-workflows-tab2.svg', 'assess-workflows-tab3.svg'][svgTab]}`}
+                          alt={`Workflows view ${svgTab + 1}`}
+                          className="w-full h-auto block"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            target.style.display = 'none';
+                            const filename = ['assess-workflows-table.svg', 'assess-workflows-tab2.svg', 'assess-workflows-tab3.svg'][svgTab];
+                            target.parentElement!.innerHTML = `<p class="text-sm text-slate-400 font-medium text-center">SVG placeholder — upload <code>public/assets/${filename}</code></p>`;
+                          }}
+                        />
+
+                        {/* Step highlight for Approvers decide (Alex + Lou) */}
+                        {svgTab === 0 && (
+                          <div
+                            id="approvers-step-target"
+                            className={`absolute rounded-[8px] transition-all duration-500 pointer-events-none ${
+                              highlightApprovalsStep
+                                ? 'border-[2.5px] border-black shadow-[0_12px_32px_rgba(0,0,0,0.45),0_4px_12px_rgba(0,0,0,0.3)] ring-2 ring-black/10 z-10'
+                                : 'border-transparent'
+                            }`}
+                            style={{
+                              left: `${(356 / 680) * 100}%`,
+                              top: `${((416 - 52) / 1238) * 100}%`,
+                              width: `${(300 / 680) * 100}%`,
+                              height: `${(46 / 1238) * 100}%`,
+                            }}
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
