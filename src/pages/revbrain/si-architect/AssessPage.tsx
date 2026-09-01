@@ -345,15 +345,27 @@ export function AssessPage() {
         }
       }, 150);
     };
+    const handleOpenChat = () => {
+      handleHighlight();
+    };
 
     window.addEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
     window.addEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
     window.addEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);
+    window.addEventListener('revbrain-open-assess-chat', handleOpenChat as EventListener);
+
+    if (sessionStorage.getItem('revbrain-open-assess-chat-on-load') === 'true') {
+      sessionStorage.removeItem('revbrain-open-assess-chat-on-load');
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('revbrain-open-assess-chat'));
+      }, 350);
+    }
 
     return () => {
       window.removeEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
       window.removeEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
       window.removeEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);
+      window.removeEventListener('revbrain-open-assess-chat', handleOpenChat as EventListener);
     };
   }, []);
 
@@ -632,6 +644,47 @@ export function AssessPage() {
           </div>
         </section>
 
+        {/* ─── Priority Attention Card: Validate manual senior-manager approvals ─── */}
+        <div
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('revbrain-open-assess-chat'));
+          }}
+          className="p-4 bg-white hover:bg-slate-50 border-2 border-indigo-500/80 hover:border-indigo-600 rounded-xl transition-all shadow-md hover:shadow-lg cursor-pointer group space-y-2.5 active:scale-[0.99]"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <div className="w-2.5 h-2.5 rounded-full bg-violet-600 animate-pulse shrink-0" />
+              <h3 className="text-sm font-bold text-slate-900 group-hover:text-violet-950 transition-colors">
+                Validate manual senior-manager approvals
+              </h3>
+              <span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 shadow-2xs">
+                <Sparkles className="w-3 h-3 text-emerald-600" />
+                Potential high-ROI AI workflow
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 self-start sm:self-auto">
+              <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded border bg-amber-100 text-amber-900 border-amber-300">
+                Client validation needed
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-0.5">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+              <span className="font-semibold text-slate-800 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+                11.4K approvals · 24 min avg · 98.4% approved
+              </span>
+              <span>Confirm why two senior managers still review these manually.</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-xs font-bold text-violet-600 group-hover:text-violet-800 shrink-0">
+              <span>Ask RevBrain Agent</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </div>
+
         <section className="bg-white border border-[hsl(var(--border))] rounded-xl overflow-hidden shadow-sm">
           
           {/* Connected horizontal segmented lens toggle */}
@@ -754,14 +807,18 @@ export function AssessPage() {
                           }}
                         />
 
-                        {/* Step highlight for Approvers decide (Alex + Lou) */}
+                        {/* Step highlight & click target for Approvers decide (Alex + Lou) */}
                         {svgTab === 0 && (
                           <div
                             id="approvers-step-target"
-                            className={`absolute rounded-[8px] transition-all duration-500 pointer-events-none ${
+                            onClick={() => {
+                              window.dispatchEvent(new CustomEvent('revbrain-open-assess-chat'));
+                            }}
+                            title="Click to validate manual senior-manager approvals with RevBrain"
+                            className={`absolute rounded-[8px] transition-all duration-500 cursor-pointer ${
                               highlightApprovalsStep
                                 ? 'border-[2.5px] border-black shadow-[0_12px_32px_rgba(0,0,0,0.45),0_4px_12px_rgba(0,0,0,0.3)] ring-2 ring-black/10 z-10'
-                                : 'border-transparent'
+                                : 'border-transparent hover:border-violet-400 hover:bg-violet-500/10'
                             }`}
                             style={{
                               left: `${(356 / 680) * 100}%`,

@@ -296,47 +296,21 @@ export function RevBrainBottomAgent() {
       setAssessShowButtons(false);
       setWorkingExpanded(false);
       setChatFullyOpened(false);
-
-      const triggerChatOpen = () => {
-        setWorkingExpanded(true);
-        cleanup();
-      };
-
-      const handleScroll = () => {
-        const mainEl = document.querySelector('main');
-        const scrollTop = mainEl ? mainEl.scrollTop : (window.scrollY || document.documentElement.scrollTop);
-
-        if (scrollTop > 30) {
-          triggerChatOpen();
-        }
-      };
-
-      const handleWheel = (e: WheelEvent) => {
-        if (e.deltaY > 5) {
-          triggerChatOpen();
-        }
-      };
-
-      const mainEl = document.querySelector('main');
-      if (mainEl) {
-        mainEl.addEventListener('scroll', handleScroll, { passive: true });
-        mainEl.addEventListener('wheel', handleWheel as EventListener, { passive: true });
-      }
-      window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
-      window.addEventListener('wheel', handleWheel as EventListener, { passive: true, capture: true });
-
-      function cleanup() {
-        if (mainEl) {
-          mainEl.removeEventListener('scroll', handleScroll);
-          mainEl.removeEventListener('wheel', handleWheel as EventListener);
-        }
-        window.removeEventListener('scroll', handleScroll, { capture: true });
-        window.removeEventListener('wheel', handleWheel as EventListener, { capture: true });
-      }
-
-      return cleanup;
     }
   }, [pathname, isAssessRoute]);
+
+  // Listen for explicit chat open trigger from clicking the attention box or SVG step
+  useEffect(() => {
+    const handleOpenAssessChat = () => {
+      setAssessStep('overview');
+      setAssessShowButtons(false);
+      setWorkingExpanded(true);
+      setChatFullyOpened(true);
+    };
+
+    window.addEventListener('revbrain-open-assess-chat', handleOpenAssessChat as EventListener);
+    return () => window.removeEventListener('revbrain-open-assess-chat', handleOpenAssessChat as EventListener);
+  }, []);
 
   const handleAssessCustomInput = () => {
     const note = otherInputText.trim() || 'Custom response';

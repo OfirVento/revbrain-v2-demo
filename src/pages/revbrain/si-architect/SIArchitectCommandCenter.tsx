@@ -463,7 +463,15 @@ export function SIArchitectCommandCenter() {
                 {PRIMARY_ATTENTION_ITEMS.map((item) => (
                   <div
                     key={item.id}
-                    className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group"
+                    onClick={() => {
+                      if (item.link) {
+                        if (item.id === 'att-1' || item.link.includes('assess')) {
+                          sessionStorage.setItem('revbrain-open-assess-chat-on-load', 'true');
+                        }
+                        navigate(item.link);
+                      }
+                    }}
+                    className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group cursor-pointer"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                       <div className="flex items-center gap-2">
@@ -514,7 +522,13 @@ export function SIArchitectCommandCenter() {
 
                       {item.link && (
                         <button
-                          onClick={() => navigate(item.link!)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (item.id === 'att-1' || item.link?.includes('assess')) {
+                              sessionStorage.setItem('revbrain-open-assess-chat-on-load', 'true');
+                            }
+                            navigate(item.link!);
+                          }}
                           className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
                         >
                           <span>Investigate</span>
