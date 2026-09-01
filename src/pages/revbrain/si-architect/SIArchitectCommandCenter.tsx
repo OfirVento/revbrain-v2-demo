@@ -363,10 +363,10 @@ export function SIArchitectCommandCenter() {
             </div>
             <div className="flex items-center gap-2.5">
               <span className="text-xs text-slate-500 font-medium">Overall Progress</span>
-              <span className="text-sm font-black font-mono text-violet-700">{OVERALL_PCT}%</span>
+              <span className="text-sm font-black font-mono text-violet-700 opacity-75">{OVERALL_PCT}%</span>
               <div className="w-28 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
                 <div
-                  className="h-full bg-violet-600 rounded-full transition-all duration-700"
+                  className="h-full bg-violet-600 opacity-75 rounded-full transition-all duration-700"
                   style={{ width: `${OVERALL_PCT}%` }}
                 />
               </div>
@@ -385,10 +385,10 @@ export function SIArchitectCommandCenter() {
                     {/* Stage Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
-                        <Icon className={`w-3.5 h-3.5 ${stage.textColor} shrink-0`} />
+                        <Icon className={`w-3.5 h-3.5 ${stage.textColor} opacity-75 shrink-0`} />
                         <span className="text-xs font-bold text-slate-900">{stage.name}</span>
                       </div>
-                      <span className={`text-[11px] font-bold font-mono ${stage.textColor}`}>
+                      <span className={`text-[11px] font-bold font-mono ${stage.textColor} opacity-75`}>
                         {stage.pct}%
                       </span>
                     </div>
@@ -396,7 +396,7 @@ export function SIArchitectCommandCenter() {
                     {/* Progress Bar */}
                     <div className={`h-1.5 rounded-full overflow-hidden ${stage.trackColor}`}>
                       <div
-                        className={`h-full rounded-full transition-all duration-700 ${stage.color}`}
+                        className={`h-full rounded-full transition-all duration-700 opacity-75 ${stage.color}`}
                         style={{ width: `${Math.max(stage.pct, 2)}%` }}
                       />
                     </div>
