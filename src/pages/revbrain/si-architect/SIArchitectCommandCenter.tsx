@@ -469,7 +469,7 @@ export function SIArchitectCommandCenter() {
                   <h3 className="text-sm font-bold text-slate-900">
                     Needs Attention
                   </h3>
-                  <p className="text-[13px] text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     Highest-value items where human judgment, client context, validation, and transformation decisions matter most.
                   </p>
                 </div>
@@ -525,7 +525,7 @@ export function SIArchitectCommandCenter() {
 
                     {/* Short context */}
                     <div className="flex items-center justify-between gap-2 pt-0.5">
-                      <p className="text-[13px] text-slate-600 leading-relaxed font-medium">
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
                         {item.context}
                       </p>
 
@@ -582,7 +582,7 @@ export function SIArchitectCommandCenter() {
                         )}
 
                         <div className="flex items-center justify-between gap-2 pt-0.5">
-                          <p className="text-[13px] text-slate-600 leading-relaxed font-medium">
+                          <p className="text-xs text-slate-600 leading-relaxed font-medium">
                             {item.context}
                           </p>
 
