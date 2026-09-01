@@ -221,7 +221,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   },
 ];
 
-/* ── 10 Unique Live Workstream Tasks Pool for Continuous Simulation ─── */
+/* ── 15 Unique Live Workstream Tasks Pool for Continuous Simulation ─── */
 
 interface WorkTask {
   id: string;
@@ -235,11 +235,16 @@ const ALL_REV_TASKS: WorkTask[] = [
   { id: 't3', name: 'Generate validation scenarios', description: 'Synthesizing edge cases for discount thresholds >40%.' },
   { id: 't4', name: 'Analyze strategic exceptions', description: 'Mapping tier-1 customer custom margin floor bypasses.' },
   { id: 't5', name: 'Audit tiered pricing constraints', description: 'Validating bundle option dependencies against catalog schema.' },
-  { id: 't6', name: 'Extract renewal discount distribution', description: 'Analyzing auto-renewal uplift variances across customer tiers.' },
+  { id: 't6', name: 'Extract renewal discount distribution', description: 'Analyzing auto-renewal uplift variances across customer segments.' },
   { id: 't7', name: 'Verify contract amendment sync', description: 'Extracting co-terming rules for renewal uplifts.' },
   { id: 't8', name: 'Map billing schedule handoff', description: 'Checking revenue recognition trigger points on quote activation.' },
   { id: 't9', name: 'Audit multi-currency precision', description: 'Analyzing EUR & JPY rounding rules across contracted lines.' },
   { id: 't10', name: 'Inspect custom Apex pricing plugin', description: 'Profiling calculatePrice() script execution latency on 150+ line quotes.' },
+  { id: 't11', name: 'Reconcile grandfathered SLA terms', description: 'Tracing legacy margin floor exemptions during contract renewals.' },
+  { id: 't12', name: 'Cross-validate CPQ twin fields', description: 'Mapping custom quote line attribute pass-throughs into order assets.' },
+  { id: 't13', name: 'Analyze approval routing bottlenecks', description: 'Identifying multi-tier escalation delays on quarter-end deals.' },
+  { id: 't14', name: 'Simulate discount matrix thresholds', description: 'Testing boundary conditions on 35%-50% discount approval gates.' },
+  { id: 't15', name: 'Audit volume discount schedules', description: 'Validating slab vs tiered pricing calculation pipelines.' },
 ];
 
 const INITIAL_COMPLETED_TASKS = [
@@ -274,7 +279,7 @@ export function SIArchitectCommandCenter() {
   // Needs Attention expansion
   const [showAllAttention, setShowAllAttention] = useState(false);
 
-  // Continuous Live Workstream Simulation over 10 distinct tasks
+  // Continuous Live Workstream Simulation over 15 distinct tasks
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>(INITIAL_COMPLETED_TASKS);
 
@@ -292,13 +297,11 @@ export function SIArchitectCommandCenter() {
     return () => clearInterval(timer);
   }, []);
 
-  // Compute active task and exactly 3 upcoming tasks in sequence
+  // Compute active task and 7 upcoming tasks in sequence
   const activeTask = ALL_REV_TASKS[currentTaskIndex];
-  const upcomingQueue = [
-    ALL_REV_TASKS[(currentTaskIndex + 1) % ALL_REV_TASKS.length],
-    ALL_REV_TASKS[(currentTaskIndex + 2) % ALL_REV_TASKS.length],
-    ALL_REV_TASKS[(currentTaskIndex + 3) % ALL_REV_TASKS.length],
-  ];
+  const upcomingQueue = Array.from({ length: 7 }, (_, i) =>
+    ALL_REV_TASKS[(currentTaskIndex + 1 + i) % ALL_REV_TASKS.length]
+  );
 
   const toggleStage = (id: string) => {
     setExpandedStages((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -633,13 +636,16 @@ export function SIArchitectCommandCenter() {
                   </span>
                 </div>
 
-                {/* Active Task Card */}
-                <div className="bg-gradient-to-br from-violet-50/70 via-white to-violet-50/30 border border-violet-200/90 rounded-xl p-3 shadow-2xs space-y-1.5 relative overflow-hidden">
+                {/* Active Task Card with smooth upward entry animation on rotation */}
+                <div
+                  key={activeTask.id}
+                  className="animate-slide-up bg-gradient-to-br from-violet-50/70 via-white to-violet-50/30 border border-violet-200/90 rounded-xl p-3 shadow-2xs space-y-1.5 relative overflow-hidden"
+                >
                   <div className="flex items-center justify-between">
-                    <p className="text-xs font-bold text-slate-900">
+                    <p className="text-xs font-bold text-slate-900 truncate pr-2">
                       {activeTask.name}
                     </p>
-                    <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded border border-violet-200">
+                    <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded border border-violet-200 shrink-0">
                       In progress
                     </span>
                   </div>
@@ -652,27 +658,37 @@ export function SIArchitectCommandCenter() {
                 </div>
               </div>
 
-              {/* 2. Upcoming Sequence */}
+              {/* 2. Upcoming Sequence (7 Tasks with bottom entry animation) */}
               <div className="space-y-2 pt-1">
-                <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider">
-                  Upcoming Sequence
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider">
+                    Upcoming Sequence (7)
+                  </span>
+                  <span className="text-[9.5px] font-mono text-slate-400">
+                    Next in queue
+                  </span>
+                </div>
 
                 <div className="space-y-1.5">
-                  {upcomingQueue.map((task, idx) => (
-                    <div
-                      key={task.id}
-                      className="flex items-center gap-2 p-2 bg-slate-50 border border-slate-200/70 rounded-lg text-slate-700 text-xs shadow-2xs"
-                    >
-                      <span className="w-4 h-4 rounded-full bg-white border border-slate-200 text-slate-500 font-mono text-[9px] font-bold flex items-center justify-center shrink-0">
-                        {idx + 1}
-                      </span>
-                      <span className="text-[11px] font-medium text-slate-800 truncate flex-1">
-                        {task.name}
-                      </span>
-                      <ArrowRight className="w-3 h-3 text-slate-300 shrink-0" />
-                    </div>
-                  ))}
+                  {upcomingQueue.map((task, idx) => {
+                    const isNewAtBottom = idx === upcomingQueue.length - 1;
+                    return (
+                      <div
+                        key={task.id}
+                        className={`flex items-center gap-2 p-2 bg-slate-50 hover:bg-slate-100/80 border border-slate-200/70 rounded-lg text-slate-700 text-xs shadow-2xs transition-all duration-300 ${
+                          isNewAtBottom ? 'animate-bottom-entry' : ''
+                        }`}
+                      >
+                        <span className="w-4 h-4 rounded-full bg-white border border-slate-200 text-slate-500 font-mono text-[9px] font-bold flex items-center justify-center shrink-0">
+                          {idx + 1}
+                        </span>
+                        <span className="text-[11px] font-medium text-slate-800 truncate flex-1">
+                          {task.name}
+                        </span>
+                        <ArrowRight className="w-3 h-3 text-slate-300 shrink-0" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
