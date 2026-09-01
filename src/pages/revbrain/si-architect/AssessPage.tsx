@@ -700,7 +700,7 @@ export function AssessPage() {
                 {subTab === 'workflows' && (
                   <div className="space-y-2">
                     {/* SVG display */}
-                    <div className="w-full flex items-start justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50/50 pt-2 pb-5 px-6">
+                    <div className="w-full flex items-start justify-center rounded-lg bg-white pt-2 pb-5 px-6">
                       <img
                         key={svgTab}
                         src={`/assets/${['assess-workflows-table.svg', 'assess-workflows-tab2.svg', 'assess-workflows-tab3.svg'][svgTab]}`}
