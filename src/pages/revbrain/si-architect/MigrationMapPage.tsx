@@ -52,7 +52,7 @@ const FUTURE_FLOW: FlowNode[] = [
   { label: 'Discount Exception Agent gathers evidence and explains recommendation', badge: 'AI Agent', badgeColor: 'bg-violet-100 text-violet-700 border border-violet-200 font-semibold', time: '~2 min' },
   { label: 'Manager approves in Slack with business context', badge: 'Human Approval + Slack Integ.', badgeColor: 'bg-blue-100 text-blue-700 border border-blue-200', time: '~6 min' },
   { label: 'Finance reviews margin-risk exceptions only', badge: 'Human Approval + AI Agent', badgeColor: 'bg-violet-100 text-violet-700 border border-violet-200', time: '~5 min avg.' },
-  { label: 'Knowledge Engine captures decision and rationale', badge: 'Knowledge Capture', badgeColor: 'bg-pink-100 text-pink-700 border border-pink-200', time: '~1 min' },
+  { label: 'Knowledge Engine captures decision and rationale', badge: 'Knowledge Capture', badgeColor: 'bg-cyan-100 text-cyan-800 border border-cyan-200', time: '~1 min' },
 ];
 
 interface ConfigNode {
@@ -369,7 +369,7 @@ export function MigrationMapPage() {
                                   'Human Approval': { bg: 'bg-[#FCEFD6]', border: 'border-[#C9962E]', badge: 'bg-[#C9962E]' },
                                   'Human Approval + Slack Integ.': { bg: 'bg-[#DCEAF9]', border: 'border-[#3B7DD8]', badge: 'bg-[#3B7DD8]' },
                                   'Human Approval + AI Agent': { bg: 'bg-[#E8E3F5]', border: 'border-[#7C3AED]', badge: 'bg-[#7C3AED]' },
-                                  'Knowledge Capture': { bg: 'bg-[#FCE7F3]', border: 'border-[#E879A8]', badge: 'bg-[#C84B7D]' },
+                                  'Knowledge Capture': { bg: 'bg-[#E0F7FA]', border: 'border-[#00ACC1]', badge: 'bg-[#00838F]' },
                                 };
                                 const p = palette[node.badge] || { bg: 'bg-[#EEECE7]', border: 'border-[#8A8578]', badge: 'bg-[#8A8578]' };
 
