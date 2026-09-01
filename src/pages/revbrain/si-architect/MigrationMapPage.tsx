@@ -339,13 +339,18 @@ export function MigrationMapPage() {
                               <div>manual</div>
                               <div>effort</div>
                             </div>
-                            <div className="hidden md:flex items-center gap-1 mt-3">
+                            <div className="hidden md:flex items-center gap-1 my-3">
                               <span className="w-2 h-0.5 bg-[#144740]/30" />
                               <ArrowRight className="w-4 h-4 text-[#144740]" />
                               <span className="w-2 h-0.5 bg-[#144740]/30" />
                             </div>
-                            <div className="md:hidden mt-2">
+                            <div className="md:hidden my-2">
                               <ArrowDown className="w-4 h-4 text-[#144740]" />
+                            </div>
+                            <div className="text-[10px] font-black uppercase tracking-wider text-[#144740] bg-[#DCEFEA] border border-[#144740]/40 rounded-xl px-2.5 py-1.5 text-center shadow-sm leading-tight">
+                              <div>~$90K</div>
+                              <div>annual</div>
+                              <div>savings</div>
                             </div>
                           </div>
 
