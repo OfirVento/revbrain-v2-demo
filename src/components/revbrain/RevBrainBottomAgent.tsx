@@ -227,14 +227,21 @@ export function RevBrainBottomAgent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Command Center auto-expand
+  // Command Center: start closed with loader icon in purple badge for 4 seconds, then auto-expand
+  const [ccLoading, setCcLoading] = useState(true);
+
   useEffect(() => {
-    if (!isCommandCenterRoute) return;
+    if (!isCommandCenterRoute) {
+      setCcLoading(false);
+      return;
+    }
+    setCcLoading(true);
+    setWorkingExpanded(false);
     setShowButtons(false);
     const timer = setTimeout(() => {
+      setCcLoading(false);
       setWorkingExpanded(true);
-      setChatFullyOpened(true);
-    }, 800);
+    }, 4000);
     return () => clearTimeout(timer);
   }, [pathname, isCommandCenterRoute]);
 
@@ -638,8 +645,9 @@ export function RevBrainBottomAgent() {
                     </span>
                   </>
                 ) : isCommandCenterRoute ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
-                    Daily Finding · SI Solution Architect
+                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide flex items-center gap-1.5">
+                    {ccLoading && <Loader2 className="w-3 h-3 text-violet-600 animate-spin shrink-0" />}
+                    <span>Daily Finding · SI Solution Architect</span>
                   </span>
                 ) : isDesignRoute ? (
                   <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
