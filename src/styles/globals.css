@@ -245,8 +245,16 @@ body {
     stroke-dashoffset: -24;
   }
 }
+@keyframes pulseFade {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
 .animate-moving-dash {
-  animation: moveDashRight 1.5s linear infinite;
+  animation: moveDashRight 1.5s linear infinite, pulseFade 2.2s ease-in-out infinite;
 }
 
 /* Page-level fade — applied to each layer's root element */
