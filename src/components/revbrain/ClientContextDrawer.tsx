@@ -50,6 +50,8 @@ export interface ClientInquiry {
   area: 'Approvals' | 'Pricing' | 'Accounts' | 'Quotes' | 'Renewals' | 'Billing' | 'Operations';
   status: ContextStatus;
   statusDetail: string;
+  impactLabel?: string;
+  statusLabel?: string;
   owner: {
     name: string;
     role: string;
@@ -115,6 +117,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Approvals',
     status: 'Blocking',
     statusDetail: 'Waiting on Finance',
+    impactLabel: '11.4K approvals · ~4,560 hrs/yr · ≈$410K annual effort',
+    statusLabel: 'Blocking · Waiting on Finance',
     owner: {
       name: 'Sarah Jenkins',
       role: 'VP Finance',
@@ -182,6 +186,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Pricing',
     status: 'Blocking',
     statusDetail: 'Client replied · Needs SI validation',
+    impactLabel: '23% manually overridden · ~620 hrs/yr · ≈$56K annual effort',
+    statusLabel: 'Needs validation · Client replied',
     owner: {
       name: 'David Zhao',
       role: 'Director of FP&A',
@@ -249,6 +255,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Accounts',
     status: 'Draft Ready',
     statusDetail: 'Draft question ready for RevOps',
+    impactLabel: '~310 hrs/yr manual handling · ≈$28K annual effort',
+    statusLabel: 'Ready to ask RevOps',
     owner: {
       name: 'Marcus Vance',
       role: 'RevOps Lead',
@@ -294,6 +302,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Quotes',
     status: 'Waiting on Client',
     statusDetail: 'Waiting on SalesOps',
+    impactLabel: '~240 hrs/yr rework · ≈$22K annual effort',
+    statusLabel: 'Waiting on SalesOps',
     owner: {
       name: 'Elena Rostova',
       role: 'SalesOps Director',
@@ -339,6 +349,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Renewals',
     status: 'Needs SI Validation',
     statusDetail: 'Client replied · Needs SI validation',
+    impactLabel: '~180 hrs/yr manual review · ≈$16K annual effort',
+    statusLabel: 'Needs validation',
     owner: {
       name: 'David Kim',
       role: 'Deal Desk Lead',
@@ -397,6 +409,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Billing',
     status: 'Confirmed',
     statusDetail: 'Confirmed with Billing Ops',
+    impactLabel: '320 invoices/yr · ~120 hrs/yr · ≈$11K annual effort',
+    statusLabel: 'Confirmed with Billing Ops',
     owner: {
       name: 'Claire Dupont',
       role: 'Billing Ops Lead',
@@ -457,6 +471,8 @@ export const CLIENT_INQUIRIES: ClientInquiry[] = [
     area: 'Operations',
     status: 'Waiting on Client',
     statusDetail: 'Waiting on Deal Desk VP',
+    impactLabel: '~160 hrs/yr at quarter-end · ≈$15K annual effort',
+    statusLabel: 'Waiting on Deal Desk VP',
     owner: {
       name: 'Thomas Wright',
       role: 'VP Deal Desk',
@@ -968,6 +984,24 @@ export function ClientContextDrawer({ isOpen, onClose, initialInquiryId }: Clien
                         {selectedInquiry.owner.name} ({selectedInquiry.owner.role})
                       </span>
                     </div>
+
+                    {/* Connected Labels: Impact + Status */}
+                    {(selectedInquiry.impactLabel || selectedInquiry.statusLabel) && (
+                      <div className="flex flex-wrap items-center gap-1.5 text-[11px] pt-1">
+                        {selectedInquiry.impactLabel && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/80 font-medium shadow-2xs">
+                            <span className="font-bold text-amber-950">Impact:</span>
+                            <span>{selectedInquiry.impactLabel}</span>
+                          </span>
+                        )}
+                        {selectedInquiry.statusLabel && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 border border-slate-200 font-medium shadow-2xs">
+                            <span className="font-bold text-slate-900">Status:</span>
+                            <span>{selectedInquiry.statusLabel}</span>
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* 1. RevBrain Finding */}
@@ -1235,6 +1269,24 @@ export function ClientContextDrawer({ isOpen, onClose, initialInquiryId }: Clien
                         <p className="text-[11.5px] text-slate-600 line-clamp-2 mt-1 leading-snug font-normal">
                           {item.revbrainFinding.summary}
                         </p>
+
+                        {/* Two Connected Labels: Impact + Status */}
+                        {(item.impactLabel || item.statusLabel) && (
+                          <div className="mt-2.5 pt-2 border-t border-slate-100/90 flex flex-wrap items-center gap-1.5 text-[10.5px]">
+                            {item.impactLabel && (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 font-medium shadow-2xs">
+                                <span className="font-bold text-amber-950">Impact:</span>
+                                <span>{item.impactLabel}</span>
+                              </span>
+                            )}
+                            {item.statusLabel && (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 border border-slate-200 font-medium shadow-2xs">
+                                <span className="font-bold text-slate-900">Status:</span>
+                                <span>{item.statusLabel}</span>
+                              </span>
+                            )}
+                          </div>
+                        )}
 
                         {/* Card Bottom: Owner + Latest Interaction */}
                         <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
