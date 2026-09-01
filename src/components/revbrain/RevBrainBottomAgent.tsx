@@ -613,12 +613,12 @@ export function RevBrainBottomAgent() {
     ]);
     setIsAgentResponding(true);
 
-    // After 5 seconds, navigate to the Map page
+    // After 8 seconds, navigate to the Map page
     setTimeout(() => {
       setIsAgentResponding(false);
       setChatMessages([]);
       navigate('/revbrain/migration/si-architect/map');
-    }, 5000);
+    }, 8000);
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
