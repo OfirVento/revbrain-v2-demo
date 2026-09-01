@@ -334,13 +334,13 @@ export function SIArchitectCommandCenter() {
           <span className="text-slate-500">
             Phase: <strong className="text-slate-900 font-semibold">Implementation assessment &amp; operating model design</strong>
           </span>
+          <span className="text-slate-300">|</span>
+          <span className="hidden sm:flex items-center gap-1 text-slate-500">
+            <RefreshCw className="w-3 h-3 text-slate-400" />
+            Last sync: <strong className="text-slate-700 font-medium">12 min ago</strong>
+          </span>
 
-          <div className="ml-auto flex items-center gap-3">
-            <span className="hidden sm:flex items-center gap-1 text-slate-500">
-              <RefreshCw className="w-3 h-3 text-slate-400" />
-              Last sync: <strong className="text-slate-700 font-medium">12 min ago</strong>
-            </span>
-
+          <div className="ml-auto flex items-center">
             {/* Clickable Client Context Trigger */}
             <button
               onClick={() => setClientContextOpen(true)}
