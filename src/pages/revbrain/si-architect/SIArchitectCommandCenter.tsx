@@ -385,10 +385,10 @@ export function SIArchitectCommandCenter() {
               const isExpanded = !!expandedStages[stage.id];
 
               return (
-                <div key={stage.id} className="p-3.5 flex flex-col justify-between bg-slate-50/40 hover:bg-white transition-colors group">
-                  <div>
+                <div key={stage.id} className="p-3 sm:p-3.5 flex flex-col justify-between bg-slate-50/40 hover:bg-white transition-colors group">
+                  <div className="space-y-1.5">
                     {/* Stage Header */}
-                    <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <Icon className={`w-3.5 h-3.5 ${stage.textColor} shrink-0`} />
                         <span className="text-xs font-bold text-slate-900">{stage.name}</span>
@@ -399,7 +399,7 @@ export function SIArchitectCommandCenter() {
                     </div>
 
                     {/* Progress Bar */}
-                    <div className={`h-1.5 rounded-full overflow-hidden mb-2 ${stage.trackColor}`}>
+                    <div className={`h-1.5 rounded-full overflow-hidden ${stage.trackColor}`}>
                       <div
                         className={`h-full rounded-full transition-all duration-700 ${stage.color}`}
                         style={{ width: `${Math.max(stage.pct, 2)}%` }}
@@ -407,13 +407,13 @@ export function SIArchitectCommandCenter() {
                     </div>
 
                     {/* One Meaningful Status Sentence */}
-                    <p className="text-[11px] text-slate-600 font-medium leading-tight mb-2 min-h-[28px]">
+                    <p className="text-[11px] text-slate-600 font-medium leading-tight">
                       {stage.status}
                     </p>
 
                     {/* Collapsible Detailed Bullets */}
                     {isExpanded && (
-                      <div className="pt-2 border-t border-slate-100 space-y-1.5 mb-2 animate-[fadeIn_150ms_ease]">
+                      <div className="pt-2 border-t border-slate-100 space-y-1.5 animate-[fadeIn_150ms_ease]">
                         {stage.items.map((item, i) => {
                           const ItemIcon = item.icon;
                           return (
@@ -438,7 +438,7 @@ export function SIArchitectCommandCenter() {
                   </div>
 
                   {/* Stage Bottom Bar: Show more toggle & direct link */}
-                  <div className="pt-1.5 border-t border-slate-100/80 flex items-center justify-between mt-1">
+                  <div className="pt-1.5 border-t border-slate-100/80 flex items-center justify-between mt-2">
                     <button
                       onClick={() => toggleStage(stage.id)}
                       className="text-[10px] font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-0.5 cursor-pointer"
