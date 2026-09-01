@@ -273,8 +273,8 @@ export function SIArchitectCommandCenter() {
   // Top Client Context drawer state
   const [clientContextOpen, setClientContextOpen] = useState(false);
 
-  // Collapsible detailed bullets per stage (all collapsed by default)
-  const [expandedStages, setExpandedStages] = useState<Record<string, boolean>>({});
+  // Collapsible detailed bullets per stage (single toggle under Assess controls all)
+  const [allStagesExpanded, setAllStagesExpanded] = useState(false);
 
   // Needs Attention expansion
   const [showAllAttention, setShowAllAttention] = useState(false);
@@ -308,10 +308,6 @@ export function SIArchitectCommandCenter() {
     ALL_REV_TASKS[(currentTaskIndex + 1 + i) % ALL_REV_TASKS.length]
   );
   const visibleCompleted = showMoreCompleted ? completedTasks : completedTasks.slice(0, 3);
-
-  const toggleStage = (id: string) => {
-    setExpandedStages((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   return (
     <div className="w-full flex flex-col relative">
@@ -373,11 +369,11 @@ export function SIArchitectCommandCenter() {
             </div>
           </div>
 
-          {/* 5-Stage Grid (Collapsed by default) */}
+          {/* 5-Stage Grid (Controlled globally by single toggle under Assess) */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
             {STAGES.map((stage) => {
               const Icon = stage.icon;
-              const isExpanded = !!expandedStages[stage.id];
+              const isExpanded = allStagesExpanded;
 
               return (
                 <div key={stage.id} className="p-3 sm:p-3.5 flex flex-col justify-between bg-slate-50/40 hover:bg-white transition-colors group">
@@ -432,15 +428,19 @@ export function SIArchitectCommandCenter() {
                     )}
                   </div>
 
-                  {/* Stage Bottom Bar: Show more toggle & direct link */}
+                  {/* Stage Bottom Bar: Show details toggle under Assess & direct link on all */}
                   <div className="pt-1.5 border-t border-slate-100/80 flex items-center justify-between mt-2">
-                    <button
-                      onClick={() => toggleStage(stage.id)}
-                      className="text-[10px] font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-0.5 cursor-pointer"
-                    >
-                      <span>{isExpanded ? 'Show less' : 'Show more'}</span>
-                      {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                    </button>
+                    {stage.id === 'assess' ? (
+                      <button
+                        onClick={() => setAllStagesExpanded(!allStagesExpanded)}
+                        className="text-[10px] font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-0.5 cursor-pointer"
+                      >
+                        <span>{allStagesExpanded ? 'Show less' : 'Show details'}</span>
+                        {allStagesExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                      </button>
+                    ) : (
+                      <div />
+                    )}
 
                     <button
                       onClick={() => navigate(stage.link)}
