@@ -645,20 +645,20 @@ export function AssessPage() {
           </div>
 
           {/* Tab content area */}
-          <div className="px-5 pt-2 pb-5">
+          <div className="px-5 pt-3 pb-5">
             
             {/* Context title and subtitle directly below the tabs */}
-            <div className="border-b border-slate-100 pb-1.5 mb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="border-b border-slate-100 pb-2.5 mb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="space-y-0.5">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider leading-none">{headerInfo.title}</h4>
+                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">{headerInfo.title}</h4>
                 {headerInfo.subtitle && (
-                  <p className="text-[11px] text-slate-500 leading-none mt-0.5">{headerInfo.subtitle}</p>
+                  <p className="text-xs text-slate-500 leading-normal mt-0.5">{headerInfo.subtitle}</p>
                 )}
               </div>
               
               {/* 3 SVG tabs instead of revenue coverage component */}
               {userLens === 'business' && subTab === 'workflows' ? (
-                <div className="flex items-center gap-1 shrink-0 self-start sm:self-center">
+                <div className="flex items-center gap-1.5 shrink-0 self-start sm:self-center">
                   {[
                     { label: 'Main Workflow', file: 'assess-workflows-table.svg' },
                     { label: 'Bottlenecks', file: 'assess-workflows-tab2.svg' },
@@ -667,7 +667,7 @@ export function AssessPage() {
                     <button
                       key={idx}
                       onClick={() => setSvgTab(idx)}
-                      className={`px-2.5 py-1 text-[11px] leading-none font-semibold rounded-full transition-all cursor-pointer ${
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-full transition-all cursor-pointer ${
                         svgTab === idx
                           ? 'bg-slate-900 text-white shadow-xs'
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
@@ -679,15 +679,15 @@ export function AssessPage() {
                 </div>
               ) : (
                 /* Compact visual metric pill for other tabs */
-                <div className="bg-indigo-50/50 border border-indigo-100/80 rounded-full px-3 py-1 flex items-center gap-2 shrink-0 self-start sm:self-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse shrink-0" />
+                <div className="bg-indigo-50/50 border border-indigo-100/80 rounded-full px-3.5 py-1.5 flex items-center gap-2.5 shrink-0 self-start sm:self-center">
+                  <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse shrink-0" />
                   <span className="text-xs font-extrabold text-indigo-600 tracking-tight leading-none">
                     {metricInfo.value}
                   </span>
-                  <span className="text-[10px] font-bold text-indigo-950 uppercase tracking-wide leading-none border-l border-indigo-100 pl-2">
+                  <span className="text-[11px] font-bold text-indigo-950 uppercase tracking-wide leading-none border-l border-indigo-100 pl-2">
                     {metricInfo.label}
                   </span>
-                  <span className="text-[10px] text-indigo-900/60 font-semibold border-l border-indigo-100 pl-2 leading-none">
+                  <span className="text-[11px] text-indigo-900/60 font-semibold border-l border-indigo-100 pl-2 leading-none">
                     {metricInfo.helper}
                   </span>
                 </div>
@@ -698,7 +698,7 @@ export function AssessPage() {
             {userLens === 'business' && (
               <>
                 {subTab === 'workflows' && (
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     {/* SVG display */}
                     <div className="w-full flex items-start justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50/50 pt-2 pb-5 px-6">
                       <img
