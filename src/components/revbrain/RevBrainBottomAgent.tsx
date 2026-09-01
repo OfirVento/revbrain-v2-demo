@@ -711,8 +711,8 @@ export function RevBrainBottomAgent() {
                       {assessStep === 'overview' && (
                         <>
                           {/* Main Finding Text & Inlined Variable Labels */}
-                          <div className="space-y-2">
-                            <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                          <div className="space-y-1">
+                            <p className="text-[14px] font-bold text-slate-900 leading-snug">
                               <TypewriterText
                                 key="assess-overview-msg"
                                 text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with agentic workflows."
@@ -724,7 +724,7 @@ export function RevBrainBottomAgent() {
 
                             {/* Small labels with {} variable styling, tight to the text */}
                             {assessShowButtons && (
-                              <p className="text-xs text-slate-500 font-normal leading-relaxed animate-fadeIn">
+                              <p className="text-xs text-slate-500 font-normal leading-tight animate-fadeIn">
                                 {renderTextWithVariableLabels('{Approvals ~4,560h} · {Quote prep ~720h} · {Finance exceptions ~460h} · {Quote-to-order fixes ~360h}')}
                               </p>
                             )}
