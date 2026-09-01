@@ -695,43 +695,49 @@ export function RevBrainBottomAgent() {
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                       
-                      {/* Overall Status → Strongest Current Insight → One Question */}
-                      <div className="space-y-2">
-                        <p className="text-[13px] text-slate-600 leading-relaxed font-medium">
-                          Progress is good overall. Map is moving forward and there are no major blockers.
-                        </p>
-                        <p className="text-[13.5px] font-bold text-slate-900 leading-relaxed">
-                          Today I found 11.4K approvals handled manually by two senior managers, with a 98.4% approval rate. This looks worth validating.
-                        </p>
-                        <p className="text-[13.5px] font-extrabold text-violet-900 leading-snug">
-                          Why are both managers required today?
-                        </p>
-                      </div>
+                      {/* Main Message Text (Same font & size as other pages) */}
+                      <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                        <TypewriterText
+                          text="I found a high-impact approval pattern worth validating: 11.4K approvals are manually reviewed by two senior managers, while 98.4% are approved. This could be a significant AI workflow opportunity."
+                          speed={28}
+                          enabled={chatFullyOpened}
+                          onComplete={() => setShowButtons(true)}
+                        />
+                      </p>
 
-                      {/* Actions: Review evidence & Ask client */}
-                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100">
-                        <button
-                          onClick={() => {
-                            navigate('/revbrain/migration/si-architect/assess');
-                            setToastMessage('Opening approval evidence in Assess');
-                            setTimeout(() => setToastMessage(null), 2000);
-                          }}
-                          className="px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
-                        >
-                          <span>Review evidence</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
+                      {/* Actions */}
+                      {showButtons && (
+                        <div className="space-y-1.5 pt-1 border-t border-slate-100 animate-fadeIn">
+                          <span className="text-[10.5px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+                            Actions:
+                          </span>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <button
+                              onClick={() => {
+                                navigate('/revbrain/migration/si-architect/assess');
+                                setToastMessage('Opening approval pattern in Assess');
+                                setTimeout(() => setToastMessage(null), 2000);
+                              }}
+                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
+                            >
+                              <span>Review in Assess</span>
+                              <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                            </button>
 
-                        <button
-                          onClick={() => {
-                            setToastMessage('Inquiry logged to Client Context panel');
-                            setTimeout(() => setToastMessage(null), 2000);
-                          }}
-                          className="px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
-                        >
-                          <span>Ask client</span>
-                        </button>
-                      </div>
+                            <button
+                              onClick={() => {
+                                navigate('/revbrain/migration/si-architect/assess');
+                                setToastMessage('Navigating to evidence in Assess');
+                                setTimeout(() => setToastMessage(null), 2000);
+                              }}
+                              style={{ animationDelay: '180ms' }}
+                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
+                            >
+                              <span>See evidence</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
