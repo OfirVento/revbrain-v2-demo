@@ -458,8 +458,8 @@ export function SIArchitectCommandCenter() {
                 </div>
               </div>
 
-              {/* Attention Cards List */}
-              <div className="space-y-2.5 pt-2.5">
+              {/* Attention Cards Grid (2 columns) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2.5">
                 {PRIMARY_ATTENTION_ITEMS.map((item) => (
                   <div
                     key={item.id}
@@ -470,30 +470,32 @@ export function SIArchitectCommandCenter() {
                         navigate(item.link);
                       }
                     }}
-                    className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group cursor-pointer"
+                    className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2.5 flex flex-col justify-between group cursor-pointer"
                   >
-                    {/* Title */}
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors leading-snug">
-                        {item.title}
-                      </h4>
-                    </div>
+                    <div className="space-y-2">
+                      {/* Title */}
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors leading-snug">
+                          {item.title}
+                        </h4>
+                      </div>
 
-                    {/* Short context sentence */}
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      {item.context}
-                    </p>
+                      {/* Short context sentence */}
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                        {item.context}
+                      </p>
 
-                    {/* Quantified impact */}
-                    <div>
-                      <span className="text-[11px] font-mono font-medium text-slate-700 bg-white border border-slate-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
-                        {item.impact}
-                      </span>
+                      {/* Quantified impact */}
+                      <div>
+                        <span className="text-[11px] font-mono font-medium text-slate-700 bg-white border border-slate-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
+                          {item.impact}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Current status + Investigate */}
-                    <div className="flex items-center justify-between gap-2 pt-0.5">
+                    <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100/80">
                       <span
                         className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 opacity-80 ${
                           item.statusType === 'amber'
@@ -525,18 +527,20 @@ export function SIArchitectCommandCenter() {
                     </div>
                   </div>
                 ))}
+              </div>
 
-                {/* Expanded Extra Attention Items */}
-                {showAllAttention && (
-                  <div className="space-y-2.5 pt-1 animate-[fadeIn_200ms_ease]">
-                    {EXTRA_ATTENTION_ITEMS.map((item) => (
-                      <div
-                        key={item.id}
-                        onClick={() => {
-                          if (item.link) navigate(item.link);
-                        }}
-                        className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group cursor-pointer"
-                      >
+              {/* Expanded Extra Attention Items */}
+              {showAllAttention && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3 animate-[fadeIn_200ms_ease]">
+                  {EXTRA_ATTENTION_ITEMS.map((item) => (
+                    <div
+                      key={item.id}
+                      onClick={() => {
+                        if (item.link) navigate(item.link);
+                      }}
+                      className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2.5 flex flex-col justify-between group cursor-pointer"
+                    >
+                      <div className="space-y-2">
                         {/* Title */}
                         <div className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
@@ -556,41 +560,41 @@ export function SIArchitectCommandCenter() {
                             {item.impact}
                           </span>
                         </div>
-
-                        {/* Current status + Investigate */}
-                        <div className="flex items-center justify-between gap-2 pt-0.5">
-                          <span
-                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 opacity-80 ${
-                              item.statusType === 'amber'
-                                ? 'bg-amber-100 text-amber-900 border-amber-300'
-                                : item.statusType === 'violet'
-                                ? 'bg-violet-100 text-violet-900 border-violet-300'
-                                : item.statusType === 'blue'
-                                ? 'bg-blue-100 text-blue-900 border-blue-300'
-                                : 'bg-rose-100 text-rose-900 border-rose-300'
-                            }`}
-                          >
-                            {item.status}
-                          </span>
-
-                          {item.link && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(item.link!);
-                              }}
-                              className="text-[10.5px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
-                            >
-                              <span>Investigate</span>
-                              <ChevronRight className="w-3 h-3" />
-                            </button>
-                          )}
-                        </div>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+
+                      {/* Current status + Investigate */}
+                      <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100/80">
+                        <span
+                          className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 opacity-80 ${
+                            item.statusType === 'amber'
+                              ? 'bg-amber-100 text-amber-900 border-amber-300'
+                              : item.statusType === 'violet'
+                              ? 'bg-violet-100 text-violet-900 border-violet-300'
+                              : item.statusType === 'blue'
+                              ? 'bg-blue-100 text-blue-900 border-blue-300'
+                              : 'bg-rose-100 text-rose-900 border-rose-300'
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+
+                        {item.link && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(item.link!);
+                            }}
+                            className="text-[10.5px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
+                          >
+                            <span>Investigate</span>
+                            <ChevronRight className="w-3 h-3" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* View All Toggle Button */}
