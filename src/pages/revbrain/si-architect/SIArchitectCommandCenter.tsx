@@ -164,7 +164,6 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
     context: 'Confirm why two senior managers still review these manually.',
     status: 'Client validation needed',
     statusType: 'amber',
-    link: '/revbrain/migration/si-architect/assess?openChat=true',
   },
   {
     id: 'att-2',
@@ -464,7 +463,9 @@ export function SIArchitectCommandCenter() {
                   <div
                     key={item.id}
                     onClick={() => {
-                      if (item.link) {
+                      if (item.id === 'att-1') {
+                        window.dispatchEvent(new CustomEvent('revbrain-open-command-center-chat'));
+                      } else if (item.link) {
                         navigate(item.link);
                       }
                     }}
@@ -517,18 +518,20 @@ export function SIArchitectCommandCenter() {
                         {item.context}
                       </p>
 
-                      {item.link && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (item.id === 'att-1') {
+                            window.dispatchEvent(new CustomEvent('revbrain-open-command-center-chat'));
+                          } else if (item.link) {
                             navigate(item.link!);
-                          }}
-                          className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
-                        >
-                          <span>Investigate</span>
-                          <ChevronRight className="w-3 h-3" />
-                        </button>
-                      )}
+                          }
+                        }}
+                        className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
+                      >
+                        <span>Investigate</span>
+                        <ChevronRight className="w-3 h-3" />
+                      </button>
                     </div>
                   </div>
                 ))}

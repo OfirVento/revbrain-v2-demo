@@ -345,6 +345,7 @@ export function AssessPage() {
         }
       }, 150);
     };
+
     window.addEventListener('revbrain-set-assess-svg-tab', handleSetSvgTab as EventListener);
     window.addEventListener('revbrain-set-assess-subtab', handleSetSubTab as EventListener);
     window.addEventListener('revbrain-highlight-assess-step', handleHighlight as EventListener);

@@ -245,6 +245,18 @@ export function RevBrainBottomAgent() {
     return () => clearTimeout(timer);
   }, [pathname, isCommandCenterRoute]);
 
+  // Listen for explicit Command Center chat open trigger (e.g. clicking Validate manual senior-manager approvals)
+  useEffect(() => {
+    const handleOpenCommandCenterChat = () => {
+      setCcLoading(false);
+      setWorkingExpanded(true);
+      setChatFullyOpened(true);
+    };
+
+    window.addEventListener('revbrain-open-command-center-chat', handleOpenCommandCenterChat as EventListener);
+    return () => window.removeEventListener('revbrain-open-command-center-chat', handleOpenCommandCenterChat as EventListener);
+  }, []);
+
   // Learning Engine route event listener and auto-expand
   useEffect(() => {
     if (!isLearningRoute) return;
@@ -281,24 +293,62 @@ export function RevBrainBottomAgent() {
   const [assessShowButtons, setAssessShowButtons] = useState<boolean>(false);
   const assessVisitedRef = useRef<string | null>(null);
 
-  // Initialize Assess chat flow: closed by default, opens if navigated with openChat=true
+  // Initialize Assess chat flow
   useEffect(() => {
-    if (isAssessRoute) {
-      const shouldOpen = location.search.includes('openChat=true');
-      if (shouldOpen) {
-        setAssessStep('overview');
-        setAssessShowButtons(false);
-        setWorkingExpanded(true);
-        setChatFullyOpened(true);
-        window.dispatchEvent(new CustomEvent('revbrain-highlight-assess-step'));
-      } else {
-        setAssessStep('overview');
-        setAssessShowButtons(false);
-        setWorkingExpanded(false);
-        setChatFullyOpened(false);
-      }
+    if (!isAssessRoute) {
+      assessVisitedRef.current = null;
+      setAssessStep('overview');
+      setAssessShowButtons(false);
+      return;
     }
-  }, [pathname, location.search, isAssessRoute]);
+
+    if (assessVisitedRef.current !== pathname) {
+      assessVisitedRef.current = pathname;
+      setAssessStep('overview');
+      setAssessShowButtons(false);
+      setWorkingExpanded(false);
+      setChatFullyOpened(false);
+
+      const triggerChatOpen = () => {
+        setWorkingExpanded(true);
+        cleanup();
+      };
+
+      const handleScroll = () => {
+        const mainEl = document.querySelector('main');
+        const scrollTop = mainEl ? mainEl.scrollTop : (window.scrollY || document.documentElement.scrollTop);
+
+        if (scrollTop > 30) {
+          triggerChatOpen();
+        }
+      };
+
+      const handleWheel = (e: WheelEvent) => {
+        if (e.deltaY > 5) {
+          triggerChatOpen();
+        }
+      };
+
+      const mainEl = document.querySelector('main');
+      if (mainEl) {
+        mainEl.addEventListener('scroll', handleScroll, { passive: true });
+        mainEl.addEventListener('wheel', handleWheel as EventListener, { passive: true });
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+      window.addEventListener('wheel', handleWheel as EventListener, { passive: true, capture: true });
+
+      function cleanup() {
+        if (mainEl) {
+          mainEl.removeEventListener('scroll', handleScroll);
+          mainEl.removeEventListener('wheel', handleWheel as EventListener);
+        }
+        window.removeEventListener('scroll', handleScroll, { capture: true });
+        window.removeEventListener('wheel', handleWheel as EventListener, { capture: true });
+      }
+
+      return cleanup;
+    }
+  }, [pathname, isAssessRoute]);
 
   const handleAssessCustomInput = () => {
     const note = otherInputText.trim() || 'Custom response';
