@@ -602,14 +602,14 @@ export function KnowledgePlaceholder() {
               </div>
             </div>
 
-            {/* RevBrain Knowledge Graph Topology */}
-            <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-6 shadow-2xs space-y-5 relative overflow-hidden">
-              <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
-                <h3 className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                  <Brain className="w-4 h-4 text-violet-600" />
-                  <span>RevBrain Q2C Knowledge Graph Topology</span>
+            {/* RevBrain Knowledge Graph */}
+            <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3.5 relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                  <Brain className="w-3.5 h-3.5 text-violet-600" />
+                  <span>RevBrain Q2C Knowledge Graph</span>
                 </h3>
-                <span className="text-[11px] font-mono text-slate-500">
+                <span className="text-[10.5px] font-mono text-slate-500">
                   Connected Q2C intelligence · Click any node to inspect
                 </span>
               </div>
