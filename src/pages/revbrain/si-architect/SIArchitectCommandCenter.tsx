@@ -358,7 +358,7 @@ export function SIArchitectCommandCenter() {
               <h2 className="text-sm font-bold text-slate-900">Implementation Progress</h2>
             </div>
             <div className="flex items-center gap-2.5">
-              <span className="text-xs text-slate-500 font-medium">Overall Progress</span>
+              <span className="text-xs text-slate-500 font-medium">Overall</span>
               <span className="text-sm font-black font-mono text-violet-700 opacity-75">{OVERALL_PCT}%</span>
               <div className="w-28 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
                 <div
