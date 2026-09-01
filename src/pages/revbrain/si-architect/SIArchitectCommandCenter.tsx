@@ -165,15 +165,24 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   },
   {
     id: 'att-2',
-    title: 'Investigate Finance escalation overrides',
-    context: '23% of Finance escalations are manually overridden, suggesting actual behavior differs from policy.',
-    impact: '23% overridden · ~620 hrs/yr · ≈$56K annual effort',
-    status: 'Needs business context',
+    title: 'Investigate Finance margin overrides',
+    context: '23% of observed quotes fall below the documented 20% margin floor through manual overrides.',
+    impact: '23% below policy · ≈$370K modeled annual margin exposure',
+    status: 'Needs business validation',
     statusType: 'violet',
     link: '/revbrain/migration/si-architect/map',
   },
   {
     id: 'att-3',
+    title: 'Investigate contracted pricing leakage',
+    context: 'Account-specific pricing is not consistently applied when quotes are created outside the standard quoting path.',
+    impact: '2.7% of quotes affected · ≈$240K modeled annual revenue leakage',
+    status: 'Needs SalesOps validation',
+    statusType: 'rose',
+    link: '/revbrain/migration/si-architect/assess',
+  },
+  {
+    id: 'att-4',
     title: 'Confirm strategic-account policy',
     context: 'Strategic accounts appear to follow a different exception path than the standard process.',
     impact: '~310 hrs/yr manual handling · ≈$28K annual effort',
@@ -182,19 +191,19 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
     link: '/revbrain/migration/si-architect/design',
   },
   {
-    id: 'att-4',
+    id: 'att-5',
     title: 'Validate quote repricing after approval',
     context: 'Quotes can be repriced after approval, creating rework and approval-control risk.',
     impact: '~240 hrs/yr rework · ≈$22K annual effort',
     status: 'Validation needed',
-    statusType: 'rose',
+    statusType: 'amber',
     link: '/revbrain/migration/si-architect/implementation',
   },
 ];
 
 const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
-    id: 'att-5',
+    id: 'att-6',
     title: 'Resolve custom Apex pricing plugin fallback',
     context: 'calculatePrice() script triggers unhandled timeout when calculating bundle tier discounts.',
     impact: '150+ line item quotes affected · ~180 hrs/yr · ≈$16K annual effort',
@@ -203,7 +212,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
     link: '/revbrain/migration/si-architect/assess',
   },
   {
-    id: 'att-6',
+    id: 'att-7',
     title: 'Confirm grandfathered SLA terms on renewals',
     context: 'Legacy contracted accounts bypass standard margin floor rules during automated uplift.',
     impact: '64 enterprise contracts · ~140 hrs/yr · ≈$13K annual effort',
@@ -212,7 +221,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
     link: '/revbrain/migration/si-architect/map',
   },
   {
-    id: 'att-7',
+    id: 'att-8',
     title: 'Audit multi-currency rounding discrepancies',
     context: 'Currency conversion rounding differences detected between opportunity and contracted line items.',
     impact: '320 cross-border invoices · ~120 hrs/yr · ≈$11K annual effort',
@@ -603,7 +612,7 @@ export function SIArchitectCommandCenter() {
                 onClick={() => setShowAllAttention(!showAllAttention)}
                 className="text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <span>{showAllAttention ? 'Show fewer attention items' : 'View all attention items (7)'}</span>
+                <span>{showAllAttention ? 'Show fewer attention items' : `View all attention items (${PRIMARY_ATTENTION_ITEMS.length + EXTRA_ATTENTION_ITEMS.length})`}</span>
                 {showAllAttention ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
               </button>
             </div>
