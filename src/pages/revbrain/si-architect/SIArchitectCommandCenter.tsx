@@ -344,7 +344,7 @@ export function SIArchitectCommandCenter() {
             {/* Clickable Client Context Trigger */}
             <button
               onClick={() => setClientContextOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 transition-all cursor-pointer group shadow-2xs active:scale-[0.98]"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 transition-all cursor-pointer group shadow-2xs active:scale-[0.98] opacity-75"
               title="Click to view open and blocking Client Context items"
             >
               <span className="w-2 h-2 rounded-full bg-amber-500 group-hover:animate-ping" />
@@ -491,7 +491,7 @@ export function SIArchitectCommandCenter() {
 
                       {/* Status badge */}
                       <span
-                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 ${
+                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 opacity-75 ${
                           item.statusType === 'amber'
                             ? 'bg-amber-100 text-amber-900 border-amber-300'
                             : item.statusType === 'violet'
@@ -514,7 +514,7 @@ export function SIArchitectCommandCenter() {
                           </span>
                         )}
                         {item.highlightPill && (
-                          <span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 shadow-2xs">
+                          <span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 shadow-2xs opacity-75">
                             <Sparkles className="w-3 h-3 text-emerald-600" />
                             {item.highlightPill}
                           </span>
@@ -558,7 +558,7 @@ export function SIArchitectCommandCenter() {
                           </div>
 
                           <span
-                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 ${
+                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 opacity-75 ${
                               item.statusType === 'amber'
                                 ? 'bg-amber-100 text-amber-900 border-amber-300'
                                 : item.statusType === 'violet'
@@ -649,7 +649,7 @@ export function SIArchitectCommandCenter() {
                         {activeTask.name}
                       </p>
                     </div>
-                    <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded border border-violet-200 shrink-0">
+                    <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded border border-violet-200 shrink-0 opacity-75">
                       In progress
                     </span>
                   </div>
