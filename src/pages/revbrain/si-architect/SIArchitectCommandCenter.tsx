@@ -282,6 +282,7 @@ export function SIArchitectCommandCenter() {
   // Continuous Live Workstream Simulation over 15 distinct tasks
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>(INITIAL_COMPLETED_TASKS);
+  const [showMoreCompleted, setShowMoreCompleted] = useState(false);
 
   // Auto-cycle live workstream smoothly every 5.5s
   useEffect(() => {
@@ -289,7 +290,11 @@ export function SIArchitectCommandCenter() {
       setCurrentTaskIndex((prevIdx) => {
         const nextIdx = (prevIdx + 1) % ALL_REV_TASKS.length;
         const justFinished = ALL_REV_TASKS[prevIdx];
-        setCompletedTasks((prevDone) => [justFinished.name, ...prevDone.slice(0, 2)]);
+        setCompletedTasks((prevDone) => {
+          // Strictly deduplicate to prevent any repeating task
+          const filtered = prevDone.filter((name) => name !== justFinished.name);
+          return [justFinished.name, ...filtered];
+        });
         return nextIdx;
       });
     }, 5500);
@@ -302,6 +307,7 @@ export function SIArchitectCommandCenter() {
   const upcomingQueue = Array.from({ length: 7 }, (_, i) =>
     ALL_REV_TASKS[(currentTaskIndex + 1 + i) % ALL_REV_TASKS.length]
   );
+  const visibleCompleted = showMoreCompleted ? completedTasks : completedTasks.slice(0, 3);
 
   const toggleStage = (id: string) => {
     setExpandedStages((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -658,14 +664,11 @@ export function SIArchitectCommandCenter() {
                 </div>
               </div>
 
-              {/* 2. Upcoming Sequence (7 Tasks with bottom entry animation) */}
+              {/* 2. Upcoming Tasks */}
               <div className="space-y-2 pt-1">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider">
-                    Upcoming Sequence (7)
-                  </span>
-                  <span className="text-[9.5px] font-mono text-slate-400">
-                    Next in queue
+                    Upcoming Tasks
                   </span>
                 </div>
 
@@ -675,13 +678,10 @@ export function SIArchitectCommandCenter() {
                     return (
                       <div
                         key={task.id}
-                        className={`flex items-center gap-2 p-2 bg-slate-50 hover:bg-slate-100/80 border border-slate-200/70 rounded-lg text-slate-700 text-xs shadow-2xs transition-all duration-300 ${
+                        className={`flex items-center justify-between gap-2 px-2.5 py-2 bg-slate-50 hover:bg-slate-100/80 border border-slate-200/70 rounded-lg text-slate-700 text-xs shadow-2xs transition-all duration-300 ${
                           isNewAtBottom ? 'animate-bottom-entry' : ''
                         }`}
                       >
-                        <span className="w-4 h-4 rounded-full bg-white border border-slate-200 text-slate-500 font-mono text-[9px] font-bold flex items-center justify-center shrink-0">
-                          {idx + 1}
-                        </span>
                         <span className="text-[11px] font-medium text-slate-800 truncate flex-1">
                           {task.name}
                         </span>
@@ -695,13 +695,29 @@ export function SIArchitectCommandCenter() {
 
             {/* 3. Recently Completed */}
             <div className="border-t border-slate-100 pt-3 space-y-2">
-              <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider">
-                Recently Completed
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider">
+                  Recently Completed
+                </span>
+                {completedTasks.length > 3 && (
+                  <button
+                    onClick={() => setShowMoreCompleted(!showMoreCompleted)}
+                    className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 cursor-pointer"
+                  >
+                    <span>{showMoreCompleted ? 'Show less' : `Show more (${completedTasks.length})`}</span>
+                    {showMoreCompleted ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                  </button>
+                )}
+              </div>
 
               <div className="space-y-1">
-                {completedTasks.map((doneText, idx) => (
-                  <div key={idx} className="flex items-start gap-1.5 text-[10.5px] text-slate-600 leading-snug">
+                {visibleCompleted.map((doneText, idx) => (
+                  <div
+                    key={`${doneText}-${idx}`}
+                    className={`flex items-start gap-1.5 text-[10.5px] text-slate-600 leading-snug py-0.5 ${
+                      idx === 0 ? 'animate-slide-down' : ''
+                    }`}
+                  >
                     <Check className="w-3 h-3 text-emerald-600 mt-0.5 shrink-0" />
                     <span className="truncate">{doneText}</span>
                   </div>
