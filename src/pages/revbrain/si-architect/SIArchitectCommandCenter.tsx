@@ -324,7 +324,7 @@ export function SIArchitectCommandCenter() {
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
-            Project: <strong className="text-slate-900 font-semibold">Salesforce CPQ → Revenue Cloud + AI Agent</strong>
+            Project: <strong className="text-slate-900 font-semibold">Salesforce CPQ → Revenue Cloud + AI Agents</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
@@ -332,7 +332,7 @@ export function SIArchitectCommandCenter() {
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
-            Phase: <strong className="text-slate-900 font-semibold">Implementation assessment &amp; operating model design</strong>
+            Phase: <strong className="text-slate-900 font-semibold">Assessment &amp; AI workflow design</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="hidden sm:flex items-center gap-1 text-slate-500">
