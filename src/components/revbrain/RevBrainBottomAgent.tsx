@@ -202,6 +202,7 @@ export function RevBrainBottomAgent() {
   const isDesignRoute = pathname.endsWith('/design') || pathname.includes('/si-architect/design');
   const isImplementationRoute = pathname.endsWith('/implementation') || pathname.includes('/si-architect/implementation');
   const isLearningRoute = pathname.includes('/knowledge');
+  const isCommandCenterRoute = pathname === '/revbrain/migration/si-architect';
 
   const [learningScreen, setLearningScreen] = useState<number>(1);
   const [learningLibraryTab, setLearningLibraryTab] = useState<'packs' | 'readiness'>('packs');
@@ -225,6 +226,17 @@ export function RevBrainBottomAgent() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Command Center auto-expand
+  useEffect(() => {
+    if (!isCommandCenterRoute) return;
+    const timer = setTimeout(() => {
+      setWorkingExpanded(true);
+      setChatFullyOpened(true);
+      setShowButtons(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [pathname, isCommandCenterRoute]);
 
   // Learning Engine route event listener and auto-expand
   useEffect(() => {
@@ -625,6 +637,10 @@ export function RevBrainBottomAgent() {
                       Validation context captured
                     </span>
                   </>
+                ) : isCommandCenterRoute ? (
+                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
+                    Daily Finding · SI Solution Architect
+                  </span>
                 ) : isDesignRoute ? (
                   <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
                     {designCardIndex < 8
@@ -674,7 +690,53 @@ export function RevBrainBottomAgent() {
               }`}
             >
               <div className="overflow-hidden">
-                {/* 0. Assess Route Verification Question Flow State */}
+                {/* 0. Command Center Forward-Deployed Operating Message */}
+                {isCommandCenterRoute && (
+                  <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
+                    <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
+                      
+                      {/* Overall Status → Strongest Current Insight → One Question */}
+                      <div className="space-y-2">
+                        <p className="text-[13px] text-slate-600 leading-relaxed font-medium">
+                          Progress is good overall. Map is moving forward and there are no major blockers.
+                        </p>
+                        <p className="text-[13.5px] font-bold text-slate-900 leading-relaxed">
+                          Today I found 11.4K approvals handled manually by two senior managers, with a 98.4% approval rate. This looks worth validating.
+                        </p>
+                        <p className="text-[13.5px] font-extrabold text-violet-900 leading-snug">
+                          Why are both managers required today?
+                        </p>
+                      </div>
+
+                      {/* Actions: Review evidence & Ask client */}
+                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100">
+                        <button
+                          onClick={() => {
+                            navigate('/revbrain/migration/si-architect/assess');
+                            setToastMessage('Opening approval evidence in Assess');
+                            setTimeout(() => setToastMessage(null), 2000);
+                          }}
+                          className="px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
+                        >
+                          <span>Review evidence</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setToastMessage('Inquiry logged to Client Context panel');
+                            setTimeout(() => setToastMessage(null), 2000);
+                          }}
+                          className="px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
+                        >
+                          <span>Ask client</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 1. Assess Route Verification Question Flow State */}
                 {isAssessRoute && assessFlowState === 'asking' && (
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
@@ -1167,7 +1229,7 @@ export function RevBrainBottomAgent() {
                 )}
 
                 {/* 6. Default task display for non-interactive state */}
-                {(!isMapRoute || mapFlowState === 'idle') && !isDesignRoute && !isImplementationRoute && !isLearningRoute && (!isAssessRoute || assessFlowState === 'idle' || assessFlowState === 'waiting') && (
+                {(!isMapRoute || mapFlowState === 'idle') && !isDesignRoute && !isImplementationRoute && !isLearningRoute && !isCommandCenterRoute && (!isAssessRoute || assessFlowState === 'idle' || assessFlowState === 'waiting') && (
                   <div className="px-4 pb-2.5 pt-2">
                     <div className="flex items-center gap-2.5 px-3 py-2 bg-slate-50 border border-slate-100 rounded-lg">
                       <div className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse shrink-0" />
