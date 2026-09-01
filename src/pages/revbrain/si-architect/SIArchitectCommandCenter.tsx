@@ -450,11 +450,11 @@ export function SIArchitectCommandCenter() {
           </div>
         </section>
 
-        {/* ─── 3. Main Working Area: Needs Attention (75%) / RevBrain Work (25%) ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4.5">
+        {/* ─── 3. Main Working Area: Needs Attention (80%) / RevBrain Work (20%) ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4.5">
 
-          {/* ─── LEFT 75%: Needs Attention ─── */}
-          <div className="lg:col-span-9 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-3.5 flex flex-col justify-between">
+          {/* ─── LEFT 80%: Needs Attention ─── */}
+          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-3.5 flex flex-col justify-between">
             <div>
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
@@ -608,8 +608,8 @@ export function SIArchitectCommandCenter() {
             </div>
           </div>
 
-          {/* ─── RIGHT 30%: RevBrain Work (Live Workstream) ─── */}
-          <div className="lg:col-span-3 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-4 flex flex-col justify-between">
+          {/* ─── RIGHT 20%: RevBrain Work (Live Workstream) ─── */}
+          <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-4 flex flex-col justify-between">
             <div className="space-y-3.5">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
