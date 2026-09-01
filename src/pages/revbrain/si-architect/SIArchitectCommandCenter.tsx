@@ -376,13 +376,17 @@ export function SIArchitectCommandCenter() {
               const isExpanded = allStagesExpanded;
 
               return (
-                <div key={stage.id} className="p-3 sm:p-3.5 flex flex-col justify-between bg-slate-50/40 hover:bg-white transition-colors group">
+                <div
+                  key={stage.id}
+                  onClick={() => navigate(stage.link)}
+                  className="p-3 sm:p-3.5 flex flex-col justify-between bg-slate-50/40 hover:bg-white transition-colors group cursor-pointer"
+                >
                   <div className="space-y-1.5">
                     {/* Stage Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <Icon className={`w-3.5 h-3.5 ${stage.textColor} opacity-75 shrink-0`} />
-                        <span className="text-xs font-bold text-slate-700">{stage.name}</span>
+                        <span className="text-xs font-bold text-slate-700 group-hover:text-slate-900 transition-colors">{stage.name}</span>
                       </div>
                       <span className={`text-[11px] font-bold font-mono ${stage.textColor} opacity-75`}>
                         {stage.pct}%
@@ -428,9 +432,9 @@ export function SIArchitectCommandCenter() {
                     )}
                   </div>
 
-                  {/* Stage Bottom Bar: Show details toggle under Assess & direct link on all */}
-                  <div className="pt-1.5 border-t border-slate-100/80 flex items-center justify-between mt-2">
-                    {stage.id === 'assess' ? (
+                  {/* Stage Bottom Bar: Show details toggle only under Assess */}
+                  {stage.id === 'assess' && (
+                    <div className="pt-1.5 border-t border-slate-100/80 flex items-center justify-start mt-2" onClick={(e) => e.stopPropagation()}>
                       <button
                         onClick={() => setAllStagesExpanded(!allStagesExpanded)}
                         className="text-[10px] font-semibold text-slate-500 hover:text-slate-900 flex items-center gap-0.5 cursor-pointer"
@@ -438,18 +442,8 @@ export function SIArchitectCommandCenter() {
                         <span>{allStagesExpanded ? 'Show less' : 'Show details'}</span>
                         {allStagesExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                       </button>
-                    ) : (
-                      <div />
-                    )}
-
-                    <button
-                      onClick={() => navigate(stage.link)}
-                      className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 hover:underline cursor-pointer"
-                    >
-                      <span>Open</span>
-                      <ChevronRight className="w-3 h-3" />
-                    </button>
-                  </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
