@@ -332,12 +332,9 @@ export function MigrationMapPage() {
 
                           {/* MIDDLE: Bridge connector */}
                           <div className="flex flex-col justify-center items-center py-6 md:py-0 px-2 text-center select-none shrink-0 self-center">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full px-2 py-0.5 whitespace-nowrap shadow-sm">
-                              Translated by RevBrain
-                            </div>
-                            <p className="text-[11px] text-slate-700 font-bold leading-snug max-w-[130px] mt-2">
+                            <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full px-2.5 py-0.5 whitespace-nowrap shadow-sm">
                               74% less manual effort
-                            </p>
+                            </div>
                             <div className="hidden md:flex items-center gap-1 mt-3">
                               <span className="w-2 h-0.5 bg-indigo-200" />
                               <ArrowRight className="w-4 h-4 text-indigo-400" />
