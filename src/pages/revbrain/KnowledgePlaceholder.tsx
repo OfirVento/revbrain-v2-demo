@@ -603,8 +603,8 @@ export function KnowledgePlaceholder() {
             </div>
 
             {/* RevBrain Knowledge Graph */}
-            <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3.5 relative overflow-hidden">
-              <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
+            <div className="bg-gradient-to-b from-slate-50/90 via-white to-slate-50/90 border border-slate-200/90 rounded-2xl px-4 sm:px-5 pt-3 pb-4 sm:pb-5 shadow-2xs space-y-3.5 relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
                 <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                   <Brain className="w-3.5 h-3.5 text-violet-600" />
                   <span>RevBrain Q2C Knowledge Graph</span>
