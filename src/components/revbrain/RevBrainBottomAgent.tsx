@@ -600,7 +600,7 @@ export function RevBrainBottomAgent() {
     const el = agentRef.current;
     if (!el) return;
     function update() {
-      const h = el!.getBoundingClientRect().height + 12; // +12 for pb-3
+      const h = el!.getBoundingClientRect().height;
       document.documentElement.style.setProperty('--agent-strip-height', `${h}px`);
     }
     update();
@@ -614,9 +614,9 @@ export function RevBrainBottomAgent() {
   return (
     <>
       {/* ─── Centered agent component ─── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex justify-center pb-3 px-6">
+      <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex justify-center pb-0 px-6">
         <div
-          className="w-full max-w-[800px] pointer-events-auto bg-[#eaedf1] rounded-2xl border border-slate-300/80 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2"
+          className="w-full max-w-[800px] pointer-events-auto bg-[#eaedf1] rounded-t-2xl rounded-b-none border border-slate-300/80 border-b-0 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2 pb-2"
           ref={agentRef}
         >
 
