@@ -664,8 +664,21 @@ export function SIArchitectCommandCenter() {
                     </p>
                   </div>
 
-                  <div className="w-full bg-violet-100 h-1 rounded-full overflow-hidden mt-1">
-                    <div className="h-full bg-violet-600 rounded-full animate-pulse w-3/4" />
+                  {/* Moving Dashed Line (Conveyor animation moving slowly to the right) */}
+                  <div className="w-full h-1.5 flex items-center overflow-hidden mt-1.5">
+                    <svg className="w-full h-1.5" preserveAspectRatio="none">
+                      <line
+                        x1="0"
+                        y1="3"
+                        x2="100%"
+                        y2="3"
+                        stroke="#8b5cf6"
+                        strokeWidth="2"
+                        strokeDasharray="5 5"
+                        strokeLinecap="round"
+                        className="animate-moving-dash"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
