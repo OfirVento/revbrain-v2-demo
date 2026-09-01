@@ -360,7 +360,6 @@ export function SIArchitectCommandCenter() {
           <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-bold text-slate-900">Implementation Progress</h2>
-              <span className="text-[11px] font-mono text-slate-400">Assess → Map → Design → Implementation → Launch &amp; Track</span>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="text-xs text-slate-500 font-medium">Overall Progress</span>
