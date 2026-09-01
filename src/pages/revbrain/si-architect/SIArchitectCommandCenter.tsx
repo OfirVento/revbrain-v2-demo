@@ -320,19 +320,19 @@ export function SIArchitectCommandCenter() {
         {/* ─── 1. Top Account / Client Context Strip ─── */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-[11px] shadow-2xs">
           <span className="text-slate-500">
-            Client: <strong className="text-slate-900 font-semibold">Vector Systems</strong>
+            Client: <strong className="text-slate-700 font-semibold">Vector Systems</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
-            Project: <strong className="text-slate-900 font-semibold">Salesforce CPQ → Revenue Cloud + AI Agents</strong>
+            Project: <strong className="text-slate-700 font-semibold">Salesforce CPQ → Revenue Cloud + AI Agents</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
-            Partner: <strong className="text-slate-900 font-semibold">SI Architect Workspace</strong>
+            Partner: <strong className="text-slate-700 font-semibold">SI Architect Workspace</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="text-slate-500">
-            Phase: <strong className="text-slate-900 font-semibold">Assessment &amp; AI workflow design</strong>
+            Phase: <strong className="text-slate-700 font-semibold">Assessment &amp; AI workflow design</strong>
           </span>
           <span className="text-slate-300">|</span>
           <span className="hidden sm:flex items-center gap-1 text-slate-500">
@@ -386,7 +386,7 @@ export function SIArchitectCommandCenter() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <Icon className={`w-3.5 h-3.5 ${stage.textColor} opacity-75 shrink-0`} />
-                        <span className="text-xs font-bold text-slate-900">{stage.name}</span>
+                        <span className="text-xs font-bold text-slate-700">{stage.name}</span>
                       </div>
                       <span className={`text-[11px] font-bold font-mono ${stage.textColor} opacity-75`}>
                         {stage.pct}%
