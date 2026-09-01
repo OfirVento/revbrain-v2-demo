@@ -221,7 +221,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   },
 ];
 
-/* ── Live Workstream Tasks Pool for Demo Simulation ─────────────────── */
+/* ── 10 Unique Live Workstream Tasks Pool for Continuous Simulation ─── */
 
 interface WorkTask {
   id: string;
@@ -229,17 +229,17 @@ interface WorkTask {
   description: string;
 }
 
-const INITIAL_UPCOMING_TASKS: WorkTask[] = [
-  { id: 'task-1', name: 'Compare Finance overrides', description: 'Cross-referencing approval matrix with 23% manual override records.' },
-  { id: 'task-2', name: 'Generate validation scenarios', description: 'Synthesizing edge cases for discount thresholds >40%.' },
-  { id: 'task-3', name: 'Analyze strategic exceptions', description: 'Mapping tier-1 customer custom margin floor bypasses.' },
-];
-
-const TASK_ROTATION_POOL: WorkTask[] = [
-  { id: 'task-4', name: 'Audit tiered pricing constraints', description: 'Validating bundle option dependencies against catalog schema.' },
-  { id: 'task-5', name: 'Synthesize executive business case', description: 'Calculating manual hours saved across senior manager approvals.' },
-  { id: 'task-6', name: 'Verify contract amendment sync', description: 'Extracting co-terming rules for renewal uplifts.' },
-  { id: 'task-7', name: 'Map billing schedule handoff', description: 'Checking revenue recognition trigger points on quote activation.' },
+const ALL_REV_TASKS: WorkTask[] = [
+  { id: 't1', name: 'Analyzing approval behavior', description: 'Evaluating 11.4K historical manager approvals across Q2C logs.' },
+  { id: 't2', name: 'Compare Finance overrides', description: 'Cross-referencing approval matrix with 23% manual override records.' },
+  { id: 't3', name: 'Generate validation scenarios', description: 'Synthesizing edge cases for discount thresholds >40%.' },
+  { id: 't4', name: 'Analyze strategic exceptions', description: 'Mapping tier-1 customer custom margin floor bypasses.' },
+  { id: 't5', name: 'Audit tiered pricing constraints', description: 'Validating bundle option dependencies against catalog schema.' },
+  { id: 't6', name: 'Extract renewal discount distribution', description: 'Analyzing auto-renewal uplift variances across customer tiers.' },
+  { id: 't7', name: 'Verify contract amendment sync', description: 'Extracting co-terming rules for renewal uplifts.' },
+  { id: 't8', name: 'Map billing schedule handoff', description: 'Checking revenue recognition trigger points on quote activation.' },
+  { id: 't9', name: 'Audit multi-currency precision', description: 'Analyzing EUR & JPY rounding rules across contracted lines.' },
+  { id: 't10', name: 'Inspect custom Apex pricing plugin', description: 'Profiling calculatePrice() script execution latency on 150+ line quotes.' },
 ];
 
 const INITIAL_COMPLETED_TASKS = [
@@ -274,44 +274,31 @@ export function SIArchitectCommandCenter() {
   // Needs Attention expansion
   const [showAllAttention, setShowAllAttention] = useState(false);
 
-  // Continuous Live Workstream Simulation
-  const [activeTask, setActiveTask] = useState<WorkTask>({
-    id: 'task-active',
-    name: 'Analyzing approval behavior',
-    description: 'Evaluating 11.4K historical manager approvals across Q2C logs.',
-  });
-  const [upcomingQueue, setUpcomingQueue] = useState<WorkTask[]>(INITIAL_UPCOMING_TASKS);
+  // Continuous Live Workstream Simulation over 10 distinct tasks
+  const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [completedTasks, setCompletedTasks] = useState<string[]>(INITIAL_COMPLETED_TASKS);
-  const [poolIndex, setPoolIndex] = useState(0);
 
-  // Auto-cycle live workstream every 6.5s for realistic forward-deployed feel
+  // Auto-cycle live workstream smoothly every 5.5s
   useEffect(() => {
     const timer = setInterval(() => {
-      setUpcomingQueue((prevQueue) => {
-        if (prevQueue.length === 0) return prevQueue;
-
-        const nextActive = prevQueue[0];
-        const remainingQueue = prevQueue.slice(1);
-
-        // Move currently active to completed
-        setCompletedTasks((prevDone) => [
-          activeTask.name,
-          ...prevDone.slice(0, 2),
-        ]);
-
-        // Set next active
-        setActiveTask(nextActive);
-
-        // Pull new task from pool into queue end
-        const nextPoolTask = TASK_ROTATION_POOL[poolIndex % TASK_ROTATION_POOL.length];
-        setPoolIndex((idx) => idx + 1);
-
-        return [...remainingQueue, nextPoolTask];
+      setCurrentTaskIndex((prevIdx) => {
+        const nextIdx = (prevIdx + 1) % ALL_REV_TASKS.length;
+        const justFinished = ALL_REV_TASKS[prevIdx];
+        setCompletedTasks((prevDone) => [justFinished.name, ...prevDone.slice(0, 2)]);
+        return nextIdx;
       });
-    }, 6500);
+    }, 5500);
 
     return () => clearInterval(timer);
-  }, [activeTask, poolIndex]);
+  }, []);
+
+  // Compute active task and exactly 3 upcoming tasks in sequence
+  const activeTask = ALL_REV_TASKS[currentTaskIndex];
+  const upcomingQueue = [
+    ALL_REV_TASKS[(currentTaskIndex + 1) % ALL_REV_TASKS.length],
+    ALL_REV_TASKS[(currentTaskIndex + 2) % ALL_REV_TASKS.length],
+    ALL_REV_TASKS[(currentTaskIndex + 3) % ALL_REV_TASKS.length],
+  ];
 
   const toggleStage = (id: string) => {
     setExpandedStages((prev) => ({ ...prev, [id]: !prev[id] }));
