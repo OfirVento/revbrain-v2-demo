@@ -616,7 +616,7 @@ export function RevBrainBottomAgent() {
       {/* ─── Centered agent component ─── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex justify-center pb-3 px-6">
         <div
-          className="w-full max-w-[800px] pointer-events-auto bg-[#eaedf1] rounded-2xl border border-slate-300/80 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2"
+          className="w-full max-w-[690px] pointer-events-auto bg-[#eaedf1] rounded-2xl border border-slate-300/80 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2"
           ref={agentRef}
         >
 
