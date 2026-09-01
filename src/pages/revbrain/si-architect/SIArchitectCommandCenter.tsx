@@ -450,11 +450,11 @@ export function SIArchitectCommandCenter() {
           </div>
         </section>
 
-        {/* ─── 3. Main Working Area: 70% Needs Attention / 30% RevBrain Work ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-4.5">
+        {/* ─── 3. Main Working Area: Needs Attention (75%) / RevBrain Work (25%) ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4.5">
 
-          {/* ─── LEFT 70%: Needs Attention ─── */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-3.5 flex flex-col justify-between">
+          {/* ─── LEFT 75%: Needs Attention ─── */}
+          <div className="lg:col-span-9 bg-white border border-slate-200 rounded-2xl p-4.5 shadow-2xs space-y-3.5 flex flex-col justify-between">
             <div>
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
