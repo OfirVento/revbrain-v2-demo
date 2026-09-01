@@ -605,9 +605,8 @@ export function AssessPage() {
                   : 'border-slate-200 bg-white/50 text-slate-500 hover:text-slate-800 font-medium'
               }`}
             >
-              <div className="flex flex-col items-center">
-                <span className="text-xs leading-normal">What your teams actually use</span>
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Business users</span>
+              <div className="flex flex-col items-center justify-center">
+                <span className="text-xs leading-normal">What business users actually use today</span>
               </div>
             </button>
             <button
@@ -618,9 +617,8 @@ export function AssessPage() {
                   : 'border-slate-200 bg-white/50 text-slate-500 hover:text-slate-800 font-medium'
               }`}
             >
-              <div className="flex flex-col items-center">
-                <span className="text-xs leading-normal">What it takes to support it</span>
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Admin users</span>
+              <div className="flex flex-col items-center justify-center">
+                <span className="text-xs leading-normal">What admins maintain to keep it working</span>
               </div>
             </button>
           </div>
