@@ -629,49 +629,10 @@ export function RevBrainBottomAgent() {
               className="w-full px-4 py-2 flex items-center justify-between bg-slate-50/80 hover:bg-slate-100/60 transition-colors border-b border-slate-100 rounded-t-xl"
             >
               <div className="flex items-center gap-2">
-                {isAssessRoute && (assessFlowState === 'asking' || assessFlowState === 'answered') ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
-                    1 of 1 · Workflow Gap Verification
-                  </span>
-                ) : isMapRoute && mapFlowState === 'question_flow' ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
-                    {currentQuestionIndex + 1} of {MAP_QUESTIONS.length} · Map Validation
-                  </span>
-                ) : isMapRoute && mapFlowState === 'completed' ? (
-                  <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span className="font-semibold text-slate-800 text-xs">
-                      Validation context captured
-                    </span>
-                  </>
-                ) : isCommandCenterRoute ? (
-                  <>
-                    <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
-                    <span className="font-semibold text-slate-700 text-xs">
-                      {runningTasksCount} {runningTasksCount === 1 ? 'task' : 'tasks'} running
-                    </span>
-                  </>
-                ) : isDesignRoute ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
-                    {designCardIndex < 8
-                      ? DESIGN_CARDS_GUIDE[designCardIndex]?.headerBadge
-                      : 'Agent Setup Complete'}
-                  </span>
-                ) : isImplementationRoute ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
-                    {implPhase === 'phase1' && '1 of 7 · Implementation Review'}
-                    {implPhase === 'phase2' && `Reviewing Component ${implReviewStepIndex + 1} of 7`}
-                    {implPhase === 'phase3' && `Live Implementation · Step ${implBuildStepIndex + 1} of 7`}
-                    {implPhase === 'phase4' && (isPhase4Completed ? 'Implementation Verified' : 'Validation & Testing')}
-                  </span>
-                ) : (
-                  <>
-                    <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
-                    <span className="font-semibold text-slate-700 text-xs">
-                      {runningTasksCount} {runningTasksCount === 1 ? 'task' : 'tasks'} running
-                    </span>
-                  </>
-                )}
+                <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
+                <span className="font-semibold text-slate-700 text-xs">
+                  {runningTasksCount} {runningTasksCount === 1 ? 'task' : 'tasks'} running
+                </span>
 
                 {/* Pop-up Toast Notification in green for a few seconds when user answers */}
                 {toastMessage && (
