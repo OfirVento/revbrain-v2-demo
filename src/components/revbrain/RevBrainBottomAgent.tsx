@@ -616,7 +616,7 @@ export function RevBrainBottomAgent() {
       {/* ─── Centered agent component ─── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex justify-center pb-3 px-6">
         <div
-          className="w-full max-w-[690px] pointer-events-auto bg-[#eaedf1] rounded-2xl border border-slate-300/80 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2"
+          className="w-full max-w-[800px] pointer-events-auto bg-[#eaedf1] rounded-2xl border border-slate-300/80 shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-2"
           ref={agentRef}
         >
 
@@ -645,10 +645,12 @@ export function RevBrainBottomAgent() {
                     </span>
                   </>
                 ) : isCommandCenterRoute ? (
-                  <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide flex items-center gap-1.5">
-                    {ccLoading && <Loader2 className="w-3 h-3 text-violet-600 animate-spin shrink-0" />}
-                    <span>Daily Finding · SI Solution Architect</span>
-                  </span>
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
+                    <span className="font-semibold text-slate-700 text-xs">
+                      {runningTasksCount} {runningTasksCount === 1 ? 'task' : 'tasks'} running
+                    </span>
+                  </>
                 ) : isDesignRoute ? (
                   <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-[10px] font-bold tracking-wide">
                     {designCardIndex < 8
