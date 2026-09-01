@@ -230,11 +230,11 @@ export function RevBrainBottomAgent() {
   // Command Center auto-expand
   useEffect(() => {
     if (!isCommandCenterRoute) return;
+    setShowButtons(false);
     const timer = setTimeout(() => {
       setWorkingExpanded(true);
       setChatFullyOpened(true);
-      setShowButtons(true);
-    }, 1000);
+    }, 800);
     return () => clearTimeout(timer);
   }, [pathname, isCommandCenterRoute]);
 
@@ -695,47 +695,43 @@ export function RevBrainBottomAgent() {
                   <div className="p-4 bg-gradient-to-b from-violet-50/40 via-white to-white space-y-3">
                     <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-2xs space-y-3">
                       
-                      {/* Main Message Text (Same font & size as other pages) */}
+                      {/* Main Message Text (Same font, weight & size as other pages) */}
                       <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
                         <TypewriterText
+                          key="command-center-insight"
                           text="I found a high-impact approval pattern worth validating: 11.4K approvals are manually reviewed by two senior managers, while 98.4% are approved. This could be a significant AI workflow opportunity."
-                          speed={28}
+                          speed={22}
                           enabled={chatFullyOpened}
                           onComplete={() => setShowButtons(true)}
                         />
                       </p>
 
-                      {/* Actions */}
+                      {/* Answer / Action Buttons (Appear after typewriter completes, with purple main button) */}
                       {showButtons && (
-                        <div className="space-y-1.5 pt-1 border-t border-slate-100 animate-fadeIn">
-                          <span className="text-[10.5px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                            Actions:
-                          </span>
-                          <div className="flex flex-wrap items-center gap-2">
-                            <button
-                              onClick={() => {
-                                navigate('/revbrain/migration/si-architect/assess');
-                                setToastMessage('Opening approval pattern in Assess');
-                                setTimeout(() => setToastMessage(null), 2000);
-                              }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
-                            >
-                              <span>Review in Assess</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-                            </button>
+                        <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                          <button
+                            onClick={() => {
+                              navigate('/revbrain/migration/si-architect/assess');
+                              setToastMessage('Opening approval pattern in Assess');
+                              setTimeout(() => setToastMessage(null), 2000);
+                            }}
+                            className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                          >
+                            <span>Review in Assess</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
 
-                            <button
-                              onClick={() => {
-                                navigate('/revbrain/migration/si-architect/assess');
-                                setToastMessage('Navigating to evidence in Assess');
-                                setTimeout(() => setToastMessage(null), 2000);
-                              }}
-                              style={{ animationDelay: '180ms' }}
-                              className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
-                            >
-                              <span>See evidence</span>
-                            </button>
-                          </div>
+                          <button
+                            onClick={() => {
+                              navigate('/revbrain/migration/si-architect/assess');
+                              setToastMessage('Navigating to evidence in Assess');
+                              setTimeout(() => setToastMessage(null), 2000);
+                            }}
+                            style={{ animationDelay: '120ms' }}
+                            className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center shrink-0 cursor-pointer"
+                          >
+                            <span>See evidence</span>
+                          </button>
                         </div>
                       )}
                     </div>
