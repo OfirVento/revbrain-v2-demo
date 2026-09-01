@@ -147,9 +147,7 @@ const OVERALL_PCT = 42;
 interface AttentionItem {
   id: string;
   title: string;
-  stats?: string;
-  highlightPill?: string;
-  context: string;
+  impact: string;
   status: string;
   statusType: 'amber' | 'violet' | 'blue' | 'rose';
   link?: string;
@@ -159,17 +157,14 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-1',
     title: 'Validate manual senior-manager approvals',
-    stats: '11.4K approvals · 24 min avg · 98.4% approved',
-    highlightPill: 'Potential high-ROI AI workflow',
-    context: 'Confirm why two senior managers still review these manually.',
+    impact: '11.4K approvals · ~4,560 hrs/yr · ≈$410K annual effort',
     status: 'Client validation needed',
     statusType: 'amber',
   },
   {
     id: 'att-2',
     title: 'Investigate Finance escalation overrides',
-    stats: '23% manually overridden',
-    context: 'Observed behavior differs from the documented Finance escalation policy.',
+    impact: '23% manually overridden · ~620 hrs/yr · ≈$56K annual effort',
     status: 'Needs business context',
     statusType: 'violet',
     link: '/revbrain/migration/si-architect/map',
@@ -177,7 +172,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-3',
     title: 'Confirm strategic-account policy',
-    context: 'Current system behavior suggests strategic accounts follow a different exception path.',
+    impact: '~310 hrs/yr manual handling · ≈$28K annual effort',
     status: 'Waiting on RevOps',
     statusType: 'blue',
     link: '/revbrain/migration/si-architect/design',
@@ -185,7 +180,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-4',
     title: 'Validate quote repricing after approval',
-    context: 'Potential regression risk before implementation.',
+    impact: '~240 hrs/yr rework · ≈$22K annual effort',
     status: 'Validation needed',
     statusType: 'rose',
     link: '/revbrain/migration/si-architect/implementation',
@@ -196,8 +191,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-5',
     title: 'Resolve custom Apex pricing plugin fallback',
-    stats: '150+ line item quotes affected',
-    context: 'calculatePrice() script triggers unhandled timeout when calculating bundle tier discounts.',
+    impact: '150+ line item quotes affected · ~180 hrs/yr · ≈$16K annual effort',
     status: 'Architect review',
     statusType: 'amber',
     link: '/revbrain/migration/si-architect/assess',
@@ -205,7 +199,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-6',
     title: 'Confirm grandfathered SLA terms on renewals',
-    context: 'Legacy contracted accounts bypass standard margin floor rules during automated uplift.',
+    impact: '64 enterprise contracts · ~140 hrs/yr · ≈$13K annual effort',
     status: 'Waiting on SalesOps',
     statusType: 'blue',
     link: '/revbrain/migration/si-architect/map',
@@ -213,8 +207,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-7',
     title: 'Audit multi-currency rounding discrepancies',
-    stats: 'EUR & JPY conversion variations',
-    context: 'Currency conversion rounding differences detected between opportunity and contracted line items.',
+    impact: '320 cross-border invoices · ~120 hrs/yr · ≈$11K annual effort',
     status: 'Data validation',
     statusType: 'violet',
     link: '/revbrain/migration/si-architect/design',
@@ -471,17 +464,25 @@ export function SIArchitectCommandCenter() {
                     }}
                     className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group cursor-pointer"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors">
-                          {item.title}
-                        </h4>
-                      </div>
+                    {/* Title */}
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors leading-snug">
+                        {item.title}
+                      </h4>
+                    </div>
 
-                      {/* Status badge */}
+                    {/* Quantified impact */}
+                    <div>
+                      <span className="text-[11px] font-mono font-medium text-slate-700 bg-white border border-slate-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
+                        {item.impact}
+                      </span>
+                    </div>
+
+                    {/* Current status + Investigate */}
+                    <div className="flex items-center justify-between gap-2 pt-0.5">
                       <span
-                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 opacity-75 ${
+                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 opacity-80 ${
                           item.statusType === 'amber'
                             ? 'bg-amber-100 text-amber-900 border-amber-300'
                             : item.statusType === 'violet'
@@ -493,30 +494,6 @@ export function SIArchitectCommandCenter() {
                       >
                         {item.status}
                       </span>
-                    </div>
-
-                    {/* Stats strip / Pills */}
-                    {(item.stats || item.highlightPill) && (
-                      <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                        {item.stats && (
-                          <span className="text-[10.5px] font-mono font-semibold text-slate-700 bg-white border border-slate-200 px-2 py-0.5 rounded shadow-2xs">
-                            {item.stats}
-                          </span>
-                        )}
-                        {item.highlightPill && (
-                          <span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 shadow-2xs opacity-75">
-                            <Sparkles className="w-3 h-3 text-emerald-600" />
-                            {item.highlightPill}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Short context */}
-                    <div className="flex items-center justify-between gap-2 pt-0.5">
-                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                        {item.context}
-                      </p>
 
                       <button
                         onClick={(e) => {
@@ -527,7 +504,7 @@ export function SIArchitectCommandCenter() {
                             navigate(item.link!);
                           }
                         }}
-                        className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
+                        className="text-[10.5px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
                       >
                         <span>Investigate</span>
                         <ChevronRight className="w-3 h-3" />
@@ -542,18 +519,30 @@ export function SIArchitectCommandCenter() {
                     {EXTRA_ATTENTION_ITEMS.map((item) => (
                       <div
                         key={item.id}
-                        className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group"
+                        onClick={() => {
+                          if (item.link) navigate(item.link);
+                        }}
+                        className="p-3.5 bg-slate-50/70 hover:bg-slate-50 border border-slate-200/90 hover:border-violet-300 rounded-xl transition-all shadow-2xs space-y-2 group cursor-pointer"
                       >
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                          <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors">
-                              {item.title}
-                            </h4>
-                          </div>
+                        {/* Title */}
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                          <h4 className="text-xs font-bold text-slate-900 group-hover:text-violet-900 transition-colors leading-snug">
+                            {item.title}
+                          </h4>
+                        </div>
 
+                        {/* Quantified impact */}
+                        <div>
+                          <span className="text-[11px] font-mono font-medium text-slate-700 bg-white border border-slate-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
+                            {item.impact}
+                          </span>
+                        </div>
+
+                        {/* Current status + Investigate */}
+                        <div className="flex items-center justify-between gap-2 pt-0.5">
                           <span
-                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border self-start sm:self-auto shrink-0 opacity-75 ${
+                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 opacity-80 ${
                               item.statusType === 'amber'
                                 ? 'bg-amber-100 text-amber-900 border-amber-300'
                                 : item.statusType === 'violet'
@@ -565,25 +554,14 @@ export function SIArchitectCommandCenter() {
                           >
                             {item.status}
                           </span>
-                        </div>
-
-                        {item.stats && (
-                          <div className="flex items-center gap-1.5 pt-0.5">
-                            <span className="text-[10.5px] font-mono font-semibold text-slate-700 bg-white border border-slate-200 px-2 py-0.5 rounded shadow-2xs">
-                              {item.stats}
-                            </span>
-                          </div>
-                        )}
-
-                        <div className="flex items-center justify-between gap-2 pt-0.5">
-                          <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                            {item.context}
-                          </p>
 
                           {item.link && (
                             <button
-                              onClick={() => navigate(item.link!)}
-                              className="text-[10px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(item.link!);
+                              }}
+                              className="text-[10.5px] font-bold text-violet-700 hover:text-violet-900 flex items-center gap-0.5 shrink-0 hover:underline cursor-pointer"
                             >
                               <span>Investigate</span>
                               <ChevronRight className="w-3 h-3" />
