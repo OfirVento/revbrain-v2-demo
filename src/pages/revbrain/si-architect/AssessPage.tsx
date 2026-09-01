@@ -325,8 +325,8 @@ export function AssessPage() {
     if (userLens === 'business') {
       if (subTab === 'workflows') {
         return {
-          title: 'Revenue workflows supported by CPQ',
-          subtitle: 'Shows which CPQ workflows support the largest share of quoted revenue and team activity.'
+          title: 'Quote-to-Cash Revenue Workflows',
+          subtitle: ''
         };
       } else if (subTab === 'config') {
         return {
@@ -651,7 +651,9 @@ export function AssessPage() {
             <div className="border-b border-slate-100 pb-3 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-0.5">
                 <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider">{headerInfo.title}</h4>
-                <p className="text-xs text-slate-500 leading-normal mt-0.5">{headerInfo.subtitle}</p>
+                {headerInfo.subtitle && (
+                  <p className="text-xs text-slate-500 leading-normal mt-0.5">{headerInfo.subtitle}</p>
+                )}
               </div>
               
               {/* 3 SVG tabs instead of revenue coverage component */}
