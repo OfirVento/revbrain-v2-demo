@@ -62,7 +62,7 @@ interface ConfigNode {
 }
 
 const CURRENT_CONFIG_FLOW: ConfigNode[] = [
-  { title: 'Price Rules', info: '12 of 48 active rules', desc: 'Calculates thresholds and pricing adjustments' },
+  { title: 'Price Rules', info: '12 of 51 active rules', desc: 'Calculates thresholds and pricing adjustments' },
   { title: 'QCP Scripts', info: '3 of 8 scripts', desc: 'Calculates margin impact and exception logic' },
   { title: 'Approval Rules', info: '8 of 24 active rules', desc: 'Controls manager and finance routing' },
   { title: 'Discount Schedules', info: '6 schedules', desc: 'Defines discount tiers and boundaries' },

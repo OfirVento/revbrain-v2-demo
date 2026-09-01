@@ -612,7 +612,7 @@ export function AssessPage() {
                   <Zap className="w-3.5 h-3.5 text-indigo-500" />
                   <span>Discounts & pricing logic</span>
                 </div>
-                <div className="text-lg font-extrabold text-slate-800">48 price rules</div>
+                <div className="text-lg font-extrabold text-slate-800">51 price rules</div>
               </div>
               <ul className="space-y-1 mt-3 text-[10px] text-slate-600 font-medium">
                 <li className="flex items-center gap-1.5 justify-between">
