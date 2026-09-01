@@ -497,7 +497,7 @@ export function SIArchitectCommandCenter() {
 
                       {/* Quantified impact */}
                       <div>
-                        <span className="text-[11px] font-mono font-medium text-emerald-900 bg-emerald-50/90 border border-emerald-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
+                        <span className="text-[11px] font-mono font-medium text-emerald-950/85 bg-emerald-50/45 border border-emerald-200/50 px-2.5 py-1 rounded-md shadow-2xs inline-block">
                           {item.impact}
                         </span>
                       </div>
@@ -565,7 +565,7 @@ export function SIArchitectCommandCenter() {
 
                         {/* Quantified impact */}
                         <div>
-                          <span className="text-[11px] font-mono font-medium text-emerald-900 bg-emerald-50/90 border border-emerald-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
+                          <span className="text-[11px] font-mono font-medium text-emerald-950/85 bg-emerald-50/45 border border-emerald-200/50 px-2.5 py-1 rounded-md shadow-2xs inline-block">
                             {item.impact}
                           </span>
                         </div>
