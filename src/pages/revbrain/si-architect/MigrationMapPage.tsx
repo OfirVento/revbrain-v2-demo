@@ -287,7 +287,7 @@ export function MigrationMapPage() {
                     {viewMode === 'business' ? (
                       // ── Business Workflow Comparison — SVG-inspired ──
                       <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-[2px] items-stretch">
+                        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-[6px] items-stretch">
 
                           {/* LEFT: Current approval process */}
                           <div className="rounded-xl border border-[#D5D0C8] bg-[#FAF9F7] p-4 flex flex-col justify-between space-y-3">
