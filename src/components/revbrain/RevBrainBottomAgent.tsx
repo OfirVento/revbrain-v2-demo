@@ -385,6 +385,19 @@ export function RevBrainBottomAgent() {
   const [workingExpanded, setWorkingExpanded] = useState(false);
   const [sentMessages, setSentMessages] = useState<string[]>([]);
 
+  interface ChatMessage {
+    id: string;
+    sender: 'user' | 'agent';
+    text: string;
+  }
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [isAgentResponding, setIsAgentResponding] = useState<boolean>(false);
+
+  useEffect(() => {
+    setChatMessages([]);
+    setIsAgentResponding(false);
+  }, [pathname]);
+
   // Track when chat is fully opened (after 450ms expand animation completes)
   const [chatFullyOpened, setChatFullyOpened] = useState(false);
 
@@ -584,8 +597,28 @@ export function RevBrainBottomAgent() {
 
   function handleSend() {
     if (!hasInput) return;
-    setSentMessages((prev) => [...prev, inputValue.trim()]);
+    const userText = inputValue.trim();
     setInputValue('');
+
+    // Close the top working questions area as requested
+    setWorkingExpanded(false);
+
+    // Add user message & agent response with animated dots
+    const userMsgId = Date.now().toString();
+    const agentMsgId = (Date.now() + 1).toString();
+
+    setChatMessages([
+      { id: userMsgId, sender: 'user', text: userText },
+      { id: agentMsgId, sender: 'agent', text: 'Sure, let me build something...' }
+    ]);
+    setIsAgentResponding(true);
+
+    // After 5 seconds, navigate to the Map page
+    setTimeout(() => {
+      setIsAgentResponding(false);
+      setChatMessages([]);
+      navigate('/revbrain/migration/si-architect/map');
+    }, 5000);
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -609,7 +642,7 @@ export function RevBrainBottomAgent() {
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [workingExpanded, isMapRoute, mapFlowState, currentQuestionIndex, showOtherInput, isDesignRoute, designCardIndex]);
+  }, [workingExpanded, isMapRoute, mapFlowState, currentQuestionIndex, showOtherInput, isDesignRoute, designCardIndex, chatMessages.length, isAgentResponding]);
 
   const currentQ = MAP_QUESTIONS[currentQuestionIndex];
 
@@ -622,8 +655,48 @@ export function RevBrainBottomAgent() {
           ref={agentRef}
         >
 
-          {/* ─── Working Mode Panel / Question Card ─── */}
-          <div className="bg-white border border-slate-200 border-b-0 rounded-t-xl overflow-hidden shadow-sm">
+          {/* ─── Active Chat Thread / Agent Stream Area (When user enters text in input bar) ─── */}
+          {chatMessages.length > 0 && (
+            <div className="bg-white border border-slate-200 border-b-0 rounded-t-xl p-3.5 space-y-2.5 animate-fadeIn shadow-xs">
+              {chatMessages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex items-start gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  {msg.sender === 'agent' && (
+                    <div className="w-5 h-5 rounded-md bg-violet-600 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <span className="text-white text-[9px] font-bold">R</span>
+                    </div>
+                  )}
+
+                  <div
+                    className={`text-xs px-3.5 py-2 rounded-xl leading-relaxed ${
+                      msg.sender === 'user'
+                        ? 'bg-violet-600 text-white font-medium rounded-br-xs shadow-2xs max-w-[85%]'
+                        : 'bg-slate-50 text-slate-800 font-medium rounded-bl-xs border border-slate-200/80 shadow-2xs max-w-[85%]'
+                    }`}
+                  >
+                    {msg.sender === 'agent' ? (
+                      <div className="flex items-center gap-1.5 py-0.5">
+                        <span className="font-semibold text-slate-900">Sure, let me build something</span>
+                        <span className="inline-flex items-center gap-1 ml-1 text-violet-600 font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '0ms' }} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '160ms' }} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-bounce" style={{ animationDelay: '320ms' }} />
+                        </span>
+                      </div>
+                    ) : (
+                      msg.text
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* ─── Working Mode Panel / Question Card (Hidden when active chat thread is displayed) ─── */}
+          {chatMessages.length === 0 && (
+            <div className="bg-white border border-slate-200 border-b-0 rounded-t-xl overflow-hidden shadow-sm">
             
             {/* Header bar / Toggle Button */}
             <button
@@ -1304,6 +1377,7 @@ export function RevBrainBottomAgent() {
               </div>
             </div>
           </div>
+          )}
 
           {/* ─── Main Input Bar ─── */}
           <div className="relative bg-white border border-slate-200 rounded-b-xl shadow-lg px-3 py-2.5">
