@@ -623,11 +623,8 @@ export function SIArchitectCommandCenter() {
                 <div className="flex items-center gap-2">
                   <Bot className="w-4 h-4 text-violet-600" />
                   <h3 className="text-sm font-bold text-slate-900">RevBrain Work</h3>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
                 </div>
-                <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-mono font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Live
-                </span>
               </div>
 
               {/* 1. Live Active Workstream */}
@@ -642,22 +639,31 @@ export function SIArchitectCommandCenter() {
                   </span>
                 </div>
 
-                {/* Active Task Card with smooth upward entry animation on rotation */}
-                <div
-                  key={activeTask.id}
-                  className="animate-slide-up bg-gradient-to-br from-violet-50/70 via-white to-violet-50/30 border border-violet-200/90 rounded-xl p-3 shadow-2xs space-y-1.5 relative overflow-hidden"
-                >
+                {/* Static Active Task Card (no jumping box, only inner text transitions in from bottom) */}
+                <div className="bg-gradient-to-br from-violet-50/70 via-white to-violet-50/30 border border-violet-200/90 rounded-xl p-3 shadow-2xs space-y-1.5 relative">
                   <div className="flex items-center justify-between">
-                    <p className="text-xs font-bold text-slate-900 truncate pr-2">
-                      {activeTask.name}
-                    </p>
+                    <div className="h-4.5 overflow-hidden flex-1 mr-2">
+                      <p
+                        key={`title-${activeTask.id}`}
+                        className="text-xs font-bold text-slate-900 truncate animate-slide-up"
+                      >
+                        {activeTask.name}
+                      </p>
+                    </div>
                     <span className="text-[9.5px] font-mono font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded border border-violet-200 shrink-0">
                       In progress
                     </span>
                   </div>
-                  <p className="text-[10.5px] text-slate-600 leading-snug">
-                    {activeTask.description}
-                  </p>
+
+                  <div className="min-h-[30px] overflow-hidden">
+                    <p
+                      key={`desc-${activeTask.id}`}
+                      className="text-[10.5px] text-slate-600 leading-snug animate-slide-up"
+                    >
+                      {activeTask.description}
+                    </p>
+                  </div>
+
                   <div className="w-full bg-violet-100 h-1 rounded-full overflow-hidden mt-1">
                     <div className="h-full bg-violet-600 rounded-full animate-pulse w-3/4" />
                   </div>
