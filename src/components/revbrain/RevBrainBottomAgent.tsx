@@ -327,6 +327,14 @@ export function RevBrainBottomAgent() {
     }
   }, [pathname, isAssessRoute]);
 
+  const handleAssessCustomInput = () => {
+    const note = otherInputText.trim() || 'Custom response';
+    setToastMessage(`Saved to RevBrain context: ${note}`);
+    setShowOtherInput(false);
+    setOtherInputText('');
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
   // Implementation route 4-Phase demo state
   type ImplPhase = 'phase1' | 'phase2' | 'phase3' | 'phase4';
   const [implPhase, setImplPhase] = useState<ImplPhase>('phase1');
@@ -680,10 +688,9 @@ export function RevBrainBottomAgent() {
                               setToastMessage('Opening approval pattern in Assess');
                               setTimeout(() => setToastMessage(null), 2000);
                             }}
-                            className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                            className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center shrink-0 cursor-pointer active:scale-[0.99]"
                           >
                             <span>Review in Assess</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
                           </button>
 
                           <button
@@ -730,18 +737,18 @@ export function RevBrainBottomAgent() {
                             )}
                           </div>
 
-                          {/* Actions: Show biggest opportunity | Review all manual work */}
+                          {/* Actions: Show biggest opportunity | Review all manual work | Other... */}
                           {assessShowButtons && (
                             <div className="flex flex-wrap items-center gap-2 pt-1 animate-fadeIn">
                               <button
                                 onClick={() => {
                                   setAssessStep('biggest_opportunity');
                                   setAssessShowButtons(false);
+                                  setShowOtherInput(false);
                                 }}
-                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center shrink-0 cursor-pointer active:scale-[0.99]"
                               >
                                 <span>Show biggest opportunity</span>
-                                <ArrowRight className="w-3.5 h-3.5" />
                               </button>
 
                               <button
@@ -754,6 +761,39 @@ export function RevBrainBottomAgent() {
                                 className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center shrink-0 cursor-pointer"
                               >
                                 <span>Review all manual work</span>
+                              </button>
+
+                              <button
+                                onClick={() => setShowOtherInput(!showOtherInput)}
+                                style={{ animationDelay: '240ms' }}
+                                className="animate-button-stagger text-xs font-medium text-slate-500 hover:text-slate-800 underline underline-offset-2 transition-colors ml-auto"
+                              >
+                                {showOtherInput ? 'Cancel custom answer' : 'Other...'}
+                              </button>
+                            </div>
+                          )}
+
+                          {/* Free-text input field when Other is selected */}
+                          {showOtherInput && (
+                            <div className="pt-2 animate-fadeIn flex items-center gap-2 border-t border-slate-100">
+                              <input
+                                type="text"
+                                value={otherInputText}
+                                onChange={(e) => setOtherInputText(e.target.value)}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') {
+                                    handleAssessCustomInput();
+                                  }
+                                }}
+                                placeholder="Type custom note or question..."
+                                className="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-800 placeholder:text-slate-400 outline-none focus:border-violet-400 focus:bg-white"
+                                autoFocus
+                              />
+                              <button
+                                onClick={handleAssessCustomInput}
+                                className="px-3.5 py-1.5 text-xs font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-lg transition-colors shrink-0"
+                              >
+                                Save
                               </button>
                             </div>
                           )}
@@ -773,7 +813,7 @@ export function RevBrainBottomAgent() {
                             />
                           </p>
 
-                          {/* Actions: Validate with client | Review evidence */}
+                          {/* Actions: Validate with client | Review evidence | Other... */}
                           {assessShowButtons && (
                             <div className="flex flex-wrap items-center gap-2 pt-1 animate-fadeIn">
                               <button
@@ -782,10 +822,9 @@ export function RevBrainBottomAgent() {
                                   setToastMessage('Inquiry logged: Validate 11.4K approvals pattern with client');
                                   setTimeout(() => setToastMessage(null), 3000);
                                 }}
-                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center gap-1.5 shrink-0 cursor-pointer active:scale-[0.99]"
+                                className="animate-button-stagger px-3.5 py-1.5 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-lg shadow-2xs transition-all flex items-center shrink-0 cursor-pointer active:scale-[0.99]"
                               >
                                 <span>Validate with client</span>
-                                <CheckCircle2 className="w-3.5 h-3.5" />
                               </button>
 
                               <button
@@ -798,6 +837,39 @@ export function RevBrainBottomAgent() {
                                 className="animate-button-stagger px-3.5 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-violet-50 text-slate-700 hover:text-violet-900 border border-slate-200 hover:border-violet-300 rounded-lg transition-all text-center shadow-2xs active:scale-[0.99] flex items-center shrink-0 cursor-pointer"
                               >
                                 <span>Review evidence</span>
+                              </button>
+
+                              <button
+                                onClick={() => setShowOtherInput(!showOtherInput)}
+                                style={{ animationDelay: '240ms' }}
+                                className="animate-button-stagger text-xs font-medium text-slate-500 hover:text-slate-800 underline underline-offset-2 transition-colors ml-auto"
+                              >
+                                {showOtherInput ? 'Cancel custom answer' : 'Other...'}
+                              </button>
+                            </div>
+                          )}
+
+                          {/* Free-text input field when Other is selected */}
+                          {showOtherInput && (
+                            <div className="pt-2 animate-fadeIn flex items-center gap-2 border-t border-slate-100">
+                              <input
+                                type="text"
+                                value={otherInputText}
+                                onChange={(e) => setOtherInputText(e.target.value)}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') {
+                                    handleAssessCustomInput();
+                                  }
+                                }}
+                                placeholder="Type custom response or validation note..."
+                                className="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-800 placeholder:text-slate-400 outline-none focus:border-violet-400 focus:bg-white"
+                                autoFocus
+                              />
+                              <button
+                                onClick={handleAssessCustomInput}
+                                className="px-3.5 py-1.5 text-xs font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-lg transition-colors shrink-0"
+                              >
+                                Save
                               </button>
                             </div>
                           )}
