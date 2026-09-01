@@ -294,36 +294,47 @@ export function RevBrainBottomAgent() {
       assessVisitedRef.current = pathname;
       setAssessStep('overview');
       setAssessShowButtons(false);
+      setWorkingExpanded(false);
+      setChatFullyOpened(false);
 
-      const timer = setTimeout(() => {
+      const triggerChatOpen = () => {
         setWorkingExpanded(true);
-        setChatFullyOpened(true);
-      }, 3500);
+        cleanup();
+      };
 
       const handleScroll = () => {
         const mainEl = document.querySelector('main');
         const scrollTop = mainEl ? mainEl.scrollTop : (window.scrollY || document.documentElement.scrollTop);
 
-        if (scrollTop > 120) {
-          setWorkingExpanded(true);
-          setChatFullyOpened(true);
-          clearTimeout(timer);
-          if (mainEl) mainEl.removeEventListener('scroll', handleScroll);
-          window.removeEventListener('scroll', handleScroll, { capture: true });
+        if (scrollTop > 30) {
+          triggerChatOpen();
+        }
+      };
+
+      const handleWheel = (e: WheelEvent) => {
+        if (e.deltaY > 5) {
+          triggerChatOpen();
         }
       };
 
       const mainEl = document.querySelector('main');
       if (mainEl) {
         mainEl.addEventListener('scroll', handleScroll, { passive: true });
+        mainEl.addEventListener('wheel', handleWheel as EventListener, { passive: true });
       }
       window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+      window.addEventListener('wheel', handleWheel as EventListener, { passive: true, capture: true });
 
-      return () => {
-        clearTimeout(timer);
-        if (mainEl) mainEl.removeEventListener('scroll', handleScroll);
+      function cleanup() {
+        if (mainEl) {
+          mainEl.removeEventListener('scroll', handleScroll);
+          mainEl.removeEventListener('wheel', handleWheel as EventListener);
+        }
         window.removeEventListener('scroll', handleScroll, { capture: true });
-      };
+        window.removeEventListener('wheel', handleWheel as EventListener, { capture: true });
+      }
+
+      return cleanup;
     }
   }, [pathname, isAssessRoute]);
 
