@@ -710,37 +710,25 @@ export function RevBrainBottomAgent() {
                       
                       {assessStep === 'overview' && (
                         <>
-                          {/* Main Finding Text */}
-                          <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
-                            <TypewriterText
-                              key="assess-overview-msg"
-                              text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with automation or agents."
-                              speed={22}
-                              enabled={chatFullyOpened}
-                              onComplete={() => setAssessShowButtons(true)}
-                            />
-                          </p>
+                          {/* Main Finding Text & Inlined Variable Labels */}
+                          <div className="space-y-2">
+                            <p className="text-[14px] font-bold text-slate-900 leading-relaxed min-h-[30px]">
+                              <TypewriterText
+                                key="assess-overview-msg"
+                                text="I found ~6.1K hours/year of manual Q2C work. ~5K hours may be reducible with automation or agents."
+                                speed={22}
+                                enabled={chatFullyOpened}
+                                onComplete={() => setAssessShowButtons(true)}
+                              />
+                            </p>
 
-                          {/* Small labels */}
-                          {assessShowButtons && (
-                            <div className="flex flex-wrap items-center gap-1.5 pt-0.5 animate-fadeIn">
-                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
-                                Approvals ~4,560h
-                              </span>
-                              <span className="text-slate-300 text-xs">·</span>
-                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
-                                Quote prep ~720h
-                              </span>
-                              <span className="text-slate-300 text-xs">·</span>
-                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
-                                Finance exceptions ~460h
-                              </span>
-                              <span className="text-slate-300 text-xs">·</span>
-                              <span className="px-2 py-0.5 rounded bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/60">
-                                Quote-to-order fixes ~360h
-                              </span>
-                            </div>
-                          )}
+                            {/* Small labels with {} variable styling, tight to the text */}
+                            {assessShowButtons && (
+                              <p className="text-xs text-slate-500 font-normal leading-relaxed animate-fadeIn">
+                                {renderTextWithVariableLabels('{Approvals ~4,560h} · {Quote prep ~720h} · {Finance exceptions ~460h} · {Quote-to-order fixes ~360h}')}
+                              </p>
+                            )}
+                          </div>
 
                           {/* Actions: Show biggest opportunity | Review all manual work */}
                           {assessShowButtons && (
