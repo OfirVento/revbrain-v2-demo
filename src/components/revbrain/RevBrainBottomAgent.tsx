@@ -227,22 +227,16 @@ export function RevBrainBottomAgent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Command Center: start closed with loader icon in purple badge for 4 seconds, then auto-expand
-  const [ccLoading, setCcLoading] = useState(true);
+  // Command Center: start closed, open ONLY on explicit user trigger (card click)
+  const [ccLoading, setCcLoading] = useState(false);
 
   useEffect(() => {
-    if (!isCommandCenterRoute) {
+    if (isCommandCenterRoute) {
       setCcLoading(false);
-      return;
+      setWorkingExpanded(false);
+      setShowButtons(false);
+      setChatFullyOpened(false);
     }
-    setCcLoading(true);
-    setWorkingExpanded(false);
-    setShowButtons(false);
-    const timer = setTimeout(() => {
-      setCcLoading(false);
-      setWorkingExpanded(true);
-    }, 4000);
-    return () => clearTimeout(timer);
   }, [pathname, isCommandCenterRoute]);
 
   // Listen for explicit Command Center chat open trigger (e.g. clicking Validate manual senior-manager approvals)
