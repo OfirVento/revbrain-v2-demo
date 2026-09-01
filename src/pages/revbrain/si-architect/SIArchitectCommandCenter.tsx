@@ -147,6 +147,7 @@ const OVERALL_PCT = 42;
 interface AttentionItem {
   id: string;
   title: string;
+  context: string;
   impact: string;
   status: string;
   statusType: 'amber' | 'violet' | 'blue' | 'rose';
@@ -157,6 +158,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-1',
     title: 'Validate manual senior-manager approvals',
+    context: 'Two senior managers manually review almost every approval despite a 98.4% approval rate.',
     impact: '11.4K approvals · ~4,560 hrs/yr · ≈$410K annual effort',
     status: 'Client validation needed',
     statusType: 'amber',
@@ -164,7 +166,8 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-2',
     title: 'Investigate Finance escalation overrides',
-    impact: '23% manually overridden · ~620 hrs/yr · ≈$56K annual effort',
+    context: '23% of Finance escalations are manually overridden, suggesting actual behavior differs from policy.',
+    impact: '23% overridden · ~620 hrs/yr · ≈$56K annual effort',
     status: 'Needs business context',
     statusType: 'violet',
     link: '/revbrain/migration/si-architect/map',
@@ -172,6 +175,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-3',
     title: 'Confirm strategic-account policy',
+    context: 'Strategic accounts appear to follow a different exception path than the standard process.',
     impact: '~310 hrs/yr manual handling · ≈$28K annual effort',
     status: 'Waiting on RevOps',
     statusType: 'blue',
@@ -180,6 +184,7 @@ const PRIMARY_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-4',
     title: 'Validate quote repricing after approval',
+    context: 'Quotes can be repriced after approval, creating rework and approval-control risk.',
     impact: '~240 hrs/yr rework · ≈$22K annual effort',
     status: 'Validation needed',
     statusType: 'rose',
@@ -191,6 +196,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-5',
     title: 'Resolve custom Apex pricing plugin fallback',
+    context: 'calculatePrice() script triggers unhandled timeout when calculating bundle tier discounts.',
     impact: '150+ line item quotes affected · ~180 hrs/yr · ≈$16K annual effort',
     status: 'Architect review',
     statusType: 'amber',
@@ -199,6 +205,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-6',
     title: 'Confirm grandfathered SLA terms on renewals',
+    context: 'Legacy contracted accounts bypass standard margin floor rules during automated uplift.',
     impact: '64 enterprise contracts · ~140 hrs/yr · ≈$13K annual effort',
     status: 'Waiting on SalesOps',
     statusType: 'blue',
@@ -207,6 +214,7 @@ const EXTRA_ATTENTION_ITEMS: AttentionItem[] = [
   {
     id: 'att-7',
     title: 'Audit multi-currency rounding discrepancies',
+    context: 'Currency conversion rounding differences detected between opportunity and contracted line items.',
     impact: '320 cross-border invoices · ~120 hrs/yr · ≈$11K annual effort',
     status: 'Data validation',
     statusType: 'violet',
@@ -472,6 +480,11 @@ export function SIArchitectCommandCenter() {
                       </h4>
                     </div>
 
+                    {/* Short context sentence */}
+                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                      {item.context}
+                    </p>
+
                     {/* Quantified impact */}
                     <div>
                       <span className="text-[11px] font-mono font-medium text-slate-700 bg-white border border-slate-200/90 px-2.5 py-1 rounded-md shadow-2xs inline-block">
@@ -531,6 +544,11 @@ export function SIArchitectCommandCenter() {
                             {item.title}
                           </h4>
                         </div>
+
+                        {/* Short context sentence */}
+                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                          {item.context}
+                        </p>
 
                         {/* Quantified impact */}
                         <div>
