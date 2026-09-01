@@ -333,18 +333,19 @@ export function MigrationMapPage() {
 
                           {/* MIDDLE: Bridge connector */}
                           <div className="flex flex-col justify-center items-center py-6 md:py-0 px-0 text-center select-none shrink-0 self-center">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-[#2C7A6E] bg-[#DCEFEA] border border-[#2C7A6E]/30 rounded-xl px-2.5 py-1 text-center shadow-sm leading-tight">
-                              <div>74% less</div>
+                            <div className="text-[10px] font-black uppercase tracking-wider text-[#144740] bg-[#DCEFEA] border border-[#144740]/40 rounded-xl px-2.5 py-1.5 text-center shadow-sm leading-tight">
+                              <div>74%</div>
+                              <div>less</div>
                               <div>manual</div>
                               <div>effort</div>
                             </div>
                             <div className="hidden md:flex items-center gap-1 mt-3">
-                              <span className="w-2 h-0.5 bg-[#2C7A6E]/30" />
-                              <ArrowRight className="w-4 h-4 text-[#2C7A6E]" />
-                              <span className="w-2 h-0.5 bg-[#2C7A6E]/30" />
+                              <span className="w-2 h-0.5 bg-[#144740]/30" />
+                              <ArrowRight className="w-4 h-4 text-[#144740]" />
+                              <span className="w-2 h-0.5 bg-[#144740]/30" />
                             </div>
                             <div className="md:hidden mt-2">
-                              <ArrowDown className="w-4 h-4 text-[#2C7A6E]" />
+                              <ArrowDown className="w-4 h-4 text-[#144740]" />
                             </div>
                           </div>
 
